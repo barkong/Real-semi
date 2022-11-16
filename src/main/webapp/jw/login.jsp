@@ -10,8 +10,8 @@
 <body>
 ${r }
 		<form action="LoginC" method="post"  onsubmit="return call()">
-		ID <input name="id"><p>
-		PW <input name="pw"><p>
+		ID <input name="id">
+		PW <input name="pw">
 		<button>로그인</button>
 		<button onclick="location.href='AccountC'" type="button">회원가입</button>
 		</form>

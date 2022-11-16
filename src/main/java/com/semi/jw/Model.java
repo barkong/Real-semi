@@ -97,7 +97,7 @@ public class Model {
 			pstmt.setString(7, request.getParameter("phone"));
 			pstmt.setString(8, request.getParameter("chk"));
 			pstmt.executeUpdate();
-			con.close();
+			
 
 			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "회원가입성공");

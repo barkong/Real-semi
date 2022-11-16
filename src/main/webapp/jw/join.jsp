@@ -17,7 +17,7 @@
 			<div>이름 : <input name="name" placeholder="필수"></div>
 			<div>생일 : <input type="date" name="birth"></div>
 			<div>성별 : 남<input type="radio" name="gender" value="남" checked="checked"> 여<input type="radio" name="gender" value="여"></div>
-			<div>email : <input type="email" name="email" pattern=".+@globex\.com" size="30" required></div>
+			<div>email : <input type="email" name="email" size="30" required></div>
 			<div>전화번호 : <input type="tel" name="phone"></div>
 			<div>흥미있는 카테고리 : 
 			All<input type="checkbox" name="chk" value='all' onclick='selectAll(this)'><br>
