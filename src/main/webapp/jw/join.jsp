@@ -8,7 +8,7 @@
 <script type="text/javascript" src="check.js"></script>
 </head>
 <body>
-	<form name="myForm" action="" method="post" onsubmit="return call()">
+	<form name="myForm" action="AccountC" method="post" onsubmit="return call()">
 		<fieldset>
 			<legend>회원가입</legend>
 			<div>ID : <input name="id" placeholder="한글x, 5글자 이상"></div>

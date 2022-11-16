@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
         <div id="title">영화정보페이지</div>
 
         <div class="btn1">
-          <button>login</button>
+          <jsp:include page="${loginPage }"></jsp:include>
         </div>
       </div>
 
