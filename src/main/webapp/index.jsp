@@ -5,12 +5,13 @@ pageEncoding="UTF-8"%>
   <head>
     <meta charset="UTF-8" />
     <title>Insert title here</title>
-    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/movieMapInfo.css">
+     <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
     <div id="Container">
       <div id="top">
-        <div id="title">영화정보페이지</div>
+        <div id="title"><a href="HC">영화정보페이지</a></div>
 
         <div class="btn1">
           <jsp:include page="${loginPage }"></jsp:include>
@@ -19,22 +20,26 @@ pageEncoding="UTF-8"%>
 
       <div id="menus">
         <div class="mainMenu">
+<<<<<<< HEAD
+          <a href="MovieGenreRecommendC">영화 장르별 추천</a>
+=======
           <a href="RecommendMovieC">영화 추천</a>
+>>>>>>> c5a74c280fb50b222f0c967e7454ee1055fb8d7c
         </div>
         <div class="mainMenu">
           <a href="#">영화 리뷰</a>
         </div>
         <div class="mainMenu">
-          <a href="#">주변영화관 찾기</a>
+          <a href="SearchCinemaC">주변영화관 찾기</a>
         </div>
         <div class="mainMenu">
           <a href="MovieSearchC">검색</a>
         </div>
       </div>
 
-      <div id="content">
+       <div id="content">
         <jsp:include page="${contentPage }"></jsp:include>
-      </div>
+       </div>
     </div>
   </body>
 </html>

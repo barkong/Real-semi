@@ -3,7 +3,6 @@
     <wb-module deploy-name="Real_Semi">
                 
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/"/>
                 
         <property name="context-root" value="Real_Semi"/>
                 
