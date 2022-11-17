@@ -1,0 +1,10 @@
+#recContainer {
+  position: relative;
+  display: flex;
+}
+.genreList {
+  border: 1px solid whitesmoke;
+  vertical-align: middle;
+  position:relative; 
+  top:100px;
+}

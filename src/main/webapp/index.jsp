@@ -14,13 +14,17 @@ pageEncoding="UTF-8"%>
         <div id="title"><a href="HC">영화정보페이지</a></div>
 
         <div class="btn1">
-          <button>login</button>
+          <jsp:include page="${loginPage }"></jsp:include>
         </div>
       </div>
 
       <div id="menus">
         <div class="mainMenu">
+<<<<<<< HEAD
           <a href="MovieGenreRecommendC">영화 장르별 추천</a>
+=======
+          <a href="RecommendMovieC">영화 추천</a>
+>>>>>>> c5a74c280fb50b222f0c967e7454ee1055fb8d7c
         </div>
         <div class="mainMenu">
           <a href="#">영화 리뷰</a>

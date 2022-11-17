@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+<<<<<<< HEAD
 @WebServlet("/MovieSearchC")
 public class MovieSearchC extends HttpServlet {
 	
@@ -16,6 +17,34 @@ public class MovieSearchC extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+=======
+
+
+@WebServlet("/MovieSearchC")
+public class MovieSearchC extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		if(request.getParameter("movie")==null) {
+			
+			request.setAttribute("contentPage", "jsp/sh/movieSearch.jsp");
+		}else {
+			NaverMovie.getMovie(request);
+			request.setAttribute("contentPage", "jsp/sh/movieSearchResult.jsp");
+			
+		}
+		
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		
+		//request.getRequestDispatcher("index.jsp").forward(request, response);
+		
+>>>>>>> c5a74c280fb50b222f0c967e7454ee1055fb8d7c
 	}
 
 }
