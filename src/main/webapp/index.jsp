@@ -19,7 +19,7 @@ pageEncoding="UTF-8"%>
 
       <div id="menus">
         <div class="mainMenu">
-          <a href="#">영화 추천</a>
+          <a href="RecommendMovieC">영화 추천</a>
         </div>
         <div class="mainMenu">
           <a href="#">영화 리뷰</a>
@@ -28,7 +28,7 @@ pageEncoding="UTF-8"%>
           <a href="#">주변영화관 찾기</a>
         </div>
         <div class="mainMenu">
-          <a href="#">검색</a>
+          <a href="MovieSearchC">검색</a>
         </div>
       </div>
 
