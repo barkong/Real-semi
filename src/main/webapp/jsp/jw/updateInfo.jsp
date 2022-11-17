@@ -8,14 +8,14 @@
 </head>
 <body>
 	<table>
-		<caption>회원정보</caption>
+		<caption>정보 수정</caption>
 		<tr>
 			<td>ID</td>
 			<td>${sessionScope.accountInfo.a_id }</td>
 		</tr>
 		<tr>
 			<td>PW</td>
-			<td>${sessionScope.accountInfo.a_password }</td>
+			<td><input name="pw" value="${sessionScope.accountInfo.a_password }"></td>
 		</tr>
 		<tr>
 			<td>이름</td>
@@ -42,11 +42,8 @@
 			<td>${sessionScope.accountInfo.a_interest }</td>
 		</tr>
 		<tr>
-			<td colspan="2"><button onclick="location.href='UpdateAccountC'">수정</button>
-				<button onclick="history.back()">돌아가기</button>
-				<button>탈퇴</button></td>
+		<td colspan="2"><button onclick="UpdateAccountC">수정</button><button onclick="history.back()" >돌아가기</button></td>
 		</tr>
 	</table>
-
 </body>
 </html>

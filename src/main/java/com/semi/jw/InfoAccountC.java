@@ -13,6 +13,10 @@ public class InfoAccountC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		Model.loginCheck(request);
+		
+		request.setAttribute("contentPage", "jsp/jw/info.jsp");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 
