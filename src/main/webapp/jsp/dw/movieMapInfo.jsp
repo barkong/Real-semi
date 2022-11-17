@@ -28,9 +28,10 @@
 </script>
 </head>
 <body>
+<h1>내 주변 영화관</h1>
 	<div class="map_wrap">
 		<div id="map"
-			style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+			style="width: 90%; height: 100%; position: relative; overflow: hidden;"></div>
 
 		<div id="menu_wrap" class="bg_white">
 			<div class="option">

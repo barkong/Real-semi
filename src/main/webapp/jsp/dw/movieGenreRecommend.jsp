@@ -28,18 +28,21 @@
                          $("#boxoffice").empty();
                          for(let i in movieList){
                         	 // 이름값을 쿼리로 네이버에 전송해서 이미지값 받아오기
-                             $("#boxoffice").append("<span id= '"+movieList[i].movieCd + "'>" +(parseInt(i)+1) + " " + movieList[i].movieNm+"/"+movieList[i].audiAcc + "명 " + "</span><hr>" );
+                             $("#boxoffice").append("<span id= '"+movieList[i].movieCd + "'>" +(parseInt(i)+1) + " " + movieList[i].movieNm+"/"+movieList[i].audiAcc + "명 " + "</span><hr>");
                          }
                         });
-                });//click
-            });//ready
+                });
+            });
         </script>
 
 </head>
 <body>
-<input type="date" id="date"><button id="mybtn">확인</button>
-<div id="boxoffice">
-    박스 오피스 순위<br>
+<div style="text-align:center;">	
+	<input type="date" id="date"><button id="mybtn">확인</button>
+
+	<div id="boxoffice">
+    <h1>박스 오피스 순위</h1><br>
+	</div>
 </div>
 </body>
 </html>
