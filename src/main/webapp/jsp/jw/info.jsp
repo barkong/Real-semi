@@ -5,8 +5,32 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/jw/style.css">
 </head>
 <body>
+<nav class="navbar">
+
+      <div class="navbar__logo">
+        <i class=""></i>
+        <a href=""></a>
+      </div>
+
+      <ul class="navbar__menu">
+        <li onclick="location.href='HC'">홈으로</li>
+        <li>마이페이지</li>
+        <li>자유게시판</li>
+        <li></li>
+        <li>문의</li>
+      </ul><br><br><br>
+      <ul class="navbar__icons">
+        <li><i class=""></i>정보수정</li>
+        <li><i class=""></i>회원탈퇴</li>
+      </ul>
+      <a href="#" class="navbar__toggleBtn">
+        <i class=""></i>
+      </a>
+      
+    </nav>
 	<table>
 		<caption>회원정보</caption>
 		<tr>

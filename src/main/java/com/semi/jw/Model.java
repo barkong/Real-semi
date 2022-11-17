@@ -98,14 +98,13 @@ public class Model {
 			pstmt.setString(1, request.getParameter("id"));
 			pstmt.setString(2, request.getParameter("pw"));
 			pstmt.setString(3, request.getParameter("name"));
-			SimpleDateFormat format = new SimpleDateFormat("dd-MMM-yyyy");
+			SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 			Date birth = (Date) format.parse(request.getParameter("birth"));
 			pstmt.setDate(4, birth);
 			pstmt.setString(5, request.getParameter("gender"));
 			pstmt.setString(6, request.getParameter("email"));
 			pstmt.setString(7, request.getParameter("phone"));
 			pstmt.setString(8, request.getParameter("chk"));
-			pstmt.executeUpdate();
 			
 
 			if (pstmt.executeUpdate() == 1) {
