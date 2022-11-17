@@ -2,6 +2,17 @@
 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+
+</body>
+</html>
+=======
   <head>
     <meta charset="UTF-8" />
     <title>Insert title here</title>
@@ -38,3 +49,4 @@ pageEncoding="UTF-8"%>
     </div>
   </body>
 </html>
+>>>>>>> 3d15a4e5d066dd087f664b1f9ce4637b030c8fbc
