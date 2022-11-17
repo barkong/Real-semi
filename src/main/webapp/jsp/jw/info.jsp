@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/jw/style.css">
+<link rel="stylesheet" href="css/jw/info.css">
 </head>
 <body>
 <nav class="navbar">
@@ -23,7 +23,7 @@
         <li>문의</li>
       </ul><br><br><br>
       <ul class="navbar__icons">
-        <li><i class=""></i>정보수정</li>
+        <li><i onclick="location.href='UpdateAccountC'">정보수정</i></li>
         <li><i class=""></i>회원탈퇴</li>
       </ul>
       <a href="#" class="navbar__toggleBtn">
