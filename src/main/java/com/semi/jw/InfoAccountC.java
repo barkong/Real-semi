@@ -8,25 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/AccountC")
-public class AccountC extends HttpServlet {
-	
+@WebServlet("/InfoAccountC")
+public class InfoAccountC extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Model.loginCheck(request);
-		
-		request.setAttribute("contentPage", "jsp/jw/join.jsp");
-		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Model.account(request);
-		Model.loginCheck(request);
-		
-		request.setAttribute("contentPage", "home.jsp");
-		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 }
