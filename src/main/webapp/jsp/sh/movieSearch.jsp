@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-home!
+
+<form action="MovieSearchC" >
+<h5>영화검색</h5><input name=movie >
+</form>
 </body>
 </html>
