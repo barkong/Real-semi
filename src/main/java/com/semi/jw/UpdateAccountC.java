@@ -29,7 +29,7 @@ public class UpdateAccountC extends HttpServlet {
 			throws ServletException, IOException {
 		
 		if (Model.loginCheck(request)) {
-			Model.updateInfo(request);
+//			Model.updateInfo(request);
 			Model.login(request);
 		}
 		request.setAttribute("contentPage", "jsp/jw/info.jsp");
