@@ -18,8 +18,6 @@ pageEncoding="UTF-8"%>
       >
         마이페이지</button
       ><button onclick="location.href='LoginC'">로그아웃</button>
-
-      >>>>>>> sjw_setting:src/main/webapp/jsp/jw/loginOk.jsp
     </p>
   </body>
 </html>

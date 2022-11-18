@@ -23,22 +23,20 @@ public class NaverMovie {
 		// secret Zm1c9tQ_jW
 
 		// https://openapi.naver.com/v1/search/movie.xml
-		// query = 검색어(콘솔로 입력할 그 값)
+		// query = 寃��깋�뼱(肄섏넄濡� �엯�젰�븷 洹� 媛�)
 
-		//Scanner k = null;
+		// Scanner k = null;
 		HttpsURLConnection huc = null;
 
 		try {
-			
-			
-		//	k = new Scanner(System.in);
-		//	System.out.println("검색어: ");
-			request.setCharacterEncoding("UTF-8");		//한글깨짐해결방법
-			String str =request.getParameter("movie");
+
+			// k = new Scanner(System.in);
+			// System.out.println("寃��깋�뼱: ");
+			request.setCharacterEncoding("UTF-8"); // �븳湲�源⑥쭚�빐寃곕갑踰�
+			String str = request.getParameter("movie");
 			System.out.println(str);
 
-
-			 str = URLEncoder.encode(str, "utf-8");
+			str = URLEncoder.encode(str, "utf-8");
 			System.out.println(str);
 
 			String url = "https://openapi.naver.com/v1/search/movie.json";
@@ -57,19 +55,19 @@ public class NaverMovie {
 			InputStreamReader isr = new InputStreamReader(is, "utf-8");
 			System.out.println(is);
 
-			// json 파싱하게 jsonparser 객체 준비
+			// json �뙆�떛�븯寃� jsonparser 媛앹껜 以�鍮�
 			JSONParser jp = new JSONParser();
 
 			JSONObject naverData = (JSONObject) jp.parse(isr);
 			System.out.println(naverData);
 
-			// 4가지 제목, 배우 , 감독 ,링크
+			// 4媛�吏� �젣紐�, 諛곗슦 , 媛먮룆 ,留곹겕
 
-			// JavasScript 에서
-			// {} 객체
-			// [] 배열
+			// JavasScript �뿉�꽌
+			// {} 媛앹껜
+			// [] 諛곗뿴
 			JSONArray items = (JSONArray) naverData.get("items");
-			
+
 			ArrayList<Movie> movies = new ArrayList<>();
 			for (int i = 0; i < items.size(); i++) {
 				JSONObject movie = (JSONObject) items.get(i);
@@ -78,24 +76,21 @@ public class NaverMovie {
 				title = title.replace("</b>", "");
 				String actor = (String) movie.get("actor");
 				String director = (String) movie.get("director");
-				String link = movie.get("link") + ""; // 문자열 캐스트 하는 또 다른 방법
+				String link = movie.get("link") + ""; // 臾몄옄�뿴 罹먯뒪�듃 �븯�뒗 �삉 �떎瑜� 諛⑸쾿
 
-				System.out.println("영화제목 : " + title);
-				System.out.println("배우 : " + actor);
-				System.out.println("감독 : " + director);
-				System.out.println("링크 : " + link);
-				//System.out.println("-------------");
-				
-				// 제목, 감독, 배우, 링
+				System.out.println("�쁺�솕�젣紐� : " + title);
+				System.out.println("諛곗슦 : " + actor);
+				System.out.println("媛먮룆 : " + director);
+				System.out.println("留곹겕 : " + link);
+				// System.out.println("-------------");
+
+				// �젣紐�, 媛먮룆, 諛곗슦, 留�
 				Movie m = new Movie(title, director, actor, link);
-				
+
 				movies.add(m);
-			
-				
-				
 
 			}
-			
+
 			// for end
 			request.setAttribute("movies", movies);
 
