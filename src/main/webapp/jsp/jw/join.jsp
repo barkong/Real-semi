@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="check.js"></script>
+<script type="text/javascript" src="jw/check.js"></script>
 </head>
 <body>
 	<form name="myForm" action="AccountC" method="post" onsubmit="return call()">
@@ -19,7 +19,7 @@
 			<div>성별 : 남<input type="radio" name="gender" value="남" checked="checked"> 여<input type="radio" name="gender" value="여"></div>
 			<div>email : <input type="email" name="email" size="30" required></div>
 			<div>전화번호 : <input type="tel" name="phone"></div>
-			<div>흥미있는 카테고리 : 
+			<div>좋아하는 장르 : 
 			All<input type="checkbox" name="chk" value='all' onclick='selectAll(this)'><br>
 			<input type="checkbox" name="chk" value=""> 
 			<input type="checkbox" name="chk" value=""> 
