@@ -178,4 +178,31 @@ public class Model {
 			DBManager.close(con, pstmt, null);
 		}
 	}
+
+	public static void delId(HttpServletRequest request) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "delete semi_account where a_id=?";
+		try {
+			con=DBManager.connect();
+			pstmt=con.prepareStatement(sql);
+			
+			String id = request.getParameter("id");
+			
+			
+			pstmt.setString(1, id);
+			
+			if(pstmt.executeUpdate()==1) {
+				request.setAttribute("r", "삭제성공");
+			}
+			
+		} catch (Exception e) {
+			request.setAttribute("r", "서버오류");
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+		
+	}
 }
