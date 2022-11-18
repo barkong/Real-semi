@@ -23,8 +23,8 @@
         <li>문의</li>
       </ul><br><br><br>
       <ul class="navbar__icons">
-        <li><i onclick="location.href='UpdateAccountC'">정보수정</i></li>
-        <li><i class=""></i>회원탈퇴</li>
+        <li onclick="location.href='UpdateAccountC'">정보수정</li>
+        <li>회원탈퇴</li>
       </ul>
       <a href="#" class="navbar__toggleBtn">
         <i class=""></i>
