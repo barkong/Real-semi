@@ -9,17 +9,13 @@ import java.text.SimpleDateFormat;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-
-
-
-
 public class Model {
 
 	public static void login(HttpServletRequest request) {
 
 		String userId = request.getParameter("id");
 		String userPw = request.getParameter("pw");
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -30,11 +26,10 @@ public class Model {
 			pstmt = con.prepareStatement(sql);
 			pstmt = DBManager.connect().prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			
+
 			if (rs.next()) {
 				if (userPw.equals(rs.getString("a_pw"))) {
-					request.setAttribute("r", "로그인 성공!");
-					
+					request.setAttribute("r", "濡쒓렇�씤 �꽦怨�!");
 
 					Bean bean = new Bean();
 					bean.setA_id(rs.getString("a_id"));
@@ -45,8 +40,6 @@ public class Model {
 					bean.setA_email(rs.getString("a_email"));
 					bean.setA_phone(rs.getString("a_phone"));
 					bean.setA_interest(rs.getString("a_interest"));
-					
-
 					request.setAttribute("account", bean);
 
 					HttpSession hs = request.getSession();
@@ -54,18 +47,18 @@ public class Model {
 					hs.setMaxInactiveInterval(60);
 
 				} else {
-					request.setAttribute("r", "비밀번호 오류!");
+					request.setAttribute("r", "鍮꾨�踰덊샇 �삤瑜�!");
 					;
 				}
 			} else {
-				request.setAttribute("r", "존재하지 않는 회원");
+				request.setAttribute("r", "議댁옱�븯吏� �븡�뒗 �쉶�썝");
 			}
 
 			if (pstmt.executeUpdate() == 1) {
 			}
 
 		} catch (Exception e) {
-			request.setAttribute("r", "서버 오류");
+			request.setAttribute("r", "�꽌踰� �삤瑜�");
 			e.printStackTrace();
 		} finally {
 			DBManager.close(con, pstmt, rs);
@@ -74,7 +67,7 @@ public class Model {
 	}
 
 	public static void account(HttpServletRequest request) {
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
@@ -83,9 +76,7 @@ public class Model {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt = DBManager.connect().prepareStatement(sql);
-			
-			
-			
+
 			pstmt.setString(1, request.getParameter("id"));
 			pstmt.setString(2, request.getParameter("pw"));
 			pstmt.setString(3, request.getParameter("name"));
@@ -97,40 +88,35 @@ public class Model {
 			pstmt.setString(7, request.getParameter("phone"));
 			pstmt.setString(8, request.getParameter("chk"));
 			pstmt.executeUpdate();
-			
 
 			if (pstmt.executeUpdate() == 1) {
-				request.setAttribute("r", "회원가입성공");
+				request.setAttribute("r", "�쉶�썝媛��엯�꽦怨�");
 			}
 
 		} catch (Exception e) {
-			request.setAttribute("r", "db서버오류");
+			request.setAttribute("r", "db�꽌踰꾩삤瑜�");
 			e.printStackTrace();
 		} finally {
 			DBManager.close(con, pstmt, null);
 		}
 	}
-	
+
 	public static boolean loginCheck(HttpServletRequest request) {
 		HttpSession hs = request.getSession();
 		Bean a = (Bean) hs.getAttribute("accountInfo");
-		
-		
 
 		if (a == null) {
-			request.setAttribute("loginPage", "jw/login.jsp");
+			request.setAttribute("loginPage", "jsp/jw/login.jsp");
 		} else {
-			request.setAttribute("loginPage", "jw/loginOk.jsp");
+			request.setAttribute("loginPage", "jsp/jw/loginOk.jsp");
 		}
 		return false;
 	}
-	
+
 	public static void logout(HttpServletRequest request) {
-		
 
 		HttpSession hs = request.getSession();
 		hs.setAttribute("accountInfo", null);
-
 
 	}
 }

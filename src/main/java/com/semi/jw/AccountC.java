@@ -15,7 +15,7 @@ public class AccountC extends HttpServlet {
 		
 		Model.loginCheck(request);
 		
-		request.setAttribute("contentPage", "jw/join.jsp");
+		request.setAttribute("contentPage", "jsp/jw/join.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 

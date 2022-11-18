@@ -22,14 +22,14 @@ public class NaverMovie{
 		// secret Zm1c9tQ_jW
 
 		// https://openapi.naver.com/v1/search/movie.xml
-		// query = 검색어(콘솔로 입력할 그 값)
+		// query = 寃��깋�뼱(肄섏넄濡� �엯�젰�븷 洹� 媛�)
 
 		Scanner k = null;
 		HttpsURLConnection huc = null;
 
 		try {
 //			k = new Scanner(System.in);
-//			System.out.println("검색어: ");
+//			System.out.println("寃��깋�뼱: ");
 			String str = k.next();
 
 			str = URLEncoder.encode(str, "utf-8");
@@ -50,17 +50,17 @@ public class NaverMovie{
 			InputStreamReader isr = new InputStreamReader(is, "utf-8");
 			System.out.println(is);
 
-			// json 파싱하게 jsonparser 객체 준비
+			// json �뙆�떛�븯寃� jsonparser 媛앹껜 以�鍮�
 			JSONParser jp = new JSONParser();
 
 			JSONObject naverData = (JSONObject) jp.parse(isr);
 			System.out.println(naverData);
 
-			// 4가지 제목, 배우 , 감독 ,링크
+			// 4媛�吏� �젣紐�, 諛곗슦 , 媛먮룆 ,留곹겕
 
-			// JavasScript 에서
-			// {} 객체
-			// [] 배열
+			// JavasScript �뿉�꽌
+			// {} 媛앹껜
+			// [] 諛곗뿴
 			JSONArray items = (JSONArray) naverData.get("items");
 			for (int i = 0; i < items.size(); i++) {
 				JSONObject movie = (JSONObject) items.get(i);
@@ -69,7 +69,7 @@ public class NaverMovie{
 				title = title.replace("</b>", "");
 				String actor = (String) movie.get("actor");
 				String director = (String) movie.get("director");
-				String link =  movie.get("link")+"";		//문자열 캐스트 하는 또 다른 방법
+				String link =  movie.get("link")+"";		
 
 				System.out.println("영화제목 : " + title);
 				System.out.println("배우 : " + actor);
