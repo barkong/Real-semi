@@ -18,10 +18,9 @@ public class MovieSearchC extends HttpServlet {
 		
 		Model.loginCheck(request);
 		if(request.getParameter("movie")==null) {
-			
+			System.out.println("aa");
 			request.setAttribute("contentPage", "jsp/sh/movieSearch.jsp");
 		}else {
-			NaverNews.getNews(request);
 			NaverMovie.getMovie(request);
 			request.setAttribute("contentPage", "jsp/sh/movieSearchResult.jsp");
 			

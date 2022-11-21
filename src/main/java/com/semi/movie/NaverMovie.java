@@ -5,7 +5,6 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
@@ -20,8 +19,6 @@ public class NaverMovie {
 
 	public static void getMovie(HttpServletRequest request) {
 		HttpsURLConnection huc = null;
-		
-		
 
 		try {
 
@@ -32,8 +29,6 @@ public class NaverMovie {
 
 			str = URLEncoder.encode(str, "utf-8");
 			System.out.println(str);
-			
-			
 
 			String url = "https://openapi.naver.com/v1/search/movie.json";
 			url += "?query=" + str;
@@ -89,7 +84,7 @@ public class NaverMovie {
 			}
 
 			request.setAttribute("movies", movies);
-
+			System.out.println("okokok");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -126,7 +121,7 @@ public class NaverMovie {
 
 			JSONArray items = (JSONArray) newsData.get("items");
 
-			ArrayList<news> news = new ArrayList<>();
+			ArrayList<News> news = new ArrayList<>();
 
 			for (int i = 0; i < items.size(); i++) {
 
@@ -146,7 +141,7 @@ public class NaverMovie {
 				System.out.println("요약 정보 : " + description);
 				System.out.println("원문 url : " + originallink);
 
-				news n = new news(title, description, originallink);
+				News n = new News(title, description, originallink);
 
 				news.add(n);
 
@@ -164,7 +159,7 @@ public class NaverMovie {
 			request.setCharacterEncoding("UTF-8");
 
 			String url = "http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=9277299fa5d76d3f8ea02bb835de6f09";
-			
+
 			System.out.println(url);
 
 			URL u = new URL(url);
@@ -201,17 +196,16 @@ public class NaverMovie {
 				System.out.println("회사: " + companys);
 
 				MovieInfo m1 = new MovieInfo(movieNm, openDt, genreAlt, directors, companys);
-			
-						
-				movieInfos.add(m1);		
+
+				movieInfos.add(m1);
 			}
 
 			request.setAttribute("movieInfos", movieInfos);
-
+			System.out.println("ok");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
-	
+
 }
