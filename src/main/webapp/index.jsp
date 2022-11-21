@@ -7,6 +7,7 @@ pageEncoding="UTF-8"%>
     <title>Insert title here</title>
     <link rel="stylesheet" href="css/movieMapInfo.css">
      <link rel="stylesheet" href="css/index.css" />
+     <link rel="stylesheet" href="css/movieSearch.css" />
   </head>
   <body>
     <div id="Container">

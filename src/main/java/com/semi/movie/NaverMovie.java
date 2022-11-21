@@ -19,20 +19,12 @@ import com.semi.main.Movie;
 public class NaverMovie {
 
 	public static void getMovie(HttpServletRequest request) {
-		// id wgYXNy22kl9oxlPDE5QR
-		// secret Zm1c9tQ_jW
-
-		// https://openapi.naver.com/v1/search/movie.xml
-		// query = 寃��깋�뼱(肄섏넄濡� �엯�젰�븷 洹� 媛�)
-
-		// Scanner k = null;
 		HttpsURLConnection huc = null;
 
 		try {
 
-			// k = new Scanner(System.in);
-			// System.out.println("寃��깋�뼱: ");
-			request.setCharacterEncoding("UTF-8"); // �븳湲�源⑥쭚�빐寃곕갑踰�
+			// 네이버 검색 api
+			request.setCharacterEncoding("UTF-8");
 			String str = request.getParameter("movie");
 			System.out.println(str);
 
@@ -54,45 +46,163 @@ public class NaverMovie {
 			InputStream is = huc.getInputStream();
 			InputStreamReader isr = new InputStreamReader(is, "utf-8");
 			System.out.println(is);
-
-			// json �뙆�떛�븯寃� jsonparser 媛앹껜 以�鍮�
 			JSONParser jp = new JSONParser();
 
 			JSONObject naverData = (JSONObject) jp.parse(isr);
 			System.out.println(naverData);
 
-			// 4媛�吏� �젣紐�, 諛곗슦 , 媛먮룆 ,留곹겕
-
-			// JavasScript �뿉�꽌
-			// {} 媛앹껜
-			// [] 諛곗뿴
 			JSONArray items = (JSONArray) naverData.get("items");
 
 			ArrayList<Movie> movies = new ArrayList<>();
+
 			for (int i = 0; i < items.size(); i++) {
+
 				JSONObject movie = (JSONObject) items.get(i);
+
 				String title = (String) movie.get("title");
 				title = title.replace("<b>", "");
 				title = title.replace("</b>", "");
+
 				String actor = (String) movie.get("actor");
+
 				String director = (String) movie.get("director");
-				String link = movie.get("link") + ""; // 臾몄옄�뿴 罹먯뒪�듃 �븯�뒗 �삉 �떎瑜� 諛⑸쾿
 
-				System.out.println("�쁺�솕�젣紐� : " + title);
-				System.out.println("諛곗슦 : " + actor);
-				System.out.println("媛먮룆 : " + director);
-				System.out.println("留곹겕 : " + link);
-				// System.out.println("-------------");
+				String link = movie.get("link") + "";
+				String img = (String) movie.get("image");
+				String rating = (String) movie.get("userRating");
 
-				// �젣紐�, 媛먮룆, 諛곗슦, 留�
-				Movie m = new Movie(title, director, actor, link);
+				System.out.println("포스터: " + img);
+				System.out.println("영화제목 : " + title);
+				System.out.println("배우 : " + actor);
+				System.out.println("감독 : " + director);
+				System.out.println("평점 :");
+				System.out.println("링크 : " + link);
+
+				Movie m = new Movie(title, director, actor, link, img, rating);
 
 				movies.add(m);
 
 			}
 
-			// for end
 			request.setAttribute("movies", movies);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		try {
+
+			// 네이버 검색 뉴스 api query = '영화'
+			request.setCharacterEncoding("UTF-8");
+			String str = "영화";
+
+			str = URLEncoder.encode(str, "utf-8");
+			System.out.println(str);
+
+			String url = "https://openapi.naver.com/v1/search/news.json";
+			url += "?query=" + str;
+			url += "&display=30";
+
+			System.out.println(url);
+
+			URL u = new URL(url);
+			huc = (HttpsURLConnection) u.openConnection();
+
+			huc.addRequestProperty("X-Naver-Client-Id", "_dGZX3vm4d9iUQCSPrmu");
+			huc.addRequestProperty("X-Naver-Client-Secret", "CPXPizei_I");
+
+			InputStream is = huc.getInputStream();
+			InputStreamReader isr = new InputStreamReader(is, "utf-8");
+			System.out.println(is);
+
+			JSONParser jp = new JSONParser();
+
+			JSONObject newsData = (JSONObject) jp.parse(isr);
+			System.out.println(newsData);
+
+			JSONArray items = (JSONArray) newsData.get("items");
+
+			ArrayList<news> news = new ArrayList<>();
+
+			for (int i = 0; i < items.size(); i++) {
+
+				JSONObject news1 = (JSONObject) items.get(i);
+
+				String title = (String) news1.get("title");
+				title = title.replace("<b>", "");
+				title = title.replace("</b>", "");
+
+				String description = (String) news1.get("description");
+				description = description.replace("<b>", "");
+				description = description.replace("</b>", "");
+
+				String originallink = (String) news1.get("originallink");
+
+				System.out.println("기사제목: " + title);
+				System.out.println("요약 정보 : " + description);
+				System.out.println("원문 url : " + originallink);
+
+				news n = new news(title, description, originallink);
+
+				news.add(n);
+
+			}
+
+			request.setAttribute("news", news);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		try {
+			// 영화진흥위원회 api 영화 정보
+
+			request.setCharacterEncoding("UTF-8");
+
+			String url = "http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=9277299fa5d76d3f8ea02bb835de6f09";
+			
+			System.out.println(url);
+
+			URL u = new URL(url);
+			huc = (HttpsURLConnection) u.openConnection();
+
+			InputStream is = huc.getInputStream();
+			InputStreamReader isr = new InputStreamReader(is, "utf-8");
+			System.out.println(is);
+
+			JSONParser jp = new JSONParser();
+
+			JSONObject movieData = (JSONObject) jp.parse(isr);
+			System.out.println();
+
+			JSONArray items = (JSONArray) movieData.get("movieListResult");
+
+			ArrayList<MovieInfo> movieInfos = new ArrayList<>();
+
+			for (int i = 0; i < items.size(); i++) {
+				JSONObject movieInfos1 = (JSONObject) items.get(i);
+
+				String movieNm = (String) movieInfos1.get("movieNm");
+				movieNm = movieNm.replace("<b>", "");
+				movieNm = movieNm.replace("</b>", "");
+				String openDt = (String) movieInfos1.get("openDt");
+				String genreAlt = (String) movieInfos1.get("genreAlt");
+				String directors = (String) movieInfos1.get("directors");
+				String companys = (String) movieInfos1.get("companys");
+
+				System.out.println("제목: " + movieNm);
+				System.out.println("상영일: " + openDt);
+				System.out.println("장르: " + genreAlt);
+				System.out.println("감독: " + directors);
+				System.out.println("회사: " + companys);
+
+				MovieInfo m1 = new MovieInfo(movieNm, openDt, genreAlt, directors, companys);
+			
+						
+				movieInfos.add(m1);		
+			}
+
+			request.setAttribute("movieInfos", movieInfos);
 
 		} catch (Exception e) {
 			e.printStackTrace();
