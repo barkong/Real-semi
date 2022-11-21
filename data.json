@@ -1,0 +1,194 @@
+{
+	"movieListResult": {
+		"totCnt": 93102,
+		"source": "영화진흥위원회",
+		"movieList": [
+			{
+				"movieCd": "20212403",
+				"movieNm": "뫼비우스의 띠",
+				"movieNmEn": "MOBIUS STRIP",
+				"prdtYear": "2021",
+				"openDt": "",
+				"typeNm": "단편",
+				"prdtStatNm": "기타",
+				"nationAlt": "한국",
+				"genreAlt": "드라마",
+				"repNationNm": "한국",
+				"repGenreNm": "드라마",
+				"directors": [
+					{
+						"peopleNm": "유호재"
+					}
+				],
+				"companys": []
+			},
+			{
+				"movieCd": "20228792",
+				"movieNm": "울림",
+				"movieNmEn": "What I Feel",
+				"prdtYear": "2022",
+				"openDt": "",
+				"typeNm": "단편",
+				"prdtStatNm": "기타",
+				"nationAlt": "한국",
+				"genreAlt": "드라마",
+				"repNationNm": "한국",
+				"repGenreNm": "드라마",
+				"directors": [],
+				"companys": []
+			},
+			{
+				"movieCd": "20228813",
+				"movieNm": "작품 번호 3번, 중력",
+				"movieNmEn": "Opus .03 Gravity",
+				"prdtYear": "2021",
+				"openDt": "",
+				"typeNm": "단편",
+				"prdtStatNm": "기타",
+				"nationAlt": "한국",
+				"genreAlt": "드라마",
+				"repNationNm": "한국",
+				"repGenreNm": "드라마",
+				"directors": [
+					{
+						"peopleNm": "정기혁"
+					}
+				],
+				"companys": []
+			},
+			{
+				"movieCd": "20227656",
+				"movieNm": "땅에 닿지 않는 비",
+				"movieNmEn": "Virga",
+				"prdtYear": "2022",
+				"openDt": "",
+				"typeNm": "장편",
+				"prdtStatNm": "기타",
+				"nationAlt": "한국",
+				"genreAlt": "다큐멘터리",
+				"repNationNm": "한국",
+				"repGenreNm": "다큐멘터리",
+				"directors": [
+					{
+						"peopleNm": "원호연"
+					},
+					{
+						"peopleNm": "정태경"
+					}
+				],
+				"companys": []
+			},
+			{
+				"movieCd": "20228812",
+				"movieNm": "호두까기 인형",
+				"movieNmEn": "The Nutcracker",
+				"prdtYear": "2022",
+				"openDt": "",
+				"typeNm": "장편",
+				"prdtStatNm": "기타",
+				"nationAlt": "영국",
+				"genreAlt": "공연",
+				"repNationNm": "영국",
+				"repGenreNm": "공연",
+				"directors": [],
+				"companys": []
+			},
+			{
+				"movieCd": "20225818",
+				"movieNm": "백일몽",
+				"movieNmEn": "Daydream",
+				"prdtYear": "2021",
+				"openDt": "",
+				"typeNm": "단편",
+				"prdtStatNm": "기타",
+				"nationAlt": "한국",
+				"genreAlt": "판타지,드라마",
+				"repNationNm": "한국",
+				"repGenreNm": "판타지",
+				"directors": [
+					{
+						"peopleNm": "황동욱"
+					}
+				],
+				"companys": []
+			},
+			{
+				"movieCd": "20228074",
+				"movieNm": "SBFF2022 성북시퀀스1",
+				"movieNmEn": "",
+				"prdtYear": "2022",
+				"openDt": "",
+				"typeNm": "옴니버스",
+				"prdtStatNm": "기타",
+				"nationAlt": "한국",
+				"genreAlt": "기타",
+				"repNationNm": "한국",
+				"repGenreNm": "기타",
+				"directors": [],
+				"companys": []
+			},
+			{
+				"movieCd": "20031026",
+				"movieNm": "빗방울 전주곡",
+				"movieNmEn": "Raindrop Prelude",
+				"prdtYear": "2003",
+				"openDt": "",
+				"typeNm": "단편",
+				"prdtStatNm": "기타",
+				"nationAlt": "한국",
+				"genreAlt": "드라마",
+				"repNationNm": "한국",
+				"repGenreNm": "드라마",
+				"directors": [
+					{
+						"peopleNm": "최헌규"
+					}
+				],
+				"companys": []
+			},
+			{
+				"movieCd": "20228438",
+				"movieNm": "튜브펫주식회사",
+				"movieNmEn": "Tubepetcompany",
+				"prdtYear": "2021",
+				"openDt": "20221208",
+				"typeNm": "장편",
+				"prdtStatNm": "개봉예정",
+				"nationAlt": "한국",
+				"genreAlt": "드라마,코미디,멜로/로맨스,가족",
+				"repNationNm": "한국",
+				"repGenreNm": "드라마",
+				"directors": [
+					{
+						"peopleNm": "송상민"
+					}
+				],
+				"companys": [
+					{
+						"companyCd": "20205341",
+						"companyNm": "(주)지티지그룹"
+					}
+				]
+			},
+			{
+				"movieCd": "20228791",
+				"movieNm": "우리의 내일은 나의 어제보다 아름답다",
+				"movieNmEn": "Red Moon",
+				"prdtYear": "2017",
+				"openDt": "",
+				"typeNm": "단편",
+				"prdtStatNm": "기타",
+				"nationAlt": "한국",
+				"genreAlt": "SF,멜로/로맨스",
+				"repNationNm": "한국",
+				"repGenreNm": "SF",
+				"directors": [
+					{
+						"peopleNm": "김채은"
+					}
+				],
+				"companys": []
+			}
+		]
+	}
+}
