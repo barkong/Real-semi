@@ -18,18 +18,13 @@ import org.json.simple.parser.JSONParser;
 public class NaverMovie{
 
 	public static void main(HttpServletRequest request) {
-		// id wgYXNy22kl9oxlPDE5QR
-		// secret Zm1c9tQ_jW
-
-		// https://openapi.naver.com/v1/search/movie.xml
-		// query = 寃��깋�뼱(肄섏넄濡� �엯�젰�븷 洹� 媛�)
+		
 
 		Scanner k = null;
 		HttpsURLConnection huc = null;
 
 		try {
-//			k = new Scanner(System.in);
-//			System.out.println("寃��깋�뼱: ");
+
 			String str = k.next();
 
 			str = URLEncoder.encode(str, "utf-8");
@@ -50,17 +45,13 @@ public class NaverMovie{
 			InputStreamReader isr = new InputStreamReader(is, "utf-8");
 			System.out.println(is);
 
-			// json �뙆�떛�븯寃� jsonparser 媛앹껜 以�鍮�
+			
 			JSONParser jp = new JSONParser();
 
 			JSONObject naverData = (JSONObject) jp.parse(isr);
 			System.out.println(naverData);
 
-			// 4媛�吏� �젣紐�, 諛곗슦 , 媛먮룆 ,留곹겕
-
-			// JavasScript �뿉�꽌
-			// {} 媛앹껜
-			// [] 諛곗뿴
+			
 			JSONArray items = (JSONArray) naverData.get("items");
 			for (int i = 0; i < items.size(); i++) {
 				JSONObject movie = (JSONObject) items.get(i);
