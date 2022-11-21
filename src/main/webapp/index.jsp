@@ -14,7 +14,7 @@ pageEncoding="UTF-8"%>
         <div id="title"><a href="HC">영화정보페이지</a></div>
 
         <div class="btn1">
-          <jsp:include page="${loginPage }"></jsp:include>
+        	<jsp:include page="${loginPage }"></jsp:include>
         </div>
       </div>
 
