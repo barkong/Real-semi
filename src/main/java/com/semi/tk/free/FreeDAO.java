@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.semi.jw.Bean;
+import com.semi.login.Bean;
 
 public class FreeDAO {
 

@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.semi.jw.Model;
+import com.semi.login.Model;
+
+
 
 @WebServlet("/FreeC")
 public class FreeC extends HttpServlet {

@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.semi.jw.Bean;
-import com.semi.jw.DBManager;
+import com.semi.login.Bean;
+import com.semi.login.DBManager;
+
 
 public class ReviewDAO {
 
