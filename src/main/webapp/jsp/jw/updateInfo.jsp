@@ -5,8 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="js/jw/check.js"></script>
 </head>
 <body>
+<form action="UpdateAccountC" method="post" onsubmit="return call()">
 	<table>
 		<caption>정보 수정</caption>
 		<tr>
@@ -42,8 +44,9 @@
 			<td>${sessionScope.accountInfo.a_interest }</td>
 		</tr>
 		<tr>
-		<td colspan="2"><button onclick="UpdateAccountC">수정</button><button onclick="history.back()" >돌아가기</button></td>
+		<td colspan="2"><button onclick="UpdateAccountC">수정</button><button type="button" onclick="history.back()" >돌아가기</button></td>
 		</tr>
 	</table>
+	</form>
 </body>
 </html>

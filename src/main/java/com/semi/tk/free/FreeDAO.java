@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.semi.login.Bean;
+import com.semi.login.DBManager;
 
 public class FreeDAO {
 
