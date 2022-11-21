@@ -174,7 +174,7 @@ public class NaverMovie {
 			JSONObject movieData = (JSONObject) jp.parse(isr);
 			System.out.println();
 
-			JSONArray items = (JSONArray) movieData.get("movieListResult");
+			JSONArray items = (JSONArray) movieData.get("movieList");
 
 			ArrayList<MovieInfo> movieInfos = new ArrayList<>();
 
