@@ -11,9 +11,11 @@
 </head>
 <body>
 <form action="MovieSearchC" >
-<<<<<<< HEAD
+
+
 <h1>검색 결과</h1><a href="MovieSearchC"><h5>검색창으로 가기</h5></a>
 <input name=movie ><br>
+
 
  <c:forEach var="i" items="${ movies}"> 
 포스터 :<img src="${i.img }"> <br>
@@ -22,14 +24,6 @@
 감독 : ${ i.director }<br>
 평점 : ${i.rating }<br>
 <a href="<c:url value='${ i.link }'/>">영화 링크</a><br><hr>
-</c:forEach> 
-
- <c:forEach var="i" items="${ movieInfos}"> 
- 제목 : ${ i.movieNm}	<br>
- 상영일 : ${i.openDt }	<br>
-  감독 : ${i.directors }	<br>
-  장르 : ${i.genreAlt }	<br>
-  회사 : ${i.companys }	<br>
 </c:forEach> 
 
 </form>
