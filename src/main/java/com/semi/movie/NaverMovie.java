@@ -20,6 +20,8 @@ public class NaverMovie {
 
 	public static void getMovie(HttpServletRequest request) {
 		HttpsURLConnection huc = null;
+		
+		
 
 		try {
 
@@ -30,6 +32,8 @@ public class NaverMovie {
 
 			str = URLEncoder.encode(str, "utf-8");
 			System.out.println(str);
+			
+			
 
 			String url = "https://openapi.naver.com/v1/search/movie.json";
 			url += "?query=" + str;
@@ -209,5 +213,5 @@ public class NaverMovie {
 		}
 
 	}
-
+	
 }

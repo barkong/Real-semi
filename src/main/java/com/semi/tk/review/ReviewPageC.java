@@ -1,36 +1,31 @@
-package com.semi.jw;
+package com.semi.tk.review;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/UpdateAccountC")
-public class UpdateAccountC extends HttpServlet {
+import com.semi.jw.Model;
 
+@WebServlet("/ReviewPageC")
+public class ReviewPageC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		if (Model.loginCheck(request)) {
-			request.setAttribute("contentPage", "jsp/jw/updateInfo.jsp");
-		} else {
-			request.setAttribute("contentPage", "home.jsp");
-		}
+		
+		Model.loginCheck(request);
+		
+		int p = Integer.parseInt(request.getParameter("p"));
+		ReviewDAO.getAllReview(request);
+		ReviewDAO.paging(p, request);
+		
+		request.setAttribute("contentPage", "jsp/tk/review/review.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		if (Model.loginCheck(request)) {
-//			Model.updateInfo(request);
-			Model.login(request);
-		}
-		request.setAttribute("contentPage", "jsp/jw/info.jsp");
-		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 }
