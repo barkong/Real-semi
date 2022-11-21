@@ -1,4 +1,4 @@
-package com.semi.jw;
+package com.semi.main;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

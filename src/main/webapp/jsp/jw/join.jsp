@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="jw/check.js"></script>
+<script type="text/javascript" src="js/jw/check.js"></script>
 </head>
 <body>
 	<form name="myForm" action="AccountC" method="post" onsubmit="return call()">
