@@ -124,10 +124,9 @@ public class Model {
 		HttpSession hs = request.getSession();
 		Bean a = (Bean) hs.getAttribute("accountInfo");
 		
-		
 
 		if (a == null) {
-			request.setAttribute("loginPage", "jsp/jw/login.jsp");
+			request.setAttribute("loginPage", "jsp/jw/loginpage.jsp");
 		} else {
 			request.setAttribute("loginPage", "jsp/jw/loginOk.jsp");
 		}
