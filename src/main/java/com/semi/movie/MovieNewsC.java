@@ -9,17 +9,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.semi.jw.Model;
 
-@WebServlet("/MovieGenreRecommendC")
-public class MovieGenreRecommendC extends HttpServlet {
-	
+
+@WebServlet("/MovieNewsC")
+public class MovieNewsC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		Model.loginCheck(request);
-		request.setAttribute("contentPage", "jsp/dw/movieGenreRecommend.jsp");
+		NaverNews.getNews(request);
+		request.setAttribute("contentPage", "jsp/sh/newsResult.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 	}
 
 }
