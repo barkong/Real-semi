@@ -7,6 +7,7 @@ pageEncoding="UTF-8"%>
     <title>Insert title here</title>
     <link rel="stylesheet" href="css/movieMapInfo.css">
      <link rel="stylesheet" href="css/index.css" />
+     <link rel="stylesheet" href="css/movieSearch.css" />
   </head>
   <body>
     <div id="Container">
@@ -21,7 +22,6 @@ pageEncoding="UTF-8"%>
       <div id="menus">
         <div class="mainMenu">
           <a href="MovieGenreRecommendC">영화 장르별 추천</a>
-
         </div>
         <div class="mainMenu">
           <a href="ReviewC">영화 리뷰</a>
@@ -34,9 +34,9 @@ pageEncoding="UTF-8"%>
         </div>
       </div>
 
-       <div id="content">
+      <div id="content">
         <jsp:include page="${contentPage }"></jsp:include>
-       </div>
+      </div>
     </div>
   </body>
 </html>
