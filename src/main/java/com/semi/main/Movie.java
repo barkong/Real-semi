@@ -6,17 +6,19 @@ public class Movie {
 	String director;
 	String actor;
 	String link;
+	String image;
 	
 	public Movie() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Movie(String title, String director, String actor, String link) {
+	public Movie(String title, String director, String actor, String link, String image) {
 		super();
 		this.title = title;
 		this.director = director;
 		this.actor = actor;
 		this.link = link;
+		this.image = image;
 	}
 
 	public String getTitle() {
@@ -50,6 +52,14 @@ public class Movie {
 	public void setLink(String link) {
 		this.link = link;
 	}
-	
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	
 }
