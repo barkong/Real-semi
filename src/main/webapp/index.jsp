@@ -2,17 +2,29 @@
 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+  <<<<<<< HEAD
   <head>
     <meta charset="UTF-8" />
     <title>Insert title here</title>
-    <link rel="stylesheet" href="css/movieMapInfo.css">
-     <link rel="stylesheet" href="css/index.css" />
-     <link rel="stylesheet" href="css/movieSearch.css" />
+    <link rel="stylesheet" href="css/movieMapInfo.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/movieSearchResult.css" />
   </head>
   <body>
     <div id="Container">
       <div id="top">
-        <div id="title"><a href="HC">영화정보페이지</a></div>
+        <form action="MovieSearchC">
+          영화검색
+          <input
+            name="movie"
+            type="text"
+            placeholder="검색어를 입력해주세요."
+          />
+          <button>검색</button>
+        </form>
+        <div id="title">
+          <a href="HC">영화정보페이지</a>
+        </div>
 
         <div class="btn1">
           <jsp:include page="${loginPage }"></jsp:include>
@@ -21,7 +33,10 @@ pageEncoding="UTF-8"%>
 
       <div id="menus">
         <div class="mainMenu">
-          <a href="MovieGenreRecommendC">영화 장르별 추천</a>
+          <a href="MovieGenreRecommendC">박스오피스</a>
+        </div>
+        <div class="mainMenu">
+          <a href="MovieDetailC">영화정보</a>
         </div>
         <div class="mainMenu">
           <a href="#">영화 리뷰</a>
@@ -30,7 +45,7 @@ pageEncoding="UTF-8"%>
           <a href="SearchCinemaC">주변영화관 찾기</a>
         </div>
         <div class="mainMenu">
-          <a href="MovieSearchC">검색</a>
+          <a href="MovieNewsC">영화뉴스</a>
         </div>
       </div>
 
