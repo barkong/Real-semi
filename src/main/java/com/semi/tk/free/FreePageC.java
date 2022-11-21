@@ -1,4 +1,4 @@
-package com.semi.jw;
+package com.semi.tk.free;
 
 import java.io.IOException;
 
@@ -8,29 +8,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/UpdateAccountC")
-public class UpdateAccountC extends HttpServlet {
+import com.semi.jw.Model;
 
+@WebServlet("/FreePageC")
+public class FreePageC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		if (Model.loginCheck(request)) {
-			request.setAttribute("contentPage", "jsp/jw/updateInfo.jsp");
-		} else {
-			request.setAttribute("contentPage", "home.jsp");
-		}
+		Model.loginCheck(request);
+		
+		int p = Integer.parseInt(request.getParameter("p"));
+		FreeDAO.getAllFree(request);
+		FreeDAO.paging(p, request);
+		
+		request.setAttribute("contentPage", "jsp/tk/free/free.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		if (Model.loginCheck(request)) {
-//			Model.updateInfo(request);
-			Model.login(request);
-		}
-		request.setAttribute("contentPage", "jsp/jw/info.jsp");
-		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 }

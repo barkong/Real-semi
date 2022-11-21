@@ -1,6 +1,7 @@
 package com.semi.movie;
 
 public class MovieInfo {
+
 	
 	String movieNm;
 	String openDt;
@@ -18,6 +19,7 @@ public class MovieInfo {
 		this.openDt = openDt;
 		this.genreAlt = genreAlt;
 		this.directors = directors;
+
 		this.company = company;
 	}
 
