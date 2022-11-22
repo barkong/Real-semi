@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-home!
+	<section>
+		<h1>See What's Next!</h1>
+	</section>
+
 </body>
 </html>

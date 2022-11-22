@@ -89,69 +89,7 @@ public class NaverMovie {
 			e.printStackTrace();
 		}
 
-		try {
-
-			// 네이버 검색 뉴스 api query = '영화'
-			request.setCharacterEncoding("UTF-8");
-			String str = "영화";
-
-			str = URLEncoder.encode(str, "utf-8");
-			System.out.println(str);
-
-			String url = "https://openapi.naver.com/v1/search/news.json";
-			url += "?query=" + str;
-			url += "&display=30";
-
-			System.out.println(url);
-
-			URL u = new URL(url);
-			huc = (HttpsURLConnection) u.openConnection();
-
-			huc.addRequestProperty("X-Naver-Client-Id", "_dGZX3vm4d9iUQCSPrmu");
-			huc.addRequestProperty("X-Naver-Client-Secret", "CPXPizei_I");
-
-			InputStream is = huc.getInputStream();
-			InputStreamReader isr = new InputStreamReader(is, "utf-8");
-			System.out.println(is);
-
-			JSONParser jp = new JSONParser();
-
-			JSONObject newsData = (JSONObject) jp.parse(isr);
-			System.out.println(newsData);
-
-			JSONArray items = (JSONArray) newsData.get("items");
-
-			ArrayList<News> news = new ArrayList<>();
-
-			for (int i = 0; i < items.size(); i++) {
-
-				JSONObject news1 = (JSONObject) items.get(i);
-
-				String title = (String) news1.get("title");
-				title = title.replace("<b>", "");
-				title = title.replace("</b>", "");
-
-				String description = (String) news1.get("description");
-				description = description.replace("<b>", "");
-				description = description.replace("</b>", "");
-
-				String originallink = (String) news1.get("originallink");
-
-				System.out.println("기사제목: " + title);
-				System.out.println("요약 정보 : " + description);
-				System.out.println("원문 url : " + originallink);
-
-				News n = new News(title, description, originallink);
-
-				news.add(n);
-
-			}
-
-			request.setAttribute("news", news);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 
 		try {
 			// 영화진흥위원회 api 영화 정보
