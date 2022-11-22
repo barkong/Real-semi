@@ -44,7 +44,7 @@
 		</tr>
 		<tr>
 			<td>이미지</td>
-			<td><img id="reviewImg" src="reviewImg/${review.r_img }"
+			<td><img id="reviewImg" src="files/reviewImg/${review.r_img }"
 				width="300px"></td>
 		</tr>
 		<tr>

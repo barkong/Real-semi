@@ -38,8 +38,9 @@
 			</tr>
 			<tr>
 				<td>이미지</td>
-				<td><img src="freeImg/${free.f_img }" width="300px" name="img"><input
-					type="file" name="img2" /></td>
+				<td><img src="files/freeImg/${free.f_img }" width="300px" name="img">
+				<input name="img" value="${free.f_img }" type="hidden">
+				<input type="file" name="img2" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><a href="FreeC">목록으로</a>

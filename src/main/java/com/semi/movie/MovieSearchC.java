@@ -17,17 +17,18 @@ public class MovieSearchC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Model.loginCheck(request);
-		if(request.getParameter("movie")==null) {
+		if(request.getParameter("movie")!="") {
 			
-			request.setAttribute("contentPage", "jsp/sh/movieSearch.jsp");
-		}else {
-			NaverNews.getNews(request);
+			
 			NaverMovie.getMovie(request);
 			request.setAttribute("contentPage", "jsp/sh/movieSearchResult.jsp");
-			
+		
+		}else {
+			request.setAttribute("contentPage", "home.jsp");
 		}
 		
 		request.getRequestDispatcher("index.jsp").forward(request, response);
+		
 	}
 
 	

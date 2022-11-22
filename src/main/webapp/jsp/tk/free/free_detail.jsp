@@ -37,7 +37,7 @@
 		</tr>
 		<tr>
 			<td>이미지</td>
-			<td><img id="freeImg" src="freeImg/${free.f_img }" width="300px"></td>
+			<td><img id="freeImg" src="files/freeImg/${free.f_img }" width="300px"></td>
 		</tr>
 		<tr>
 			<td colspan="2"><a href="FreeC">목록으로</a>

@@ -14,7 +14,7 @@ public class MovieGenreRecommendC extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Model.loginCheck(request);
-		request.setAttribute("contentPage", "jsp/sh/test.jsp");
+		request.setAttribute("contentPage", "jsp/dw/movieGenreRecommend.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 

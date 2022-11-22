@@ -41,7 +41,7 @@
 			</tr>
 			<tr>
 				<td>이미지</td>
-				<td><img src="reviewImg/${review.r_img }" width="300px">
+				<td><img src="files/reviewImg/${review.r_img }" width="300px">
 				<input name="img" value="${review.r_img }" type="hidden"> 
 				<input type="file" name="img2" /></td>
 			</tr>

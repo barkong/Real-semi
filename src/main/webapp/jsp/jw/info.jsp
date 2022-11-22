@@ -17,14 +17,14 @@
 
       <ul class="navbar__menu">
         <li onclick="location.href='HC'">홈으로</li>
-        <li>마이페이지</li>
+        <li onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">마이페이지</li>
         <li>자유게시판</li>
-        <li></li>
+        <li>리뷰</li>
         <li>문의</li>
       </ul><br><br><br>
       <ul class="navbar__icons">
         <li onclick="location.href='UpdateAccountC'">정보수정</li>
-        <li>회원탈퇴</li>
+        <li onclick="location.href='DeleteAccountC'">회원탈퇴</li>
       </ul>
       <a href="#" class="navbar__toggleBtn">
         <i class=""></i>
@@ -68,7 +68,7 @@
 		<tr>
 			<td colspan="2"><button onclick="location.href='UpdateAccountC'">수정</button>
 				<button onclick="history.back()">돌아가기</button>
-				<button>탈퇴</button></td>
+				<button onclick="location.href='DeleteAccountC'">탈퇴</button></td>
 		</tr>
 	</table>
 
