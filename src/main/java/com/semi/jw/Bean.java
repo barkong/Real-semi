@@ -49,8 +49,8 @@ public class Bean {
 	public Date getA_birth() {
 		return a_birth;
 	}
-	public void setA_birth(Date a_birth) {
-		this.a_birth = a_birth;
+	public void setA_birth(Date date) {
+		this.a_birth = date;
 	}
 	public String getA_gender() {
 		return a_gender;
