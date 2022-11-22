@@ -39,7 +39,7 @@ pageEncoding="UTF-8"%>
           <a href="MovieDetailC">영화정보</a>
         </div>
         <div class="mainMenu">
-          <a href="#">영화 리뷰</a>
+          <a href="ReviewC">영화 리뷰</a>
         </div>
         <div class="mainMenu">
           <a href="SearchCinemaC">주변영화관 찾기</a>
