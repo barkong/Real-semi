@@ -5,11 +5,11 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.tomcat.util.buf.StringUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -20,8 +20,6 @@ public class NaverMovie {
 
 	public static void getMovie(HttpServletRequest request) {
 		HttpsURLConnection huc = null;
-		
-		
 
 		try {
 
@@ -32,8 +30,6 @@ public class NaverMovie {
 
 			str = URLEncoder.encode(str, "utf-8");
 			System.out.println(str);
-			
-			
 
 			String url = "https://openapi.naver.com/v1/search/movie.json";
 			url += "?query=" + str;
@@ -68,9 +64,12 @@ public class NaverMovie {
 				title = title.replace("</b>", "");
 
 				String actor = (String) movie.get("actor");
+				actor = actor.replace("|", ",");
 
 				String director = (String) movie.get("director");
-
+				
+				director = director.replace("|", "");
+				
 				String link = movie.get("link") + "";
 				String img = (String) movie.get("image");
 				String rating = (String) movie.get("userRating");
@@ -95,5 +94,5 @@ public class NaverMovie {
 		}
 
 	}
-	
+
 }

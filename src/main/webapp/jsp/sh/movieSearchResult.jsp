@@ -12,30 +12,16 @@
 <body>
 <form action="MovieSearchC" >
 
-
-<h1>검색 결과</h1><a href="MovieSearchC"><h5>검색창으로 가기</h5></a>
-<input name=movie ><br>
-
-
-		<c:forEach var="i" items="${ movies}"> 
-포스터 :<img src="${i.img }">
-			<br>
-제목 :${ i.title } <br>
+ <c:forEach var="i" items="${ movies}"> 
+<img src="${i.img }"> <br>
+제목 : ${ i.title } <br>
 배우 : ${ i.actor }<br>
 감독 : ${ i.director }<br>
 평점 : ${i.rating }<br>
-			<a href="<c:url value='${ i.link }'/>">영화 링크</a>
-			<br>
-			<hr>
-		</c:forEach>
+<a href="<c:url value='${ i.link }'/>">영화 링크</a><br><hr>
+</c:forEach> 
+</form>
+ 
 
-	</form>
-	
-<%--  <c:forEach var="i" items="${ news}"> 
-뉴스 제목 : ${ i.title}	<br>
-뉴스 내용 : ${i.description }	<br>
-뉴스 url : ${i.originallink }	<br>
-
-</c:forEach>  --%>
 </body>
 </html>
