@@ -5,12 +5,12 @@ body {
     background: black;
 }
 section {
-        height: 100vh;
-    background: url(https://assets.nflxext.com/ffe/siteui/vlv3/5aecc44…ignuptwoweeks-perspective_alpha_website_large.jpg);
+    height: 100%;
+    background: url("https://assets.nflxext.com/ffe/siteui/vlv3/9737377e-a430-4d13-ad6c-874c54837c49/945eec79-6856-4d95-b4c6-83ff5292f33d/KR-ko-20220111-popsignuptwoweeks-perspective_alpha_website_large.jpg");
 }
 section:before {
     content: '';
-    background: linear-gradient(to bottom, black, transparent);
+    background: linear-gradient(to top, black, transparent);
     position: absolute;
     left: 0;
     height: 100%;

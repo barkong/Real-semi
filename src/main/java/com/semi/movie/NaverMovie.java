@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.tomcat.util.buf.StringUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -63,9 +64,12 @@ public class NaverMovie {
 				title = title.replace("</b>", "");
 
 				String actor = (String) movie.get("actor");
+				actor = actor.replace("|", ",");
 
 				String director = (String) movie.get("director");
-
+				
+				director = director.replace("|", "");
+				
 				String link = movie.get("link") + "";
 				String img = (String) movie.get("image");
 				String rating = (String) movie.get("userRating");
@@ -85,61 +89,6 @@ public class NaverMovie {
 
 			request.setAttribute("movies", movies);
 			System.out.println("okokok");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		
-
-		try {
-			// 영화진흥위원회 api 영화 정보
-
-			request.setCharacterEncoding("UTF-8");
-
-			String url = "http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=9277299fa5d76d3f8ea02bb835de6f09";
-
-			System.out.println(url);
-
-			URL u = new URL(url);
-			huc = (HttpsURLConnection) u.openConnection();
-
-			InputStream is = huc.getInputStream();
-			InputStreamReader isr = new InputStreamReader(is, "utf-8");
-			System.out.println(is);
-
-			JSONParser jp = new JSONParser();
-
-			JSONObject movieData = (JSONObject) jp.parse(isr);
-			System.out.println();
-
-			JSONArray items = (JSONArray) movieData.get("movieList");
-
-			ArrayList<MovieInfo> movieInfos = new ArrayList<>();
-
-			for (int i = 0; i < items.size(); i++) {
-				JSONObject movieInfos1 = (JSONObject) items.get(i);
-
-				String movieNm = (String) movieInfos1.get("movieNm");
-				movieNm = movieNm.replace("<b>", "");
-				movieNm = movieNm.replace("</b>", "");
-				String openDt = (String) movieInfos1.get("openDt");
-				String genreAlt = (String) movieInfos1.get("genreAlt");
-				String directors = (String) movieInfos1.get("directors");
-				String companys = (String) movieInfos1.get("companys");
-
-				System.out.println("제목: " + movieNm);
-				System.out.println("상영일: " + openDt);
-				System.out.println("장르: " + genreAlt);
-				System.out.println("감독: " + directors);
-				System.out.println("회사: " + companys);
-
-				MovieInfo m1 = new MovieInfo(movieNm, openDt, genreAlt, directors, companys);
-
-				movieInfos.add(m1);
-			}
-
-			request.setAttribute("movieInfos", movieInfos);
-			System.out.println("ok");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

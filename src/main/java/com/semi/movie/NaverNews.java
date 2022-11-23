@@ -16,11 +16,10 @@ import org.json.simple.parser.JSONParser;
 public class NaverNews {
 
 	public static void getNews(HttpServletRequest request) {
-
+		
 		HttpsURLConnection huc = null;
 
 		try {
-
 			request.setCharacterEncoding("UTF-8");
 
 			String str = "영화";
@@ -62,13 +61,16 @@ public class NaverNews {
 				String description = (String) news1.get("description");
 				
 				String link = (String) news1.get("link");
+				
+			
+				
 
+				
 				System.out.println("뉴스 제목  : " + title);
 				System.out.println("요약 내용 : " + description);
 				System.out.println("링크 : " + link);
 
 				News n = new News(title, description, link);
-
 				news.add(n);
 
 			}
