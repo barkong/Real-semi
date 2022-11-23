@@ -2,13 +2,13 @@
 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-  <<<<<<< HEAD
-  <head>
+<head>
     <meta charset="UTF-8" />
     <title>Insert title here</title>
     <link rel="stylesheet" href="css/movieMapInfo.css" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/movieSearchResult.css" />
+    <link rel="stylesheet" href="css/newsResult.css"/>
   </head>
   <body>
     <div id="Container">

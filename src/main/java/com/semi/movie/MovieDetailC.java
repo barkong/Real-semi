@@ -18,7 +18,7 @@ public class MovieDetailC extends HttpServlet {
   		
   		Model.loginCheck(request);
   		
-  		MovieDetail.getDetail(request);
+  		
   		
   		request.setAttribute("contentPage", "jsp/sh/movieDetail.jsp");
   		request.getRequestDispatcher("index.jsp").forward(request, response);

@@ -31,11 +31,6 @@
 
 	</form>
 	
-<%--  <c:forEach var="i" items="${ news}"> 
-뉴스 제목 : ${ i.title}	<br>
-뉴스 내용 : ${i.description }	<br>
-뉴스 url : ${i.originallink }	<br>
 
-</c:forEach>  --%>
 </body>
 </html>

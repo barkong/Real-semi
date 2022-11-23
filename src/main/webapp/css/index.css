@@ -50,3 +50,10 @@ body{
   width: 90%;
   height: 700px;
 }
+
+img{
+	width:200px;
+	 image-rendering: -webkit-optimize-contrast;
+	transform:translateZ(0);
+	backface-visibility:hidden; 
+}
