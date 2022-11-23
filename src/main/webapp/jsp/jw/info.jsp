@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/jw/info.css">
+<link rel="stylesheet" href="css/jw/login.css">
 </head>
 <body>
 <nav class="navbar">
@@ -31,46 +32,44 @@
       </a>
       
     </nav>
-	<table>
-		<caption>회원정보</caption>
-		<tr>
-			<td>ID</td>
-			<td>${sessionScope.accountInfo.a_id }</td>
-		</tr>
-		<tr>
-			<td>PW</td>
-			<td>${sessionScope.accountInfo.a_password }</td>
-		</tr>
-		<tr>
-			<td>이름</td>
-			<td>${sessionScope.accountInfo.a_name }</td>
-		</tr>
-		<tr>
-			<td>생일</td>
-			<td>${sessionScope.accountInfo.a_birth }</td>
-		</tr>
-		<tr>
-			<td>성별</td>
-			<td>${sessionScope.accountInfo.a_gender }</td>
-		</tr>
-		<tr>
-			<td>email</td>
-			<td>${sessionScope.accountInfo.a_email }</td>
-		</tr>
-		<tr>
-			<td>전화번호</td>
-			<td>${sessionScope.accountInfo.a_phone }</td>
-		</tr>
-		<tr>
-			<td>좋아하는 장르</td>
-			<td>${sessionScope.accountInfo.a_interest }</td>
-		</tr>
-		<tr>
-			<td colspan="2"><button onclick="location.href='UpdateAccountC'">수정</button>
-				<button onclick="history.back()">돌아가기</button>
-				<button onclick="location.href='DeleteAccountC'">탈퇴</button></td>
-		</tr>
-	</table>
+	<h1 align="center">회원정보</h1>
+		<hr>
+		<div>
+		<b class="name">ID</b>
+		<b class="text">${sessionScope.accountInfo.a_id }</b><br><br>
+		</div>
+		<div>
+		<b class="name">PW</b>
+		<b class="text">${sessionScope.accountInfo.a_password }</b><br><br>
+		</div>
+		<div>
+		<b class="name">이름</b>
+		<b class="text">${sessionScope.accountInfo.a_name }</b><br><br>
+		</div>
+		<div>
+		<b class="name">생일</b>
+		<b class="text">${sessionScope.accountInfo.a_birth }</b><br><br>
+		</div>
+		<div>
+		<b class="name">성별</b>
+		<b class="text">${sessionScope.accountInfo.a_gender }</b><br><br>
+		</div>
+		<div>
+		<b class="name">email</b>
+		<b class="text">${sessionScope.accountInfo.a_email }</b><br><br>
+		</div>
+		<div>
+		<b class="name">전화번호</b>
+		<b class="text">${sessionScope.accountInfo.a_phone }</b><br><br>
+		</div>
+		<div>
+		<b class="name">좋아하는 장르</b>
+		<b class="text">${sessionScope.accountInfo.a_interest }</b><br><br>
+		</div>
+			<div><button class="sign_up" onclick="location.href='UpdateAccountC'">수정</button>
+				<button class="sign_up" onclick="history.back()">돌아가기</button>
+				<button class="sign_up" onclick="location.href='DeleteAccountC'">탈퇴</button></div>
+		
 
 </body>
 </html>
