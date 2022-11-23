@@ -5,8 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/home.css">
 </head>
 <body>
-home!
+	<section>
+		<h1>영화 정보 사이트</h1>
+		
+	</section>
+
+
 </body>
 </html>

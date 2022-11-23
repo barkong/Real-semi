@@ -16,83 +16,57 @@ public class MovieDetail {
 
 	public static void getDetail(HttpServletRequest request) {
 
-		
-		
-			// id wgYXNy22kl9oxlPDE5QR
-			// secret Zm1c9tQ_jW
+		HttpsURLConnection huc = null;
 
-			// https://openapi.naver.com/v1/search/movie.xml
-			// query = 寃��깋�뼱(肄섏넄濡� �엯�젰�븷 洹� 媛�)
-
-			// Scanner k = null;
-			HttpsURLConnection huc = null;
-			
-			
-
-			try {
-
-				// k = new Scanner(System.in);
-				// System.out.println("寃��깋�뼱: ");
-
-				
-				
-
-				String url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=9277299fa5d76d3f8ea02bb835de6f09&movieCd=20124079";
-
-				System.out.println(url);
-
-				URL u = new URL(url);
-				huc = (HttpsURLConnection) u.openConnection();
+		try {
 
 
-				InputStream is = huc.getInputStream();
-				InputStreamReader isr = new InputStreamReader(is, "utf-8");
-				System.out.println(is);
+			String url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=9277299fa5d76d3f8ea02bb835de6f09&movieCd=20124079";
 
-				JSONParser jp = new JSONParser();
+			System.out.println(url);
 
-				JSONObject movieData = (JSONObject) jp.parse(isr);
-				System.out.println(movieData);
+			URL u = new URL(url);
+			huc = (HttpsURLConnection) u.openConnection();
 
-				JSONArray items = (JSONArray) movieData.get("movieinfo");
+			InputStream is = huc.getInputStream();
+			InputStreamReader isr = new InputStreamReader(is, "utf-8");
+			System.out.println(is);
 
-				ArrayList<MovieInfo> movies= new ArrayList<>(); 
-				for (int i = 0; i < items.size(); i++) {
-					JSONObject movieInfo = (JSONObject) items.get(i);
-					String movieNm = (String) movieInfo.get("movieNm");
-					
-					String openDt = (String) movieInfo.get("openDt");
-					String directors = (String) movieInfo.get("directors");
-					String genreAlt = (String)movieInfo.get("genreAlt");
-					String company = (String) movieInfo.get("company");
+			JSONParser jp = new JSONParser();
 
-					System.out.println("�쁺�솕�젣紐� : " + movieNm);
-					System.out.println("諛곗슦 : " + openDt);
-					System.out.println("媛먮룆 : " + directors);
-					System.out.println("留곹겕 : " + genreAlt);
-					System.out.println("留곹겕 : " + company);
-					// System.out.println("-------------");
+			JSONObject movieData = (JSONObject) jp.parse(isr);
+			System.out.println(movieData);
 
-					// �젣紐�, 媛먮룆, 諛곗슦, 留�
-					MovieInfo m1 = new MovieInfo(movieNm, openDt, genreAlt, directors, company);
-					movies.add(m1);
+			JSONArray items = (JSONArray) movieData.get("movieinfo");
 
-				}
+			ArrayList<MovieInfo> movies = new ArrayList<>();
+			for (int i = 0; i < items.size(); i++) {
+				JSONObject movieInfo = (JSONObject) items.get(i);
+				String movieNm = (String) movieInfo.get("movieNm");
 
-				// for end
-				request.setAttribute("movies", movies);
+				String openDt = (String) movieInfo.get("openDt");
+				String directors = (String) movieInfo.get("directors");
+				String genreAlt = (String) movieInfo.get("genreAlt");
+				String company = (String) movieInfo.get("company");
 
-			} catch (Exception e) {
-				e.printStackTrace();
+				System.out.println("�쁺�솕�젣紐� : " + movieNm);
+				System.out.println("諛곗슦 : " + openDt);
+				System.out.println("媛먮룆 : " + directors);
+				System.out.println("留곹겕 : " + genreAlt);
+				System.out.println("留곹겕 : " + company);
+
+				MovieInfo m1 = new MovieInfo(movieNm, openDt, genreAlt, directors, company);
+				movies.add(m1);
+
 			}
 
-		
-		
+			// for end
+			request.setAttribute("movies", movies);
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-	
-	
-	
-	
+
+	}
 
 }

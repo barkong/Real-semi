@@ -1,11 +1,10 @@
 package com.semi.movie;
 
 public class News {
-
 	String title;
 	String description;
 	String link;
-	
+
 	public News() {
 		// TODO Auto-generated constructor stub
 	}
@@ -40,6 +39,5 @@ public class News {
 	public void setLink(String link) {
 		this.link = link;
 	}
-	
 	
 }

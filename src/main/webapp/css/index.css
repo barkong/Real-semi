@@ -1,8 +1,10 @@
 @charset "UTF-8";
-
+a {
+  text-decoration: none;
+}
 body{
-  color: lightgrey;
   background-color: #101111;
+  color: white;
 }
 #Container {
   margin: 30px;
@@ -22,14 +24,15 @@ body{
   display: flex;
   align-items: center;
   text-align: center;
+  position: sticky;
+  top:0;
 }
-
 .mainMenu {
   font-size: 14pt;
   width: 25%;
 }
 .mainMenu > a {
-  color: rgb(140, 139, 139);
+  color: white;
   text-decoration: none;
 }
 
@@ -43,10 +46,12 @@ body{
 }
 
 #content {
-  border: 1px solid whitesmoke;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
-  width: 90%;
   height: 700px;
+}
+
+img {
+  width: 100px;
 }

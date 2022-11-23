@@ -31,13 +31,13 @@
 <h1>내 주변 영화관</h1>
 	<div class="map_wrap">
 		<div id="map"
-			style="width: 90%; height: 100%; position: relative; overflow: hidden;"></div>
+			style="width: 98%; height: 100%; position: relative; overflow: hidden;"></div>
 
 		<div id="menu_wrap" class="bg_white">
 			<div class="option">
 				<div>
 					<form onsubmit="searchPlaces(); return false;">
-						키워드 : <input type="text" value="영화관" id="keyword" size="15">
+						키워드 : <input type="text" value="영화관" id="keyword" size="17" >
 						<button type="submit">검색하기</button>
 					</form>
 				</div>
