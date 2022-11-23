@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.semi.jw.Bean;
+import com.semi.main.DBManager;
 
 public class FreeDAO {
 
@@ -56,6 +57,8 @@ public class FreeDAO {
 	// 선택한 게시글 1개
 	public static void getFree(HttpServletRequest request) {
 
+		String afterUpdateNo = (String) request.getAttribute("afterUpdateNo");
+		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -67,7 +70,11 @@ public class FreeDAO {
 
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, no);
+			if (afterUpdateNo != null) {
+				pstmt.setString(1, afterUpdateNo);
+			}else {
+				pstmt.setString(1, no);
+			}
 
 			rs = pstmt.executeQuery();
 
@@ -102,7 +109,7 @@ public class FreeDAO {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 
-			String path = request.getSession().getServletContext().getRealPath("freeImg");
+			String path = request.getSession().getServletContext().getRealPath("files/freeImg");
 			MultipartRequest mr = new MultipartRequest(request, path, 9123123, "utf-8", new DefaultFileRenamePolicy());
 
 			// 콘솔창에서 확인하기 위해 이 방식을 체택
@@ -142,7 +149,7 @@ public class FreeDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "update semi_free set f_title=?,f_detail=?,f_img=? where f_no=?";
-		String path = request.getServletContext().getRealPath("freeImg");
+		String path = request.getServletContext().getRealPath("files/freeImg");
 		System.out.println(path);
 
 		try {
@@ -177,6 +184,7 @@ public class FreeDAO {
 				f.delete();
 			}
 			pstmt.setString(4, no);
+			request.setAttribute("afterUpdateNo", no);
 
 			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "수정완료");
@@ -243,9 +251,9 @@ public class FreeDAO {
 
 		req.setAttribute("frees", items);
 	}
-	
-public static void count(HttpServletRequest request) {
-		
+
+	public static void count(HttpServletRequest request) {
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "update semi_free set f_count=f_count+1 where f_no=?";

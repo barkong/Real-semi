@@ -88,7 +88,7 @@ public class NaverMovie {
 			}
 
 			request.setAttribute("movies", movies);
-			System.out.println("okokok");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
