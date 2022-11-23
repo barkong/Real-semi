@@ -32,6 +32,7 @@
       </a>
       
     </nav>
+    <form action="UpdateAccountC" method="post">
 	<h1 align="center">정보 수정</h1>
 		<hr>
 		<div>
@@ -72,8 +73,9 @@
 			판타지<input type="checkbox" name="chk" value="판타지"> 
 			<br>
 		</div>
-			<div><button class="sign_up" onclick="location.href='UpdateAccountC'">수정</button>
-				<button class="sign_up" onclick="history.back()">돌아가기</button>
-				<button class="sign_up" onclick="location.href='DeleteAccountC'">탈퇴</button></div>
+			<div><button class="sign_up">수정</button>
+				<button type="button" class="sign_up" onclick="history.back()">돌아가기</button>
+				<button type="button" class="sign_up" onclick="location.href='DeleteAccountC'">탈퇴</button></div>
+				</form>
 </body>
 </html>
