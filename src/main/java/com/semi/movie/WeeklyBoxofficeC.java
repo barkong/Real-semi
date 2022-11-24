@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.semi.jw.Model;
 
-@WebServlet("/MovieGenreRecommendC")
-public class MovieGenreRecommendC extends HttpServlet {
+@WebServlet("/WeeklyBoxofficeC")
+public class WeeklyBoxofficeC extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Model.loginCheck(request);
-		request.setAttribute("contentPage", "jsp/dw/movieGenreRecommend.jsp");
+		request.setAttribute("contentPage", "jsp/dw/weeklyBoxoffice.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 

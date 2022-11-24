@@ -1,4 +1,4 @@
-package com.semi.main;
+package com.semi.movie;
 
 public class Movie {
 
@@ -8,9 +8,40 @@ public class Movie {
 	String link;
 	String img;
 	String rating;
+	String subTitle;
+	String pubDate;
 	
 	public Movie() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public Movie(String title, String director, String actor, String link, String img, String rating, String subTitle,
+			String pubDate) {
+		super();
+		this.title = title;
+		this.director = director;
+		this.actor = actor;
+		this.link = link;
+		this.img = img;
+		this.rating = rating;
+		this.subTitle = subTitle;
+		this.pubDate = pubDate;
+	}
+
+	public String getSubTitle() {
+		return subTitle;
+	}
+
+	public void setSubTitle(String subTitle) {
+		this.subTitle = subTitle;
+	}
+
+	public String getPubDate() {
+		return pubDate;
+	}
+
+	public void setPubDate(String pubDate) {
+		this.pubDate = pubDate;
 	}
 
 	public String getRating() {
@@ -21,15 +52,6 @@ public class Movie {
 		this.rating = rating;
 	}
 
-	public Movie(String title, String director, String actor, String link, String img, String rating) {
-		super();
-		this.title = title;
-		this.director = director;
-		this.actor = actor;
-		this.link = link;
-		this.img = img;
-		this.rating = rating;
-	}
 
 	public String getImg() {
 		return img;
