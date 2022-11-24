@@ -1,22 +1,13 @@
 package com.semi.jw;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.semi.main.DBManager;
-
-
-
-
-
-
-
 
 public class Model {
 
@@ -24,15 +15,15 @@ public class Model {
 
 		String userId = request.getParameter("id");
 		String userPw = request.getParameter("pw");
-		
-		String iddd = (String)request.getAttribute("iddd");
-		String pwww = (String)request.getAttribute("pwww");
-		
-		if (iddd!=null) {
-			userId=iddd;
-			userPw=pwww;
+
+		String iddd = (String) request.getAttribute("iddd");
+		String pwww = (String) request.getAttribute("pwww");
+
+		if (iddd != null) {
+			userId = iddd;
+			userPw = pwww;
 		}
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -43,17 +34,16 @@ public class Model {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
-			
+
 			if (rs.next()) {
 				if (userPw.equals(rs.getString("a_password"))) {
 					request.setAttribute("r", "로그인 성공!");
-					
 
 					Bean bean = new Bean();
 					bean.setA_id(rs.getString("a_id"));
 					bean.setA_password(rs.getString("a_password"));
 					bean.setA_name(rs.getString("a_name"));
-					bean.setA_birth(rs.getDate("a_birth"));
+					bean.setA_birth(rs.getString("a_birth"));
 					bean.setA_gender(rs.getString("a_gender"));
 					bean.setA_email(rs.getString("a_email"));
 					bean.setA_phone(rs.getString("a_phone"));
@@ -62,7 +52,7 @@ public class Model {
 					interest = interest.replace("!", "&nbsp;&nbsp;&nbsp;");
 					bean.setA_interest(interest);
 					
-					
+				
 
 					request.setAttribute("account", bean);
 
@@ -91,27 +81,26 @@ public class Model {
 	}
 
 	public static void account(HttpServletRequest request) {
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
 		try {
-			String sql = "insert into semi_account values(?,?,?,?,?,?,?,?);";
+			String sql = "insert into semi_account values(?,?,?,?,?,?,?,?)";
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt = DBManager.connect().prepareStatement(sql);
+
 			
-			
+			System.out.println(request.getParameter("birth"));
 			
 			pstmt.setString(1, request.getParameter("id"));
 			pstmt.setString(2, request.getParameter("pw"));
 			pstmt.setString(3, request.getParameter("name"));
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-			Date birth = (Date) format.parse(request.getParameter("birth"));
-			pstmt.setDate(4, birth);
+			pstmt.setString(4, request.getParameter("birth"));
 			pstmt.setString(5, request.getParameter("gender"));
 			pstmt.setString(6, request.getParameter("email"));
 			pstmt.setString(7, request.getParameter("phone"));
+
 			String[] chk = request.getParameterValues("chk");
 			String chk2 = "";
 			if (chk != null) {
@@ -124,6 +113,7 @@ public class Model {
 			pstmt.setString(8, chk2);
 			
 
+
 			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "회원가입성공");
 			}
@@ -135,11 +125,10 @@ public class Model {
 			DBManager.close(con, pstmt, null);
 		}
 	}
-	
+
 	public static boolean loginCheck(HttpServletRequest request) {
 		HttpSession hs = request.getSession();
 		Bean a = (Bean) hs.getAttribute("accountInfo");
-		
 
 		if (a == null) {
 			request.setAttribute("loginPage", "jsp/jw/login.jsp");
@@ -149,38 +138,42 @@ public class Model {
 			return true;
 		}
 	}
-	
+
 	public static void logout(HttpServletRequest request) {
-		
 
 		HttpSession hs = request.getSession();
 		hs.setAttribute("accountInfo", null);
 
-
 	}
 
 	public static void updateInfo(HttpServletRequest request) {
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
 		try {
-			String sql = "update semi_account set a_password=?,a_name=?,a_email=?,a_phone=?,a_interest where=?";
+			String sql = "update semi_account set a_password=?,a_name=?,a_email=?,a_phone=?,a_interest=? where a_id=?";
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt = DBManager.connect().prepareStatement(sql);
-			
-			
-			
+
 			pstmt.setString(1, request.getParameter("pw"));
 			pstmt.setString(2, request.getParameter("name"));
 			pstmt.setString(3, request.getParameter("email"));
 			pstmt.setString(4, request.getParameter("phone"));
-			pstmt.setString(5, request.getParameter("interest"));
+			String[] chk = request.getParameterValues("chk");
+			String chk2 = "";
+			if (chk != null) {
+				for (String s : chk) {
+					chk2 += s + "!";
+				}
+			} else {
+				chk2 = "관심사 없음";
+			}
+			pstmt.setString(5, chk2);
 			Bean a = (Bean) request.getSession().getAttribute("accountInfo");
 			pstmt.setString(6, a.getA_id());
-			pstmt.executeUpdate();
-			
+			System.out.println(a.getA_id());
+			System.out.println(request.getParameter("phone"));
 
 			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "회원 정보 수정 성공");
@@ -197,30 +190,33 @@ public class Model {
 	}
 
 	public static void delId(HttpServletRequest request) {
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "delete semi_account where a_id=?";
 		try {
+
 			con=DBManager.connect();
 			pstmt=con.prepareStatement(sql);
+			Bean a = (Bean) request.getSession().getAttribute("accountInfo");
 			
-			String id = request.getParameter("id");
+			String id = a.getA_id();
+			System.out.println(id);
 			
 			
 			pstmt.setString(1, id);
-			
-			if(pstmt.executeUpdate()==1) {
+
+			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "삭제성공");
 			}
-			
+
 		} catch (Exception e) {
 			request.setAttribute("r", "서버오류");
 			e.printStackTrace();
 		} finally {
 			DBManager.close(con, pstmt, null);
 		}
-		
+
 	}
 	
 	

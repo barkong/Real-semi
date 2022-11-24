@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,6 +8,7 @@ pageEncoding="UTF-8"%>
     <title>Insert title here</title>
     <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+    
       $(function () {
         let y = new Date();
         y.setDate(y.getDate() - 1);
@@ -40,23 +42,26 @@ pageEncoding="UTF-8"%>
                 method: "GET", // HTTP 요청 메소드(GET, POST 등)
                 dataType: "json", // 서버에서 보내줄 데이터의 타입
               })
+              
                 // HTTP 요청이 성공하면 요청한 데이터가 done() 메소드로 전달됨.
                 .done(function (json) {
                   img = console.log(json.img);
+                  director = console.log(json.director);
+                  actor = console.log(json.actor);
+                  
                   $("#boxoffice").append(
-                    "<img src='" +
+                    "<img src= '" +
                       json.img +
-                      "'>" +
+                      "'> <br>" + 
                       "<span id= '" +
-                      movieList[i].movieCd +
+                      movieList[i].movieCd + 
                       "'>" +
                       (parseInt(i) + 1) +
                       " " +
-                      movieList[i].movieNm +
-                      "/" +
-                      movieList[i].audiAcc +
-                      "명 " +
-                      "</span><hr>"
+                    "<h1>" + movieList[i].movieNm +"</h1>"
+                    +  json.director +"<br>"+ json.actor + "<br>" +
+                      movieList[i].openDt +
+                      "개봉 </span><hr>"
                   );
                 })
                 .fail(function (xhr, status, errorThrown) {
@@ -65,7 +70,6 @@ pageEncoding="UTF-8"%>
                     .append("오류명: " + errorThrown + "<br>")
                     .append("상태: " + status);
                 });
-
               // 이름값을 쿼리로 네이버에 전송해서 이미지값 받아오기
             }
           });
@@ -74,15 +78,15 @@ pageEncoding="UTF-8"%>
     </script>
   </head>
   <body>
-    <div style="text-align: center">
+    <div>
       <input type="date" id="date" />
       <button id="mybtn">확인</button>
 
       <div id="boxoffice">
         <h1>박스 오피스 순위</h1>
-        <br />
+      
       </div>
-     
+      
     </div>
   </body>
 </html>

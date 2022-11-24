@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+
 let url =
     "http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=9277299fa5d76d3f8ea02bb835de6f09";
 /* 	$("#mybtn").click(function () { */
-		
-		
+				
   $.getJSON(url, function (data) {
     let movieList = data.movieListResult.movieList;
     $("#movie").empty();
@@ -33,7 +33,7 @@ let url =
           $("#movie").append(
             "<img src='" +
               json.img +
-              "'>" +
+              "'> <br>" +
               "<span id= '" +
               movieList[i].movieCd +
               "'>" +
@@ -42,7 +42,9 @@ let url =
               movieList[i].movieNm +
               "/" +
               movieList[i].genreAlt +
-              "</span><hr>" 
+              "/" +
+              movieList[i].openDt +
+              "개봉" + "</span><hr>" 
           );
         })
         .fail(function (xhr, status, errorThrown) {
@@ -59,12 +61,11 @@ let url =
 </script>
 </head>
 <body>
-	<div style="text-align: center">
+	<div style="text-align:center">
 		<div id="movie">
 			<h1>영화 리스트</h1>
 			<br />
 		</div>
-
 	</div>
 </body>
 </html>
