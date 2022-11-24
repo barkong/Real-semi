@@ -7,7 +7,7 @@ body{
   color: white;
 }
 #Container {
-  margin: 30px;
+  margin-top: 25px;
   width: 100%;
 }
 
@@ -50,8 +50,4 @@ body{
   margin-right: auto;
   margin-top: 10px;
   height: 700px;
-}
-
-img {
-  width: 100px;
 }

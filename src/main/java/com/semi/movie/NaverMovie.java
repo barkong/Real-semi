@@ -14,8 +14,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import com.semi.main.Movie;
-
 public class NaverMovie {
 
 	public static void getMovie(HttpServletRequest request) {
@@ -33,7 +31,8 @@ public class NaverMovie {
 
 			String url = "https://openapi.naver.com/v1/search/movie.json";
 			url += "?query=" + str;
-			url += "&display=30";
+			url += "&display=10";
+			url += "&start=1";
 
 			System.out.println(url);
 
@@ -71,17 +70,17 @@ public class NaverMovie {
 				director = director.replace("|", "");
 				
 				String link = movie.get("link") + "";
+				
 				String img = (String) movie.get("image");
+				
 				String rating = (String) movie.get("userRating");
+				
+				String pubDate = (String) movie.get("pubDate");
+					
+				String subTitle = (String) movie.get("subtitle");
+				
 
-				System.out.println("포스터: " + img);
-				System.out.println("영화제목 : " + title);
-				System.out.println("배우 : " + actor);
-				System.out.println("감독 : " + director);
-				System.out.println("평점 :");
-				System.out.println("링크 : " + link);
-
-				Movie m = new Movie(title, director, actor, link, img, rating);
+				Movie m = new Movie(title, director, actor, link, img, rating, subTitle, pubDate);
 
 				movies.add(m);
 

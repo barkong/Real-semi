@@ -1,1 +1,29 @@
 @charset "UTF-8";
+img {
+	width: 200px;
+	image-rendering: -webkit-optimize-contrast;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+}
+#movie {
+	display: flex;
+	margin-bottom: 50px;
+}
+
+.title {
+	font-size: 25pt;
+	font-weight: 400;
+}
+.subTitle {
+	font-size: 15pt;
+}
+.content {
+	margin: 20px;
+}
+
+.etc {
+	margin-top: 100px;
+}
+#searchResultContainer{
+	margin:15px;
+}
