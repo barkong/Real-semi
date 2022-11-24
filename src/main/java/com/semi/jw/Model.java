@@ -161,10 +161,9 @@ public class Model {
 		PreparedStatement pstmt = null;
 
 		try {
-			String sql = "update semi_account set a_password=?,a_name=?,a_email=?,a_phone=?,a_interest where=?";
+			String sql = "update semi_account set a_password=?,a_name=?,a_email=?,a_phone=?,a_interest=? where a_id=?";
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt = DBManager.connect().prepareStatement(sql);
 			
 			
 			
@@ -172,12 +171,20 @@ public class Model {
 			pstmt.setString(2, request.getParameter("name"));
 			pstmt.setString(3, request.getParameter("email"));
 			pstmt.setString(4, request.getParameter("phone"));
-			pstmt.setString(5, request.getParameter("interest"));
+			String[] chk = request.getParameterValues("chk");
+			String chk2 = "";
+			if (chk != null) {
+				for (String s : chk) {
+					chk2 += s + "!";
+				}
+			} else {
+				chk2 = "관심사 없음";
+			}
+			pstmt.setString(5, chk2);
 			Bean a = (Bean) request.getSession().getAttribute("accountInfo");
 			pstmt.setString(6, a.getA_id());
-			pstmt.executeUpdate();
-			
-
+			System.out.println(a.getA_id());
+			System.out.println(request.getParameter("phone"));
 			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "회원 정보 수정 성공");
 				request.setAttribute("iddd", a.getA_id());
@@ -200,8 +207,10 @@ public class Model {
 		try {
 			con=DBManager.connect();
 			pstmt=con.prepareStatement(sql);
+			Bean a = (Bean) request.getSession().getAttribute("accountInfo");
 			
-			String id = request.getParameter("id");
+			String id = a.getA_id();
+			System.out.println(id);
 			
 			
 			pstmt.setString(1, id);

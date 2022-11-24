@@ -1,70 +1,61 @@
-function call(){
-	
-	let id = document.myForm.id;
-	let pw = document.myForm.pw;
-	let pw2 = document.myForm.pw2;
-	let name = document.myForm.name;
-	let birth = document.myForm.birth;
-	let gender = document.myForm.gender;
-	let email = document.myForm.email;
-	let phone = document.myForm.phone;
-	
-	console.log(name.value);
-	console.log(id.value);
-	console.log(pw.value);
-	console.log(pw2.value);
-	console.log(birth.value);
-	console.log(gender.value);
-	console.log(email.value);
-	console.log(phone.value);
-	
-	if(isEmpty(name)){
-		alert('이름 에러');
-		name.focus();
-		
-		return false;
-	}
-	
-	if(lessThan(id,5) || containKR(id)){
-		alert('id 에러');
-		id.focus();
-		
-		return false;
-	}
-	
-	if(lessthan(pw,3)){
-		alert('pw 에러');
-		pw.focus();
-		
-		return false;
-	}
-	
-	
+function isEmpty(input) {
+   return !input.value; // 값이 없다 -> 그럼 true가 나갈거임
 }
 
-function chkPW(){
-	let pw = document.myForm.pw;
-	let pw2 = document.myForm.pw2;
-	let pwConfirm = document.getElementById("pwConfirm");
-	pw2.addEventListener("keyup", function(){
-		pw = document.myForm.pw;
-		pw2 = document.myForm.pw2;
-		if(pw.value != pw2.value){
-			pwConfirm.style.display = "block";
-			pwConfirm.style.color = "red";
-			pwConfirm.innerText = "비밀번호 불일치";
-		}else{
-			pwConfirm.style.color = "green";
-			pwConfirm.innerText = "비밀번호 일치 성공";
-		}
-	});
+// <input>과 글자 수를 넣으면,
+// 그 글자수보다 적으면 true, 아니면 false
+function lessThan(input, length) {
+   return input.value.length < length;
 }
 
-function selectAll(selectAll)  {
-  const checkboxes 
-       = document.getElementsByName('chk');
-  
-  checkboxes.forEach((checkbox) => {
-    checkbox.checked = selectAll.checked;
-  })
+/*function moreThan(input, length) {
+   return input.value.length > length;
+}*/
+// 이런 함수로 길이 조절해도 되지만 html에서 원천차단가능 maxlength로
+
+// <input>이 한글/특수문자 포함하면 true(=문제가 있는걸로 만들겠다), 아니면 false
+// 허용하고 싶은것만
+function containKR(input) {
+   let ok = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM@._";
+   for (let i = 0; i < input.value.length; i++) {
+      // return ok.indexOf(input.value[i]) == -1;
+      if (ok.indexOf(input.value[i]) == -1) {
+         return true;
+      }
+   }
+}
+
+// <input> x2 넣으면 (비번확인), 내용이 다르면 true, 아니면 false
+function notEquals(input1, input2) {
+   return input1.value != input2.value;
+}
+
+// <input>이 문자열set를 포함안하면 true, 들어가있으면 false
+function notContains(input, set) {
+
+   //input : 1qwerASD
+   //input : ASD
+
+   //set 1234567890 -> 숫자를 반드시 포함시키고 싶다
+   //set QWERTYUIOPASDFGHJKLZXCVBNM -> 대문자 반드시 포함시키고 싶다
+
+   for (let i = 0; i < set.length; i++) {
+      if (input.value.indexOf(set[i]) != -1) {
+         return false;
+      }
+   }
+   return true;
+}
+
+// <input>을 넣어서 숫자가 아니면 true, 숫자면 false
+// input : 123
+// input : aaa
+function isNotNumber(input) {
+   return isNaN(input.value);
+}
+
+// <input>, 확장자를 넣으면 그게 아니면 true, 괜찮으면 false
+function isNotType(input, type) {
+   type = "." + type; // .png
+   return input.value.indexOf(type) == -1;
 }

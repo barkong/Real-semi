@@ -6,14 +6,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="js/jw/check.js"></script>
+<script type="text/javascript" src="js/validCheck.js"></script>
 <link rel="stylesheet" href="css/jw/login.css" />
 </head>
 <body>
 	<form name="myForm" action="AccountC" method="post" onsubmit="return call()">
 		<fieldset>
 			<legend>회원가입</legend>
-			<div><b class="name">ID : </b><input class="text" name="id" placeholder="한글x, 5글자 이상"></div>
-			<div><b class="name">PW : </b><input class="text" name="pw" placeholder="3글자 이상, 대,소,숫 포함"></div>
+			<div><b class="name">ID : </b><input class="text" name="id" maxlength="12" placeholder="영문 및 숫자만 4-12자리까지 입력해주세요"></div>
+			<div><b class="name">PW : </b><input class="text" name="pw" maxlength="16" placeholder="영문 및 숫자, 특수문자를 포함한 비밀번호를 입력해주세요."></div>
 			<div><b class="name">PW확인 : </b><input class="text" name="pw2" placeholder="비번 재확인" autocomplete="off" onkeyup="chkPW()"></div>
 			<div><b class="name">이름 : </b><input class="text" name="name" placeholder="필수"></div>
 			<div><b class="name">생일 : </b><input type="date" name="birth"></div>
