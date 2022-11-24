@@ -115,7 +115,11 @@ public class FreeDAO {
 			// 콘솔창에서 확인하기 위해 이 방식을 체택
 			Bean a = (Bean) request.getSession().getAttribute("accountInfo");
 			String title = mr.getParameter("title");
+			
 			String detail = mr.getParameter("detail");
+			detail = detail.replace("\r\n", "<br>");
+			System.out.println(detail);
+			
 			String img = mr.getFilesystemName("img");
 			int count = 0;
 
@@ -161,7 +165,11 @@ public class FreeDAO {
 
 			// 콘솔창에서 확인하기 위해 이 방식을 체택
 			String title = mr.getParameter("title");
+			
 			String detail = mr.getParameter("detail");
+			detail = detail.replace("\r\n", "<br>");
+			System.out.println(detail);
+			
 			String oldImg = mr.getParameter("img"); // 기존사진 (조심하기)
 			String newImg = mr.getFilesystemName("img2"); // 사진을 새로 추가함
 			String no = mr.getParameter("no");
