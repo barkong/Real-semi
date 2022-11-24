@@ -17,6 +17,7 @@ import com.semi.main.DBManager;
 
 
 
+
 public class Model {
 
 	public static void login(HttpServletRequest request) {
@@ -56,7 +57,11 @@ public class Model {
 					bean.setA_gender(rs.getString("a_gender"));
 					bean.setA_email(rs.getString("a_email"));
 					bean.setA_phone(rs.getString("a_phone"));
-					bean.setA_interest(rs.getString("a_interest"));
+					
+					String interest = rs.getString("a_interest");
+					interest = interest.replace("!", "&nbsp;&nbsp;&nbsp;");
+					bean.setA_interest(interest);
+					
 					
 
 					request.setAttribute("account", bean);
@@ -101,13 +106,22 @@ public class Model {
 			pstmt.setString(1, request.getParameter("id"));
 			pstmt.setString(2, request.getParameter("pw"));
 			pstmt.setString(3, request.getParameter("name"));
-			SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			Date birth = (Date) format.parse(request.getParameter("birth"));
 			pstmt.setDate(4, birth);
 			pstmt.setString(5, request.getParameter("gender"));
 			pstmt.setString(6, request.getParameter("email"));
 			pstmt.setString(7, request.getParameter("phone"));
-			pstmt.setString(8, request.getParameter("chk"));
+			String[] chk = request.getParameterValues("chk");
+			String chk2 = "";
+			if (chk != null) {
+				for (String s : chk) {
+					chk2 += s + "!";
+				}
+			} else {
+				chk2 = "관심사 없음";
+			}
+			pstmt.setString(8, chk2);
 			
 
 			if (pstmt.executeUpdate() == 1) {
@@ -128,11 +142,12 @@ public class Model {
 		
 
 		if (a == null) {
-			request.setAttribute("loginPage", "jsp/jw/loginpage.jsp");
+			request.setAttribute("loginPage", "jsp/jw/login.jsp");
+			return false;
 		} else {
 			request.setAttribute("loginPage", "jsp/jw/loginOk.jsp");
+			return true;
 		}
-		return false;
 	}
 	
 	public static void logout(HttpServletRequest request) {
@@ -207,4 +222,6 @@ public class Model {
 		}
 		
 	}
+	
+	
 }

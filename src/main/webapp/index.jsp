@@ -2,19 +2,21 @@
 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="UTF-8" />
     <title>Insert title here</title>
     <link rel="stylesheet" href="css/movieMapInfo.css" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/movieSearchResult.css" />
-    <link rel="stylesheet" href="css/newsResult.css"/>
+    <link rel="stylesheet" href="css/newsResult.css" />
   </head>
   <body>
     <div id="Container">
       <div id="top">
+        <div id="title">
+          <a href="HC">영화정보페이지</a>
+        </div>
         <form action="MovieSearchC">
-          영화검색
           <input
             name="movie"
             type="text"
@@ -22,9 +24,6 @@ pageEncoding="UTF-8"%>
           />
           <button>검색</button>
         </form>
-        <div id="title">
-          <a href="HC">영화정보페이지</a>
-        </div>
 
         <div class="btn1">
           <jsp:include page="${loginPage }"></jsp:include>

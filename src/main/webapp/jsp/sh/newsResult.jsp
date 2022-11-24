@@ -11,9 +11,10 @@
 <h2>뉴스</h2>
 <c:forEach var="i" items="${ news}"> 
 
-<span class="newsTitle">${ i.title } </span><br>
-<span class="newsContent"> ${ i.description }</span><br>
-<span class="newsLink"><a href="${ i.link }">${ i.link }</a></span><hr>
+<span>제목 : ${ i.title } </span><br>
+<span>내용 : ${ i.description }</span><br>
+<span>링크 : <a href="<c:url value='${ i.link }'/>">${ i.link }</a></span><br><hr>
+
 
 </c:forEach> 
 </body>

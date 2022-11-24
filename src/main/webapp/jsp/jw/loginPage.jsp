@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/jw/login.css" />
+</head>
+<body>
+		<form action="LoginC" method="post"  onsubmit="return call()">
+		<b class="name">ID</b><input name="id">
+		<b class="name">PW</b><input name="pw">
+		<button class="sign_up">로그인</button>
+		<button class="sign_up" onclick="location.href='AccountC'" type="button">회원가입</button>
+		</form>
+</body>
+</html>
