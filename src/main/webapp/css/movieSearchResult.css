@@ -1,1 +1,20 @@
 @charset "UTF-8";
+
+#movie{
+	display:flex;
+	margin-bottom:15px;
+}
+
+.title{
+	font-size:25pt;
+	font-weight:500;
+}
+
+.content{
+	
+	margin:20px;
+}
+
+.etc{
+	margin-top:150px;
+}
