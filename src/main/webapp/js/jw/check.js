@@ -5,37 +5,61 @@ function call(){
 	let pw2 = document.myForm.pw2;
 	let name = document.myForm.name;
 	let birth = document.myForm.birth;
-	let gender = document.myForm.gender;
-	let email = document.myForm.email;
 	let phone = document.myForm.phone;
 	
-	console.log(name.value);
-	console.log(id.value);
-	console.log(pw.value);
-	console.log(pw2.value);
-	console.log(birth.value);
-	console.log(gender.value);
-	console.log(email.value);
-	console.log(phone.value);
 	
-	if(isEmpty(name)){
-		alert('이름 에러');
-		name.focus();
-		
+	
+	
+	if(isEmpty(id)){
+		alert('ID를 입력해주세요');
+		id.focus();
 		return false;
 	}
-	
-	if(lessThan(id,5) || containKR(id)){
-		alert('id 에러');
+	if(lessThan(id, 4) || notContains(id, "1234567890")){
+		alert('ID양식을 확인해주세요');
 		id.focus();
 		
 		return false;
 	}
 	
-	if(lessthan(pw,3)){
-		alert('pw 에러');
+	if(idEmpty(pw)){
+		alert('PW를 입력해주세요');
 		pw.focus();
-		
+		return false;
+	}
+	
+	if(lessThan(pw, 6) || notContains(pw, "1234567890") || notContains(pw, "QWERTYUIOPASDFGHJKLZXCVBNM")){
+		alert('PW양식을 확인해주세요');
+		pw.focus();
+		return false;
+	}
+	
+	if(idEmpty(pw2)){
+		alert('비밀번호를 확인을 해주세요');
+		pw.focus();
+		return false;
+	}
+	
+	if(notEquals(pw, pw2)){
+		alert('비밀번호를 확인을 다시 해주세요');
+		pw2.focus();
+		return false;
+	}
+	
+	if(isEmpty(name)){
+		alert('이름을 입력해주세요');
+		name.focus();
+		return false;
+	}
+	
+	if(isEmpty(birth)){
+		alert('생일을 입력해주세요');
+		return false;
+	}
+	
+	if(isEmpty(phone)){
+		alert('전화번호를 입력해주세요');
+		phone.focus();
 		return false;
 	}
 	
