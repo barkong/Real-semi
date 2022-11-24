@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <c:forEach var="i" items="${ movieInfo}"> 
 <span>제목 : ${ i.movieNm } </span><br>
 <span>배우 : ${ i.genreAlt }</span><br>
