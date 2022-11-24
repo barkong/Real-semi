@@ -1,13 +1,12 @@
 package com.semi.jw;
 
-import java.sql.Date;
 
 public class Bean {
 
 	private String a_id;
 	private String a_password;
 	private String a_name;
-	private Date a_birth;
+	private String a_birth;
 	private String a_gender;
 	private String a_email;
 	private String a_phone;
@@ -16,7 +15,7 @@ public class Bean {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Bean(String a_id, String a_password, String a_name, Date a_birth, String a_gender, String a_email,
+	public Bean(String a_id, String a_password, String a_name, String a_birth, String a_gender, String a_email,
 			String a_phone, String a_interest) {
 		super();
 		this.a_id = a_id;
@@ -46,11 +45,11 @@ public class Bean {
 	public void setA_name(String a_name) {
 		this.a_name = a_name;
 	}
-	public Date getA_birth() {
+	public String getA_birth() {
 		return a_birth;
 	}
-	public void setA_birth(Date date) {
-		this.a_birth = date;
+	public void setA_birth(String a_birth) {
+		this.a_birth = a_birth;
 	}
 	public String getA_gender() {
 		return a_gender;
@@ -76,6 +75,7 @@ public class Bean {
 	public void setA_interest(String a_interest) {
 		this.a_interest = a_interest;
 	}
+	
 	
 	
 }
