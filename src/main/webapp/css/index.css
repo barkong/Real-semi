@@ -7,7 +7,7 @@ body {
   color: white;
 }
 #Container {
-  margin: 30px;
+  margin-top: 25px;
   width: 100%;
 }
 
@@ -52,9 +52,3 @@ body {
   height: 700px;
 }
 
-img {
-  width: 200px;
-  image-rendering: -webkit-optimize-contrast;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}

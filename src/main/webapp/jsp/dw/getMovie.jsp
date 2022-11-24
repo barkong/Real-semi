@@ -43,10 +43,18 @@ System.out.println(naverData.get("items"));
 JSONArray items = (JSONArray) naverData.get("items");
 JSONObject item = (JSONObject) items.get(0);
 String img = (String) item.get("image");
+String director = (String) item.get("director");
+String actor = (String) item.get("actor");
+String link = (String) item.get("link") + "";
 System.out.println(img);
+System.out.println(director);
+System.out.println(actor);
 
 JSONObject joo = new JSONObject();
 joo.put("img", img);
+joo.put("link", link);
+joo.put("director", director);
+joo.put("actor", actor);
 
 response.setContentType("application/json");
 out.print(joo.toJSONString());

@@ -16,8 +16,6 @@ System.out.println(str);
 str = URLEncoder.encode(str, "utf-8");
 System.out.println(str);
 
-
-
 String url = "https://openapi.naver.com/v1/search/movie.json";
 url += "?query=" + str;
 url += "&display=1";
@@ -39,7 +37,6 @@ JSONParser jp = new JSONParser();
 JSONObject naverData = (JSONObject) jp.parse(isr);
 System.out.println(naverData.get("items"));
 
-
 JSONArray items = (JSONArray) naverData.get("items");
 JSONObject item = (JSONObject) items.get(0);
 String img = (String) item.get("image");
@@ -51,20 +48,5 @@ joo.put("img", img);
 response.setContentType("application/json");
 out.print(joo.toJSONString());
 
-
 // ArrayList<Movie> movies = new ArrayList<>();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 %>
