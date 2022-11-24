@@ -20,6 +20,8 @@ public class MovieDetailC extends HttpServlet {
   		
   		
   		request.setAttribute("contentPage", "jsp/dw/movieDetail.jsp");
+ 
+
   		request.getRequestDispatcher("index.jsp").forward(request, response);
   		
 	}

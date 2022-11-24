@@ -1,19 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8" />
-<title>Insert title here</title>
-<link rel="stylesheet" href="css/movieMapInfo.css" />
-<link rel="stylesheet" href="css/index.css" />
-<link rel="stylesheet" href="css/movieSearchResult.css" />
-<link rel="stylesheet" href="css/news.css" />
-</head>
-<body>
-	<div id="Container">
-		<div id="top">
-
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="css/movieMapInfo.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/movieSearchResult.css" />
+    <link rel="stylesheet" href="css/newsResult.css" />
+  </head>
+  <body>
+    <div id="Container">
+      <div id="top">
 			<div id="title">
 				<a href="HC">영화정보페이지</a>
 			</div>
@@ -49,6 +48,5 @@
 			<jsp:include page="${contentPage }"></jsp:include>
 		</div>
 	</div>
-
 </body>
 </html>

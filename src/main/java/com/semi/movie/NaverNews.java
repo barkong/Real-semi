@@ -29,7 +29,8 @@ public class NaverNews {
 			String url = "https://openapi.naver.com/v1/search/news.json";
 
 			url += "?query=" + str;
-			url += "&display=30";
+			url += "&display=10";
+			url += "&sort=sim";
 
 			System.out.println(url);
 
@@ -62,6 +63,9 @@ public class NaverNews {
 				
 				String link = (String) news1.get("link");
 				
+				String time = (String) news1.get("pubDate");
+				time = time.substring(0,16);
+				
 			
 				
 
@@ -69,8 +73,9 @@ public class NaverNews {
 				System.out.println("뉴스 제목  : " + title);
 				System.out.println("요약 내용 : " + description);
 				System.out.println("링크 : " + link);
+				System.out.println("time : " + time);
 
-				News n = new News(title, description, link);
+				News n = new News(title, description, link,time);
 				news.add(n);
 
 			}
