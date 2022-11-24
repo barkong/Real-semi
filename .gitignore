@@ -73,3 +73,5 @@ web.xml
 # End of https://www.toptal.com/developers/gitignore/api/eclipse
 
 DBManager.class
+/target/
+pom.xml
