@@ -8,13 +8,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/tk/free.css" />
+<script type="text/javascript" src="js/tk/review.js"></script>
 </head>
 <body>
-	<h1>Semi free</h1>
+	<h1>Semi Free</h1>
+
+	<c:choose>
+		<c:when test="${empty sessionScope.accountInfo.a_id}">
+			<h3>로그인여도 읽을수 있지만, 글쓰고 수정은 로그인해야</h3>
+		</c:when>
+		<c:otherwise>
+			<a href="FreeRegC">글쓰기</a>
+		</c:otherwise>
+	</c:choose>
 
 	<table id="review_tbl1" align="center">
 		<tr>
-			<td><a href="FreeRegC">글쓰기</a></td>
 			<td><a href="ReviewC">리뷰게시판</a></td>
 		</tr>
 	</table>

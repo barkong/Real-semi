@@ -11,22 +11,29 @@ import com.semi.jw.Model;
 
 @WebServlet("/ReviewUpdateC")
 public class ReviewUpdateC extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		Model.loginCheck(request);
-		ReviewDAO.getReview(request);
-		request.setAttribute("contentPage", "jsp/tk/review/review_update.jsp");
+
+		if (Model.loginCheck(request)) {
+			ReviewDAO.getReview(request);
+			request.setAttribute("contentPage", "jsp/tk/review/review_update.jsp");
+		} else {
+			request.setAttribute("contentPage", "로그인하세요");
+		}
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		Model.loginCheck(request);
-		ReviewDAO.updateReview(request);
-		ReviewDAO.getReview(request);
-		request.setAttribute("contentPage", "jsp/tk/review/review_detail.jsp");
+
+		if (Model.loginCheck(request)) {
+			ReviewDAO.updateReview(request);
+			ReviewDAO.getReview(request);
+			request.setAttribute("contentPage", "jsp/tk/review/review_detail.jsp");
+		} else {
+			request.setAttribute("contentPage", "로그인하세요");
+		}
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 }

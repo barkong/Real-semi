@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
@@ -37,12 +38,16 @@
 		</tr>
 		<tr>
 			<td>이미지</td>
-			<td><img id="freeImg" src="files/freeImg/${free.f_img }" width="300px"></td>
+			<td><img id="freeImg" src="files/freeImg/${free.f_img }"
+				width="300px"></td>
 		</tr>
 		<tr>
-			<td colspan="2"><a href="FreeC">목록으로</a>
-				<button onclick="location.href='FreeUpdateC?no=${param.no}'">수정</button>
-				<button onclick="freeDel(${free.f_no})">삭제</button></td>
+			<td colspan="2"><a href="FreeC">목록으로</a> <c:if
+					test="${sessionScope.accountInfo.a_id eq free.f_id}">
+					<button onclick="location.href='FreeUpdateC?no=${param.no}'">수정</button>
+					<button onclick="freeDel(${free.f_no})">삭제</button>
+					<button onclick="location.href='FreeRegC?no=${param.no}'">글쓰기</button>
+				</c:if></td>
 		</tr>
 	</table>
 </body>

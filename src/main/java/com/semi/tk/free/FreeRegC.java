@@ -14,21 +14,26 @@ import com.semi.jw.Model;
 public class FreeRegC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		Model.loginCheck(request);
-		request.setAttribute("contentPage", "jsp/tk/free/free_reg.jsp");
+
+		if (Model.loginCheck(request)) {
+			request.setAttribute("contentPage", "jsp/tk/free/free_reg.jsp");
+		} else {
+			request.setAttribute("contentPage", "로그인하세요");
+		}
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		Model.loginCheck(request);
-		FreeDAO.regFree(request);
-		FreeDAO.getAllFree(request);
-		FreeDAO.paging(1, request);
-		
-		request.setAttribute("contentPage", "jsp/tk/free/free.jsp");
+
+		if (Model.loginCheck(request)) {
+			FreeDAO.regFree(request);
+			FreeDAO.getAllFree(request);
+			FreeDAO.paging(1, request);
+			request.setAttribute("contentPage", "jsp/tk/free/free.jsp");
+		} else {
+			request.setAttribute("contentPage", "로그인하세요");
+		}
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 

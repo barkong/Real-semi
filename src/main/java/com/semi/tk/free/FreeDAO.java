@@ -232,7 +232,7 @@ public class FreeDAO {
 		req.setAttribute("curPageNo", page);
 
 		// 전체 페이지수 계산
-		int cnt = 3;
+		int cnt = 10;
 		int total = frees.size();
 
 		// 총 페이지 수

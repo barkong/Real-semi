@@ -13,14 +13,22 @@
 <body>
 	<h1>Semi Review</h1>
 
+	<c:choose>
+		<c:when test="${empty sessionScope.accountInfo.a_id}">
+			<h3>로그인해야 읽고 글쓰고 수정 가능</h3>
+		</c:when>
+		<c:otherwise>
+			<a href="ReviewRegC">글쓰기</a>
+		</c:otherwise>
+	</c:choose>
+
 	<table id="review_tbl1" align="center">
 		<tr>
-			<td><a href="ReviewRegC">글쓰기</a></td>
 			<td><a href="FreeC">자유게시판</a></td>
 		</tr>
 	</table>
 
-	<table border=1 id="review_tbl2" align="center">
+	<table border=1 align="center">
 		<!-- 게시판 페이지 : (순번)/영화제목/글제목/작성날짜 -->
 		<tr>
 			<td>[영화]</td>
@@ -41,12 +49,11 @@
 			</tr>
 		</c:forEach>
 	</table>
-	
+
 	<span><a href="ReviewPageC?p=1">[맨처음]</a></span>
 	<c:forEach var="i" begin="1" end="${pageCount }">
 		<a href="ReviewPageC?p=${i }"> [${i }] </a>
 	</c:forEach>
 	<span><a href="ReviewPageC?p=${pageCount }">[맨끝]</a></span>
-	
 </body>
 </html>
