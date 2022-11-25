@@ -1,4 +1,4 @@
-package com.semi.jw;
+package com.semi.movie;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,21 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.jw.Model;
 
-@WebServlet("/LoginPageC")
-public class LoginPageC extends HttpServlet {
+@WebServlet("/NaverNewsPageC")
+public class NaverNewsPageC extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int p = Integer.parseInt(request.getParameter("p"));
 		
-		Model.loginCheck(request);
-		
-		request.setAttribute("contentPage","jsp/jw/loginPage.jsp");
+		NaverNews.getNa().getNews(request);
+		NaverNews.getNa().paging(p, request);
+		request.setAttribute("contentPage", "jsp/sh/newsResult.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 	}
 
 }

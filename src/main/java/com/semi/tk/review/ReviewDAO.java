@@ -35,8 +35,8 @@ public class ReviewDAO {
 			reviews = new ArrayList<Review>();
 			while (rs.next()) {
 				review = new Review();
-				review.setR_id(rs.getString("r_id"));
 				review.setR_no(rs.getInt("r_no"));
+				review.setR_id(rs.getString("r_id"));
 				review.setR_movie(rs.getString("r_movie"));
 				review.setR_title(rs.getString("r_title"));
 				review.setR_detail(rs.getString("r_detail"));
@@ -83,8 +83,8 @@ public class ReviewDAO {
 			Review review = null;
 			if (rs.next()) {
 				review = new Review();
-				review.setR_id(rs.getString("r_id"));
 				review.setR_no(rs.getInt("r_no"));
+				review.setR_id(rs.getString("r_id"));
 				review.setR_movie(rs.getString("r_movie"));
 				review.setR_title(rs.getString("r_title"));
 				review.setR_detail(rs.getString("r_detail"));
@@ -121,7 +121,11 @@ public class ReviewDAO {
 			Bean a = (Bean) request.getSession().getAttribute("accountInfo");
 			String movie = mr.getParameter("movie");
 			String title = mr.getParameter("title");
+			
 			String detail = mr.getParameter("detail");
+			detail = detail.replace("\r\n", "<br>");
+			System.out.println(detail);
+			
 			String img = mr.getFilesystemName("img");
 			int count = 0;
 
@@ -171,7 +175,11 @@ public class ReviewDAO {
 			// 콘솔창에서 확인하기 위해 이 방식을 체택
 			String movie = mr.getParameter("movie");
 			String title = mr.getParameter("title");
+			
 			String detail = mr.getParameter("detail");
+			detail = detail.replace("\r\n", "<br>");
+			System.out.println(detail);
+			
 			String oldImg = mr.getParameter("img"); // 기존사진 (조심하기)
 			String newImg = mr.getFilesystemName("img2"); // 사진을 새로 추가함
 			String no = mr.getParameter("no");
@@ -245,7 +253,7 @@ public class ReviewDAO {
 		req.setAttribute("curPageNo", page);
 
 		// 전체 페이지수 계산
-		int cnt = 3;
+		int cnt = 10;
 		int total = reviews.size();
 
 		// 총 페이지 수

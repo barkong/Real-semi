@@ -14,7 +14,7 @@ import com.semi.jw.Model;
 public class FreeDetailC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		Model.loginCheck(request);
 		// 클릭한 게시글 1개 가져오기
 		FreeDAO.count(request);

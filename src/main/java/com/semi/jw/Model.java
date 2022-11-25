@@ -58,7 +58,7 @@ public class Model {
 
 					HttpSession hs = request.getSession();
 					hs.setAttribute("accountInfo", bean);
-					hs.setMaxInactiveInterval(60);
+					hs.setMaxInactiveInterval(3600);
 
 				} else {
 					request.setAttribute("r", "비밀번호 오류!");
@@ -112,7 +112,8 @@ public class Model {
 			}
 			pstmt.setString(8, chk2);
 			
-
+			System.out.println(request.getParameter("gender"));
+			System.out.println(chk2);
 
 			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "회원가입성공");
@@ -172,8 +173,11 @@ public class Model {
 			pstmt.setString(5, chk2);
 			Bean a = (Bean) request.getSession().getAttribute("accountInfo");
 			pstmt.setString(6, a.getA_id());
+			
 			System.out.println(a.getA_id());
 			System.out.println(request.getParameter("phone"));
+			System.out.println(request.getParameter("gender"));
+			System.out.println(chk2);
 
 			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "회원 정보 수정 성공");
