@@ -2,13 +2,12 @@ package com.semi.movie;
 
 public class MovieInfo {
 
-	
-	String movieNm;
-	String openDt;
-	String genreAlt;
-	String directors;
-	String company;
-	
+	private String movieNm;
+	private String openDt;
+	private String genreAlt;
+	private String directors;
+	private String company;
+
 	public MovieInfo() {
 		// TODO Auto-generated constructor stub
 	}
@@ -62,9 +61,5 @@ public class MovieInfo {
 	public void setCompany(String company) {
 		this.company = company;
 	}
-	
-	
-	
-	
 
 }

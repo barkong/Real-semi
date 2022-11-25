@@ -1,10 +1,10 @@
 package com.semi.movie;
 
 public class News {
-	String title;
-	String description;
-	String link;
-	String time;
+	private String title;
+	private String description;
+	private String link;
+	private String time;
 
 	public News() {
 		// TODO Auto-generated constructor stub
