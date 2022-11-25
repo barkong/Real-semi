@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,32 +10,40 @@
 <script type="text/javascript" src="js/tk/free.js"></script>
 </head>
 <body>
-
-	<h1>Reg</h1>
-
-	<form action="FreeRegC" method="post" enctype="multipart/form-data">
-
-		<table border="1" align="center">
-			<tr>
-				<td>글제목</td>
-				<td><input name="title" /></td>
-			</tr>
-			<tr>
-				<td>내용</td>
-				<td><textarea name="detail" rows="15" cols="50"
-						style="resize: none"></textarea></td>
-			</tr>
-			<tr>
-				<td>이미지</td>
-				<td><input type="file" name="img"></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<button>등록</button>
-				</td>
-			</tr>
-		</table>
-	</form>
-
+	<h1>자유글등록하기</h1>
+	<div class="container" align="center">
+		<div class="row">
+			<form action="FreeRegC" method="post" enctype="multipart/form-data">
+				<table class="table table-striped"
+					style="text-align: center; border: 1px solid #dddddd">
+					<thead>
+						<tr>
+							<th>글제목</th>
+							<th colspan="2" style="text-align: center;"><input
+								class="form-control" type="text" name="title" placeholder="글제목"
+								maxlength="50" /></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="3"><textarea class="form-control"
+									placeholder="글내용" maxlength="2084" name="detail" rows="20"
+									cols="60" style="resize: none"></textarea></td>
+						</tr>
+						<tr>
+							<td>이미지</td>
+							<td><input type="file" name="img"></td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								<button>등록</button>
+							</td>
+						<tr>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</div>
 </body>
 </html>
