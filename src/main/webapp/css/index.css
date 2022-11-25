@@ -31,14 +31,13 @@ body {
   width: 25%;
 }
 .mainMenu > a {
-  color: white;
+  color: #a2a2a2;
   text-decoration: none;
 }
 
 .mainMenu > a:hover {
-  color: whitesmoke;
+  color:white;
 }
-
 .btn1 {
   margin-right: 10%;
   margin-left: auto;
