@@ -12,7 +12,7 @@ body {
 }
 
 #top {
-  border: 1px solid whitesmoke;
+  
   display: flex;
   text-align: center;
   height: 40px;
@@ -31,7 +31,7 @@ body {
   width: 25%;
 }
 .mainMenu > a {
-  color: white;
+  color: #a2a2a2;
   text-decoration: none;
 }
 
@@ -51,3 +51,10 @@ body {
   height: 700px;
 }
 
+#searchInput{
+	 background:url("../icon/icon.png") no-repeat right top; 
+	color:white;
+	background-color:#101111;
+	width:400px;
+	height:30px;
+}
