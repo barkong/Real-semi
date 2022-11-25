@@ -19,12 +19,11 @@
       <ul class="navbar__menu">
         <li onclick="location.href='HC'">홈으로</li>
         <li onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">마이페이지</li>
-        <li>자유게시판</li>
-        <li>리뷰</li>
-        <li>문의</li>
+        <li onclick="location.href='FreeC'">자유게시판</li>
+        <li onclick="location.href='ReviewC'">리뷰게시판</li>
       </ul><br><br><br>
       <ul class="navbar__icons">
-        <li onclick="location.href='UpdateAccountC?'">정보수정</li>
+        <li onclick="location.href='UpdateAccountC?'">회원정보수정</li>
         <li onclick="location.href='DeleteAccountC?'">회원탈퇴</li>
       </ul>
       <a href="#" class="navbar__toggleBtn">

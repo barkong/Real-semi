@@ -8,12 +8,9 @@ function call(){
 	let phone = document.myForm.phone;
 	
 	
-	
-	
 	if(isEmpty(id)){
 		alert('ID를 입력해주세요');
 		id.focus();
-		return false;
 	}
 	if(lessThan(id, 4) || notContains(id, "1234567890")){
 		alert('ID양식을 확인해주세요');

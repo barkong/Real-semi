@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/jw/login.css" />
+<script type="text/javascript" src="js/jw/check.js"></script>
+<script type="text/javascript" src="js/validCheck.js"></script>
 </head>
 <body>
 		<form action="LoginC" method="post"  onsubmit="return call()">

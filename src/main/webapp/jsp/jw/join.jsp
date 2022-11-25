@@ -14,7 +14,7 @@
 		<fieldset>
 			<legend>회원가입</legend>
 			<div><b class="name">ID : </b><input class="text" name="id" maxlength="12" placeholder="영문 및 숫자만 4-12자리까지 입력해주세요"></div>
-			<div><b class="name">PW : </b><input class="text" name="pw" maxlength="16" placeholder="영문 및 숫자, 특수문자를 포함해서 6-16자리까지 입력해주세요."></div>
+			<div><b class="name">PW : </b><input class="text" name="pw" maxlength="16" placeholder="영문 및 숫자, 특수문자를 포함해서 입력해주세요"></div>
 			<div><b class="name">PW확인 : </b><input class="text" name="pw2" placeholder="비번 재확인" autocomplete="off" onkeyup="chkPW()"></div>
 			<div><b class="name">이름 : </b><input class="text" name="name" placeholder="필수"></div>
 			<div><b class="name">생일 : </b><input type="date" name="birth"></div>
