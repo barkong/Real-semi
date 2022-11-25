@@ -26,7 +26,7 @@ public class NaverNews {
 		return NA;
 	}
 
-	public void getNews(HttpServletRequest request) {
+	public ArrayList<News> getNews(HttpServletRequest request) {
 
 		HttpsURLConnection huc = null;
 
@@ -84,21 +84,23 @@ public class NaverNews {
 
 				News n = new News(title, description, link, time);
 				news.add(n);
-
+				
 			}
-
-			// for end
 			request.setAttribute("news", news);
-
+			return news;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return null;
 
 	}
 
-	public void paging(int page, HttpServletRequest req) {
-
+	public void paging(int page,  HttpServletRequest req) {
+		System.out.println("ddddd");
 		req.setAttribute("curPageNo", page);
+		
+		ArrayList<News> news = (ArrayList<News>) req.getAttribute("news");
 
 		// 전체 페이지수 계산
 		int cnt = 5;
@@ -111,13 +113,15 @@ public class NaverNews {
 		int start = total - (cnt * (page - 1));
 
 		int end = (page == pageCount) ? -1 : start - (cnt + 1);
-
+		
 		ArrayList<News> items = new ArrayList<News>();
+
 		for (int i = start - 1; i > end; i--) {
 
 			items.add(news.get(i));
 		}
-
+		req.removeAttribute("news");
+		
 		req.setAttribute("news", items);
 	}
 

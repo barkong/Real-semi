@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div id="newsContainer">
-		<c:forEach var="i" items="${ news}">
+		<c:forEach var="i" items="${news}">
 			<div id="news">
 				<span class="time">${ i.time }</span>
 				<div id="title">
@@ -23,12 +23,12 @@
 				<span class="newsContent">${ i.description }</span>
 			</div>
 			</c:forEach>
-			<%-- 
+			 
 			<span><a href="NaverNewsPageC?p=1">[맨처음]</a></span>
-			<c:forEach var="i" begin="1" end="${pageCount }">
+			<c:forEach var="i" begin="1	" end="${pageCount }">
 				<a href="NaverNewsPageC?p=${i }"> [${i }] </a>
 			</c:forEach>
-			<span><a href="NaverNewsPageC?p=${pageCount }">[맨끝]</a></span> --%>
+			<span><a href="NaverNewsPageC?p=${pageCount }">[맨끝]</a></span> 
 
 		
 
