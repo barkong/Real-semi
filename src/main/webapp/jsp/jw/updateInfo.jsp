@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/jw/info.css">
 <link rel="stylesheet" href="css/jw/login.css">
+<script type="text/javascript" src="js/jw/check.js"></script>
+<script type="text/javascript" src="js/validCheck.js"></script>
 </head>
 <body>
 <nav class="navbar">
@@ -24,7 +26,7 @@
       </ul><br><br><br>
       <ul class="navbar__icons">
         <li onclick="location.href='UpdateAccountC?'">회원정보수정</li>
-        <li onclick="location.href='DeleteAccountC?'">회원탈퇴</li>
+        <li onclick="deleteID()">회원탈퇴</li>
       </ul>
       <a href="#" class="navbar__toggleBtn">
         <i class=""></i>
@@ -74,7 +76,7 @@
 		</div>
 			<div><button class="sign_up">수정</button>
 				<button type="button" class="sign_up" onclick="history.back()">돌아가기</button>
-				<button type="button" class="sign_up" onclick="location.href='DeleteAccountC'">탈퇴</button></div>
+				<button type="button" class="sign_up" onclick="deleteID()">탈퇴</button></div>
 				</form>
 </body>
 </html>
