@@ -13,13 +13,12 @@ pageEncoding="UTF-8"%>
   <body>
     <div id="Container">
       <div id="top">
+			<form action="MovieSearchC">
+				<input id="searchInput" name="movie" type="text" placeholder="영화 제목을 입력해주세요." />
+			</form>
 			<div id="title">
 				<a href="HC">영화정보페이지</a>
 			</div>
-			<form action="MovieSearchC">
-				<input name="movie" type="text" placeholder="영화 제목을 입력해주세요." />
-				<button>검색</button>
-			</form>
 
 			<div class="btn1">
 				<jsp:include page="${loginPage }"></jsp:include>
