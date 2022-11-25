@@ -9,25 +9,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.jw.Model;
+import com.semi.tk.review.ReviewDAO;
 
 @WebServlet("/FreeUpdateC")
 public class FreeUpdateC extends HttpServlet {
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		Model.loginCheck(request);
-		FreeDAO.getFree(request);
-		request.setAttribute("contentPage", "jsp/tk/free/free_update.jsp");
+		if (Model.loginCheck(request)) {
+			ReviewDAO.getReview(request);
+			request.setAttribute("contentPage", "jsp/tk/free/free_update.jsp");
+		} else {
+			request.setAttribute("contentPage", "로그인하세요");
+		}
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		Model.loginCheck(request);
-		FreeDAO.updateFree(request);
-		FreeDAO.getFree(request);
-		request.setAttribute("contentPage", "jsp/tk/free/free_detail.jsp");
+		if (Model.loginCheck(request)) {
+			ReviewDAO.updateReview(request);
+			ReviewDAO.getReview(request);
+			request.setAttribute("contentPage", "jsp/tk/free/free_detail.jsp");
+		} else {
+			request.setAttribute("contentPage", "로그인하세요");
+		}
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 

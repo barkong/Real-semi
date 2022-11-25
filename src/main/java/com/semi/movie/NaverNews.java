@@ -14,9 +14,20 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class NaverNews {
+	private static ArrayList<News> news;
+	private static final NaverNews NA = new NaverNews();
+			
 
-	public static void getNews(HttpServletRequest request) {
-		
+	public NaverNews() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public static NaverNews getNa() {
+		return NA;
+	}
+
+	public void getNews(HttpServletRequest request) {
+
 		HttpsURLConnection huc = null;
 
 		try {
@@ -52,30 +63,26 @@ public class NaverNews {
 			JSONArray items = (JSONArray) newsData.get("items");
 
 			ArrayList<News> news = new ArrayList<>();
-			
-			for (int i = 0; i < items.size(); i++) {
-				
-				JSONObject news1 = (JSONObject) items.get(i);
-				
-				String title = (String) news1.get("title");
-				
-				String description = (String) news1.get("description");
-				
-				String link = (String) news1.get("link");
-				
-				String time = (String) news1.get("pubDate");
-				time = time.substring(0,16);
-				
-			
-				
 
-				
+			for (int i = 0; i < items.size(); i++) {
+
+				JSONObject news1 = (JSONObject) items.get(i);
+
+				String title = (String) news1.get("title");
+
+				String description = (String) news1.get("description");
+
+				String link = (String) news1.get("link");
+
+				String time = (String) news1.get("pubDate");
+				time = time.substring(0, 16);
+
 				System.out.println("뉴스 제목  : " + title);
 				System.out.println("요약 내용 : " + description);
 				System.out.println("링크 : " + link);
 				System.out.println("time : " + time);
 
-				News n = new News(title, description, link,time);
+				News n = new News(title, description, link, time);
 				news.add(n);
 
 			}
@@ -87,6 +94,31 @@ public class NaverNews {
 			e.printStackTrace();
 		}
 
+	}
+
+	public void paging(int page, HttpServletRequest req) {
+
+		req.setAttribute("curPageNo", page);
+
+		// 전체 페이지수 계산
+		int cnt = 5;
+		int total = news.size();
+		System.out.println(total);
+		// 총 페이지 수
+		int pageCount = (int) Math.ceil(((double) total / cnt));
+		req.setAttribute("pageCount", pageCount); // 페이지넘기기 화살표를 위해 넘겨주는 것
+
+		int start = total - (cnt * (page - 1));
+
+		int end = (page == pageCount) ? -1 : start - (cnt + 1);
+
+		ArrayList<News> items = new ArrayList<News>();
+		for (int i = start - 1; i > end; i--) {
+
+			items.add(news.get(i));
+		}
+
+		req.setAttribute("news", items);
 	}
 
 }

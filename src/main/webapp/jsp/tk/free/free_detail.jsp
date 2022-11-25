@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
@@ -10,40 +11,42 @@
 <script type="text/javascript" src="js/tk/free.js"></script>
 </head>
 <body>
-
-	<table border="1" align="center">
-		<tr>
-			<td colspan="2" align="center">
-				<h3>글제목 : ${free.f_title }</h3>
-			</td>
-		</tr>
-
-		<tr>
-			<td>글번호</td>
-			<td>${free.f_no }</td>
-		</tr>
-		<tr>
-			<td>등록일</td>
-			<td><fmt:formatDate value="${free.f_date }" type="both"
-					dateStyle="short" timeStyle="short" /></td>
-		</tr>
-		<tr>
-			<td>조회수</td>
-			<td>${free.f_count }</td>
-		</tr>
-		<tr>
-			<td>내용</td>
-			<td>${free.f_detail }</td>
-		</tr>
-		<tr>
-			<td>이미지</td>
-			<td><img id="freeImg" src="files/freeImg/${free.f_img }" width="300px"></td>
-		</tr>
-		<tr>
-			<td colspan="2"><a href="FreeC">목록으로</a>
-				<button onclick="location.href='FreeUpdateC?no=${param.no}'">수정</button>
-				<button onclick="freeDel(${free.f_no})">삭제</button></td>
-		</tr>
-	</table>
+	<h1>Free Content</h1>
+	<div class="container" align="center">
+		<div class="row">
+			<table class="table table-striped"
+				style="text-align: center; border: 1px solid #dddddd">
+				<thead>
+					<tr>
+						<th colspan="3" style="text-align: center;">글제목 :
+							${free.f_title }</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>NO. : ${free.f_no }</td>
+						<td>등록시간 : <fmt:formatDate value="${free.f_date }"
+								type="both" dateStyle="short" timeStyle="short" /></td>
+						<td>조회수 : ${free.f_count }</td>
+					</tr>
+					<tr>
+						<td colspan="3">${free.f_detail}</td>
+					</tr>
+					<tr>
+						<td colspan="3"><img src="files/reviewImg/${free.f_img }"
+							width="500px"></td>
+					</tr>
+					<tr>
+						<td colspan="3"><a href="FreeC">목록으로</a> <c:if
+								test="${sessionScope.accountInfo.a_id eq free.f_id}">
+								<button onclick="location.href='FreeUpdateC?no=${param.no}'">수정</button>
+								<button onclick="freeDel(${free.f_no})">삭제</button>
+								<button onclick="location.href='FreeRegC?no=${param.no}'">글쓰기</button>
+							</c:if></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </body>
 </html>

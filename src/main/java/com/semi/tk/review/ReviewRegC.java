@@ -13,23 +13,28 @@ import com.semi.jw.Model;
 public class ReviewRegC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		Model.loginCheck(request);
-		request.setAttribute("contentPage", "jsp/tk/review/review_reg.jsp");
+
+		if (Model.loginCheck(request)) {
+			request.setAttribute("contentPage", "jsp/tk/review/review_reg.jsp");
+		} else {
+			request.setAttribute("contentPage", "로그인하세요");
+		}
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		Model.loginCheck(request);
-		ReviewDAO.regReview(request);
-		ReviewDAO.getAllReview(request);
-		ReviewDAO.paging(1, request);
-		
-		request.setAttribute("contentPage", "jsp/tk/review/review.jsp");
+
+		if (Model.loginCheck(request)) {
+			ReviewDAO.regReview(request);
+			ReviewDAO.getAllReview(request);
+			ReviewDAO.paging(1, request);
+			request.setAttribute("contentPage", "jsp/tk/review/review.jsp");
+		} else {
+			request.setAttribute("contentPage", "로그인하세요");
+		}
 		request.getRequestDispatcher("index.jsp").forward(request, response);
-		
+
 	}
 
 }

@@ -13,21 +13,21 @@ import com.semi.jw.Model;
 public class ReviewDetailC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		Model.loginCheck(request);
-		// 클릭한 게시글 1개 가져오기
-		ReviewDAO.count(request);
-		ReviewDAO.getReview(request);
-		
-		request.setAttribute("contentPage", "jsp/tk/review/review_detail.jsp");
+
+		if (Model.loginCheck(request)) {
+			// 클릭한 게시글 1개 가져오기
+			ReviewDAO.count(request);
+			ReviewDAO.getReview(request);
+			request.setAttribute("contentPage", "jsp/tk/review/review_detail.jsp");
+		} else {
+			request.setAttribute("contentPage", "로그인하세요");
+		}
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
-		
+
 	}
 
 }

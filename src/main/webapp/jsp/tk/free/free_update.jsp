@@ -10,44 +10,50 @@
 <script type="text/javascript" src="js/tk/free.js"></script>
 </head>
 <body>
-
-	<form action="FreeUpdateC" method="post" onsubmit="return call()"
-		enctype="multipart/form-data">
-
-		<table border="1" align="center">
-			<tr>
-				<td colspan="2" align="center">
-					<h3>
-						<input value="${free.f_title }" name="title">
-					</h3>
-				</td>
-			</tr>
-			<tr>
-				<td>글번호</td>
-				<td>${free.f_no }</td>
-			</tr>
-			<tr>
-				<td>등록일</td>
-				<td><fmt:formatDate value="${free.f_date }" type="both"
-						dateStyle="short" timeStyle="short" /></td>
-			</tr>
-			<tr>
-				<td>내용</td>
-				<td><textarea name="detail" rows="15" cols="50"
-						style="resize: none">${free.f_detail}</textarea></td>
-			</tr>
-			<tr>
-				<td>이미지</td>
-				<td><img src="files/freeImg/${free.f_img }" width="300px" name="img">
-				<input name="img" value="${free.f_img }" type="hidden">
-				<input type="file" name="img2" /></td>
-			</tr>
-			<tr>
-				<td colspan="2"><a href="FreeC">목록으로</a>
-					<button name="no" value="${param.no}">수정</button>
-					<button onclick="freeDel(${free.f_no})">삭제</button></td>
-			</tr>
-		</table>
-	</form>
+	<h1>자유글수정하기</h1>
+	<div class="container" align="center">
+		<div class="row">
+			<form action="FreeUpdateC" method="post"
+				enctype="multipart/form-data">
+				<table class="table table-striped"
+					style="text-align: center; border: 1px solid #dddddd">
+					<thead>
+						<tr>
+							<th>글제목</th>
+							<th colspan="2" style="text-align: center;"><input
+								class="form-control" type="text" value="${free.f_title }"
+								name="title"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>NO. : ${free.f_no }</td>
+							<td>등록시간 : <fmt:formatDate value="${free.f_date }"
+									type="both" dateStyle="short" timeStyle="short" /></td>
+							<td>조회수 : ${free.f_count }</td>
+						</tr>
+						<tr>
+							<td colspan="3"><textarea class="form-control"
+									maxlength="2084" name="detail" rows="20" cols="60"
+									style="resize: none">${free.f_detail}</textarea></td>
+						</tr>
+						<tr>
+							<td colspan="3"><img src="files/freeImg/${free.f_img }"
+								width="500px"></td>
+						</tr>
+						<tr>
+							<td colspan="3"><input type="file" name="img2" /><input
+								name="img" value="${free.f_img }" type="hidden"></td>
+						</tr>
+						<tr>
+							<td colspan="3"><a href="FreeC">목록으로</a>
+								<button name="no" value="${param.no}">수정</button>
+								<button onclick="freeDel(${free.f_no})">삭제</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</div>
 </body>
 </html>
