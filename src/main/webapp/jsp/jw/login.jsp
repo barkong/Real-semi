@@ -8,12 +8,8 @@
 <script type="text/javascript" src="js/jw/check.js"></script>
 </head>
 <body>
-${r }
-		<form action="LoginC" method="post"  onsubmit="return call()">
-		ID <input name="id">
-		PW <input name="pw">
+		<form action="LoginPageC">
 		<button>로그인</button>
-		<button onclick="location.href='AccountC'" type="button">회원가입</button>
 		</form>
 </body>
 </html>

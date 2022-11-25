@@ -15,7 +15,7 @@ public class LoginPageC extends HttpServlet {
 		
 		Model.loginCheck(request);
 		
-		request.setAttribute("contentPage", "jsp/jw/login.jsp");
+		request.setAttribute("contentPage","jsp/jw/loginPage.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
