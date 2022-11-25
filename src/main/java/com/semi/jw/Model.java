@@ -84,7 +84,6 @@ public class Model {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 
-			System.out.println(request.getParameter("birth"));
 
 			pstmt.setString(1, request.getParameter("id"));
 			pstmt.setString(2, request.getParameter("pw"));
@@ -111,9 +110,6 @@ public class Model {
 
 			pstmt.setString(8, chk2);
 
-			System.out.println(gender);
-			System.out.println(chk2);
-			System.out.println(name);
 			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "회원가입성공");
 			}
@@ -241,8 +237,6 @@ public class Model {
 			}else {
 				request.setAttribute("t", "사용가능한 아이디 입니다");
 			}
-			System.out.println(request.getParameter("id"));
-			System.out.println(rs.getString("a_id"));
 		} catch (Exception e) {
 			request.setAttribute("r", "서버 오류");
 			e.printStackTrace();
