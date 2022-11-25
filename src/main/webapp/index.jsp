@@ -16,9 +16,10 @@ pageEncoding="UTF-8"%>
 			<div id="title">
 				<a href="HC">영화정보페이지</a>
 			</div>
+			
 			<form action="MovieSearchC">
 				<input name="movie" type="text" placeholder="영화 제목을 입력해주세요." />
-				<button>검색</button>
+				
 			</form>
 
 			<div class="btn1">

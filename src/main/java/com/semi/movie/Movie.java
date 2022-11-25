@@ -2,14 +2,14 @@ package com.semi.movie;
 
 public class Movie {
 
-	String title;
-	String director;
-	String actor;
-	String link;
-	String img;
-	String rating;
-	String subTitle;
-	String pubDate;
+	private String title;
+	private String director;
+	private String actor;
+	private String link;
+	private String img;
+	private String rating;
+	private String subTitle;
+	private String pubDate;
 	
 	public Movie() {
 		// TODO Auto-generated constructor stub
