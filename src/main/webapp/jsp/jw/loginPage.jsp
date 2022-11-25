@@ -11,8 +11,8 @@
 </head>
 <body>
 		<form action="LoginC" method="post"  onsubmit="return call()">
-		<b class="name">ID</b><input name="id">
-		<b class="name">PW</b><input name="pw">
+		<b class="name">ID</b><input name="id"><br>
+		<b class="name">PW</b><input name="pw"><br>
 		<button class="sign_up">로그인</button>
 		<button class="sign_up" onclick="location.href='AccountC'" type="button">회원가입</button>
 		</form>

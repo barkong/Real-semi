@@ -95,9 +95,13 @@ public class Model {
 			
 			pstmt.setString(1, request.getParameter("id"));
 			pstmt.setString(2, request.getParameter("pw"));
-			pstmt.setString(3, request.getParameter("name"));
+			String name = request.getParameter("name");
+			name = new String(name.getBytes("ISO-8859-1"), "UTF-8");
+			pstmt.setString(3, name);
 			pstmt.setString(4, request.getParameter("birth"));
-			pstmt.setString(5, request.getParameter("gender"));
+			String gender = request.getParameter("gender");
+			gender = new String(gender.getBytes("ISO-8859-1"), "UTF-8");
+			pstmt.setString(5, gender);
 			pstmt.setString(6, request.getParameter("email"));
 			pstmt.setString(7, request.getParameter("phone"));
 
@@ -107,14 +111,16 @@ public class Model {
 				for (String s : chk) {
 					chk2 += s + "!";
 				}
+				chk2 = new String(chk2.getBytes("ISO-8859-1"), "UTF-8");
 			} else {
 				chk2 = "관심사 없음";
 			}
+		
 			pstmt.setString(8, chk2);
 			
-			System.out.println(request.getParameter("gender"));
+			System.out.println(gender);
 			System.out.println(chk2);
-
+			System.out.println(name);
 			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "회원가입성공");
 			}
@@ -158,7 +164,9 @@ public class Model {
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, request.getParameter("pw"));
-			pstmt.setString(2, request.getParameter("name"));
+			String name = request.getParameter("name");
+			name = new String(name.getBytes("ISO-8859-1"), "UTF-8");
+			pstmt.setString(2, name);
 			pstmt.setString(3, request.getParameter("email"));
 			pstmt.setString(4, request.getParameter("phone"));
 			String[] chk = request.getParameterValues("chk");
@@ -167,6 +175,7 @@ public class Model {
 				for (String s : chk) {
 					chk2 += s + "!";
 				}
+				chk2 = new String(chk2.getBytes("ISO-8859-1"), "UTF-8");
 			} else {
 				chk2 = "관심사 없음";
 			}
@@ -174,10 +183,7 @@ public class Model {
 			Bean a = (Bean) request.getSession().getAttribute("accountInfo");
 			pstmt.setString(6, a.getA_id());
 			
-			System.out.println(a.getA_id());
-			System.out.println(request.getParameter("phone"));
-			System.out.println(request.getParameter("gender"));
-			System.out.println(chk2);
+			
 
 			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "회원 정보 수정 성공");
