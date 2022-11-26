@@ -49,7 +49,7 @@ public class Model {
 					bean.setA_phone(rs.getString("a_phone"));
 
 					String interest = rs.getString("a_interest");
-					interest = interest.replace("!", "&nbsp;&nbsp;&nbsp;");
+					interest = interest.replace("!", "&nbsp;&nbsp;");
 					bean.setA_interest(interest);
 
 					request.setAttribute("account", bean);

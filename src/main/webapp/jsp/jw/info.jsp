@@ -19,7 +19,7 @@
       </div>
 
       <ul class="navbar__menu">
-        <li onclick="location.href='HC'">홈으로</li>
+        <li onclick="location.href='HC'">홈으로</li><br>
         <li onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">마이페이지</li>
         <li onclick="location.href='FreeC'">자유게시판</li>
         <li onclick="location.href='ReviewC'">리뷰게시판</li>
