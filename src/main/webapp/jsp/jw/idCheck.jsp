@@ -13,7 +13,7 @@
 	<form action="IdCheckC">
 		<div>
 			<b class="name">ID : </b><input class="text" name="id" maxlength="12"
-				placeholder="영문 및 숫자만 4-12자리까지 입력해주세요">
+				placeholder="영문 및 숫자만 4-12자리까지 입력해주세요" value="${y }">
 			<button class="sign_up">중복검사</button>
 			<br> ${t } <br>
 			<input class="sign_up" type="button" value="창 닫기" onClick="window.close()">

@@ -237,6 +237,8 @@ public class Model {
 			}else {
 				request.setAttribute("t", "사용가능한 아이디 입니다");
 			}
+			
+			request.setAttribute("y", request.getParameter("id"));
 		} catch (Exception e) {
 			request.setAttribute("r", "서버 오류");
 			e.printStackTrace();
