@@ -13,8 +13,7 @@
 <body>
 	<div class="login-wrapper">
 		<h2>Login</h2>
-		<form action="LoginC" method="post" onsubmit="return call()"
-			id="login-form">
+		<form name="myForm" action="LoginC" method="post" onsubmit="return call()" id="login-form">
 			<input name="id" type="text" placeholder="ID"><br>
 			<input name="pw" type="password" placeholder="PW"><br><br>
 			<button class="sign_up">로그인</button>
