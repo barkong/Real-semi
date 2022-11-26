@@ -37,7 +37,9 @@
 			호러<input type="checkbox" name="chk" value="호러"> 
 			
 			</div>
-			<div><button class="sign_up">가입</button></div>
+			<div><button class="sign_up">가입</button>
+			<button type="button" class="sign_up" onclick="history.back()">돌아가기</button>
+			</div>
 		</fieldset>
 	</form>
 </body>
