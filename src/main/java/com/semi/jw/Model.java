@@ -47,12 +47,10 @@ public class Model {
 					bean.setA_gender(rs.getString("a_gender"));
 					bean.setA_email(rs.getString("a_email"));
 					bean.setA_phone(rs.getString("a_phone"));
-					
+
 					String interest = rs.getString("a_interest");
-					interest = interest.replace("!", "&nbsp;&nbsp;&nbsp;");
+					interest = interest.replace("!", "&nbsp;&nbsp;");
 					bean.setA_interest(interest);
-					
-				
 
 					request.setAttribute("account", bean);
 
@@ -62,13 +60,9 @@ public class Model {
 
 				} else {
 					request.setAttribute("r", "비밀번호 오류!");
-					;
 				}
 			} else {
 				request.setAttribute("r", "존재하지 않는 회원");
-			}
-
-			if (pstmt.executeUpdate() == 1) {
 			}
 
 		} catch (Exception e) {
@@ -90,14 +84,16 @@ public class Model {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 
-			
-			System.out.println(request.getParameter("birth"));
-			
+
 			pstmt.setString(1, request.getParameter("id"));
 			pstmt.setString(2, request.getParameter("pw"));
-			pstmt.setString(3, request.getParameter("name"));
+			String name = request.getParameter("name");
+			name = new String(name.getBytes("ISO-8859-1"), "UTF-8");
+			pstmt.setString(3, name);
 			pstmt.setString(4, request.getParameter("birth"));
-			pstmt.setString(5, request.getParameter("gender"));
+			String gender = request.getParameter("gender");
+			gender = new String(gender.getBytes("ISO-8859-1"), "UTF-8");
+			pstmt.setString(5, gender);
 			pstmt.setString(6, request.getParameter("email"));
 			pstmt.setString(7, request.getParameter("phone"));
 
@@ -107,13 +103,12 @@ public class Model {
 				for (String s : chk) {
 					chk2 += s + "!";
 				}
+				chk2 = new String(chk2.getBytes("ISO-8859-1"), "UTF-8");
 			} else {
 				chk2 = "관심사 없음";
 			}
+
 			pstmt.setString(8, chk2);
-			
-			System.out.println(request.getParameter("gender"));
-			System.out.println(chk2);
 
 			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "회원가입성공");
@@ -158,7 +153,9 @@ public class Model {
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, request.getParameter("pw"));
-			pstmt.setString(2, request.getParameter("name"));
+			String name = request.getParameter("name");
+			name = new String(name.getBytes("ISO-8859-1"), "UTF-8");
+			pstmt.setString(2, name);
 			pstmt.setString(3, request.getParameter("email"));
 			pstmt.setString(4, request.getParameter("phone"));
 			String[] chk = request.getParameterValues("chk");
@@ -167,17 +164,13 @@ public class Model {
 				for (String s : chk) {
 					chk2 += s + "!";
 				}
+				chk2 = new String(chk2.getBytes("ISO-8859-1"), "UTF-8");
 			} else {
 				chk2 = "관심사 없음";
 			}
 			pstmt.setString(5, chk2);
 			Bean a = (Bean) request.getSession().getAttribute("accountInfo");
 			pstmt.setString(6, a.getA_id());
-			
-			System.out.println(a.getA_id());
-			System.out.println(request.getParameter("phone"));
-			System.out.println(request.getParameter("gender"));
-			System.out.println(chk2);
 
 			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "회원 정보 수정 성공");
@@ -200,14 +193,13 @@ public class Model {
 		String sql = "delete semi_account where a_id=?";
 		try {
 
-			con=DBManager.connect();
-			pstmt=con.prepareStatement(sql);
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
 			Bean a = (Bean) request.getSession().getAttribute("accountInfo");
-			
+
 			String id = a.getA_id();
 			System.out.println(id);
-			
-			
+
 			pstmt.setString(1, id);
 
 			if (pstmt.executeUpdate() == 1) {
@@ -222,6 +214,38 @@ public class Model {
 		}
 
 	}
-	
-	
+
+	public static void idCheck(HttpServletRequest request) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = DBManager.connect();
+			String sql = "select a_id from semi_account where a_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("id"));
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				if (request.getParameter("id") == null || request.getParameter("id") == "") {
+					request.setAttribute("t", "ID를 입력해주세요");
+				} else if (request.getParameter("id").equals(rs.getString("a_id"))) {
+					request.setAttribute("t", "이미 사용중인 ID 입니다.다른 ID를 입력해주세요");
+				}
+				
+			}else {
+				request.setAttribute("t", "사용가능한 아이디 입니다");
+			}
+			
+			request.setAttribute("y", request.getParameter("id"));
+		} catch (Exception e) {
+			request.setAttribute("r", "서버 오류");
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+
+	}
+
 }
