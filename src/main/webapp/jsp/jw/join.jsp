@@ -18,8 +18,8 @@
 			<button type="button" class="" onclick="idChk()">중복검사</button><br>
 			${t }
 			</div>
-			<div><b class="name">&nbsp;&nbsp;PW : &nbsp;&nbsp;&nbsp;</b><input class="text" name="pw" maxlength="16" placeholder="영문,대문자 및 숫자를 포함해서 입력해주세요"></div>
-			<div><b class="name">PW확인 : </b><input class="text" name="pw2" placeholder="비밀번호를 확인해주세요" autocomplete="off" onkeyup="chkPW()"></div>
+			<div><b class="name">&nbsp;&nbsp;PW : &nbsp;&nbsp;&nbsp;</b><input class="text" name="pw" type="password" maxlength="16" placeholder="영문,대문자 및 숫자를 포함해서 입력해주세요"></div>
+			<div><b class="name">PW확인 : </b><input class="text" name="pw2" type="password" placeholder="비밀번호를 확인해주세요" autocomplete="off" onkeyup="chkPW()"></div>
 			<div><b class="name">&nbsp;이름 : &nbsp;&nbsp;&nbsp;</b><input class="text" name="name"></div>
 			<div><b class="name">생일 : </b><input type="date" name="birth" required pattern="\d{4}-\d{2}-\d{2}"></div>
 			<div><b class="name">성별 : </b> 남<input type="radio" name="gender" value="남" checked="checked"> 여<input type="radio" name="gender" value="여"></div>
