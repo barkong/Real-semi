@@ -1,4 +1,4 @@
-package com.semi.movie;
+package com.semi.news;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
