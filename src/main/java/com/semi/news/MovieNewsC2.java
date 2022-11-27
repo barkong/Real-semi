@@ -1,7 +1,7 @@
-package com.semi.movie;
+package com.semi.news;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,19 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 import com.semi.jw.Model;
 
 
-@WebServlet("/MovieNewsC")
-public class MovieNewsC extends HttpServlet {
+@WebServlet("/MovieNewsC2")
+public class MovieNewsC2 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Model.loginCheck(request);
-		
-		ArrayList<News> news = NaverNews.getNa().getNews(request);
-		NaverNews.getNa().paging(1, request); 
-		
-		request.setAttribute("contentPage", "jsp/sh/newsResult.jsp");
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
+		PrintWriter out = response.getWriter();
+		out.print(NaverNews.getNa().getNews(request));
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	
 	}
 
 }

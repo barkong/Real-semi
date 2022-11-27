@@ -1,4 +1,4 @@
-package com.semi.movie;
+package com.semi.news;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -16,17 +16,16 @@ import org.json.simple.parser.JSONParser;
 public class NaverNews {
 	private static ArrayList<News> news;
 	private static final NaverNews NA = new NaverNews();
-			
 
 	public NaverNews() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public static NaverNews getNa() {
 		return NA;
 	}
 
-	public ArrayList<News> getNews(HttpServletRequest request) {
+	public JSONObject getNews(HttpServletRequest request) {
 
 		HttpsURLConnection huc = null;
 
@@ -62,33 +61,33 @@ public class NaverNews {
 
 			JSONArray items = (JSONArray) newsData.get("items");
 
-			ArrayList<News> news = new ArrayList<>();
+			/*
+			 * ArrayList<News> news = new ArrayList<>();
+			 * 
+			 * for (int i = 0; i < items.size(); i++) {
+			 * 
+			 * JSONObject news1 = (JSONObject) items.get(i);
+			 * 
+			 * String title = (String) news1.get("title");
+			 * 
+			 * String description = (String) news1.get("description");
+			 * 
+			 * String link = (String) news1.get("link");
+			 * 
+			 * String time = (String) news1.get("pubDate"); time = time.substring(0, 16);
+			 * 
+			 * System.out.println("뉴스 제목  : " + title); System.out.println("요약 내용 : " +
+			 * description); System.out.println("링크 : " + link);
+			 * System.out.println("time : " + time);
+			 * 
+			 * News n = new News(title, description, link, time); news.add(n);
+			 * 
+			 * } request.setAttribute("news", news); return news;
+			 */
+			JSONObject jo = new JSONObject();
+			jo.put("items", items);
+			return jo;
 
-			for (int i = 0; i < items.size(); i++) {
-
-				JSONObject news1 = (JSONObject) items.get(i);
-
-				String title = (String) news1.get("title");
-
-				String description = (String) news1.get("description");
-
-				String link = (String) news1.get("link");
-
-				String time = (String) news1.get("pubDate");
-				time = time.substring(0, 16);
-
-				System.out.println("뉴스 제목  : " + title);
-				System.out.println("요약 내용 : " + description);
-				System.out.println("링크 : " + link);
-				System.out.println("time : " + time);
-
-				News n = new News(title, description, link, time);
-				news.add(n);
-				
-			}
-			request.setAttribute("news", news);
-			return news;
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -96,10 +95,10 @@ public class NaverNews {
 
 	}
 
-	public void paging(int page,  HttpServletRequest req) {
+	public void paging(int page, HttpServletRequest req) {
 		System.out.println("ddddd");
 		req.setAttribute("curPageNo", page);
-		
+
 		ArrayList<News> news = (ArrayList<News>) req.getAttribute("news");
 
 		// 전체 페이지수 계산
@@ -113,7 +112,7 @@ public class NaverNews {
 		int start = total - (cnt * (page - 1));
 
 		int end = (page == pageCount) ? -1 : start - (cnt + 1);
-		
+
 		ArrayList<News> items = new ArrayList<News>();
 
 		for (int i = start - 1; i > end; i--) {
@@ -121,7 +120,7 @@ public class NaverNews {
 			items.add(news.get(i));
 		}
 		req.removeAttribute("news");
-		
+
 		req.setAttribute("news", items);
 	}
 
