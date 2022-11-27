@@ -12,10 +12,11 @@ body {
 }
 
 #top {
+	position:relative;
   
   display: flex;
   text-align: center;
-  height: 40px;
+  height: 55px;
 }
 
 #menus {
@@ -51,9 +52,30 @@ body {
 }
 
 #searchInput{
-	 background:url("../icon/icon.png") no-repeat right top; 
+	 background:url("../icon/icon.png") no-repeat right ; 
+	 background-size: 30px;
 	color:white;
 	background-color:#101111;
-	width:400px;
-	height:30px;
+	width:500px;
+	height:40px;
+	font-size:12pt;
+	border:none;
+	border-bottom:1px solid #ececec;
+}
+
+
+#mainIcon{
+	
+	width:50px;
+}
+
+#mainIconDiv{
+	
+	position:absolute;
+	left:30px;
+}
+
+#searchDiv{
+	position:absolute;
+	left:470px;
 }

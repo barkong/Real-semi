@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/jw/info.css">
 <link rel="stylesheet" href="css/jw/login.css">
+<script type="text/javascript" src="js/jw/check.js"></script>
+<script type="text/javascript" src="js/validCheck.js"></script>
 </head>
 <body>
 <nav class="navbar">
@@ -17,14 +19,14 @@
       </div>
 
       <ul class="navbar__menu">
-        <li onclick="location.href='HC'">홈으로</li>
+        <li onclick="location.href='HC'">홈으로</li><br>
         <li onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">마이페이지</li>
         <li onclick="location.href='FreeC'">자유게시판</li>
-        <li onclick="location.href='ReviewC'">리뷰</li>
+        <li onclick="location.href='ReviewC'">리뷰게시판</li>
       </ul><br><br><br>
       <ul class="navbar__icons">
-        <li onclick="location.href='UpdateAccountC'">정보수정</li>
-        <li onclick="location.href='DeleteAccountC'">회원탈퇴</li>
+        <li onclick="location.href='UpdateAccountC'">회원정보수정</li>
+        <li onclick="deleteID()">회원탈퇴</li>
       </ul>
       <a href="#" class="navbar__toggleBtn">
         <i class=""></i>
@@ -66,7 +68,7 @@
 		<b class="text">${sessionScope.accountInfo.a_interest }</b><br><br>
 		</div>
 			<div><button class="sign_up" onclick="location.href='UpdateAccountC'">수정</button>
-				<button class="sign_up" onclick="location.href='DeleteAccountC'">탈퇴</button></div>
+				<button class="sign_up"  onclick="deleteID()">탈퇴</button></div>
 		
 
 </body>
