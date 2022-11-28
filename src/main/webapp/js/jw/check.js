@@ -6,6 +6,7 @@ function call(){
 	let name = document.myForm.name;
 	let birth = document.myForm.birth;
 	let phone = document.myForm.phone;
+	let email = document.myForm.email;
 	
 	
 	if(isEmpty(id)){
@@ -52,6 +53,11 @@ function call(){
 		phone.focus();
 		return false;
 	}
+	if(isEmpty(email)){
+		alert('email을 입력해주세요');
+		email.focus();
+		return false;
+	}
 	
 	
 }
@@ -94,9 +100,48 @@ function deleteID(){
 }
 
 function idChk() {
-            var url ='IdCheckPageC';
-            window.open(url, '사용할 아이디를 입력하세요.',  'width=400, height=300');
+			var myForm = document.myForm;
+			var id = myForm.id;
+			var idvar = id.value;
+			if(isEmpty(id)){
+			alert('ID를 입력해주세요');
+			id.focus();
+			return false;
+		}
+			if(lessThan(id, 4) || notContains(id, "1234567890")){
+			alert('ID양식을 확인해주세요');
+			id.focus();
+			return false;
+		}
+            location.href ='IdCheckC?id='+idvar;
         }
 
-
+function UpdateCheck(){
+	
+	let pw = document.myForm.pw;
+	let phone = document.myForm.phone;
+	let email = document.myForm.email;
+	
+	
+	if(isEmpty(pw)){
+		alert('PW를 입력해주세요');
+		pw.focus();
+		return false;
+	}
+	if(lessThan(pw, 6) || notContains(pw, "1234567890") || notContains(pw, "QWERTYUIOPASDFGHJKLZXCVBNM")){
+		alert('PW를 양식에 맞게 변경해주세요');
+		pw.focus();
+		return false;
+	}
+	if(isEmpty(phone)){
+		alert('전화번호를 입력해주세요');
+		phone.focus();
+		return false;
+	}
+	if(isEmpty(email)){
+		alert('email을 입력해주세요');
+		email.focus();
+		return false;
+	}
+}
 
