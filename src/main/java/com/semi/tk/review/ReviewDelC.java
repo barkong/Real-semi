@@ -20,7 +20,7 @@ public class ReviewDelC extends HttpServlet {
 			ReviewDAO.paging(1, request);
 			request.setAttribute("contentPage", "jsp/tk/review/review.jsp");
 		} else {
-			request.setAttribute("contentPage", "로그인하세요");
+			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
