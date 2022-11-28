@@ -1,54 +1,60 @@
 @charset "UTF-8";
+
 a {
-  text-decoration: none;
+	text-decoration: none;
 }
+
 body {
-  background-color: #101111;
-  color: white;
+	background-color: #101111;
+	color: white;
 }
+
 #Container {
-  margin-top: 25px;
-  width: 100%;
+	margin-top: 25px;
+	width: 100%;
 }
 
 #top {
-	position:relative;
-  
-  display: flex;
-  text-align: center;
-  height: 55px;
+	position: relative;
+	display: flex;
+	text-align: center;
+	height: 55px;
 }
 
 #menus {
-  height: 50px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  position: sticky;
-  top: 0;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	position: sticky;
+	top: 0;
 }
+
 .mainMenu {
-  font-size: 14pt;
-  width: 25%;
+	font-size: 14pt;
+	width: 25%;
 }
-.mainMenu > a {
-  color: #a2a2a2;
-  text-decoration: none;
+
+.mainMenu>a {
+	color: #a2a2a2;
+	text-decoration: none;
 }
+
 
 .mainMenu > a:hover {
   color:white;
+
 }
 .btn1 {
-  margin-right: 10%;
-  margin-left: auto;
+	margin-right: 10%;
+	margin-left: auto;
 }
 
 #content {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
-  height: 700px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	height: 700px;
 }
 
 #searchInput{
@@ -56,8 +62,8 @@ body {
 	 background-size: 30px;
 	color:white;
 	background-color:#101111;
-	width:500px;
-	height:40px;
+	width:35vw;
+	height:4.5vh;
 	font-size:12pt;
 	border:none;
 	border-bottom:1px solid #ececec;
@@ -66,16 +72,18 @@ body {
 
 #mainIcon{
 	
-	width:50px;
+	width:3vw;
+
 }
 
-#mainIconDiv{
-	
-	position:absolute;
-	left:30px;
+#mainIconDiv {
+	position: absolute;
+	left: 30px;
 }
 
 #searchDiv{
+	border: 1px solid white;
 	position:absolute;
-	left:470px;
+	margin-left: 33em;
+
 }

@@ -7,6 +7,7 @@ pageEncoding="UTF-8"%>
     <meta charset="UTF-8" />
     <title>Insert title here</title>
     <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="css/boxoffice.css" />
     <script>
     
       $(function () {
@@ -28,7 +29,7 @@ pageEncoding="UTF-8"%>
 
           let url =
             "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=" +
-            d_str;
+            d_str+"&itemPerPage=10";
 
           $.getJSON(url, function (data) {
             let movieList = data.boxOfficeResult.dailyBoxOfficeList;
@@ -50,18 +51,17 @@ pageEncoding="UTF-8"%>
                   actor = console.log(json.actor);
                   
                   $("#boxoffice").append(
-                    "<img src= '" +
+                    "<div class='Container'><div class='poster'><img src= '" +
                       json.img +
-                      "'> <br>" + 
-                      "<span id= '" +
+                      "'></div>" + 
+                      "<span class='content' id='" +
                       movieList[i].movieCd + 
                       "'>" +
                       (parseInt(i) + 1) +
-                      " " +
-                    "<h1>" + movieList[i].movieNm +"</h1>"
-                    +  json.director +"<br>"+ json.actor + "<br>" +
+                      " " + movieList[i].movieNm 
+                    +  json.director + json.actor + 
                       movieList[i].openDt +
-                      "개봉 </span><hr>"
+                      "개봉 </span></div>"
                   );
                 })
                 .fail(function (xhr, status, errorThrown) {
@@ -78,15 +78,14 @@ pageEncoding="UTF-8"%>
     </script>
   </head>
   <body>
-    <div>
-      <input type="date" id="date" />
-      <button id="mybtn">확인</button>
+    <div class="boxofficeContainer">
 
       <div id="boxoffice">
-        <h1>박스 오피스 순위</h1>
-      
+       박스 오피스
       </div>
-      
+       <input type="date" value="" id="date" />
+      <button id="mybtn">확인</button>
     </div>
+    
   </body>
 </html>

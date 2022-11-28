@@ -10,8 +10,7 @@
 <link rel="stylesheet" href="css/jw/info.css">
 <link rel="stylesheet" href="css/jw/login.css">
 <link rel="stylesheet" href="css/tk/bbs.css" />
-<script type="text/javascript" src="js/tk/bbs.js"></script>
-<script type="text/javascript" src="js/validCheck.js"></script>
+
 </head>
 <body>
 	<nav class="navbar">
@@ -41,26 +40,16 @@
 	</nav>
 
 
-
-	<h1>Free BBS</h1>
-
-	<c:choose>
-		<c:when test="${empty sessionScope.accountInfo.a_id}">
-			<%-- <c:when test="${sessionScope.accountInfo.a_id eq null}"> --%>
-			<a href="FreeRegC" onclick="alert('로그인하세요')">새글쓰기 (when)</a>
-		</c:when>
-		<c:otherwise>
-			<a href="FreeRegC"> 새글쓰기(when)</a>
-		</c:otherwise>
-	</c:choose>
+	<h1>나의글 목록</h1>
 
 	<div class="container" align="center">
 		<div class="row">
-			<table class="bbsTable"
-				style="text-align: center; border: 1px solid #dddddd" align="center">
+			<table class="bbsTable" align="center"
+				style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
 						<th style="background-color: gray; text-align: center;">NO</th>
+						<th style="background-color: gray; text-align: center;">분류</th>
 						<th style="background-color: gray; text-align: center;">글제목</th>
 						<th style="background-color: gray; text-align: center;">작성자</th>
 						<th style="background-color: gray; text-align: center;">작성시간</th>
@@ -68,14 +57,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="f" items="${frees }">
+					<c:forEach var="mb" items="${mbs }">
 						<tr>
-							<td>${f.f_no }</td>
-							<td><a href="FreeDetailC?no=${f.f_no }">${f.f_title }</a></td>
-							<td>${f.f_id }</td>
-							<td><fmt:formatDate value="${f.f_date }" type="both"
+							<td>${mb.mb_no }</td>
+							<td>${mb.mb_cat }</td>
+							<td><a href="FreeDetailC?no=${mb.mb_no }">${mb.mb_title }</a></td>
+							<td>${mb.mb_id }</td>
+							<td><fmt:formatDate value="${mb.mb_date }" type="both"
 									dateStyle="short" timeStyle="short" /></td>
-							<td>${f.f_count }</td>
+							<td>${mb.mb_count }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -104,5 +94,8 @@
 				</c:choose></span>
 		</div>
 	</div>
+
+
+
 </body>
 </html>
