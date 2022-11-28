@@ -6,12 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.6.1.js"
-	integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
-	crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/pagination.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
 <link rel="stylesheet" href="css/jw/info.css">
 <link rel="stylesheet" href="css/jw/login.css">
 <script type="text/javascript">
@@ -85,8 +79,8 @@
 		</a>
 	</nav>
 	<div id="newsContainer"></div>
+	<div id="searchResultContainer"></div>
 	<div class="page">
-		<div id="pagination"></div>
 	</div>
 </body>
 </html>
