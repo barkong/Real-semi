@@ -1,22 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/tk/review.css" />
-<script type="text/javascript" src="js/tk/review.js"></script>
+<link rel="stylesheet" href="css/jw/info.css">
+<link rel="stylesheet" href="css/jw/login.css">
+<link rel="stylesheet" href="css/tk/bbs.css" />
+<script type="text/javascript" src="js/tk/bbs.js"></script>
+<script type="text/javascript" src="js/validCheck.js"></script>
 </head>
 <body>
+	<nav class="navbar">
+		<div class="navbar__logo">
+			<i class=""></i> <a href=""></a>
+		</div>
+
+		<ul class="navbar__menu">
+			<li onclick="location.href='HC'">홈으로</li>
+			<li
+				onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">마이페이지</li>
+			<li onclick="location.href='FreeC'">자유게시판</li>
+			<li onclick="location.href='ReviewC'">리뷰</li>
+			<li onclick="location.href='MyBbsC'">나의글 목록</li>
+		</ul>
+		<br> <br> <br>
+		<ul class="navbar__icons">
+			<li onclick="location.href='UpdateAccountC'">정보수정</li>
+			<li onclick="location.href='DeleteAccountC'">회원탈퇴</li>
+		</ul>
+		<a href="#" class="navbar__toggleBtn"> <i class=""></i>
+		</a>
+	</nav>
+
+
+
 	<h1>리뷰수정하기</h1>
 	<div class="container" align="center">
 		<div class="row">
-			<form action="ReviewUpdateC" method="post"
-				enctype="multipart/form-data">
+			<form action="ReviewUpdateC" method="post" name="bbsForm"
+				enctype="multipart/form-data" onsubmit="return bbsCall()">
 				<table class="table table-striped"
-					style="text-align: center; border: 1px solid #dddddd">
+					style="text-align: center; border: 1px solid #dddddd" align="center">
 					<thead>
 						<tr>
 							<th>글제목</th>
@@ -51,9 +79,24 @@
 								name="img" value="${review.r_img }" type="hidden"></td>
 						</tr>
 						<tr>
-							<td colspan="3"><a href="ReviewC">목록으로</a>
-								<button name="no" value="${param.no}">수정</button>
-								<button onclick="reviewDel(${review.r_no})">삭제</button></td>
+							<td colspan="3">
+								<button>등록(수정완료)</button>
+							</td>
+							<td colspan="3">
+								<button type="button" onclick="reviewDel(${review.r_no})">삭제하기</button>
+							</td>
+						</tr>
+
+
+						<tr>
+							<td colspan="3"><a href="ReviewC">목록으로</a> <c:choose>
+									<c:when test="${empty sessionScope.accountInfo.a_id}">
+										<a href="ReviewRegC" onclick="alert('로그인하세요')">새글쓰기</a>
+									</c:when>
+									<c:otherwise>
+										<a href="ReviewRegC">새글쓰기</a>
+									</c:otherwise>
+								</c:choose>
 						</tr>
 					</tbody>
 				</table>
