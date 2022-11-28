@@ -85,5 +85,8 @@ body {
 	border: 1px solid white;
 	position:absolute;
 	margin-left: 33em;
+}
+.page {
+	margin-left: 680px;
 
 }
