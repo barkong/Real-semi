@@ -23,6 +23,9 @@
 .sign_up:active{
     background: green;
 }
+.sign_up:hover{
+    background: green;
+}
 div{
     text-align: center;
 }
