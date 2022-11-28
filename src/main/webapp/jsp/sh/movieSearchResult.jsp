@@ -14,10 +14,11 @@
 <script type="text/javascript" src="js/pagination.js"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$(function() {
 		$.ajax({
 			url : "MovieSearchC2",
+			data : 
 			dataType : "json",
 			success : function(data) {
 				successCall(data);
@@ -26,7 +27,7 @@
 	});
 
 	function successCall(data) {
-
+	console.log(data);
 
 		let container = $('#pagination');
 		container.pagination({
@@ -56,7 +57,7 @@
 				});
 	}
 	
-</script>
+</script> -->
 </head>
 <body>
 

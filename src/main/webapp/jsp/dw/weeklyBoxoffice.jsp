@@ -6,7 +6,6 @@ pageEncoding="UTF-8"%>
   <head>
     <meta charset="UTF-8" />
     <title>Insert title here</title>
-    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="css/boxoffice.css" />
     <script>
     

@@ -8,7 +8,7 @@ const slideWidth = 700; //한개의 슬라이드 넓이
 const slideMargin = 100; //슬라이드간의 margin 값
 
 //전체 슬라이드 컨테이너 넓이 설정
-slides.style.width = (slideWidth + slideMargin) * slideCount + 'px';
+slides.style.width = (slideWidth + slideMargin) * slideCount + 'vw';
 
 function moveSlide(num) {
   slides.style.left = -num * 400 + 'px';
