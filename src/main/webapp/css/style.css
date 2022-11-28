@@ -13,7 +13,7 @@ li{
 /* 보여줄 구간의 높이와 넓이 설정 */
 #slideShow{
 
-  width: 1500px;
+  width: 95vw;
   height: 300px;
   position: absolute;
   top:400px;
