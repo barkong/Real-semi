@@ -16,7 +16,9 @@ public class IdCheckC extends HttpServlet {
 		Model.loginCheck(request);
 		Model.idCheck(request);
 		
-		request.getRequestDispatcher("jsp/jw/idCheck.jsp").forward(request, response);
+		request.setAttribute("contentPage", "jsp/jw/join.jsp");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+		
 	}
 
 

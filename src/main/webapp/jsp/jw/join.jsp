@@ -14,9 +14,9 @@
 		<fieldset>
 			<legend>회원가입</legend>
 			<div><b class="name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			ID : &nbsp;&nbsp;&nbsp;</b><input class="text" name="id" maxlength="12" placeholder="중복검사를 해주세요">
-			<button type="button" class="" onclick="idChk()">중복검사</button><br>
-			${t }
+			ID : &nbsp;&nbsp;&nbsp;</b><input class="text" name="id" maxlength="12" placeholder="영문 및 숫자만 4-12자리까지 입력해주세요" value=${y }>
+			<button type="button" onclick="idChk()">중복검사</button>
+			<br> ${t } <br>
 			</div>
 			<div><b class="name">&nbsp;&nbsp;PW : &nbsp;&nbsp;&nbsp;</b><input class="text" name="pw" type="password" maxlength="16" placeholder="영문,대문자 및 숫자를 포함해서 입력해주세요"></div>
 			<div><b class="name">PW확인 : </b><input class="text" name="pw2" type="password" placeholder="비밀번호를 확인해주세요" autocomplete="off" onkeyup="chkPW()"></div>

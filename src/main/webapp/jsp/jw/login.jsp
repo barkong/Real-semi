@@ -5,13 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="js/jw/check.js"></script>
+<link rel="stylesheet" href="css/jw/login.css" />
 </head>
 <body>
 
 		<form action="LoginPageC">
 		${r}
-		<button>로그인</button>
+		<button class="sign_in">로그인</button>
 		</form>
 </body>
 </html>

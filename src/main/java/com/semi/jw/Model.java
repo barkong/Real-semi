@@ -225,6 +225,8 @@ public class Model {
 			con = DBManager.connect();
 			String sql = "select a_id from semi_account where a_id=?";
 			pstmt = con.prepareStatement(sql);
+			String id = request.getParameter("id");
+			System.out.println(id);
 			pstmt.setString(1, request.getParameter("id"));
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -239,6 +241,7 @@ public class Model {
 			}
 			
 			request.setAttribute("y", request.getParameter("id"));
+			System.out.println(request.getParameter("id"));
 		} catch (Exception e) {
 			request.setAttribute("r", "서버 오류");
 			e.printStackTrace();

@@ -26,3 +26,17 @@
 div{
     text-align: center;
 }
+
+.sign_in{
+	width: 100px;
+    height: 30px;
+    background: skyblue;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.sign_in:hover{
+	background-color: #3c44ea;
+	border-radius: 10px;
+}
