@@ -241,7 +241,6 @@ public class Model {
 			}
 			
 			request.setAttribute("y", request.getParameter("id"));
-			System.out.println(request.getParameter("id"));
 		} catch (Exception e) {
 			request.setAttribute("r", "서버 오류");
 			e.printStackTrace();

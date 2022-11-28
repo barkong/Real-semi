@@ -41,43 +41,44 @@
 
 	<h1 align="center">회원정보</h1>
 	<hr>
-	<div>
+	<div class="container2">
+	<div class="input-container">
 		<b class="name">ID</b> <b class="text">${sessionScope.accountInfo.a_id }</b><br>
 		<br>
 	</div>
-	<div>
+	<div class="input-container">
 		<b class="name">PW</b> <b class="text">${sessionScope.accountInfo.a_password }</b><br>
 		<br>
 	</div>
-	<div>
+	<div class="input-container">
 		<b class="name">이름</b> <b class="text">${sessionScope.accountInfo.a_name }</b><br>
 		<br>
 	</div>
-	<div>
+	<div class="input-container">
 		<b class="name">생일</b> <b class="text">${sessionScope.accountInfo.a_birth }</b><br>
 		<br>
 	</div>
-	<div>
+	<div class="input-container">
 		<b class="name">성별</b> <b class="text">${sessionScope.accountInfo.a_gender }</b><br>
 		<br>
 	</div>
-	<div>
+	<div class="input-container">
 		<b class="name">email</b> <b class="text">${sessionScope.accountInfo.a_email }</b><br>
 		<br>
 	</div>
-	<div>
+	<div class="input-container">
 		<b class="name">전화번호</b> <b class="text">${sessionScope.accountInfo.a_phone }</b><br>
 		<br>
 	</div>
-	<div>
+	<div class="input-container">
 		<b class="name">좋아하는 장르</b> <b class="text">${sessionScope.accountInfo.a_interest }</b><br>
 		<br>
 	</div>
-	<div>
+	<div class="button-container">
 		<button class="sign_up" onclick="location.href='UpdateAccountC'">수정</button>
 		<button class="sign_up" onclick="deleteID()">탈퇴</button>
 	</div>
-
+</div>
 
 </body>
 </html>

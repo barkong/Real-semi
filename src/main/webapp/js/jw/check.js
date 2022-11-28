@@ -116,5 +116,32 @@ function idChk() {
             location.href ='IdCheckC?id='+idvar;
         }
 
-
+function UpdateCheck(){
+	
+	let pw = document.myForm.pw;
+	let phone = document.myForm.phone;
+	let email = document.myForm.email;
+	
+	
+	if(isEmpty(pw)){
+		alert('PW를 입력해주세요');
+		pw.focus();
+		return false;
+	}
+	if(lessThan(pw, 6) || notContains(pw, "1234567890") || notContains(pw, "QWERTYUIOPASDFGHJKLZXCVBNM")){
+		alert('PW를 양식에 맞게 변경해주세요');
+		pw.focus();
+		return false;
+	}
+	if(isEmpty(phone)){
+		alert('전화번호를 입력해주세요');
+		phone.focus();
+		return false;
+	}
+	if(isEmpty(email)){
+		alert('email을 입력해주세요');
+		email.focus();
+		return false;
+	}
+}
 
