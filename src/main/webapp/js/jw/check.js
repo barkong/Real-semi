@@ -95,7 +95,7 @@ function deleteID(){
 
 function idChk() {
             var url ='IdCheckPageC';
-            window.open(url, '사용할 아이디를 입력하세요.',  'width=400, height=300');
+            window.open(url, '사용할 아이디를 입력하세요.',  'width=500, height=300');
         }
 
 
