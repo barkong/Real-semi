@@ -9,14 +9,23 @@ import java.util.ArrayList;
 import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.tomcat.util.buf.StringUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class NaverMovie {
+	private static ArrayList<Movie> movies;
+	private static final NaverMovie NM = new NaverMovie();
 
-	public static void getMovie(HttpServletRequest request) {
+	public NaverMovie() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static NaverMovie getNM() {
+		return NM;
+	}
+
+	public JSONObject getMovie(HttpServletRequest request) {
 		HttpsURLConnection huc = null;
 
 		try {
@@ -31,7 +40,7 @@ public class NaverMovie {
 
 			String url = "https://openapi.naver.com/v1/search/movie.json";
 			url += "?query=" + str;
-			url += "&display=10";
+			url += "&display=30";
 			url += "&start=1";
 
 			System.out.println(url);
@@ -52,46 +61,79 @@ public class NaverMovie {
 
 			JSONArray items = (JSONArray) naverData.get("items");
 
-			ArrayList<Movie> movies = new ArrayList<>();
-
-			for (int i = 0; i < items.size(); i++) {
-
-				JSONObject movie = (JSONObject) items.get(i);
-
-				String title = (String) movie.get("title");
-				title = title.replace("<b>", "");
-				title = title.replace("</b>", "");
-
-				String actor = (String) movie.get("actor");
-				actor = actor.replace("|", ",");
-
-				String director = (String) movie.get("director");
-				
-				director = director.replace("|", "");
-				
-				String link = movie.get("link") + "";
-				
-				String img = (String) movie.get("image");
-				
-				String rating = (String) movie.get("userRating");
-				
-				String pubDate = (String) movie.get("pubDate");
-					
-				String subTitle = (String) movie.get("subtitle");
-				
-
-				Movie m = new Movie(title, director, actor, link, img, rating, subTitle, pubDate);
-
-				movies.add(m);
-
-			}
-
-			request.setAttribute("movies", movies);
+			/*
+			 * ArrayList<Movie> movies = new ArrayList<>();
+			 * 
+			 * for (int i = 0; i < items.size(); i++) {
+			 * 
+			 * JSONObject movie = (JSONObject) items.get(i);
+			 * 
+			 * String title = (String) movie.get("title"); title = title.replace("<b>", "");
+			 * title = title.replace("</b>", "");
+			 * 
+			 * String actor = (String) movie.get("actor"); actor = actor.replace("|", ",");
+			 * 
+			 * String director = (String) movie.get("director");
+			 * 
+			 * director = director.replace("|", "");
+			 * 
+			 * String link = movie.get("link") + "";
+			 * 
+			 * String img = (String) movie.get("image");
+			 * 
+			 * String rating = (String) movie.get("userRating");
+			 * 
+			 * String pubDate = (String) movie.get("pubDate");
+			 * 
+			 * String subTitle = (String) movie.get("subtitle");
+			 * 
+			 * 
+			 * Movie m = new Movie(title, director, actor, link, img, rating, subTitle,
+			 * pubDate);
+			 * 
+			 * movies.add(m);
+			 * 
+			 * }
+			 * 
+			 * request.setAttribute("movies", movies);
+			 */
+			JSONObject job = new JSONObject();
+			job.put("items", items);
+			return job;
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return null;
 
+	}
+
+	public void paging(int page, HttpServletRequest req) {
+		req.setAttribute("curPageNo", page);
+
+		ArrayList<Movie> movies = (ArrayList<Movie>) req.getAttribute("movies");
+
+		// 전체 페이지수 계산
+		int cnt = 5;
+		int total = movies.size();
+		System.out.println(total);
+		// 총 페이지 수
+		int pageCount = (int) Math.ceil(((double) total / cnt));
+		req.setAttribute("pageCount", pageCount); // 페이지넘기기 화살표를 위해 넘겨주는 것
+
+		int start = total - (cnt * (page - 1));
+
+		int end = (page == pageCount) ? -1 : start - (cnt + 1);
+
+		ArrayList<Movie> items = new ArrayList<Movie>();
+
+		for (int i = start - 1; i > end; i--) {
+
+			items.add(movies.get(i));
+		}
+		req.removeAttribute("movies");
+
+		req.setAttribute("moives", items);
 	}
 
 }

@@ -30,9 +30,9 @@ pageEncoding="UTF-8"%>
 			<div class="mainMenu">
 				<a href="WeeklyBoxofficeC">박스오피스</a>
 			</div>
-			<div class="mainMenu">
+			<!-- <div class="mainMenu">
 				<a href="MovieDetailC">영화정보</a>
-			</div>
+			</div> -->
 			<div class="mainMenu">
 				<a href="ReviewC">영화 리뷰</a>
 			</div>

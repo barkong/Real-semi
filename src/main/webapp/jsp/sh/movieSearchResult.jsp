@@ -8,34 +8,60 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.1.js"
+	integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+	crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/pagination.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
+<script type="text/javascript">
+	$(function() {
+		$.ajax({
+			url : "MovieSearchC2",
+			dataType : "json",
+			success : function(data) {
+				successCall(data);
+			}
+		});
+	});
+
+	function successCall(data) {
+
+
+		let container = $('#pagination');
+		container.pagination({
+					dataSource : data.items,
+					pageSize : 5,
+					callback : function(data, pagination) {
+					let content = "";
+						$.each(data,function(index, i) {
+				console.log(content);
+				content += "<form action='MovieSearchC'><div id='movie'><div class='poster'>"
+				+ "<a href='"+ i.link + "'>+"+
+				"<img src='"+ i.img + "'/></a></div>" 
+				+"<div class='content'><span class='title'>"
+				+i.title
+				+"</span><br><span class='subTitle> (" 
+				+i.subTitle
+				+")</span>'"
+				+ "<div class='etc' 개봉년도 >"
+				+i.pubDate + "<br> 배우 -"
+				+i.actor +"<br> 감독 -" 
+				+i.director +"<br> 평점" 
+				+i.rating +"</div></div></div></form>"
+						});
+
+			$("#searchResultContainer").html(content);
+					}
+				});
+	}
+	
+</script>
 </head>
 <body>
-	<form action="MovieSearchC">
 
-		<div id="searchResultContainer">
-			<c:forEach var="i" items="${ movies}">
-
-				<div id="movie">
-
-					<div class="poster">
-						<a href="<c:url value='${ i.link }'/>"><img src="${i.img }"></a>
-					</div>
-
-					<div class="content">
-						<span class="title">${ i.title }</span><br> <span
-							class="subTitle">(${ i.subTitle })</span>
-
-						<div class="etc">
-							개봉년도 ${ i.pubDate }년<br> 배우 - ${ i.actor }<br>감독 - ${ i.director }<br>
-							${i.rating }점
-						</div>
-					</div>
-
-				</div>
-			</c:forEach>
-		</div>
-	</form>
-
+		<div id="searchResultContainer"></div>
+		<div id="pagination"></div>
 
 </body>
 </html>
