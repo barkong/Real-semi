@@ -96,7 +96,6 @@ public class NaverNews {
 	}
 
 	public void paging(int page, HttpServletRequest req) {
-		System.out.println("ddddd");
 		req.setAttribute("curPageNo", page);
 
 		ArrayList<News> news = (ArrayList<News>) req.getAttribute("news");
