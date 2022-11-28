@@ -1,8 +1,7 @@
 @charset "UTF-8";
 
 #newsContainer {
-	margin: 30px;
-	
+	margin: 0 150px;
 }
 
 .newsTitle {
@@ -11,17 +10,15 @@
 	font-weight: 500;
 	font-size: 15pt;
 	padding-left: 20px;
-	
-	
 }
 
 .newsContent {
 	padding-left: 20px;
-	font-size:11pt;
-	color:#a2a2a2;
+	font-size: 11pt;
+	color: #a2a2a2;
 }
 
-#title {
+.title {
 	padding-bottom: 5px;
 	padding-top: 5px;
 	display: flex;
@@ -37,18 +34,19 @@
 	padding: 5px;
 	display: none;
 }
-#title:hover .hiddenMsg {
+
+.title:hover .hiddenMsg {
 	display: block;
 }
 
-
-.time{
-	font-size:10pt;
-	
+.time {
+	font-size: 10pt;
 }
 
-#news{
-	margin-top:20px;
-	padding-bottom:5px;
-	/* border-bottom:1px solid #808080; */
+.news {
+	margin-top: 20px;
+	padding-bottom: 5px;
+}
+.page {
+	margin-left: 680px;
 }
