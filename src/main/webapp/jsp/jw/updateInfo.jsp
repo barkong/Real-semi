@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/jw/info.css">
 <link rel="stylesheet" href="css/jw/login.css">
+<script type="text/javascript" src="js/jw/check.js"></script>
+<script type="text/javascript" src="js/validCheck.js"></script>
 </head>
 <body>
 <nav class="navbar">
@@ -17,14 +19,14 @@
       </div>
 
       <ul class="navbar__menu">
-        <li onclick="location.href='HC'">홈으로</li>
+        <li onclick="location.href='HC'">홈으로</li><br>
         <li onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">마이페이지</li>
         <li onclick="location.href='FreeC'">자유게시판</li>
         <li onclick="location.href='ReviewC'">리뷰게시판</li>
       </ul><br><br><br>
       <ul class="navbar__icons">
         <li onclick="location.href='UpdateAccountC?'">회원정보수정</li>
-        <li onclick="location.href='DeleteAccountC?'">회원탈퇴</li>
+        <li onclick="deleteID()">회원탈퇴</li>
       </ul>
       <a href="#" class="navbar__toggleBtn">
         <i class=""></i>
@@ -65,16 +67,20 @@
 		<div>
 		<b class="name">좋아하는 장르</b>
 		<b class="text">${sessionScope.accountInfo.a_interest }</b><br>
-		All<input type="checkbox" name="chk" value='all' onclick='selectAll(this)'><br>
+		All<input type="checkbox" name="chk" value='' onclick='selectAll(this)'><br>
 			액션<input type="checkbox" name="chk" value="액션"> 
-			공포<input type="checkbox" name="chk" value="공포"> 
 			로맨스<input type="checkbox" name="chk" value="로맨스"> 
 			판타지<input type="checkbox" name="chk" value="판타지"> 
+			SF<input type="checkbox" name="chk" value="SF"><br>
+			애니메이션<input type="checkbox" name="chk" value="애니메이션"> 
+			공포<input type="checkbox" name="chk" value="공포"> 
+			미스터리<input type="checkbox" name="chk" value="미스터리"> 
+			호러<input type="checkbox" name="chk" value="호러"> 
 			<br>
 		</div>
 			<div><button class="sign_up">수정</button>
 				<button type="button" class="sign_up" onclick="history.back()">돌아가기</button>
-				<button type="button" class="sign_up" onclick="location.href='DeleteAccountC'">탈퇴</button></div>
+				<button type="button" class="sign_up" onclick="deleteID()">탈퇴</button></div>
 				</form>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.semi.movie;
+package com.semi.news;
 
 public class News {
 	private String title;
