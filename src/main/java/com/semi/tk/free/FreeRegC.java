@@ -18,7 +18,7 @@ public class FreeRegC extends HttpServlet {
 		if (Model.loginCheck(request)) {
 			request.setAttribute("contentPage", "jsp/tk/free/free_reg.jsp");
 		} else {
-			request.setAttribute("contentPage", "로그인하세요");
+			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
@@ -32,7 +32,7 @@ public class FreeRegC extends HttpServlet {
 			FreeDAO.paging(1, request);
 			request.setAttribute("contentPage", "jsp/tk/free/free.jsp");
 		} else {
-			request.setAttribute("contentPage", "로그인하세요");
+			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

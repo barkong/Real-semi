@@ -1,4 +1,4 @@
-package com.semi.tk.review;
+package com.semi.mybbs;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -9,25 +9,25 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.semi.jw.Model;
 
-@WebServlet("/ReviewDetailC")
-public class ReviewDetailC extends HttpServlet {
+@WebServlet("/MyBbsC")
+public class MyBbsC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		if (Model.loginCheck(request)) {
-			// 클릭한 게시글 1개 가져오기
-			ReviewDAO.count(request);
-			ReviewDAO.getReview(request);
-			request.setAttribute("contentPage", "jsp/tk/review/review_detail.jsp");
+			MyBbsDAO.getAllBbsFree(request);
+//			MyBbsDAO.getAllBbsReview(request);
+			MyBbsDAO.paging(1, request);
+			request.setAttribute("contentPage", "jsp/tk/mybbs/myBbs.jsp");
 		} else {
 			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}
+
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 	}
 
 }

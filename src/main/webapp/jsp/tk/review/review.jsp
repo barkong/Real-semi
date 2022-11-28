@@ -7,32 +7,59 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/tk/review.css" />
-
-<script type="text/javascript" src="js/tk/review.js"></script>
+<link rel="stylesheet" href="css/jw/info.css">
+<link rel="stylesheet" href="css/jw/login.css">
+<link rel="stylesheet" href="css/tk/bbs.css" />
+<script type="text/javascript" src="js/tk/bbs.js"></script>
+<script type="text/javascript" src="js/validCheck.js"></script>
 </head>
 <body>
-	<h1>Review BBS</h1>
+	<nav class="navbar">
+		<div class="navbar__logo">
+			<i class=""></i> <a href=""></a>
+		</div>
+		<ul class="navbar__menu">
+			<li onclick="location.href='HC'">홈으로</li>
+			<li onclick="location.href='WeeklyBoxofficeC'">박스오피스</li>
+			<li onclick="location.href='MovieDetailC'">영화정보</li>
+			<li onclick="location.href='MovieNewsC'">영화뉴스</li>
+			<li onclick="location.href='ReviewC'">영화리뷰</li>
+			<li onclick="location.href='FreeC'">자유게시판</li>
+		</ul>
+		<br> <br>
+		<c:if test="${sessionScope.accountInfo.a_id ne null}">
+			<ul class="navbar__icons">
+				<li
+					onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">마이페이지</li>
+				<li onclick="location.href='myBbsC'">내가쓴글목록</li>
+				<li onclick="location.href='UpdateAccountC'">회원정보수정</li>
+				<li onclick="deleteID()">회원탈퇴</li>
+			</ul>
+		</c:if>
+		<a href="#" class="navbar__toggleBtn"> <i class=""></i>
+		</a>
+	</nav>
 
-	<table align="center">
-		<tr>
-			<td><a href="FreeC">자유게시판으로</a></td>
-		</tr>
-	</table>
+
+
+	<h1>Review BBS</h1>
 
 	<c:choose>
 		<c:when test="${empty sessionScope.accountInfo.a_id}">
-			<h3>로그인해야 읽고 글쓰고 수정 가능</h3>
+			<%-- <c:when test="${sessionScope.accountInfo.a_id eq null}"> --%>
+			<a href="ReviewRegC" onclick="alert('로그인하세요')">새글쓰기 (when)</a>
 		</c:when>
 		<c:otherwise>
-			<a href="ReviewRegC">글쓰기</a>
+			<a href="ReviewRegC"> 새글쓰기</a>
 		</c:otherwise>
 	</c:choose>
+	<!-- <a href="#" onclick="pageCheck();">새글쓰기2</a> -->
+
 
 	<div class="container" align="center">
 		<div class="row">
-			<table class="review table"
-				style="text-align: center; border: 1px solid #dddddd">
+			<table class="bbsTable"
+				style="text-align: center; border: 1px solid #dddddd" align="center">
 				<thead>
 					<tr>
 						<th style="background-color: gray; text-align: center;">NO</th>
@@ -48,7 +75,17 @@
 						<tr>
 							<td>${r.r_no }</td>
 							<td>${r.r_movie }</td>
-							<td><a href="ReviewDetailC?no=${r.r_no }">${r.r_title }</a></td>
+
+							<c:choose>
+								<c:when test="${empty sessionScope.accountInfo.a_id}">
+									<td><a href="ReviewDetailC?no=${r.r_no }"
+										onclick="alert('로그인하세요');">${r.r_title }</a></td>
+								</c:when>
+								<c:otherwise>
+									<td><a href="ReviewDetailC?no=${r.r_no }">${r.r_title }</a></td>
+								</c:otherwise>
+							</c:choose>
+
 							<td>${r.r_id }</td>
 							<td><fmt:formatDate value="${r.r_date }" type="both"
 									dateStyle="short" timeStyle="short" /></td>
@@ -58,6 +95,8 @@
 				</tbody>
 			</table>
 		</div>
+
+		<!--  페이징 -->
 		<div>
 			<span align="center"><c:choose>
 					<c:when test="${curPageNo == 1}">
