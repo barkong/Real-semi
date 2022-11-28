@@ -1,22 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/tk/free.css" />
-<script type="text/javascript" src="js/tk/free.js"></script>
+<link rel="stylesheet" href="css/jw/info.css">
+<link rel="stylesheet" href="css/jw/login.css">
+<link rel="stylesheet" href="css/tk/bbs.css" />
+<script type="text/javascript" src="js/tk/bbs.js"></script>
+<script type="text/javascript" src="js/validCheck.js"></script>
 </head>
 <body>
+	<nav class="navbar">
+		<div class="navbar__logo">
+			<i class=""></i> <a href=""></a>
+		</div>
+		<ul class="navbar__menu">
+			<li onclick="location.href='HC'">홈으로</li>
+			<li onclick="location.href='WeeklyBoxofficeC'">박스오피스</li>
+			<li onclick="location.href='MovieDetailC'">영화정보</li>
+			<li onclick="location.href='MovieNewsC'">영화뉴스</li>
+			<li onclick="location.href='ReviewC'">영화리뷰</li>
+			<li onclick="location.href='FreeC'">자유게시판</li>
+		</ul>
+		<br> <br>
+		<c:if test="${sessionScope.accountInfo.a_id ne null}">
+			<ul class="navbar__icons">
+				<li
+					onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">마이페이지</li>
+				<li onclick="location.href='myBbsC'">내가쓴글목록</li>
+				<li onclick="location.href='UpdateAccountC'">회원정보수정</li>
+				<li onclick="deleteID()">회원탈퇴</li>
+			</ul>
+		</c:if>
+		<a href="#" class="navbar__toggleBtn"> <i class=""></i>
+		</a>
+	</nav>
+
+
+
 	<h1>자유글수정하기</h1>
 	<div class="container" align="center">
 		<div class="row">
-			<form action="FreeUpdateC" method="post"
-				enctype="multipart/form-data">
+			<form action="FreeUpdateC" method="post" name="bbsForm"
+				enctype="multipart/form-data" onsubmit="return bbsCall()">
 				<table class="table table-striped"
-					style="text-align: center; border: 1px solid #dddddd">
+					style="text-align: center; border: 1px solid #dddddd" align="center">
 					<thead>
 						<tr>
 							<th>글제목</th>
@@ -46,9 +78,24 @@
 								name="img" value="${free.f_img }" type="hidden"></td>
 						</tr>
 						<tr>
-							<td colspan="3"><a href="FreeC">목록으로</a>
-								<button name="no" value="${param.no}">수정</button>
-								<button onclick="freeDel(${free.f_no})">삭제</button></td>
+							<td colspan="3">
+								<button>등록(수정완료)</button>
+							</td>
+							<td colspan="3">
+								<button type="button" onclick="freeDel(${free.f_no})">삭제하기</button>
+							</td>
+						</tr>
+
+
+						<tr>
+							<td colspan="3"><a href="FreeC">목록으로</a> <c:choose>
+									<c:when test="${empty sessionScope.accountInfo.a_id}">
+										<a href="FreeRegC" onclick="alert('로그인하세요')">새글쓰기</a>
+									</c:when>
+									<c:otherwise>
+										<a href="FreeRegC">새글쓰기</a>
+									</c:otherwise>
+								</c:choose>
 						</tr>
 					</tbody>
 				</table>

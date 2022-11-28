@@ -40,10 +40,11 @@ body {
 	text-decoration: none;
 }
 
-.mainMenu>a:hover {
-	color: whitesmoke;
-}
 
+.mainMenu > a:hover {
+  color:white;
+
+}
 .btn1 {
 	margin-right: 10%;
 	margin-left: auto;
@@ -56,21 +57,23 @@ body {
 	height: 700px;
 }
 
-#searchInput {
-	background: url("../icon/icon.png") no-repeat right;
-	background-size: 30px;
-	color: white;
-	background-color: #101111;
-	width: 500px; 
-	height : 40px;
-	font-size: 12pt;
-	border: none;
-	border-bottom: 1px solid #ececec;
-	height: 40px;
+#searchInput{
+	 background:url("../icon/icon.png") no-repeat right ; 
+	 background-size: 30px;
+	color:white;
+	background-color:#101111;
+	width:35vw;
+	height:4.5vh;
+	font-size:12pt;
+	border:none;
+	border-bottom:1px solid #ececec;
 }
 
-#mainIcon {
-	width: 50px;
+
+#mainIcon{
+	
+	width:3vw;
+
 }
 
 #mainIconDiv {
@@ -78,7 +81,9 @@ body {
 	left: 30px;
 }
 
-#searchDiv {
-	position: absolute;
-	left: 470px;
+#searchDiv{
+	border: 1px solid white;
+	position:absolute;
+	margin-left: 33em;
+
 }
