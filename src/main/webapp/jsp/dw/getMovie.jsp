@@ -44,21 +44,24 @@ JSONArray items = (JSONArray) naverData.get("items");
 JSONObject item = (JSONObject) items.get(0);
 String img = (String) item.get("image");
 String director = (String) item.get("director");
+director = director.replace("|", "");
 String actor = (String) item.get("actor");
+actor = actor.replace("|", ",");
 String link = (String) item.get("link") + "";
-System.out.println(img);
-System.out.println(director);
-System.out.println(actor);
+String pubDate = (String) item.get("pubDate");
+String subtitle = (String) item.get("subtitle");
 
 JSONObject joo = new JSONObject();
 joo.put("img", img);
 joo.put("link", link);
 joo.put("director", director);
 joo.put("actor", actor);
+joo.put("pubDate", pubDate);
+joo.put("subtitle", subtitle);
 
 response.setContentType("application/json");
+response.setCharacterEncoding("utf-8");
 out.print(joo.toJSONString());
-
 
 // ArrayList<Movie> movies = new ArrayList<>();
 

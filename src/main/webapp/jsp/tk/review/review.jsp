@@ -91,7 +91,7 @@
 				</tbody>
 			</table>
 		</div>
-
+</div>
 		<!--  페이징 -->
 		<div>
 			<span><c:choose>

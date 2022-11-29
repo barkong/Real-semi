@@ -40,7 +40,7 @@ public class NaverMovie {
 
 			String url = "https://openapi.naver.com/v1/search/movie.json";
 			url += "?query=" + str;
-			url += "&display=30";
+			url += "&display=100";
 			url += "&start=1";
 
 			System.out.println(url);
@@ -53,11 +53,9 @@ public class NaverMovie {
 
 			InputStream is = huc.getInputStream();
 			InputStreamReader isr = new InputStreamReader(is, "utf-8");
-			System.out.println(is);
 			JSONParser jp = new JSONParser();
 
 			JSONObject naverData = (JSONObject) jp.parse(isr);
-			System.out.println(naverData);
 
 			JSONArray items = (JSONArray) naverData.get("items");
 
@@ -68,7 +66,8 @@ public class NaverMovie {
 			 * 
 			 * JSONObject movie = (JSONObject) items.get(i);
 			 * 
-			 * String title = (String) movie.get("title"); title = title.replace("<b>", "");
+			 * String title = (String) movie.get("title"); 
+			 * title = title.replace("<b>", "");
 			 * title = title.replace("</b>", "");
 			 * 
 			 * String actor = (String) movie.get("actor"); actor = actor.replace("|", ",");
@@ -116,7 +115,6 @@ public class NaverMovie {
 		// 전체 페이지수 계산
 		int cnt = 5;
 		int total = movies.size();
-		System.out.println(total);
 		// 총 페이지 수
 		int pageCount = (int) Math.ceil(((double) total / cnt));
 		req.setAttribute("pageCount", pageCount); // 페이지넘기기 화살표를 위해 넘겨주는 것

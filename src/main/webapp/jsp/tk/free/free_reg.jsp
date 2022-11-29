@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/jw/info.css">
 <link rel="stylesheet" href="css/jw/login.css">
+<link rel="stylesheet" href="css/jw/bbs.css">
 <script type="text/javascript" src="js/tk/bbs.js"></script>
 <script type="text/javascript" src="js/validCheck.js"></script>
 </head>
@@ -41,42 +42,42 @@
 
 
 
-	<h1>자유글등록하기</h1>
-	<div class="container">
-		<div class="row">
+	<h1 class="bbsh1">자유글등록하기</h1>
+	<div class="bbsdiv">
+		<div class="bbsdiv">
 			<form action="FreeRegC" method="post" name="bbsForm"
 				enctype="multipart/form-data" onsubmit="return bbsCall()">
-				<table style="text-align: center; border: 1px solid #dddddd">
-					<thead>
-						<tr>
-							<th>글제목</th>
-							<th colspan="2" style="text-align: center;"><input
+				<table class="bbsTable" style="text-align: center; border: 1px solid #dddddd">
+					<thead class="bbsthead">
+						<tr class="bbstr">
+							<th class="bbstd" style="background-color: #73685d">글제목</th>
+							<th class="bbsth" colspan="2" style="text-align: left; padding-left: 240px"><input
 								type="text" name="title" placeholder="글제목" maxlength="50" /></th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td colspan="3"><textarea placeholder="글내용" maxlength="2084"
+					<tbody class="bbstbody">
+						<tr class="bbstr">
+							<td class="bbstd" colspan="3"><textarea placeholder="글내용" maxlength="2084"
 									name="detail" rows="20" cols="60" style="resize: none"></textarea></td>
 						</tr>
-						<tr>
-							<td>이미지</td>
-							<td><input type="file" name="img"></td>
+						<tr class="bbstr">
+							<td class="bbstd">이미지</td>
+							<td class="bbstd"><input type="file" name="img"></td>
 						</tr>
-						<tr>
-							<td colspan="3">
-								<button>등록</button>
+						<tr class="bbstr">
+							<td class="bbstd" colspan="3">
+								<button class="bbsbt">등록</button>
 							</td>
 						</tr>
 
 
-						<tr>
-							<td colspan="3"><a href="FreeC">게시판 목록으로</a> <c:choose>
+						<tr class="bbstr">
+							<td class="bbstd" colspan="3"><a class="bbsa" href="FreeC">게시판 목록으로</a> <c:choose>
 									<c:when test="${sessionScope.accountInfo eq null}">
-										<a href="FreeRegC" onclick="alert('로그인하세요')">새글쓰기</a>
+										<a class="bbsa" href="FreeRegC" onclick="alert('로그인하세요')">새글쓰기</a>
 									</c:when>
 									<c:otherwise>
-										<a href="FreeRegC">새글쓰기</a>
+										<a class="bbsa" href="FreeRegC">새글쓰기</a>
 									</c:otherwise>
 								</c:choose>
 						</tr>
