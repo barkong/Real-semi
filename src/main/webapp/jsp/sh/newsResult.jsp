@@ -36,7 +36,8 @@
 										function(index, i) {
 											console.log(content);
 											content += "<div class='news'><span class='time'>"
-													+ (i.pubDate).substring(0,16)
+													+ (i.pubDate).substring(0,
+															16)
 													+ "</span><div class='title'>"
 													+ "<a href='"+ i.link + "'><span class='newsTitle'>"
 													+ i.title
@@ -80,7 +81,6 @@
 	</nav>
 	<div id="newsContainer"></div>
 	<div id="searchResultContainer"></div>
-	<div class="page">
-	</div>
+	<div class="page"></div>
 </body>
 </html>

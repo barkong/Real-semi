@@ -11,16 +11,20 @@ import com.semi.news.NaverNews;
 
 @WebServlet("/MovieSearchPageC")
 public class MovieSearchPageC extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int p = Integer.parseInt(request.getParameter("p"));
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		
+		int p = Integer.parseInt(request.getParameter("p"));
+
 		NaverMovie.getNM().getMovie(request);
 		NaverMovie.getNM().paging(p, request);
+		
 		request.setAttribute("contentPage", "jsp/sh/movieSearchResult.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 	}
 
 }
