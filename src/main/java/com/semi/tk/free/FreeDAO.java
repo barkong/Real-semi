@@ -38,10 +38,10 @@ public class FreeDAO {
 				free.setF_id(rs.getString("f_id"));
 				free.setF_no(rs.getInt("f_no"));
 				free.setF_title(rs.getString("f_title"));
-				free.setF_detail(rs.getString("f_detail"));
 				free.setF_img(rs.getString("f_img"));
 				free.setF_date(rs.getDate("f_date"));
 				free.setF_count(rs.getInt("f_count"));
+				free.setF_ip(rs.getString("f_ip"));
 
 				frees.add(free);
 			}
@@ -58,7 +58,7 @@ public class FreeDAO {
 	public static void getFree(HttpServletRequest request) {
 
 		String afterUpdateNo = (String) request.getAttribute("afterUpdateNo");
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -72,7 +72,7 @@ public class FreeDAO {
 			pstmt = con.prepareStatement(sql);
 			if (afterUpdateNo != null) {
 				pstmt.setString(1, afterUpdateNo);
-			}else {
+			} else {
 				pstmt.setString(1, no);
 			}
 
@@ -88,6 +88,7 @@ public class FreeDAO {
 				free.setF_img(rs.getString("f_img"));
 				free.setF_date(rs.getDate("f_date"));
 				free.setF_count(rs.getInt("f_count"));
+				free.setF_ip(rs.getString("f_ip"));
 			}
 			request.setAttribute("free", free);
 
@@ -102,7 +103,7 @@ public class FreeDAO {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into semi_free values(semi_free_seq.nextval,?,?,?,?,sysdate,?)";
+		String sql = "insert into semi_free values(semi_free_seq.nextval,?,?,?,?,sysdate,?,?)";
 
 		try {
 
@@ -115,25 +116,35 @@ public class FreeDAO {
 			// 콘솔창에서 확인하기 위해 이 방식을 체택
 			Bean a = (Bean) request.getSession().getAttribute("accountInfo");
 			String title = mr.getParameter("title");
-			
+
 			String detail = mr.getParameter("detail");
 			detail = detail.replace("\r\n", "<br>");
 			System.out.println(detail);
-			
+
 			String img = mr.getFilesystemName("img");
 			int count = 0;
+
+			String regIp = request.getRemoteAddr();
 
 			System.out.println("session id : " + a.getA_id());
 			System.out.println("param title : " + title);
 			System.out.println("param detail : " + detail);
 			System.out.println("param img : " + img);
 			System.out.println("초기화고정count : " + count);
+			System.out.println("regIp : " + regIp);
 
 			pstmt.setString(1, a.getA_id());
 			pstmt.setString(2, title);
 			pstmt.setString(3, detail);
-			pstmt.setString(4, img);
+
+			if (img != null) {
+				pstmt.setString(4, img);
+			} else {
+				pstmt.setString(4, "");
+			}
+
 			pstmt.setInt(5, count);
+			pstmt.setString(6, regIp);
 
 			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "등록완료");
@@ -165,11 +176,11 @@ public class FreeDAO {
 
 			// 콘솔창에서 확인하기 위해 이 방식을 체택
 			String title = mr.getParameter("title");
-			
+
 			String detail = mr.getParameter("detail");
 			detail = detail.replace("\r\n", "<br>");
 			System.out.println(detail);
-			
+
 			String oldImg = mr.getParameter("img"); // 기존사진 (조심하기)
 			String newImg = mr.getFilesystemName("img2"); // 사진을 새로 추가함
 			String no = mr.getParameter("no");
@@ -287,6 +298,47 @@ public class FreeDAO {
 		} finally {
 			DBManager.close(con, pstmt, null);
 		}
+	}
+
+	public static boolean ipCheck(HttpServletRequest request) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select f_ip from semi_review where f_no=?";
+		String regIp = null;
+		String urIp = request.getRemoteAddr();
+		System.out.println("urIp : " + urIp);
+
+		try {
+			String no = request.getParameter("no");
+			System.out.println("param no : " + no);
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, no);
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				regIp = rs.getString("f_ip");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("r", "서버 오류..");
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+
+		System.out.println("regIp : " + regIp);
+
+		if (urIp.equals(regIp)) {
+			return false;
+		} else {
+			return true;
+		}
+
 	}
 
 }
