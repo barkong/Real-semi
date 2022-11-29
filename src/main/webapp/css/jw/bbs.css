@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+.bbsh1{
+	align-items: center;
+  	text-align: center;
+}
+
+.bbsTable {
+  border: 1px rgb(128, 128, 128) solid;
+  font-size: .9em;
+  box-shadow: 0 2px 5px rgb(192, 192, 192);
+  width: 80%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+  color: white;
+}
+
+.bbsth {
+  text-align: left;
+  background-color: gray;
+}
+  
+.bbsthead {
+  font-weight: bold;
+  color: #fff;
+  background: #101111;
+}
+  
+.bbstd, .bbsth {
+  padding: 1em .5em;
+  vertical-align: middle;
+}
+  
+.bbstd {
+  border-bottom: 1px solid #101111;
+  background: rgb(0, 0, 0);
+}
+
+.bbsa {
+  color: rgb(192, 192, 192);
+  text-align: center;
+}
+.bbsa:hover{
+	color: rgb(128, 128, 128);
+}
+
+.bbsdiv{
+	align-items: center;
+  	text-align: center;
+  	padding-left: 100px;
+}
+
+
+
+  
+ @media all and (max-width: 768px) {
+    
+  .bbstable, .bbsthead, .bbstbody, .bbsth, .bbstd, .bbstr {
+    display: block;
+  }
+  
+  .bbsth {
+    text-align: right;
+  }
+  
+  .bbstable {
+    position: relative; 
+    padding-bottom: 0;
+    border: none;
+    box-shadow: 0 0 10px rgb(128, 128, 128);
+  }
+  
+  .bbsthead {
+    float: left;
+    white-space: nowrap;
+  }
+  
+  .bbstbody {
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    white-space: nowrap;
+  }
+  
+  .bbstr {
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  .bbsth {
+    border-bottom: 1px solid rgb(192, 192, 192);
+  }
+  
+  .bbstd {
+    border-bottom: 1px solid rgb(192, 192, 192);
+  }
+  
+  
+  }

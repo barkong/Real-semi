@@ -72,15 +72,14 @@
 				<br>
 			</div>
 			<div class="input-container">
-				<b class="name" >전화번호</b> <b class="text"><input class="text"
-					type="tel" name="phone"
+				<b class="name" >전화번호</b> <b class="text"><input type="tel" name="phone"
 					value="${sessionScope.accountInfo.a_phone }"></b><br>
 				<br>
 			</div>
 			<div class="input-container">
 				<b class="name">좋아하는 장르</b> <b class="text">${sessionScope.accountInfo.a_interest }</b><br><br>
 					</div>
-				<div style="font-size: 130%">
+				<div class="button-container" style="font-size: 130%">
 				All<input type="checkbox" name="chk" value=''
 					onclick='selectAll(this)'><br> 
 					액션<input
