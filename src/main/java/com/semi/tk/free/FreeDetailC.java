@@ -19,6 +19,8 @@ public class FreeDetailC extends HttpServlet {
 		// 클릭한 게시글 1개 가져오기
 		FreeDAO.count(request);
 		FreeDAO.getFree(request);
+		FreeDAO.getAllFree(request);
+		FreeDAO.paging(1, request);
 		request.setAttribute("contentPage", "jsp/tk/free/free_detail.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
