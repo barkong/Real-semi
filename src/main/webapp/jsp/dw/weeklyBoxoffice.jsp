@@ -25,6 +25,7 @@
           let d = $("#date").val(); //YYYY-MM-dd
           const regex = /-/g;
           let d_str = d.replace(regex, ""); //YYYYMMdd
+          
 
           let url =
             "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=" +
@@ -48,6 +49,12 @@
               
                 // HTTP 요청이 성공하면 요청한 데이터가 done() 메소드로 전달됨.
                 .done(function (json) {
+
+
+                  img = console.log(json.img);
+                  director = console.log(json.director);
+                  actor = console.log(json.actor);                  
+                  
                   
                   $("#boxoffice").append(
 							
@@ -62,6 +69,9 @@
                       movieList[i].openDt +
                       "개봉 </span></div>"
                   );
+                  
+
+				
                 })
                 
                 .fail(function (xhr, status, errorThrown) {
