@@ -12,7 +12,7 @@
 	<section>
 
 		<h1>영화 정보 사이트</h1>
-
+		<span class="subTitle">무비차트</span>
 		<div id="slideShow">
 			<ul class="slides">
 				<li><img src="image/1.jpg" alt=""></li>

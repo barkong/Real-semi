@@ -9,27 +9,23 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.semi.jw.Model;
 
-
 @WebServlet("/MovieDetailC")
 public class MovieDetailC extends HttpServlet {
-       
-  
-  	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-  		
-  		Model.loginCheck(request);
-  		
-  		
-  		request.setAttribute("contentPage", "jsp/dw/movieDetail.jsp");
- 
 
-  		request.getRequestDispatcher("index.jsp").forward(request, response);
-  		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		Model.loginCheck(request);
+
+		request.setAttribute("contentPage", "jsp/dw/movieDetail.jsp");
+
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 	}
 
 }

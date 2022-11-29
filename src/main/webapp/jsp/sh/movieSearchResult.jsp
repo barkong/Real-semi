@@ -61,8 +61,8 @@
 </head>
 <body>
 
-		<div id="searchResultContainer"></div>
-		<div id="pagination"></div>
+	<div id="searchResultContainer"></div>
+	<div id="pagination"></div>
 
 </body>
 </html>

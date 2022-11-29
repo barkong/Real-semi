@@ -13,17 +13,19 @@ import com.semi.jw.Model;
 
 @WebServlet("/MovieSearchC2")
 public class MovieSearchC2 extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		Model.loginCheck(request);
-		
+
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
-		
+
 		out.print(NaverMovie.getNM().getMovie(request));
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 	}
 
 }
