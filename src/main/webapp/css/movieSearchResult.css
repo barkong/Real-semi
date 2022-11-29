@@ -10,26 +10,51 @@ img {
 #movie {
 	display: flex;
 	margin-bottom: 50px;
+	margin-left:20px;
 }
 
-.title {
-	font-size: 25pt;
+.searchTitle {
+	font-size: 20pt;
 	font-weight: 400;
 }
 
 .subTitle {
-	font-size: 15pt;
+	font-size: 12pt;
 }
 
 .content {
 	margin: 20px;
 	margin-bottom: 50px;
+	
 }
 
 .etc {
-	margin-top: 100px;
+	margin-top: 90px;
+	border-top:1px dashed #808080;
+	width:300px;
+	padding-top:10px;
+
+
+	
 }
+
 
 #searchResultContainer {
 	margin: 15px;
+}
+
+.searchSpan{
+	font-size:13pt;
+	font-weight:500;
+	margin-right:15px;
+	margin-bottom:5px;
+}
+
+.searchRDiv{
+	display:inline-block;
+	font-size:11pt;
+}
+.searchSpanDiv{
+	display:inline-block;
+	margin-bottom:10px;
 }
