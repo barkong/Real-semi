@@ -22,18 +22,22 @@ prev.addEventListener('click', function() {
 	/*첫 번째 슬라이드로 표시 됐을때는 
 	이전 버튼 눌러도 아무런 반응 없게 하기 위해 
 	currentIdx !==0일때만 moveSlide 함수 불러옴 */
-	if (currentIdx !== 0) moveSlide(currentIdx - 1);
 
+	if(currentIdx !== 0 ) moveSlide(currentIdx - 1);
+	
 });
-next.addEventListener('click', function() {
 
-	/*
-	if (currentIdx !== slideCount - 1) {
-	  moveSlide(currentIdx + 1);
-	}*/
-	if (currentIdx !== 15) {
-		moveSlide(currentIdx + 1);
 
-	}
+	next.addEventListener('click', function() {
 
-});
+		/*
+		if (currentIdx !== slideCount - 1) {
+		  moveSlide(currentIdx + 1);
+		}*/
+		if (currentIdx !== 15) {
+			moveSlide(currentIdx + 1);
+
+		}
+		
+	});
+

@@ -40,16 +40,16 @@ function successCall2(data) {
 				content += "<form action='MovieSearchC'><div id='movie'><div class='poster'>"
 					+ "<a href='" + i.link + "'>+" +
 					"<img src='" + i.image + "'/></a></div>"
-					+ "<div class='content'><span class='title'>"
+					+ "<div class='content'><span class='searchTitle'>"
 					+ i.title 
 					+ "</span><br><span class='subTitle'>"
 					+ i.subtitle
 					+ "</span>"
-					+ "<div class='etc'>"
-					+ i.pubDate + "년 개봉 <br> 배우 -"
-					+ actor + "<br> 감독 -"
-					+ director + "<br>"
-					+ i.userRating + "점 </div></div></div></form>"
+					+ "<div class='etc'><div class='searchSpanDiv'><span class='searchSpan'>개봉년도</span></div><div class='searchRDiv'>"
+					+ i.pubDate + "</div>년 <br><div class='searchSpanDiv'><span class='searchSpan'>배우</span></div><div class='searchRDiv'>"
+					+ actor + "</div><br><div class='searchSpanDiv'><span class='searchSpan'>감독</span></div><div class='searchRDiv'>"
+					+ director + "</div><br><div class='searchSpanDiv'><span class='searchSpan'>평점</span></div><div class='searchRDiv'>"
+					+ i.userRating + "</div></div></div></div></form>"
 			});
 
 			$("#searchResultContainer").html(content);
