@@ -65,9 +65,9 @@
 					<tr>
 						<td colspan="3">${review.r_detail}</td>
 					</tr>
-					<tr>
+					<tr><c:if test="${review.r_img ne null }">
 						<td colspan="3"><img src="files/reviewImg/${review.r_img }"
-							width="500px"></td>
+							width="500px"></td></c:if>
 					</tr>
 
 <!-- 수정 삭제 이전으로 새글쓰기 -->
