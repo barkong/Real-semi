@@ -20,7 +20,6 @@ public class MovieDetail {
 
 		try {
 
-
 			String url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=9277299fa5d76d3f8ea02bb835de6f09&movieCd=20124079";
 
 			System.out.println(url);

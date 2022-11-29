@@ -50,5 +50,4 @@ public class News {
 		this.time = time;
 	}
 
-		
 }

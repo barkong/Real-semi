@@ -10,17 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/NaverNewsPageC")
 public class NaverNewsPageC extends HttpServlet {
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int p = Integer.parseInt(request.getParameter("p"));
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		
+		int p = Integer.parseInt(request.getParameter("p"));
+
 		NaverNews.getNa().getNews(request);
 		NaverNews.getNa().paging(p, request);
+		
 		request.setAttribute("contentPage", "jsp/sh/newsResult.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 	}
 
 }

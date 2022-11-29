@@ -9,13 +9,12 @@
 <link rel="stylesheet" href="css/index.css" />
 <link rel="stylesheet" href="css/movieSearchResult.css" />
 <link rel="stylesheet" href="css/newsResult.css" />
+<link rel="stylesheet" href="css/pagination.css" />
 <script src="https://code.jquery.com/jquery-3.6.1.js"
 	integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
 	crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/movie.js"></script>
 <script type="text/javascript" src="js/pagination.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
 </head>
 <body>
 	<div id="Container">
@@ -25,9 +24,9 @@
 				</a>
 			</div>
 			<div id="searchDiv">
-				
-					<input id="searchInput" name="movie" type="text"
-						placeholder="  영화 제목을 입력해 주세요." />
+
+				<input id="searchInput" name="movie" type="text"
+					placeholder="  영화 제목을 입력해 주세요." />
 			</div>
 			<div class="btn1">
 				<jsp:include page="${loginPage }"></jsp:include>
@@ -48,7 +47,7 @@
 				<a href="ReviewC">영화 리뷰</a>
 			</div>
 			<div class="mainMenu">
-				<a href="FreeC">커뮤니티</a>
+				<a href="FreeC">자유게시판</a>
 			</div>
 			<div class="mainMenu">
 				<a href="SearchCinemaC">주변영화관 찾기</a>
@@ -61,7 +60,7 @@
 		</div>
 		<div id="searchResultContainer"></div>
 		<div class="page">
-		<div id="pagination"></div>
+			<div id="pagination"></div>
 		</div>
 	</div>
 </body>

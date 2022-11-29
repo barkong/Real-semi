@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/jw/info.css">
 <link rel="stylesheet" href="css/jw/login.css">
-<link rel="stylesheet" href="css/tk/bbs.css" />
 <script type="text/javascript" src="js/tk/bbs.js"></script>
 <script type="text/javascript" src="js/validCheck.js"></script>
 </head>
@@ -31,7 +30,7 @@
 			<ul class="navbar__icons">
 				<li
 					onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">마이페이지</li>
-				<li onclick="location.href='myBbsC'">내가쓴글목록</li>
+				<li onclick="location.href='MyBbsC'">내가쓴글목록</li>
 				<li onclick="location.href='UpdateAccountC'">회원정보수정</li>
 				<li onclick="deleteID()">회원탈퇴</li>
 			</ul>
@@ -43,24 +42,22 @@
 
 
 	<h1>리뷰수정하기</h1>
-	<div class="container" align="center">
+	<div class="container">
 		<div class="row">
 			<form action="ReviewUpdateC" method="post" name="bbsForm"
 				enctype="multipart/form-data" onsubmit="return bbsCall()">
-				<table class="table table-striped"
-					style="text-align: center; border: 1px solid #dddddd" align="center">
+				<table style="text-align: center; border: 1px solid #dddddd">
 					<thead>
 						<tr>
 							<th>글제목</th>
 							<th colspan="2" style="text-align: center;"><input
-								class="form-control" type="text" value="${review.r_title }"
-								name="title"></th>
+								type="text" value="${review.r_title }" name="title"></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td>영화제목</td>
-							<td colspan="2"><input class="form-control" type="text"
+							<td colspan="2"><input type="text"
 								value="${review.r_movie }" name="movie"></td>
 						</tr>
 						<tr>
@@ -70,9 +67,8 @@
 							<td>조회수 : ${review.r_count }</td>
 						</tr>
 						<tr>
-							<td colspan="3"><textarea class="form-control"
-									maxlength="2084" name="detail" rows="20" cols="60"
-									style="resize: none">${review.r_detail}</textarea></td>
+							<td colspan="3"><textarea maxlength="2084" name="detail"
+									rows="20" cols="60" style="resize: none">${review.r_detail}</textarea></td>
 						</tr>
 						<tr>
 							<td colspan="3"><img src="files/reviewImg/${review.r_img }"
@@ -85,16 +81,14 @@
 						<tr>
 							<td colspan="3">
 								<button>등록(수정완료)</button>
-							</td>
-							<td colspan="3">
 								<button type="button" onclick="reviewDel(${review.r_no})">삭제하기</button>
 							</td>
 						</tr>
 
 
 						<tr>
-							<td colspan="3"><a href="ReviewC">목록으로</a> <c:choose>
-									<c:when test="${empty sessionScope.accountInfo.a_id}">
+							<td colspan="3"><a href="ReviewC">게시판 목록으로</a> <c:choose>
+									<c:when test="${sessionScope.accountInfo eq null}">
 										<a href="ReviewRegC" onclick="alert('로그인하세요')">새글쓰기</a>
 									</c:when>
 									<c:otherwise>

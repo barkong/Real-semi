@@ -16,7 +16,6 @@ public class MyBbsC extends HttpServlet {
 
 		if (Model.loginCheck(request)) {
 			MyBbsDAO.getAllBbsFree(request);
-//			MyBbsDAO.getAllBbsReview(request);
 			MyBbsDAO.paging(1, request);
 			request.setAttribute("contentPage", "jsp/tk/mybbs/myBbs.jsp");
 		} else {
