@@ -54,20 +54,20 @@
                   img = console.log(json.img);
                   director = console.log(json.director);
                   actor = console.log(json.actor);                  
-                  
-                  
+                 
                   $("#boxoffice").append(
 							
-                    "<div class='Container'><div class='poster'><img src= '" +
+                    "<div class='boxContainer'><div class='boxPoster'><a href='"+json.link+"'><img class='boxImg' src= '" +
                       json.img +
-                      "'></div>" + 
-                      "<span class='content' id='" +
+                      "'></a></div>" + 
+                      "<span class='boxContent' id='" +
                       movieList[i].movieCd + 
                       "'>"  +
-                      movieList[i].rank +"위 <br>"+ movieList[i].movieNm 
-                    +  "<br>"+json.director + json.actor + 
-                      movieList[i].openDt +
-                      "개봉 </span></div>"
+                      
+                      movieList[i].rank +"위 </span> <div clas='boxTable'><div class='boxTitle'><span class='boxT'>"+movieList[i].movieNm+"</span><br>"
+                    +  json.subtitle +"<br> <span class='boxText Text'>개봉일 </span>" + movieList[i].openDt +"</div> <div class='boxInfo'>"
+                    + "<span class='boxText'>감독</span>"+json.director +"<br><span class='boxText'>배우</span>" +json.actor +"<br> <span class='boxText yearText'>제작 년도</span>"+ json.pubDate +
+                     "년</div><div class='boxEtc'><span class='boxText Text'>매출액 </span>"+movieList[i].salesAcc+"원<br> <span class='boxText Text'>관객수 </span>"+movieList[i].audiAcc+"명</div></div></div>"
                   );
                   
 
@@ -89,15 +89,17 @@
 		   return  a.rank  -  b.rank ;
 		}
     </script>
-    
+
 </head>
 <body>
-	<div class="boxofficeContainer">
-
+	<div class="boxofficeContainer">	
+		<div class="boxofficBefore">
 		<div id="boxoffice">박스 오피스</div>
 		<input type="date" value="" id="date" />
 		<button id="mybtn">확인</button>
-	</div>
+		</div>
+		</div>
+
 
 </body>
 </html>
