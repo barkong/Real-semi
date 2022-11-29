@@ -70,7 +70,7 @@
 			<ul class="navbar__icons">
 				<li
 					onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">마이페이지</li>
-				<li onclick="location.href='myBbsC'">내가쓴글목록</li>
+				<li onclick="location.href='MyBbsC'">내가쓴글목록</li>
 				<li onclick="location.href='UpdateAccountC'">회원정보수정</li>
 				<li onclick="deleteID()">회원탈퇴</li>
 			</ul>

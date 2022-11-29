@@ -13,6 +13,8 @@
 
 </head>
 <body>
+
+	<!-- 내비 -->
 	<nav class="navbar">
 		<div class="navbar__logo">
 			<i class=""></i> <a href=""></a>
@@ -30,7 +32,7 @@
 			<ul class="navbar__icons">
 				<li
 					onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">마이페이지</li>
-				<li onclick="location.href='myBbsC'">내가쓴글목록</li>
+				<li onclick="location.href='MyBbsC'">내가쓴글목록</li>
 				<li onclick="location.href='UpdateAccountC'">회원정보수정</li>
 				<li onclick="deleteID()">회원탈퇴</li>
 			</ul>
@@ -40,16 +42,17 @@
 	</nav>
 
 
+
 	<h1>나의글 목록</h1>
 
-	<div class="container" align="center">
+	<div class="container">
 		<div class="row">
-			<table class="bbsTable" align="center"
+			<table class="bbsTable"
 				style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th style="background-color: gray; text-align: center;">NO</th>
-						<th style="background-color: gray; text-align: center;">분류</th>
+						<th style="background-color: gray; text-align: center;">게시판분류</th>
+						<th style="background-color: gray; text-align: center;">글번호</th>
 						<th style="background-color: gray; text-align: center;">글제목</th>
 						<th style="background-color: gray; text-align: center;">작성자</th>
 						<th style="background-color: gray; text-align: center;">작성시간</th>
@@ -58,38 +61,52 @@
 				</thead>
 				<tbody>
 					<c:forEach var="mb" items="${mbs }">
-						<tr>
-							<td>${mb.mb_no }</td>
-							<td>${mb.mb_cat }</td>
-							<td><a href="FreeDetailC?no=${mb.mb_no }">${mb.mb_title }</a></td>
-							<td>${mb.mb_id }</td>
-							<td><fmt:formatDate value="${mb.mb_date }" type="both"
-									dateStyle="short" timeStyle="short" /></td>
-							<td>${mb.mb_count }</td>
-						</tr>
+						<c:if test="${mb.mbf_cat ne null }">
+							<tr>
+								<td>${mb.mbf_no }</td>
+								<td>${mb.mbf_cat }</td>
+								<td><a href="FreeDetailC?no=${mb.mbf_no }">${mb.mbf_title }</a></td>
+								<td>${mb.mbf_id }</td>
+								<td><fmt:formatDate value="${mb.mbf_date }" type="both"
+										dateStyle="short" timeStyle="short" /></td>
+								<td>${mb.mbf_count }</td>
+							</tr>
+						</c:if>
+					</c:forEach>
+					<c:forEach var="mb" items="${mbs }">
+						<c:if test="${mb.mbr_cat ne null }">
+							<tr>
+								<td>${mb.mbr_no }</td>
+								<td>${mb.mbr_cat }</td>
+								<td><a href="ReviewDetailC?no=${mb.mbr_no }">${mb.mbr_title }</a></td>
+								<td>${mb.mbr_id }</td>
+								<td><fmt:formatDate value="${mb.mbr_date }" type="both"
+										dateStyle="short" timeStyle="short" /></td>
+								<td>${mb.mbr_count }</td>
+							</tr>
+						</c:if>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 		<div>
-			<span align="center"><c:choose>
+			<span><c:choose>
 					<c:when test="${curPageNo == 1}">
 						◀
 					</c:when>
 					<c:otherwise>
-						<a href="FreePageC?p=${curPageNo - 1 }"> ◀ </a>
+						<a href="MyBbsPageC?p=${curPageNo - 1 }"> ◀ </a>
 					</c:otherwise>
-				</c:choose></span> <a href="FreePageC?p=1">[맨처음]</a></span>
+				</c:choose></span> <a href="MyBbsPageC?p=1">[맨처음]</a>
 			<c:forEach var="i" begin="1" end="${pageCount }">
-				<a href="FreePageC?p=${i }"> [${i }] </a>
+				<a href="MyBbsPageCC?p=${i }"> [${i }] </a>
 			</c:forEach>
-			<span><a href="FreePageC?p=${pageCount }">[맨끝]</a></span> <span
-				align="center"><c:choose>
+			<span><a href="MyBbsPageC?p=${pageCount }">[맨끝]</a></span> <span><c:choose>
 					<c:when test="${curPageNo == pageCount}">
 						▶
 					</c:when>
 					<c:otherwise>
-						<a href="FreePageC?p=${curPageNo + 1 }"> ▶ </a>
+						<a href="MyBbsPageC?p=${curPageNo + 1 }"> ▶ </a>
 					</c:otherwise>
 				</c:choose></span>
 		</div>

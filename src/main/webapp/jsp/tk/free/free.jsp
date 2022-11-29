@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/jw/info.css">
 <link rel="stylesheet" href="css/jw/login.css">
-<link rel="stylesheet" href="css/tk/bbs.css" />
 <script type="text/javascript" src="js/tk/bbs.js"></script>
 <script type="text/javascript" src="js/validCheck.js"></script>
 </head>
@@ -31,7 +30,7 @@
 			<ul class="navbar__icons">
 				<li
 					onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">마이페이지</li>
-				<li onclick="location.href='myBbsC'">내가쓴글목록</li>
+				<li onclick="location.href='MyBbsC'">내가쓴글목록</li>
 				<li onclick="location.href='UpdateAccountC'">회원정보수정</li>
 				<li onclick="deleteID()">회원탈퇴</li>
 			</ul>
@@ -45,22 +44,21 @@
 	<h1>Free BBS</h1>
 
 	<c:choose>
-		<c:when test="${empty sessionScope.accountInfo.a_id}">
-			<%-- <c:when test="${sessionScope.accountInfo.a_id eq null}"> --%>
-			<a href="FreeRegC" onclick="alert('로그인하세요')">새글쓰기 (when)</a>
+		<c:when test="${sessionScope.accountInfo eq null}">
+			<a href="FreeRegC" onclick="alert('로그인하세요')">새글쓰기</a>
 		</c:when>
 		<c:otherwise>
-			<a href="FreeRegC"> 새글쓰기(when)</a>
+			<a href="FreeRegC"> 새글쓰기</a>
 		</c:otherwise>
 	</c:choose>
 
-	<div class="container" align="center">
+	<div class="container">
 		<div class="row">
 			<table class="bbsTable"
-				style="text-align: center; border: 1px solid #dddddd" align="center">
+				style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th style="background-color: gray; text-align: center;">NO</th>
+						<th style="background-color: gray; text-align: center;">글번호</th>
 						<th style="background-color: gray; text-align: center;">글제목</th>
 						<th style="background-color: gray; text-align: center;">작성자</th>
 						<th style="background-color: gray; text-align: center;">작성시간</th>
@@ -82,19 +80,18 @@
 			</table>
 		</div>
 		<div>
-			<span align="center"><c:choose>
+			<span><c:choose>
 					<c:when test="${curPageNo == 1}">
 						◀
 					</c:when>
 					<c:otherwise>
 						<a href="FreePageC?p=${curPageNo - 1 }"> ◀ </a>
 					</c:otherwise>
-				</c:choose></span> <a href="FreePageC?p=1">[맨처음]</a></span>
+				</c:choose></span> <a href="FreePageC?p=1">[맨처음]</a>
 			<c:forEach var="i" begin="1" end="${pageCount }">
 				<a href="FreePageC?p=${i }"> [${i }] </a>
 			</c:forEach>
-			<span><a href="FreePageC?p=${pageCount }">[맨끝]</a></span> <span
-				align="center"><c:choose>
+			<span><a href="FreePageC?p=${pageCount }">[맨끝]</a></span> <span><c:choose>
 					<c:when test="${curPageNo == pageCount}">
 						▶
 					</c:when>

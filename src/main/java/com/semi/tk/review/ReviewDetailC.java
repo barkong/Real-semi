@@ -18,6 +18,8 @@ public class ReviewDetailC extends HttpServlet {
 			// 클릭한 게시글 1개 가져오기
 			ReviewDAO.count(request);
 			ReviewDAO.getReview(request);
+			ReviewDAO.getAllReview(request);
+			ReviewDAO.paging(1, request);
 			request.setAttribute("contentPage", "jsp/tk/review/review_detail.jsp");
 		} else {
 			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");

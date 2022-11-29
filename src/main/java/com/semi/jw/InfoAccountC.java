@@ -7,15 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.mybbs.MyBbsDAO;
+
 
 @WebServlet("/InfoAccountC")
 public class InfoAccountC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Model.loginCheck(request);
-		
-		request.setAttribute("contentPage", "jsp/jw/info.jsp");
+		if (Model.loginCheck(request)) {
+			request.setAttribute("contentPage", "jsp/jw/info.jsp");
+		} else {
+			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
+		}
+
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
