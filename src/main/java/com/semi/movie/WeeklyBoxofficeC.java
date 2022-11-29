@@ -11,15 +11,21 @@ import com.semi.jw.Model;
 
 @WebServlet("/WeeklyBoxofficeC")
 public class WeeklyBoxofficeC extends HttpServlet {
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		Model.loginCheck(request);
+
 		request.setAttribute("contentPage", "jsp/dw/weeklyBoxoffice.jsp");
+
 		request.getRequestDispatcher("index.jsp").forward(request, response);
+
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 	}
 
 }

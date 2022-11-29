@@ -40,35 +40,36 @@ public class MyBbsDAO {
 			mbs = new ArrayList<MyBbs>();
 			while (rs.next()) {
 				mb = new MyBbs();
-				mb.setMb_cat("자유게시판");
-				mb.setMb_id(rs.getString("f_id"));
-				mb.setMb_no(rs.getInt("f_no"));
-				mb.setMb_title(rs.getString("f_title"));
-				mb.setMb_detail(rs.getString("f_detail"));
-				mb.setMb_img(rs.getString("f_img"));
-				mb.setMb_date(rs.getDate("f_date"));
-				mb.setMb_count(rs.getInt("f_count"));
+				mb.setMbf_cat("자유게시판");
+				mb.setMbf_id(rs.getString("f_id"));
+				mb.setMbf_no(rs.getInt("f_no"));
+				mb.setMbf_title(rs.getString("f_title"));
+				mb.setMbf_detail(rs.getString("f_detail"));
+				mb.setMbf_img(rs.getString("f_img"));
+				mb.setMbf_date(rs.getDate("f_date"));
+				mb.setMbf_count(rs.getInt("f_count"));
 
 				mbs.add(mb);
 			}
 
-//			pstmt2 = con.prepareStatement(sql2);
-//			pstmt2.setString(1, a.getA_id());
-//			rs2 = pstmt2.executeQuery();
-//
-//			while (rs2.next()) {
-//				mb = new MyBbs();
-//				mb.setMbr_cat("리뷰게시판");
-//				mb.setMbr_id(rs.getString("r_id"));
-//				mb.setMbr_no(rs.getInt("r_no"));
-//				mb.setMbr_title(rs.getString("r_title"));
-//				mb.setMbr_detail(rs.getString("r_detail"));
-//				mb.setMbr_img(rs.getString("r_img"));
-//				mb.setMbr_date(rs.getDate("r_date"));
-//				mb.setMbr_count(rs.getInt("r_count"));
-//
-//				mbs.add(mb);
-//			}
+			pstmt2 = con.prepareStatement(sql2);
+			pstmt2.setString(1, a.getA_id());
+			rs2 = pstmt2.executeQuery();
+
+
+			while (rs2.next()) {
+				mb = new MyBbs();
+				mb.setMbr_cat("리뷰게시판");
+				mb.setMbr_id(rs2.getString("r_id"));
+				mb.setMbr_no(rs2.getInt("r_no"));
+				mb.setMbr_title(rs2.getString("r_title"));
+				mb.setMbr_detail(rs2.getString("r_detail"));
+				mb.setMbr_img(rs2.getString("r_img"));
+				mb.setMbr_date(rs2.getDate("r_date"));
+				mb.setMbr_count(rs2.getInt("r_count"));
+
+				mbs.add(mb);
+			}
 
 			request.setAttribute("mbs", mbs);
 
@@ -76,6 +77,7 @@ public class MyBbsDAO {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(con, pstmt, rs);
+			DBManager.close(con, pstmt2, rs2);
 		}
 	}
 

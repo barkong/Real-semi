@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/jw/info.css">
 <link rel="stylesheet" href="css/jw/login.css">
-<link rel="stylesheet" href="css/tk/bbs.css" />
 <script type="text/javascript" src="js/tk/bbs.js"></script>
 <script type="text/javascript" src="js/validCheck.js"></script>
 </head>
@@ -31,7 +30,7 @@
 			<ul class="navbar__icons">
 				<li
 					onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">마이페이지</li>
-				<li onclick="location.href='myBbsC'">내가쓴글목록</li>
+				<li onclick="location.href='MyBbsC'">내가쓴글목록</li>
 				<li onclick="location.href='UpdateAccountC'">회원정보수정</li>
 				<li onclick="deleteID()">회원탈퇴</li>
 			</ul>
@@ -43,28 +42,28 @@
 
 
 	<h1>리뷰등록하기</h1>
-	<div class="container" align="center">
+	<div class="container">
 		<div class="row">
 			<form action="ReviewRegC" method="post" name="bbsForm"
 				enctype="multipart/form-data" onsubmit="return bbsCall()">
-				<table class="table table-striped"
-					style="text-align: center; border: 1px solid #dddddd" align="center">
+				<table
+					style="text-align: center; border: 1px solid #dddddd">
 					<thead>
 						<tr>
 							<th>글제목</th>
 							<th colspan="2" style="text-align: center;"><input
-								class="form-control" type="text" name="title" placeholder="글제목"
+								type="text" name="title" placeholder="글제목"
 								maxlength="50" /></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td>영화제목</td>
-							<td><input class="form-control" type="text" name="movie"
+							<td><input type="text" name="movie"
 								placeholder="영화제목" maxlength="50" /></td>
 						</tr>
 						<tr>
-							<td colspan="3"><textarea class="form-control"
+							<td colspan="3"><textarea 
 									placeholder="글내용" maxlength="2084" name="detail" rows="20"
 									cols="60" style="resize: none"></textarea></td>
 						</tr>
@@ -80,8 +79,8 @@
 
 
 						<tr>
-							<td colspan="3"><a href="ReviewC">목록으로</a> <c:choose>
-									<c:when test="${empty sessionScope.accountInfo.a_id}">
+							<td colspan="3"><a href="ReviewC">게시판 목록으로</a> <c:choose>
+									<c:when test="${sessionScope.accountInfo eq null}">
 										<a href="ReviewRegC" onclick="alert('로그인하세요')">새글쓰기</a>
 									</c:when>
 									<c:otherwise>

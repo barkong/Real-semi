@@ -36,7 +36,8 @@
 										function(index, i) {
 											console.log(content);
 											content += "<div class='news'><span class='time'>"
-													+ (i.pubDate).substring(0,16)
+													+ (i.pubDate).substring(0,
+															16)
 													+ "</span><div class='title'>"
 													+ "<a href='"+ i.link + "'><span class='newsTitle'>"
 													+ i.title
@@ -70,7 +71,7 @@
 			<ul class="navbar__icons">
 				<li
 					onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">마이페이지</li>
-				<li onclick="location.href='myBbsC'">내가쓴글목록</li>
+				<li onclick="location.href='MyBbsC'">내가쓴글목록</li>
 				<li onclick="location.href='UpdateAccountC'">회원정보수정</li>
 				<li onclick="deleteID()">회원탈퇴</li>
 			</ul>
@@ -80,7 +81,6 @@
 	</nav>
 	<div id="newsContainer"></div>
 	<div id="searchResultContainer"></div>
-	<div class="page">
-	</div>
+	<div class="page"></div>
 </body>
 </html>
