@@ -4,25 +4,82 @@
 	text-align: center;
 }
 
-.Container {
+.boxContainer {
+	position: relative;
 	float: left;
-	width: 45vw;
-	height: 50vh;
-	text-align: center;
+	width: 49%; 
+	display: flex;
+	text-align: left;
+	padding-left: 1%;
+	display: flex;
 }
 
-.poster {
-	margin-left: auto;
-	margin-right: auto;
-	width: 15vw;
+.boxImg {
+	position: relative;
+}
+
+.boxPoster {
 	margin-bottom: 40px;
 }
 
-.content {
-	text-align: center;
+.boxContent {
+	position: absolute;
+	top: 0;
+	display: flex;
+	background-color: black;
+	opacity: 0.8;
+	color: white;
+	font-size: 18pt;
+}
 
+.boxTable {
+	display : table;
+	margin-left: 50px;
+	display: table;
+}
+
+.boxTitle {
+	margin-bottom: 10px; border-bottom : 1px dashed #aaa;
+	width: 490px;
+	border-bottom: 1px dashed #aaa;
+}
+
+.boxT {
+	font-size: 25pt;
+	font-weight: 600;
+}
+
+.boxInfo {
+	margin: 40px 0;
+	border-bottom: 1px dashed #aaa;
+	width: 490px;
+}
+
+.boxEtc {
+	border-bottom: 1px dashed #aaa;
+	width: 490px;
 }
 
 #date {
 	width: 15vw;
+	
+}
+#mybtn {
+	
+}
+
+.boxText {
+	font-weight: 600;
+	margin-right: 2.6rem;
+}
+
+.yearText {
+	margin-right: 0.5rem;
+}
+
+.Text {
+	margin-right: 1rem;
+}
+.boxofficBefore{
+	
 }

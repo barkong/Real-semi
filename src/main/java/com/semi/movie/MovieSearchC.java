@@ -16,7 +16,7 @@ public class MovieSearchC extends HttpServlet {
 			throws ServletException, IOException {
 
 		Model.loginCheck(request);
-		
+
 		if (request.getParameter("movie") != "") {
 			NaverMovie.getNM().getMovie(request);
 			request.setAttribute("contentPage", "jsp/sh/movieSearchResult.jsp");

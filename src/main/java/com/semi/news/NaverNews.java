@@ -39,7 +39,7 @@ public class NaverNews {
 			String url = "https://openapi.naver.com/v1/search/news.json";
 
 			url += "?query=" + str;
-			url += "&display=30";
+			url += "&display=100";
 			url += "&sort=sim";
 
 			System.out.println(url);
