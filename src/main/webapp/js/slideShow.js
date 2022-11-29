@@ -6,9 +6,14 @@ const prev = document.querySelector('.prev'); //이전 버튼
 const next = document.querySelector('.next'); //다음 버튼
 const slideWidth = 300; //한개의 슬라이드 넓이
 const slideMargin = 100; //슬라이드간의 margin 값
+makeClone(); // 처음이미지와 마지막 이미지 복사 함수
+initfunction(); //슬라이드 넓이와 위치값 
+
+
 
 //전체 슬라이드 컨테이너 넓이 설정
 slides.style.width = (slideWidth + slideMargin) * slideCount + 'px';
+
 
 function moveSlide(num) {
   slides.style.left = -num * 200 + 'px';
@@ -20,15 +25,16 @@ prev.addEventListener('click', function () {
   이전 버튼 눌러도 아무런 반응 없게 하기 위해 
   currentIdx !==0일때만 moveSlide 함수 불러옴 */
 
-  if (currentIdx !== 0) moveSlide(currentIdx - 1);
-});
+
 
 next.addEventListener('click', function () {
+
   /*
   if (currentIdx !== slideCount - 1) {
     moveSlide(currentIdx + 1);
   }*/
   if (currentIdx !== 15) {
     moveSlide(currentIdx + 1);
+
   }
 });

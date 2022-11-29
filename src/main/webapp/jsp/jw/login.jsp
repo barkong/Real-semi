@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,10 +8,14 @@
 <link rel="stylesheet" href="css/jw/login.css" />
 </head>
 <body>
-
-		<form action="LoginPageC">
+	<div class="loginDiv">
+		<!-- <form action="LoginPageC"> -->
 		${r}
-		<button class="sign_in">로그인</button>
-		</form>
+
+		<!-- <button>로그인</button> -->
+		<a href="LoginPageC">로그인</a>
+		<!-- </form> -->
+	</div>
+
 </body>
 </html>
