@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.w3c.dom.ls.LSOutput;
+
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.semi.jw.Bean;
@@ -43,6 +45,7 @@ public class ReviewDAO {
 				review.setR_img(rs.getString("r_img"));
 				review.setR_date(rs.getDate("r_date"));
 				review.setR_count(rs.getInt("r_count"));
+				review.setR_ip(rs.getString("r_ip"));
 
 				reviews.add(review);
 			}
@@ -57,9 +60,9 @@ public class ReviewDAO {
 
 	// 선택한 게시글 1개
 	public static void getReview(HttpServletRequest request) {
-		
+
 		String afterUpdateNo = (String) request.getAttribute("afterUpdateNo");
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -71,12 +74,12 @@ public class ReviewDAO {
 
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
-			if(afterUpdateNo != null) {
-				
+			if (afterUpdateNo != null) {
+
 				pstmt.setString(1, afterUpdateNo);
 			} else {
 				pstmt.setString(1, no);
-				
+
 			}
 			rs = pstmt.executeQuery();
 
@@ -91,6 +94,7 @@ public class ReviewDAO {
 				review.setR_img(rs.getString("r_img"));
 				review.setR_date(rs.getDate("r_date"));
 				review.setR_count(rs.getInt("r_count"));
+				review.setR_ip(rs.getString("r_ip"));
 			}
 			request.setAttribute("review", review);
 
@@ -107,7 +111,7 @@ public class ReviewDAO {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into semi_review values(semi_review_seq.nextval,?,?,?,?,?,sysdate,?)";
+		String sql = "insert into semi_review values(semi_review_seq.nextval,?,?,?,?,?,sysdate,?,?)";
 
 		try {
 
@@ -121,13 +125,15 @@ public class ReviewDAO {
 			Bean a = (Bean) request.getSession().getAttribute("accountInfo");
 			String movie = mr.getParameter("movie");
 			String title = mr.getParameter("title");
-			
+
 			String detail = mr.getParameter("detail");
 			detail = detail.replace("\r\n", "<br>");
 			System.out.println(detail);
-			
+
 			String img = mr.getFilesystemName("img");
 			int count = 0;
+
+			String regIp = request.getRemoteAddr();
 
 			System.out.println("session id : " + a.getA_id());
 			System.out.println("param movie : " + movie);
@@ -135,13 +141,21 @@ public class ReviewDAO {
 			System.out.println("param detail : " + detail);
 			System.out.println("param img : " + img);
 			System.out.println("초기화고정count : " + count);
+			System.out.println("regIp : " + regIp);
 
 			pstmt.setString(1, a.getA_id());
 			pstmt.setString(2, movie);
 			pstmt.setString(3, title);
 			pstmt.setString(4, detail);
-			pstmt.setString(5, img);
+
+			if (img != null) {
+				pstmt.setString(5, img);
+			} else {
+				pstmt.setString(5, "");
+			}
+
 			pstmt.setInt(6, count);
+			pstmt.setString(7, regIp);
 
 			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "등록완료");
@@ -166,8 +180,7 @@ public class ReviewDAO {
 
 		try {
 
-			MultipartRequest mr = new MultipartRequest(request, path, 9123123, "utf-8",
-					new DefaultFileRenamePolicy());
+			MultipartRequest mr = new MultipartRequest(request, path, 9123123, "utf-8", new DefaultFileRenamePolicy());
 
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
@@ -175,13 +188,13 @@ public class ReviewDAO {
 			// 콘솔창에서 확인하기 위해 이 방식을 체택
 			String movie = mr.getParameter("movie");
 			String title = mr.getParameter("title");
-			
+
 			String detail = mr.getParameter("detail");
 			detail = detail.replace("\r\n", "<br>");
 			System.out.println(detail);
-			
+
 			String oldImg = mr.getParameter("img"); // 기존사진 (조심하기)
-			String newImg = mr.getFilesystemName("img2"); // 사진을 새로 추가함
+			String newImg = mr.getFilesystemName("newImg"); // 사진을 새로 추가함
 			String no = mr.getParameter("no");
 
 			System.out.println("param movie : " + movie);
@@ -194,8 +207,8 @@ public class ReviewDAO {
 			pstmt.setString(1, movie);
 			pstmt.setString(2, title);
 			pstmt.setString(3, detail);
-			
-			if(newImg == null) {
+
+			if (newImg == null) {
 				pstmt.setString(4, oldImg);
 			} else {
 				pstmt.setString(4, newImg);
@@ -272,9 +285,9 @@ public class ReviewDAO {
 
 		req.setAttribute("reviews", items);
 	}
-	
-public static void count(HttpServletRequest request) {
-		
+
+	public static void count(HttpServletRequest request) {
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "update semi_review set r_count=r_count+1 where r_no=?";
@@ -300,6 +313,47 @@ public static void count(HttpServletRequest request) {
 		} finally {
 			DBManager.close(con, pstmt, null);
 		}
+	}
+
+	public static boolean ipCheck(HttpServletRequest request) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select r_ip from semi_review where r_no=?";
+		String regIp = null;
+		String urIp = request.getRemoteAddr();
+		System.out.println("urIp : " + urIp);
+
+		try {
+			String no = request.getParameter("no");
+			System.out.println("param no : " + no);
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, no);
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				regIp = rs.getString("r_ip");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("r", "서버 오류..");
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+
+		System.out.println("regIp : " + regIp);
+
+		if (urIp.equals(regIp)) {
+			return false;
+		} else {
+			return true;
+		}
+
 	}
 
 }

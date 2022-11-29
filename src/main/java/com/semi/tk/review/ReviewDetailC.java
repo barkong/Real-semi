@@ -15,8 +15,12 @@ public class ReviewDetailC extends HttpServlet {
 			throws ServletException, IOException {
 
 		if (Model.loginCheck(request)) {
+
 			// 클릭한 게시글 1개 가져오기
-			ReviewDAO.count(request);
+			if (ReviewDAO.ipCheck(request)) {
+				ReviewDAO.count(request);
+			}
+
 			ReviewDAO.getReview(request);
 			ReviewDAO.getAllReview(request);
 			ReviewDAO.paging(1, request);
