@@ -10,11 +10,7 @@ public class DBManager {
 
 	public static Connection connect() throws SQLException {
 
-
-
-		String url = "jdbc:oracle:thin:@DB202204301707_high?TNS_ADMIN=C:/sjw/Wallet_DB202204301707";
-
-
+		String url = "jdbc:oracle:thin:@DB202204301707_high?TNS_ADMIN=C:/ldw/Wallet_DB202204301707";
 
 		return DriverManager.getConnection(url, "SHMAC", "SHsoldesk802");
 

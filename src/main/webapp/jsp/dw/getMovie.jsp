@@ -48,15 +48,16 @@ director = director.replace("|", "");
 String actor = (String) item.get("actor");
 actor = actor.replace("|", ",");
 String link = (String) item.get("link") + "";
-System.out.println(img);
-System.out.println(director);
-System.out.println(actor);
+String pubDate = (String) item.get("pubDate");
+String subtitle = (String) item.get("subtitle");
 
 JSONObject joo = new JSONObject();
 joo.put("img", img);
 joo.put("link", link);
 joo.put("director", director);
 joo.put("actor", actor);
+joo.put("pubDate", pubDate);
+joo.put("subtitle", subtitle);
 
 response.setContentType("application/json");
 response.setCharacterEncoding("utf-8");
