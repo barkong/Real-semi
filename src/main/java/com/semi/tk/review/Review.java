@@ -11,14 +11,15 @@ public class Review {
 	private String r_img; // 이미지
 	private Date r_date; // 작성날짜
 	private int r_count; // 조회수
-
+	private String r_ip; // ip주소
+	
 	public Review() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Review(int r_no, String r_id, String r_movie, String r_title, String r_detail, String r_img, Date r_date,
-			int r_count) {
+			int r_count, String r_ip) {
 		super();
 		this.r_no = r_no;
 		this.r_id = r_id;
@@ -28,6 +29,7 @@ public class Review {
 		this.r_img = r_img;
 		this.r_date = r_date;
 		this.r_count = r_count;
+		this.r_ip = r_ip;
 	}
 
 	public int getR_no() {
@@ -94,4 +96,13 @@ public class Review {
 		this.r_count = r_count;
 	}
 
+	public String getR_ip() {
+		return r_ip;
+	}
+
+	public void setR_ip(String r_ip) {
+		this.r_ip = r_ip;
+	}
+
+	
 }

@@ -17,7 +17,9 @@ public class FreeDetailC extends HttpServlet {
 
 		Model.loginCheck(request);
 		// 클릭한 게시글 1개 가져오기
-		FreeDAO.count(request);
+		if (FreeDAO.ipCheck(request)) {
+			FreeDAO.count(request);
+		}
 		FreeDAO.getFree(request);
 		FreeDAO.getAllFree(request);
 		FreeDAO.paging(1, request);
