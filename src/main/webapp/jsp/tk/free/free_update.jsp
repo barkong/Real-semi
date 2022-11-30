@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<% pageContext.setAttribute("br", "<br>"); %>
+<% pageContext.setAttribute("cn", "\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +12,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/jw/info.css">
 <link rel="stylesheet" href="css/jw/login.css">
+<link rel="stylesheet" href="css/jw/bbs.css">
 <script type="text/javascript" src="js/tk/bbs.js"></script>
 <script type="text/javascript" src="js/validCheck.js"></script>
 </head>
@@ -41,53 +45,56 @@
 
 
 
-	<h1>자유글수정하기</h1>
-	<div class="container">
-		<div class="row">
+	<h1 class="bssh1">자유글수정하기</h1>
+	<div class="bbsdiv">
+		<div class="bbsdiv">
 			<form action="FreeUpdateC" method="post" name="bbsForm"
 				enctype="multipart/form-data" onsubmit="return bbsCall()">
-				<table style="text-align: center; border: 1px solid #dddddd">
-					<thead>
-						<tr>
-							<th>글제목</th>
-							<th colspan="2" style="text-align: center;"><input
+				<table class="bbsTable" style="text-align: center; border: 1px solid #dddddd">
+					<thead class="bbsthead">
+						<tr class="bbstr">
+							<th  class="bbstd" style="background-color: #73685d">글제목</th>
+							<th class="bbsth" colspan="2" style="text-align: left; padding-left: 400px"><input
 								type="text" value="${free.f_title }" name="title"></th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td>NO. : ${free.f_no }</td>
-							<td>등록시간 : <fmt:formatDate value="${free.f_date }"
+					<tbody class="bbstbody">
+						<tr class="bbstr">
+							<td class="bbstd">NO. : ${free.f_no }</td>
+							<td class="bbstd">등록시간 : <fmt:formatDate value="${free.f_date }"
 									type="both" dateStyle="short" timeStyle="short" /></td>
-							<td>조회수 : ${free.f_count }</td>
+							<td class="bbstd">조회수 : ${free.f_count }</td>
 						</tr>
-						<tr>
-							<td colspan="3"><textarea maxlength="2084" name="detail"
-									rows="20" cols="60" style="resize: none">${free.f_detail}</textarea></td>
+						<tr class="bbstr">
+							<td class="bbstd" colspan="3">
+														
+							<textarea maxlength="2084" name="detail"
+									rows="20" cols="60" style="resize: none">
+									${fn:replace(free.f_detail, br, cn)}</textarea></td>
 						</tr>
-						<tr>
-							<td colspan="3"><img src="files/freeImg/${free.f_img }"
+						<tr class="bbstr">
+							<td class="bbstd" colspan="3"><img src="files/freeImg/${free.f_img }"
 								width="500px"></td>
 						</tr>
-						<tr>
-							<td colspan="3"><input type="file" name="img2" /><input
+						<tr class="bbstr">
+							<td class="bbstd" colspan="3"><input type="file" name="img2" /><input
 								name="img" value="${free.f_img }" type="hidden"></td>
 						</tr>
-						<tr>
-							<td colspan="3">
-								<button>등록(수정완료)</button>
-								<button type="button" onclick="freeDel(${free.f_no})">삭제하기</button>
+						<tr class="bbstr">
+							<td class="bbstd" colspan="3">
+								<button class="bbsbt">등록(수정완료)</button>
+								<button class="bbsbt" type="button" onclick="freeDel(${free.f_no})">삭제하기</button>
 							</td>
 						</tr>
 
 
-						<tr>
-							<td colspan="3"><a href="FreeC">게시판 목록으로</a> <c:choose>
+						<tr class="bbstr">
+							<td class="bbstd" colspan="3"><a class="bbsa" href="FreeC">게시판 목록으로</a> <c:choose>
 									<c:when test="${sessionScope.accountInfo eq null}">
-										<a href="FreeRegC" onclick="alert('로그인하세요')">새글쓰기</a>
+										<a class="bbsa" href="FreeRegC" onclick="alert('로그인하세요')">새글쓰기</a>
 									</c:when>
 									<c:otherwise>
-										<a href="FreeRegC">새글쓰기</a>
+										<a class="bbsa" href="FreeRegC">새글쓰기</a>
 									</c:otherwise>
 								</c:choose>
 						</tr>

@@ -20,11 +20,11 @@ a {
 
 .navbar {
 	float: left;
-	justify-content: space-between;
-	align-items: center;
 	background-color: var(--background-color);
 	padding: 8px 12px;
 	font-family: 'STIX Two Math';
+	position: absolute;
+	top:68px;
 }
 
 .navbar__logo i {

@@ -75,11 +75,12 @@ public class Model {
 	}
 
 	public static void account(HttpServletRequest request) {
-
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
 		try {
+			// post 방식 한글처리.  *한글*
+//			request.setCharacterEncoding("utf-8");
 			String sql = "insert into semi_account values(?,?,?,?,?,?,?,?)";
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
@@ -91,6 +92,7 @@ public class Model {
 			name = new String(name.getBytes("ISO-8859-1"), "UTF-8");
 			pstmt.setString(3, name);
 			pstmt.setString(4, request.getParameter("birth"));
+			System.out.println(request.getParameter("birth"));
 			String gender = request.getParameter("gender");
 			gender = new String(gender.getBytes("ISO-8859-1"), "UTF-8");
 			pstmt.setString(5, gender);
