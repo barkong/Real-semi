@@ -5,15 +5,13 @@
 }
 
 .boxContainer {
-	position: relative;
-	float: left;
-	width: 45%; 
-	display: flex;
-	text-align: left;
-	padding-left: 3%;
-	display: flex;
+   position: relative;
+    width: 500px;
+    min-width: 200px;
+    display: flex;
+    text-align: left;
+    margin: 20px 20px;
 }
-
 .boxImg {
 	position: relative;
 }
@@ -33,16 +31,19 @@
 }
 
 .boxTable {
-	display : table;
-	margin-left: 50px;
-	display: table;
+	display: inline-block;
+    flex-wrap: wrap;
+    word-break: break-all;
+    margin-left: 25px;
+    /* display: table; */
+    width: 300px;
 }
 
 .boxTitle {
-	margin-bottom: 10px; 
-	border-bottom : 1px dashed #aaa;
-	width: 490px;
-	border-bottom: 1px dashed #aaa;
+	margin-bottom: 10px;
+    border-bottom: 1px dashed #aaa;
+    /* width: 490px; */
+    border-bottom: 1px dashed #aaa;
 }
 
 .boxT {
@@ -58,19 +59,21 @@
 .boxInfo {
 	margin: 40px 0;
 	border-bottom: 1px dashed #aaa;
-	width: 490px;
 }
 
 .boxEtc {
 	border-bottom: 1px dashed #aaa;
-	width: 490px;
 }
 
 #date {
 	width: 15vw;
 	
 }
-
+#boxoffice{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
 
 .boxText {
 	font-weight: 600;
