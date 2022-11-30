@@ -1,7 +1,6 @@
 package com.semi.mybbs;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,19 +9,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.semi.jw.Model;
 
-@WebServlet("/MyBbsPageC")
-public class MyBbsPageC extends HttpServlet {
+@WebServlet("/MyBbsFreeC")
+public class MyBbsFreeC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Model.loginCheck(request);
 
-		int p = Integer.parseInt(request.getParameter("p"));
-		MyBbsDAO.getAllBbsFree(request);
-		MyBbsDAO.paging(p, request);
+		if (Model.loginCheck(request)) {
+			MyBbsDAO.getAllBbsFree(request);
+			MyBbsDAO.paging(1, request);
+			request.setAttribute("contentPage", "jsp/tk/mybbs/myBbsFree.jsp");
+		} else {
+			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
+		}
 
-		request.setAttribute("contentPage", "jsp/tk/mybbs/myBbs.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

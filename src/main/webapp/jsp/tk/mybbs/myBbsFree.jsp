@@ -71,13 +71,13 @@
 						<tbody>
 							<c:forEach var="mb" items="${mbs }">
 								<tr>
-									<td>${mb.mbr_no }</td>
-									<td>${mb.mbr_cat }</td>
-									<td><a href="ReviewDetailC?no=${mb.mbr_no }">${mb.mbr_title }</a></td>
-									<td>${mb.mbr_id }</td>
-									<td><fmt:formatDate value="${mb.mbr_date }" type="both"
+									<td>${mb.mbf_no }</td>
+									<td>${mb.mbf_cat }</td>
+									<td><a href="ReviewDetailC?no=${mb.mbf_no }">${mb.mbf_title }</a></td>
+									<td>${mb.mbf_id }</td>
+									<td><fmt:formatDate value="${mb.mbf_date }" type="both"
 											dateStyle="short" timeStyle="short" /></td>
-									<td>${mb.mbr_count }</td>
+									<td>${mb.mbf_count }</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -108,7 +108,7 @@
 				</c:when>
 				
 				<c:otherwise>
-						<h1>[작성한 리뷰글이 없습니다.]</h1>
+						<h1>[작성한 자유글이 없습니다.]</h1>
 				</c:otherwise>
 			</c:choose>
 		</div>

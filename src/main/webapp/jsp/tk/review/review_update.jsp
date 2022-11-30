@@ -54,6 +54,7 @@ pageContext.setAttribute("cn", "\n");
 				enctype="multipart/form-data" onsubmit="return bbsCall()">
 				<table class="bbsTable"
 					style="text-align: center; border: 1px solid #dddddd" align="center">
+
 					<thead class="bbsthead">
 						<tr class="bbstr">
 							<th class="bbstd" style="background-color: gray;">글제목</th>
@@ -82,8 +83,11 @@ pageContext.setAttribute("cn", "\n");
 
 						</tr>
 						<tr class="bbstr">
-							<td class="bbstd" colspan="3"><img
-								src="files/reviewImg/${review.r_img }" width="500px"></td>
+
+							<c:if test="${review.r_img ne null }">
+								<td class="bbstd" colspan="3"><img
+									src="files/reviewImg/${review.r_img }" width="500px"></td>
+							</c:if>
 						</tr>
 						<tr class="bbstr">
 							<td class="bbstd" colspan="3"><input type="file" name="img2" /><input
