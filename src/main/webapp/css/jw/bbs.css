@@ -63,37 +63,37 @@
   	padding-left: 130px;
 }
 .bbsnewa {
-  color: aqua;
+  color: gray;
   text-align: right;
   font-size: x-large;
   margin-left: 900px;
 }
 .bbsnewa:hover{
-	color: blue;
+	color: white;
 }
 
 .bbsbt{
 	width: 150px;
     height: 30px;
-    background: olive;
+    background: black;
     color: white;
     border-radius: 10px;
     cursor: pointer;
 }
 .bbsbt:hover{
-	background-color: yellow;
+	background-color: gray;
 	border-radius: 10px;
 }
 .bbsbt1{
 	width: 150px;
     height: 30px;
-    background: purple;
+    background: black;
     color: white;
     border-radius: 10px;
     cursor: pointer;
 }
 .bbsbt1:hover{
-	background-color: violet;
+	background-color: gray;
 	border-radius: 10px;
 }
 .bbsbt2{

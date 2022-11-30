@@ -76,16 +76,21 @@
 .sign_in{
 	width: 100px;
     height: 30px;
-    background: skyblue;
-    color: white;
+    background: gray;
+    color: aliceblue;
     border-radius: 10px;
+    transition: 0.25s;
     cursor: pointer;
 }
 
-.sign_in:hover{
-	background-color: #3c44ea;
-	border-radius: 10px;
+.sign_in:active{
+    background: aliceblue;
 }
+.sign_in:hover{
+	color:black;
+    background: white;
+}
+
 
 .idChkbt{
 	width: 50px;

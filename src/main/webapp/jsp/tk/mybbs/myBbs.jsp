@@ -73,7 +73,7 @@
 								<tr class="bsstr">
 									<td class="bbsnumber">${mb.mbr_cat }</td>
 									<td class="bbsnumber">${mb.mbr_no }</td>
-									<td class="bbstitle"><a href="ReviewDetailC?no=${mb.mbr_no }">${mb.mbr_title }</a></td>
+									<td class="bbstitle"><a class="bssa" href="ReviewDetailC?no=${mb.mbr_no }">${mb.mbr_title }</a></td>
 									<td class="bbsid">${mb.mbr_id }</td>
 									<td class="bbsdate"><fmt:formatDate value="${mb.mbr_date }" type="both"
 											dateStyle="short" timeStyle="short" /></td>
