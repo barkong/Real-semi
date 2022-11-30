@@ -18,7 +18,8 @@
 
 .bbsth {
   text-align: left;
-  background-color: gray;
+  background-color: black;
+  border: 1px rgb(128, 128, 128) solid;
 }
   
 .bbsthead {
@@ -33,8 +34,18 @@
 }
   
 .bbstd {
-  border-bottom: 1px solid #101111;
   background: rgb(0, 0, 0);
+}
+.bbstd2{
+	padding: 1em .5em;
+    vertical-align: middle;
+	background: rgb(0, 0, 0);
+	border-bottom: 1px solid rgb(192, 192, 192);
+}
+.bbstd3{
+	padding: 7em .5em;
+	background: rgb(0, 0, 0);
+    vertical-align: middle;
 }
 
 .bbsa {

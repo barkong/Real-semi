@@ -43,7 +43,7 @@
 
 <!-- 상세내용 -->
 	<div class="bbsdiv">
-	<h1 class="bbsh1">Review Content</h1>
+	<h1 class="bbsh1">Movie Review</h1>
 			<table class="bbsTable" style="text-align: center; border: 1px solid #dddddd" align="center">
 				<thead class="bbsthead">
 					<tr class="bbstr">
@@ -58,13 +58,13 @@
 						<td class="bbstd">&nbsp;</td>
 					</tr>
 					<tr class="bbstr">
-						<td class="bbstd">NO. : ${review.r_no }</td>
-						<td class="bbstd">등록시간 : <fmt:formatDate value="${review.r_date }"
+						<td class="bbstd2">NO. : ${review.r_no }</td>
+						<td class="bbstd2">등록시간 : <fmt:formatDate value="${review.r_date }"
 								type="both" dateStyle="short" timeStyle="short" /></td>
-						<td class="bbstd">조회수 : ${review.r_count }</td>
+						<td class="bbstd2">조회수 : ${review.r_count }</td>
 					</tr>
 					<tr class="bbstr">
-						<td class="bbstd" colspan="3">${review.r_detail}</td>
+						<td class="bbstd3" colspan="3">${review.r_detail}</td>
 					</tr>
 					<tr class="bbstr"><c:if test="${review.r_img ne null }">
 						<td class="bbstd" colspan="3"><img src="files/reviewImg/${review.r_img }"

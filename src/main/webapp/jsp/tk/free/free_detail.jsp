@@ -43,7 +43,7 @@
 
 <!-- 상세내용 -->
 	<div class="bbsdiv">
-	<h1 class="bbsh1">Free Content</h1>
+	<h1 class="bbsh1">Free Talk</h1>
 		<div style="align-items: center; text-align: center;">
 			<table class="bbsTable" style="text-align: center; border: 1px solid #dddddd" align="center">
 				<thead class="bbsthead">
@@ -54,13 +54,13 @@
 				</thead>
 				<tbody class="bbstbody">
 					<tr class="bbstr">
-						<td class="bbstd">NO. : ${free.f_no }</td>
-						<td class="bbstd">등록시간 : <fmt:formatDate value="${free.f_date }"
+						<td class="bbstd2">NO. : ${free.f_no }</td>
+						<td class="bbstd2">등록시간 : <fmt:formatDate value="${free.f_date }"
 								type="both" dateStyle="short" timeStyle="short" /></td>
-						<td class="bbstd">조회수 : ${free.f_count }</td>
+						<td class="bbstd2">조회수 : ${free.f_count }</td>
 					</tr>
 					<tr class="bbstr">
-						<td class="bbstd" colspan="3">${free.f_detail}</td>
+						<td class="bbstd3" colspan="3">${free.f_detail}</td>
 					</tr>
 					<tr class="bbstr"><c:if test="${free.f_img ne null }">
 						<td class="bbstd" colspan="3"><img src="files/freeImg/${free.f_img }"
