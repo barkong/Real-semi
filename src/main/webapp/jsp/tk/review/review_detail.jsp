@@ -21,7 +21,6 @@
 		<ul class="navbar__menu">
 			<li onclick="location.href='HC'">홈으로</li>
 			<li onclick="location.href='WeeklyBoxofficeC'">박스오피스</li>
-			<li onclick="location.href='MovieDetailC'">영화정보</li>
 			<li onclick="location.href='MovieNewsC'">영화뉴스</li>
 			<li onclick="location.href='ReviewC'">영화리뷰</li>
 			<li onclick="location.href='FreeC'">자유게시판</li>
@@ -33,7 +32,6 @@
 					onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">마이페이지</li>
 				<li onclick="location.href='MyBbsC'">내가쓴글목록</li>
 				<li onclick="location.href='UpdateAccountC'">회원정보수정</li>
-				<li onclick="deleteID()">회원탈퇴</li>
 			</ul>
 		</c:if>
 		<a href="#" class="navbar__toggleBtn"> <i class=""></i>
