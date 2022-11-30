@@ -64,7 +64,6 @@
 			<div id="pagination"></div>
 		</div>
 
-
 	</div>
 	
 	<div class="footer">

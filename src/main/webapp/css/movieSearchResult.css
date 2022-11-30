@@ -10,7 +10,7 @@ img {
 #movie {
 	display: flex;
 	margin-bottom: 50px;
-	margin-left: 20px;
+	margin-left:20px;
 }
 
 .searchTitle {
@@ -46,9 +46,10 @@ img {
 	margin-bottom: 5px;
 }
 
-.searchRDiv {
-	display: inline-block;
-	font-size: 11pt;
+
+.searchRDiv{
+	display:inline-block;
+	font-size:11pt;
 }
 
 .searchSpanDiv {
@@ -56,11 +57,12 @@ img {
 	margin-bottom: 10px;
 }
 
-.searchActor {
-	display: inline-block;
-	width: 250px;
-	margin-top: 5px;
+.searchActor{
+display:inline-block;	
+	width:250px;
+	margin-top:5px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-}
+}`	
+	
