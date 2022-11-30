@@ -25,6 +25,7 @@ a {
 	font-family: 'STIX Two Math';
 	position: absolute;
 	top:68px;
+	margin-left: 50px;
 }
 
 .navbar__logo i {

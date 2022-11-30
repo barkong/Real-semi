@@ -7,7 +7,7 @@
 
 .bbsTable {
   border: 1px rgb(128, 128, 128) solid;
-  font-size: .9em;
+  font-size: large;
   box-shadow: 0 2px 5px rgb(192, 192, 192);
   width: 80%;
   border-collapse: collapse;
@@ -40,6 +40,7 @@
 .bbsa {
   color: rgb(192, 192, 192);
   text-align: center;
+  font-size: x-large;
 }
 .bbsa:hover{
 	color: rgb(128, 128, 128);
@@ -50,7 +51,76 @@
   	text-align: center;
   	padding-left: 130px;
 }
+.bbsnewa {
+  color: aqua;
+  text-align: right;
+  font-size: x-large;
+  margin-left: 900px;
+}
+.bbsnewa:hover{
+	color: blue;
+}
 
+.bbsbt{
+	width: 150px;
+    height: 30px;
+    background: olive;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.bbsbt:hover{
+	background-color: yellow;
+	border-radius: 10px;
+}
+.bbsnumber{
+	width: 8%;
+	background-color: black;
+	padding: 1em .5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #101111;
+    background: rgb(0, 0, 0);
+}
+.bbsmovie{
+	width: 7%;
+	background-color: black;
+	padding: 1em .5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #101111;
+    background: rgb(0, 0, 0);
+}
+.bbstitle{
+	width: 60%;
+	background-color: black;
+	padding: 1em .5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #101111;
+    background: rgb(0, 0, 0);
+}
+.bbsid{
+	width: 8%;
+	background-color: black;
+	padding: 1em .5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #101111;
+    background: rgb(0, 0, 0);
+}
+.bbsdate{
+	width: 10%;
+	background-color: black;
+	padding: 1em .5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #101111;
+    background: rgb(0, 0, 0);
+}
+.bbscount{
+	width: 8%;
+	background-color: black;
+	padding: 1em .5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #101111;
+    background: rgb(0, 0, 0);
+}
 
 
   
