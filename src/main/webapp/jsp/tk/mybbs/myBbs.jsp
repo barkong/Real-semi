@@ -42,73 +42,75 @@
 	</nav>
 
 
-	<div class="container">
-		<div class="row">
-			<table>
-				<tr>
-					<td>
-						<button onclick="location.href='MyBbsC'">[나의 리뷰글 목록]</button>
+	<div class="bbsdiv">
+		<div class="bbsdiv">
+			<table class="bbsTable">
+				<tr class="bbstr">
+					<td class="bbstd">
+						<button class="bbsbt" onclick="location.href='MyBbsC'">[나의 리뷰글 목록]</button>
 					</td>
-					<td>
-						<button onclick="location.href='MyBbsFreeC'">[나의 자유글 목록]</button>
+					<td class="bbstd">
+						<button class="bbsbt" onclick="location.href='MyBbsFreeC'">[나의 자유글 목록]</button>
 					</td>
 				</tr>
 			</table>
 			<c:choose>
-				<c:when test="${mb.mbr_cat ne null }">
+				<c:when test="${mbs ne null }">
 					<table class="bbsTable"
-						style="text-align: center; border: 1px solid #dddddd">
-						<thead>
-							<tr>
-								<th style="background-color: gray; text-align: center;">게시판분류</th>
-								<th style="background-color: gray; text-align: center;">글번호</th>
-								<th style="background-color: gray; text-align: center;">글제목</th>
-								<th style="background-color: gray; text-align: center;">작성자</th>
-								<th style="background-color: gray; text-align: center;">작성시간</th>
-								<th style="background-color: gray; text-align: center;">조회수</th>
+						style="text-align: center; border: 1px solid #dddddd" align="center">
+						<thead class="bbsthead">
+							<tr class="bbstr">
+								<th class="bbsth" style="background-color: gray; text-align: center;">게시판분류</th>
+								<th class="bbsnumber" style="background-color: gray; text-align: center;">글번호</th>
+								<th class="bbstitle" style="background-color: gray; text-align: center;">글제목</th>
+								<th class="bbsid" style="background-color: gray; text-align: center;">작성자</th>
+								<th class="bbsdate" style="background-color: gray; text-align: center;">작성시간</th>
+								<th class="bbscount" style="background-color: gray; text-align: center;">조회수</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody class="bsstbody">
 							<c:forEach var="mb" items="${mbs }">
-								<tr>
-									<td>${mb.mbr_no }</td>
-									<td>${mb.mbr_cat }</td>
-									<td><a href="ReviewDetailC?no=${mb.mbr_no }">${mb.mbr_title }</a></td>
-									<td>${mb.mbr_id }</td>
-									<td><fmt:formatDate value="${mb.mbr_date }" type="both"
+							<c:if test="${mb.mbr_cat ne null }">
+								<tr class="bsstr">
+									<td class="bssnumber">${mb.mbr_no }</td>
+									<td class="bbstd">${mb.mbr_cat }</td>
+									<td class="bbstitle"><a href="ReviewDetailC?no=${mb.mbr_no }">${mb.mbr_title }</a></td>
+									<td class="bbsid">${mb.mbr_id }</td>
+									<td class="bbsdate"><fmt:formatDate value="${mb.mbr_date }" type="both"
 											dateStyle="short" timeStyle="short" /></td>
-									<td>${mb.mbr_count }</td>
+									<td class="bbscount">${mb.mbr_count }</td>
 								</tr>
+								</c:if>
 							</c:forEach>
 						</tbody>
 					</table>
-					<div>
+					<div class="bbsdiv">
 						<span><c:choose>
 								<c:when test="${curPageNo == 1}">
 						◀
 					</c:when>
 								<c:otherwise>
-									<a href="MyBbsPageC?p=${curPageNo - 1 }"> ◀ </a>
+									<a class="bbsa" href="MyBbsPageC?p=${curPageNo - 1 }"> ◀ </a>
 								</c:otherwise>
-							</c:choose></span> <a href="MyBbsPageC?p=1">[맨처음]</a>
+							</c:choose></span> <a class="bbsa" href="MyBbsPageC?p=1">[맨처음]</a>
 
 						<c:forEach var="i" begin="1" end="${pageCount }">
-							<a href="MyBbsPageC?p=${i }"> [${i }] </a>
+							<a class="bbsa" href="MyBbsPageC?p=${i }"> [${i }] </a>
 						</c:forEach>
 
-						<span><a href="MyBbsPageC?p=${pageCount }">[맨끝]</a></span> <span><c:choose>
+						<span><a class="bbsa" href="MyBbsPageC?p=${pageCount }">[맨끝]</a></span> <span><c:choose>
 								<c:when test="${curPageNo == pageCount}">
 						▶
 					</c:when>
 								<c:otherwise>
-									<a href="MyBbsPageC?p=${curPageNo + 1 }"> ▶ </a>
+									<a class="bbsa" href="MyBbsPageC?p=${curPageNo + 1 }"> ▶ </a>
 								</c:otherwise>
 							</c:choose></span>
 					</div>
 				</c:when>
 				
 				<c:otherwise>
-						<h1>[작성한 리뷰글이 없습니다.]</h1>
+						<h1 class="bbsh2">[작성한 리뷰글이 없습니다.]</h1>
 				</c:otherwise>
 			</c:choose>
 		</div>

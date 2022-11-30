@@ -42,51 +42,51 @@
 
 
 
+
+
+	<div>
+		<div class="bbsdiv">
 	<h1 class="bbsh1">Review BBS</h1>
-
-
-	<div class="bbsdiv">
 	<c:choose>
 		<c:when test="${sessionScope.accountInfo eq null}">
-			<a class="bbsa" href="ReviewRegC" onclick="alert('로그인하세요')">새글쓰기</a>
+			<a class="bbsnewa" href="ReviewRegC" onclick="alert('로그인하세요')">새글쓰기</a>
 		</c:when>
 		<c:otherwise>
-			<a class="bbsa" href="ReviewRegC"> 새글쓰기</a>
+			<a class="bbsnewa" href="ReviewRegC"> 새글쓰기</a>
 		</c:otherwise>
 	</c:choose>
-		<div class="bbsdiv">
 			<table class="bbsTable"
-				style="text-align: center; border: 1px solid #dddddd">
+				style="text-align: center; border: 1px solid #dddddd" align="center">
 				<thead class="bbsthead">
 					<tr class="bbstr">
-						<th class="bbsth" style="background-color: gray; text-align: center;">글번호</th>
-						<th class="bbsth" style="background-color: gray; text-align: center;">영화</th>
-						<th class="bbsth" style="background-color: gray; text-align: center;">글제목</th>
-						<th class="bbsth" style="background-color: gray; text-align: center;">작성자</th>
-						<th class="bbsth" style="background-color: gray; text-align: center;">작성시간</th>
-						<th class="bbsth" style="background-color: gray; text-align: center;">조회수</th>
+						<th class="bbsnumber" style="background-color: gray; text-align: center;">글번호</th>
+						<th class="bbsmovie" style="background-color: gray; text-align: center;">영화</th>
+						<th class="bbstitle" style="background-color: gray; text-align: center;">글제목</th>
+						<th class="bbsid" style="background-color: gray; text-align: center;">작성자</th>
+						<th class="bbsdate" style="background-color: gray; text-align: center;">작성시간</th>
+						<th class="bbscount" style="background-color: gray; text-align: center;">조회수</th>
 					</tr>
 				</thead>
 				<tbody class="bbstbody">
 					<c:forEach var="r" items="${reviews }">
 						<tr class="bbstr">
-							<td class="bbstd">${r.r_no }</td>
-							<td class="bbstd">${r.r_movie }</td>
+							<td class="bbsnumber">${r.r_no }</td>
+							<td class="bbsmovie">${r.r_movie }</td>
 
 							<c:choose>
 								<c:when test="${sessionScope.accountInfo eq null}">
-									<td class="bbstd"><a class="bbsa" href="ReviewDetailC?no=${r.r_no }"
+									<td class="bbstitle"><a class="bbsa" href="ReviewDetailC?no=${r.r_no }"
 										onclick="alert('로그인하세요');">${r.r_title }</a></td>
 								</c:when>
 								<c:otherwise>
-									<td class="bbstd"><a  class="bbsa" href="ReviewDetailC?no=${r.r_no }">${r.r_title }</a></td>
+									<td class="bbstitle"><a  class="bbsa" href="ReviewDetailC?no=${r.r_no }">${r.r_title }</a></td>
 								</c:otherwise>
 							</c:choose>
 
-							<td class="bbstd">${r.r_id }</td>
-							<td class="bbstd"><fmt:formatDate value="${r.r_date }" type="both"
+							<td class="bbsid">${r.r_id }</td>
+							<td class="bbsdate"><fmt:formatDate value="${r.r_date }" type="both"
 									dateStyle="short" timeStyle="short" /></td>
-							<td class="bbstd">${r.r_count }</td>
+							<td class="bbscount">${r.r_count }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -115,5 +115,6 @@
 					</c:otherwise>
 				</c:choose></span>
 		</div>
+		<br><br><br>
 </body>
 </html>

@@ -55,7 +55,7 @@
 				</tr>
 			</table>
 			<c:choose>
-				<c:when test="${mb.mbr_cat ne null }">
+				<c:when test="${mbs ne null }">
 					<table class="bbsTable"
 						style="text-align: center; border: 1px solid #dddddd">
 						<thead>
@@ -70,6 +70,7 @@
 						</thead>
 						<tbody>
 							<c:forEach var="mb" items="${mbs }">
+							<c:if test="${mb.mbf_cat ne null }">
 								<tr>
 									<td>${mb.mbf_no }</td>
 									<td>${mb.mbf_cat }</td>
@@ -79,6 +80,7 @@
 											dateStyle="short" timeStyle="short" /></td>
 									<td>${mb.mbf_count }</td>
 								</tr>
+								</c:if>
 							</c:forEach>
 						</tbody>
 					</table>

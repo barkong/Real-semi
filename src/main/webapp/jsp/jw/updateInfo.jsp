@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,10 +39,10 @@
 		<a href="#" class="navbar__toggleBtn"> <i class=""></i>
 		</a>
 	</nav>
-	
-	<form name="myForm" onsubmit="return UpdateCheck()" action="UpdateAccountC" method="post">
+
+	<form name="myForm" onsubmit="return UpdateCheck()"
+		action="UpdateAccountC" method="post">
 		<h1 align="center">정보 수정</h1>
-		<hr>
 		<div class="container2">
 			<div class="input-container">
 				<b class="name">ID</b> <b class="text">${sessionScope.accountInfo.a_id }</b><br>
@@ -49,17 +50,17 @@
 			</div>
 			<div class="input-container">
 				<b class="name">PW</b> <b class="text"><input name="pw"
-					value="${sessionScope.accountInfo.a_password }"></b><br>
-				<br>
+					value="${sessionScope.accountInfo.a_password }"></b><br> <br>
 			</div>
 			<div class="input-container">
 				<b class="name">이름</b> <b class="text"><input name="name"
-					value="${sessionScope.accountInfo.a_name }"></b><br>
-				<br>
+					value="${sessionScope.accountInfo.a_name }"></b><br> <br>
 			</div>
 			<div class="input-container">
-				<b class="name">생일</b> <b class="text">${sessionScope.accountInfo.a_birth }</b><br>
-				<br>
+				<c:set var="TextValue" value="${sessionScope.accountInfo.a_birth }" />
+				<b class="name">생일</b> <b class="text">${fn:substring(TextValue,0,10) }
+
+				</b><br> <br>
 			</div>
 			<div class="input-container">
 				<b class="name">성별</b> <b class="text">${sessionScope.accountInfo.a_gender }</b><br>
@@ -68,29 +69,28 @@
 			<div class="input-container">
 				<b class="name">email</b> <b class="text"><input type="email"
 					name="email" size="30" required
-					value="${sessionScope.accountInfo.a_email }"></b><br>
+					value="${sessionScope.accountInfo.a_email }"></b><br> <br>
+			</div>
+			<div class="input-container">
+				<b class="name">전화번호</b> <b class="text"><input type="tel"
+					name="phone" value="${sessionScope.accountInfo.a_phone }"></b><br>
 				<br>
 			</div>
 			<div class="input-container">
-				<b class="name" >전화번호</b> <b class="text"><input type="tel" name="phone"
-					value="${sessionScope.accountInfo.a_phone }"></b><br>
+				<b class="name">좋아하는 장르</b> <b class="text">${sessionScope.accountInfo.a_interest }</b><br>
 				<br>
 			</div>
-			<div class="input-container">
-				<b class="name">좋아하는 장르</b> <b class="text">${sessionScope.accountInfo.a_interest }</b><br><br>
-					</div>
-				<div class="button-container" style="font-size: 130%">
+			<div class="button-container" style="font-size: 130%">
 				All<input type="checkbox" name="chk" value=''
-					onclick='selectAll(this)'><br> 
-					액션<input
+					onclick='selectAll(this)'><br> 액션<input
 					type="checkbox" name="chk" value="액션"> 로맨스<input
 					type="checkbox" name="chk" value="로맨스"> 판타지<input
 					type="checkbox" name="chk" value="판타지"> SF<input
-					type="checkbox" name="chk" value="SF"><br> 
-					애니메이션<input type="checkbox" name="chk" value="애니메이션"> 
-					공포<input type="checkbox" name="chk" value="공포">
-					미스터리<input type="checkbox" name="chk" value="미스터리"> 
-					호러<input type="checkbox" name="chk" value="호러"> <br>
+					type="checkbox" name="chk" value="SF"><br> 애니메이션<input
+					type="checkbox" name="chk" value="애니메이션"> 공포<input
+					type="checkbox" name="chk" value="공포"> 미스터리<input
+					type="checkbox" name="chk" value="미스터리"> 호러<input
+					type="checkbox" name="chk" value="호러"> <br>
 			</div>
 			<div class="button-container">
 				<button class="sign_up">수정</button>
