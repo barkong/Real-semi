@@ -42,18 +42,18 @@
 
 
 
-	<h1>Review BBS</h1>
+	<h1 class="bbsh1">Review BBS</h1>
 
-	<c:choose>
-		<c:when test="${sessionScope.accountInfo eq null}">
-			<a href="ReviewRegC" onclick="alert('로그인하세요')">새글쓰기</a>
-		</c:when>
-		<c:otherwise>
-			<a href="ReviewRegC"> 새글쓰기</a>
-		</c:otherwise>
-	</c:choose>
 
 	<div class="bbsdiv">
+	<c:choose>
+		<c:when test="${sessionScope.accountInfo eq null}">
+			<a class="bbsa" href="ReviewRegC" onclick="alert('로그인하세요')">새글쓰기</a>
+		</c:when>
+		<c:otherwise>
+			<a class="bbsa" href="ReviewRegC"> 새글쓰기</a>
+		</c:otherwise>
+	</c:choose>
 		<div class="bbsdiv">
 			<table class="bbsTable"
 				style="text-align: center; border: 1px solid #dddddd">
