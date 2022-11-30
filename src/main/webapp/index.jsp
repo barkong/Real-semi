@@ -62,6 +62,7 @@
 		<div class="page">
 			<div id="pagination"></div>
 		</div>
+		
 	</div>
 </body>
 </html>
