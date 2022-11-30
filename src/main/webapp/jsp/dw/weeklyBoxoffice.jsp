@@ -7,6 +7,8 @@
 <meta charset="UTF-8" />
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/boxoffice.css" />
+<link rel="stylesheet" href="css/calendar.css" />
+<script src="js/calendar.js"></script>
 <script>
     
       $(function () {
@@ -21,15 +23,29 @@
         $("#date").attr("max", str);
 
         // 버튼의 클릭 이벤트
-        $("#mybtn").click(function () {
-          let d = $("#date").val(); //YYYY-MM-dd
-          const regex = /-/g;
-          let d_str = d.replace(regex, ""); //YYYYMMdd
+//        $("#mybtn").click(function () {
+		  $("td").click(function() {
+			
+			
+    //      let d = $("#date").val(); //YYYY-MM-dd
+         // const regex = /-/g;
+          //let d_str = d.replace(regex, ""); //YYYYMMdd
+          let yyyy=$("#cal_top_year").text();
+          let mm = $("#cal_top_month").text();
+          console.log(yyyy);
+          console.log(mm);
           
-
+          let dd = $(this).text();
+          dd= dd.trim();
+          
+          dd = (dd.length == 1) ? '0' + dd : dd;
+          console.log(dd);
+           	
+          let datee = yyyy + mm + dd;
+			console.log(datee);
           let url =
-            "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=" +
-            d_str
+            "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt="+datee;
+          
 
           $.getJSON(url, function (data) {
             let movieList = data.boxOfficeResult.dailyBoxOfficeList;
@@ -49,7 +65,7 @@
               
                 // HTTP 요청이 성공하면 요청한 데이터가 done() 메소드로 전달됨.
                 .done(function (json) {
-
+					
 
                   img = console.log(json.img);
                   director = console.log(json.director);
@@ -92,24 +108,23 @@
 
 </head>
 <body>
+	 <div class="cal_top">
+        <a href="#" id="movePrevYear"><span id="prevYear" class="cal_tit2">◁</span></a>
+        <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit">&lt;</span></a>
+        <span id="cal_top_year"></span>
+        <span id="cal_top_month"></span>
+        <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit">&gt;</span></a>
+        <a href="#" id="moveNextYear"><span id="nextYear" class="cal_tit2">▷</span></a>
+    </div>
+    <div id="cal_tab" class="cal">
+    </div>
 	<div class="boxofficeContainer">	
 		<div class="boxofficBefore">
-		<input type="date" value="" id="date" />
-		<button id="mybtn">확인</button>
-		<div id="boxoffice">
-			<marquee behavior="alternate">
+
+			<!-- <input type="date" value="" id="date" />
+		<button id="mybtn">확인</button> -->
+			<div id="boxoffice">
 			
-			<span style="color: white; position: relative;
-    			width: 500px;
-   				min-width: 200px;
-   				display: flex;
-    			text-align: left;
-   		 		margin: 200px 20px;
-   		 		font-size: 30pt;"
-   		 		>날짜별 박스오피스 순위를 검색해보세요!</span>
-   		 	</marquee>
-   		 	<div style="height:700px;">
-   		 </div>
    		 </div>
 		</div>
 	</div>
