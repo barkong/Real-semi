@@ -25,13 +25,14 @@ img {
 .content {
 	margin: 20px;
 	margin-bottom: 50px;
+	width:800px;
 	
 }
 
 .etc {
-	margin-top: 90px;
+	margin-top: 10px;
 	border-top:1px dashed #808080;
-	width:300px;
+	width:800px;
 	padding-top:10px;
 
 
@@ -57,4 +58,12 @@ img {
 .searchSpanDiv{
 	display:inline-block;
 	margin-bottom:10px;
+}
+.searchActor {
+	display: inline-block;
+	width:250px;
+	margin-top: 5px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
