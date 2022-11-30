@@ -18,19 +18,20 @@
     height:50px;
 }
 .sign_up{
+	color:white;
     width: 100px;
     height: 30px;
-    background: greenyellow;
-    border: 1px solid green;
+    background: rgb(94, 94, 94);
     border-radius: 5px;
     transition: 0.25s;
     cursor: pointer;
 }
 .sign_up:active{
-    background: green;
+    background: rgb(213, 213, 213);
 }
 .sign_up:hover{
-    background: green;
+	color:black;
+    background: rgb(234, 234, 234);
 }
 
 
@@ -52,7 +53,7 @@
 
 h2{
 	font-size: 24px;
-    color: #6A24FE;
+    color: rgb(234, 234, 234);
     margin-bottom: 20px;
     text-align: center;
 }
