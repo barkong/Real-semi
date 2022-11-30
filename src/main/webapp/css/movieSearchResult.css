@@ -11,7 +11,6 @@ img {
 	display: flex;
 	margin-bottom: 50px;
 	margin-left:20px;
-	
 }
 
 .searchTitle {
@@ -26,42 +25,37 @@ img {
 .content {
 	margin: 20px;
 	margin-bottom: 50px;
-	width:800px;
-	
+	width: 800px;
 }
 
 .etc {
 	margin-top: 10px;
-	border-top:1px dashed #808080;
-	width:800px;
-	padding-top:10px;
-
-
-	
+	border-top: 1px dashed #808080;
+	width: 800px;
+	padding-top: 10px;
 }
-
 
 #searchResultContainer {
 	margin: 15px;
 }
 
-.searchSpan{
-	font-size:13pt;
-	font-weight:500;
-	margin-right:15px;
-	margin-bottom:5px;
+.searchSpan {
+	font-size: 13pt;
+	font-weight: 500;
+	margin-right: 15px;
+	margin-bottom: 5px;
 }
+
 
 .searchRDiv{
 	display:inline-block;
 	font-size:11pt;
-	
-}
-.searchSpanDiv{
-	display:inline-block;
-	margin-bottom:10px;
 }
 
+.searchSpanDiv {
+	display: inline-block;
+	margin-bottom: 10px;
+}
 
 .searchActor{
 display:inline-block;	
@@ -70,7 +64,5 @@ display:inline-block;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}`	
 	
-	
-
-}

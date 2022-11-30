@@ -64,7 +64,7 @@
                       movieList[i].movieCd + 
                       "'>"  +
                       
-                      movieList[i].rank +"위 </span> <div clas='boxTable'><div class='boxTitle'><span class='boxT'>"+movieList[i].movieNm+"</span><br>"
+                      movieList[i].rank +"위 </span> <div class='boxTable'><div class='boxTitle'><span class='boxT'>"+movieList[i].movieNm+"</span><br>"
                     +  json.subtitle +"<br> <span class='boxText Text'>개봉일 </span>" + movieList[i].openDt +"</div> <div class='boxInfo'>"
                     + "<span class='boxText'>감독</span>"+json.director +"<br><span class='boxText'>배우</span>" +json.actor +"<br> <span class='boxText yearText'>제작 년도</span>"+ json.pubDate +
                      "년</div><div class='boxEtc'><span class='boxText Text'>매출액 </span>"+movieList[i].salesAcc+"원<br> <span class='boxText Text'>관객수 </span>"+movieList[i].audiAcc+"명</div></div></div>"
@@ -94,11 +94,25 @@
 <body>
 	<div class="boxofficeContainer">	
 		<div class="boxofficBefore">
-		<div id="boxoffice">박스 오피스</div>
 		<input type="date" value="" id="date" />
 		<button id="mybtn">확인</button>
+		<div id="boxoffice">
+			<marquee behavior="alternate">
+			
+			<span style="color: white; position: relative;
+    			width: 500px;
+   				min-width: 200px;
+   				display: flex;
+    			text-align: left;
+   		 		margin: 200px 20px;
+   		 		font-size: 30pt;"
+   		 		>날짜별 박스오피스 순위를 검색해보세요!</span>
+   		 	</marquee>
+   		 	<div style="height:700px;">
+   		 </div>
+   		 </div>
 		</div>
-		</div>
+	</div>
 
 
 </body>
