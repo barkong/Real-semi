@@ -80,7 +80,7 @@ public class Model {
 
 		try {
 			// post 방식 한글처리.  *한글*
-			request.setCharacterEncoding("utf-8");
+//			request.setCharacterEncoding("utf-8");
 			String sql = "insert into semi_account values(?,?,?,?,?,?,?,?)";
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
