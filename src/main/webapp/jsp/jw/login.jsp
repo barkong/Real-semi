@@ -13,7 +13,7 @@
 		${r}
 
 		<!-- <button>로그인</button> -->
-		<a href="LoginPageC">로그인</a>
+		<button class="sign_in" onclick="location.href='LoginPageC'">로그인</button>
 		<!-- </form> -->
 	</div>
 

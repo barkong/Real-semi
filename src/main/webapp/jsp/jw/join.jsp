@@ -12,7 +12,7 @@
 <body>
 	<form name="myForm" action="AccountC" method="post"
 		onsubmit="return call()">
-		<h2>회원가입</h2>
+		<h2 class="loginT">회원가입</h2>
 		<div class="container">
 		<div align="center">${t }</div>
 			<div class="input-container">
