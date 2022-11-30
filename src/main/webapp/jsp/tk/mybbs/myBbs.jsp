@@ -46,10 +46,10 @@
 			<table class="bbsTable" style="text-align: center; border: 1px solid #dddddd" align="center">
 				<tr class="bbstr">
 					<td class="bbstd">
-						<button class="bbsbt1" onclick="location.href='MyBbsC'">[나의 리뷰글 목록]</button>
+						<button class="bbsbt2" onclick="location.href='MyBbsC'">[나의 리뷰글 목록]</button>
 					</td>
 					<td class="bbstd">
-						<button class="bbsbt2" onclick="location.href='MyBbsFreeC'">[나의 자유글 목록]</button>
+						<button class="bbsbt1" onclick="location.href='MyBbsFreeC'">[나의 자유글 목록]</button>
 					</td>
 				</tr>
 			</table>
