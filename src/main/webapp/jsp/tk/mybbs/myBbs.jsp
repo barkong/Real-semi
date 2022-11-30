@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/jw/info.css">
 <link rel="stylesheet" href="css/jw/login.css">
-<link rel="stylesheet" href="css/tk/bbs.css" />
+<link rel="stylesheet" href="css/jw/bbs.css" />
 
 </head>
 <body>
@@ -43,14 +43,13 @@
 
 
 	<div class="bbsdiv">
-		<div class="bbsdiv">
-			<table class="bbsTable">
+			<table class="bbsTable" style="text-align: center; border: 1px solid #dddddd" align="center">
 				<tr class="bbstr">
 					<td class="bbstd">
-						<button class="bbsbt" onclick="location.href='MyBbsC'">[나의 리뷰글 목록]</button>
+						<button class="bbsbt1" onclick="location.href='MyBbsC'">[나의 리뷰글 목록]</button>
 					</td>
 					<td class="bbstd">
-						<button class="bbsbt" onclick="location.href='MyBbsFreeC'">[나의 자유글 목록]</button>
+						<button class="bbsbt2" onclick="location.href='MyBbsFreeC'">[나의 자유글 목록]</button>
 					</td>
 				</tr>
 			</table>
@@ -60,7 +59,7 @@
 						style="text-align: center; border: 1px solid #dddddd" align="center">
 						<thead class="bbsthead">
 							<tr class="bbstr">
-								<th class="bbsth" style="background-color: gray; text-align: center;">게시판분류</th>
+								<th class="bbsnumber" style="background-color: gray; text-align: center;">게시판분류</th>
 								<th class="bbsnumber" style="background-color: gray; text-align: center;">글번호</th>
 								<th class="bbstitle" style="background-color: gray; text-align: center;">글제목</th>
 								<th class="bbsid" style="background-color: gray; text-align: center;">작성자</th>
@@ -72,8 +71,8 @@
 							<c:forEach var="mb" items="${mbs }">
 							<c:if test="${mb.mbr_cat ne null }">
 								<tr class="bsstr">
-									<td class="bssnumber">${mb.mbr_no }</td>
-									<td class="bbstd">${mb.mbr_cat }</td>
+									<td class="bbsnumber">${mb.mbr_cat }</td>
+									<td class="bbsnumber">${mb.mbr_no }</td>
 									<td class="bbstitle"><a href="ReviewDetailC?no=${mb.mbr_no }">${mb.mbr_title }</a></td>
 									<td class="bbsid">${mb.mbr_id }</td>
 									<td class="bbsdate"><fmt:formatDate value="${mb.mbr_date }" type="both"
@@ -84,7 +83,6 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<div class="bbsdiv">
 						<span><c:choose>
 								<c:when test="${curPageNo == 1}">
 						◀
@@ -106,15 +104,13 @@
 									<a class="bbsa" href="MyBbsPageC?p=${curPageNo + 1 }"> ▶ </a>
 								</c:otherwise>
 							</c:choose></span>
-					</div>
 				</c:when>
 				
 				<c:otherwise>
-						<h1 class="bbsh2">[작성한 리뷰글이 없습니다.]</h1>
+						<h1 class="bbsh1">[작성한 리뷰글이 없습니다.]</h1>
 				</c:otherwise>
 			</c:choose>
 		</div>
-	</div>
 
 
 

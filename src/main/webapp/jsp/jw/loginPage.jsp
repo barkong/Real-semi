@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="login-wrapper">
-		<h2>Login</h2>
+		<h2 class="loginT">Login</h2>
 		<form name="myForm" action="LoginC" method="post" onsubmit="return call()" id="login-form">
 			<input name="id" type="text" placeholder="ID"><br>
 			<input name="pw" type="password" placeholder="PW"><br><br>

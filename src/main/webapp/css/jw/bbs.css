@@ -84,6 +84,31 @@
 	background-color: yellow;
 	border-radius: 10px;
 }
+.bbsbt1{
+	width: 150px;
+    height: 30px;
+    background: purple;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.bbsbt1:hover{
+	background-color: violet;
+	border-radius: 10px;
+}
+.bbsbt2{
+	width: 150px;
+    height: 30px;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.bbsbt2:hover{
+	background-color: gray;
+	border-radius: 10px;
+}
+
 .bbsnumber{
 	width: 8%;
 	background-color: black;
