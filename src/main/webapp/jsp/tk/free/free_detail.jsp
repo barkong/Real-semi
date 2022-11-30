@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/jw/info.css">
 <link rel="stylesheet" href="css/jw/login.css">
+<link rel="stylesheet" href="css/jw/bbs.css">
 <script type="text/javascript" src="js/tk/bbs.js"></script>
 <script type="text/javascript" src="js/validCheck.js"></script>
 </head>
@@ -41,34 +42,33 @@
 
 
 <!-- 상세내용 -->
-	<h1>Free Content</h1>
-	<div class="container">
-		<div class="row">
-			<table style="text-align: center; border: 1px solid #dddddd">
-				<thead>
-					<tr>
-						<th colspan="3" style="text-align: center;">글제목 :
-							${free.f_title }</th>
+	<div class="bbsdiv">
+		<div style="align-items: center; text-align: center;">
+			<table class="bbsTable" style="text-align: center; border: 1px solid #dddddd" align="center">
+				<thead class="bbsthead">
+					<tr class="bbstr">
+						<th class="bbsth" colspan="3" style="text-align: center;"><h2>글제목 :
+							${free.f_title }</h2></th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<td>NO. : ${free.f_no }</td>
-						<td>등록시간 : <fmt:formatDate value="${free.f_date }"
+				<tbody class="bbstbody">
+					<tr class="bbstr">
+						<td class="bbstd">NO. : ${free.f_no }</td>
+						<td class="bbstd">등록시간 : <fmt:formatDate value="${free.f_date }"
 								type="both" dateStyle="short" timeStyle="short" /></td>
-						<td>조회수 : ${free.f_count }</td>
+						<td class="bbstd">조회수 : ${free.f_count }</td>
 					</tr>
-					<tr>
-						<td colspan="3">${free.f_detail}</td>
+					<tr class="bbstr">
+						<td class="bbstd" colspan="3">${free.f_detail}</td>
 					</tr>
-					<tr>
-						<td colspan="3"><img src="files/freeImg/${free.f_img }"
-							width="500px"></td>
+					<tr class="bbstr"><c:if test="${free.f_img ne null }">
+						<td class="bbstd" colspan="3"><img src="files/freeImg/${free.f_img }"
+							width="500px"></td></c:if>
 					</tr>
 
 <!-- 수정 삭제 이전으로 새글쓰기 -->
-					<tr>
-						<td><c:choose>
+					<tr class="bbstr">
+						<td class="bbstd" colspan="3"><c:choose>
 								<c:when test="${sessionScope.accountInfo.a_id eq free.f_id}">
 									<c:choose>
 										<c:when test="${sessionScope.accountInfo eq null}">
@@ -76,21 +76,21 @@
 											<button onclick="alert('로그인하세요')">삭제</button>
 										</c:when>
 										<c:otherwise>
-											<button onclick="location.href='FreeUpdateC?no=${param.no}'">수정</button>
-											<button onclick="freeDel(${free.f_no})">삭제</button>
+											<button class="bbsbt" onclick="location.href='FreeUpdateC?no=${param.no}'">수정</button>
+											<button class="bbsbt" onclick="freeDel(${free.f_no})">삭제</button>
 										</c:otherwise>
 									</c:choose>
 								</c:when>
 							</c:choose></td>
 					</tr>
-					<tr>
-						<td colspan="3"><a onclick="history.back()">이전으로</a><a
-							href="FreeC">자유글목록</a> <c:choose>
+					<tr class="bbstr">
+						<td class="bbstd" colspan="3"><a class="bbsa" onclick="history.back()">이전으로</a>
+						<a  class="bbsa" href="FreeC">자유글목록</a> <c:choose>
 								<c:when test="${empty sessionScope.accountInfo.a_id}">
-									<a href="FreeRegC" onclick="alert('로그인하세요')">새글쓰기</a>
+									<a class="bbsa" href="FreeRegC" onclick="alert('로그인하세요')">새글쓰기</a>
 								</c:when>
 								<c:otherwise>
-									<a href="FreeRegC">새글쓰기</a>
+									<a class="bbsa" href="FreeRegC">새글쓰기</a>
 								</c:otherwise>
 							</c:choose>
 					</tr>
@@ -98,57 +98,57 @@
 			</table>
 		</div>
 	</div>
+<br><br><br><br><br><hr><hr><br><br><br><br><br>
 
-
-	<hr>
-	<hr>
 	<!-- 게시글 보여주기 -->
-	<h1>Free BBS</h1>
-	<div class="container">
-		<div class="row">
+ <div>
+		<div class="bbsdiv">
 			<table class="bbsTable"
-				style="text-align: center; border: 1px solid #dddddd">
-				<thead>
-					<tr>
-						<th style="background-color: gray; text-align: center;">글번호</th>
-						<th style="background-color: gray; text-align: center;">글제목</th>
-						<th style="background-color: gray; text-align: center;">작성자</th>
-						<th style="background-color: gray; text-align: center;">작성시간</th>
-						<th style="background-color: gray; text-align: center;">조회수</th>
+				style="text-align: center; border: 1px solid #dddddd" align="center">
+				<tr class="bbstr" style="text-align: left; margin-bottom: 10px">
+					<h1>Free BBS</h1>
+					</tr>
+				<thead class="bbsthead">
+					<tr class="bbstr">
+						<th class="bbsth" style="background-color: gray; text-align: center;">글번호</th>
+						<th class="bbsth" style="background-color: gray; text-align: center;">글제목</th>
+						<th class="bbsth" style="background-color: gray; text-align: center;">작성자</th>
+						<th class="bbsth" style="background-color: gray; text-align: center;">작성시간</th>
+						<th class="bbsth" style="background-color: gray; text-align: center;">조회수</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="bbstbody">
 					<c:forEach var="f" items="${frees }">
-						<tr>
-							<td>${f.f_no }</td>
-							<td><a href="FreeDetailC?no=${f.f_no }">${f.f_title }</a></td>
-							<td>${f.f_id }</td>
-							<td><fmt:formatDate value="${f.f_date }" type="both"
+						<tr class="bbstr">
+							<td class="bbstd">${f.f_no }</td>
+							<td class="bbstd"><a class="bbsa" href="FreeDetailC?no=${f.f_no }">${f.f_title }</a></td>
+							<td class="bbstd">${f.f_id }</td>
+							<td class="bbstd"><fmt:formatDate value="${f.f_date }" type="both"
 									dateStyle="short" timeStyle="short" /></td>
-							<td>${f.f_count }</td>
+							<td class="bbstd">${f.f_count }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
-		<div>
+		<div class="bbsdiv">
 			<span><c:choose>
 					<c:when test="${curPageNo == 1}">
 						◀
 					</c:when>
 					<c:otherwise>
-						<a href="FreePageC?p=${curPageNo - 1 }"> ◀ </a>
+						<a class="bbsa" href="FreePageC?p=${curPageNo - 1 }"> ◀ </a>
 					</c:otherwise>
-				</c:choose></span> <a href="FreePageC?p=1">[맨처음]</a>
+				</c:choose></span> <a class="bbsa" href="FreePageC?p=1">[맨처음]</a>
 			<c:forEach var="i" begin="1" end="${pageCount }">
-				<a href="FreePageC?p=${i }"> [${i }] </a>
+				<a class="bbsa" href="FreePageC?p=${i }"> [${i }] </a>
 			</c:forEach>
-			<span><a href="FreePageC?p=${pageCount }">[맨끝]</a></span> <span><c:choose>
+			<span><a class="bbsa" href="FreePageC?p=${pageCount }">[맨끝]</a></span> <span><c:choose>
 					<c:when test="${curPageNo == pageCount}">
 						▶
 					</c:when>
 					<c:otherwise>
-						<a href="FreePageC?p=${curPageNo + 1 }"> ▶ </a>
+						<a class="bbsa" href="FreePageC?p=${curPageNo + 1 }"> ▶ </a>
 					</c:otherwise>
 				</c:choose></span>
 		</div>

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,8 +55,10 @@
 		<b class="name">이름</b> <b class="text">${sessionScope.accountInfo.a_name }</b><br>
 		<br>
 	</div>
-	<div class="input-container">
-		<b class="name">생일</b> <b class="text">${sessionScope.accountInfo.a_birth }</b><br>
+	<div class="input-container"><c:set var="TextValue" value="${sessionScope.accountInfo.a_birth }"/>
+		<b class="name">생일</b> <b class="text">${fn:substring(TextValue,0,10) }
+						
+		</b><br>
 		<br>
 	</div>
 	<div class="input-container">
