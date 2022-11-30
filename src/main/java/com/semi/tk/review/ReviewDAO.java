@@ -266,16 +266,20 @@ public class ReviewDAO {
 		req.setAttribute("curPageNo", page);
 
 		// 전체 페이지수 계산
-		int cnt = 10;
-		int total = reviews.size();
-
+		int cnt = 10; // 한페이지당 보여줄 개수
+		int total = reviews.size(); // 총 (데이터 게시글) 수
+		int pageCount;
+		
 		// 총 페이지 수
-		int pageCount = (int) Math.ceil(((double) total / cnt));
+		if (total==0) {
+			pageCount = 1;
+		} else {
+			pageCount = (int) Math.ceil(((double) total / cnt));
+		}
 		req.setAttribute("pageCount", pageCount); // 페이지넘기기 화살표를 위해 넘겨주는 것
 
-		int start = total - (cnt * (page - 1));
-
-		int end = (page == pageCount) ? -1 : start - (cnt + 1);
+		int start = total - (cnt * (page - 1)); // 시작데이터번호
+		int end = (page == pageCount) ? -1 : start - (cnt + 1); // 끝데이터번호
 
 		ArrayList<Review> items = new ArrayList<Review>();
 		for (int i = start - 1; i > end; i--) {
