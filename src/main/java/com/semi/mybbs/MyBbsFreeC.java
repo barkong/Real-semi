@@ -19,6 +19,14 @@ public class MyBbsFreeC extends HttpServlet {
 			MyBbsDAO.paging(1, request);
 			request.setAttribute("contentPage", "jsp/tk/mybbs/myBbsFree.jsp");
 		} else {
+			String watchingPage = request.getRequestURL().toString();
+			String param = request.getQueryString();
+			if (request.getQueryString() != null) {
+				watchingPage = watchingPage + "?" + param; // 수정할 글의 번호도 있으니까
+			}
+			System.out.println("watchingPage : " + watchingPage);
+			System.out.println("param : " + param);
+			request.getSession().setAttribute("watchingPage", watchingPage);
 			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}
 

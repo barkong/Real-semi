@@ -24,7 +24,16 @@ public class MovieNewsC extends HttpServlet {
 //		PrintWriter out = response.getWriter();
 //		out.print(NaverNews.getNa().getNews(request));
 //		NaverNews.getNa().paging(1, request); 
-
+		
+		String watchingPage = request.getRequestURL().toString();
+		String param = request.getQueryString();
+		if (request.getQueryString() != null) {
+			watchingPage = watchingPage + "?" + param;
+		}
+		System.out.println("watchingPage : " + watchingPage);
+		System.out.println("param : " + param);
+		request.getSession().setAttribute("watchingPage", watchingPage);
+		
 		request.setAttribute("contentPage", "jsp/sh/newsResult.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

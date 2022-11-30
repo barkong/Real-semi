@@ -17,7 +17,15 @@ public class UpdateAccountC extends HttpServlet {
 		if (Model.loginCheck(request)) {
 			request.setAttribute("contentPage", "jsp/jw/updateInfo.jsp");
 		} else {
-			request.setAttribute("contentPage", "home.jsp");
+			String watchingPage = request.getRequestURL().toString();
+			String param = request.getQueryString();
+			if (request.getQueryString() != null) {
+				watchingPage = watchingPage + "?" + param;
+			}
+			System.out.println("watchingPage : " + watchingPage);
+			System.out.println("param : " + param);
+			request.getSession().setAttribute("watchingPage", watchingPage);
+			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
@@ -28,8 +36,19 @@ public class UpdateAccountC extends HttpServlet {
 		if (Model.loginCheck(request)) {
 			Model.updateInfo(request);
 			Model.login(request);
+			request.setAttribute("contentPage", "jsp/jw/info.jsp");
+		} else {
+			String watchingPage = request.getRequestURL().toString();
+			String param = request.getQueryString();
+			if (request.getQueryString() != null) {
+				watchingPage = watchingPage + "?" + param;
+			}
+			System.out.println("watchingPage : " + watchingPage);
+			System.out.println("param : " + param);
+			request.getSession().setAttribute("watchingPage", watchingPage);
+			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}
-		request.setAttribute("contentPage", "jsp/jw/info.jsp");
+
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
