@@ -46,8 +46,8 @@ function successCall2(data) {
 					+ i.subtitle
 					+ "</span>"
 					+ "<div class='etc'><div class='searchSpanDiv'><span class='searchSpan'>개봉년도</span></div><div class='searchRDiv'>"
-					+ i.pubDate + "</div>년 <br><div class='searchSpanDiv'><span class='searchSpan'>배우</span></div><div class='searchRDiv'>"
-					+ actor + "</div><br><div class='searchSpanDiv'><span class='searchSpan'>감독</span></div><div class='searchRDiv'>"
+					+ i.pubDate + "</div>년 <br><div class='searchSpanDiv'><span class='searchSpan'>배우</span></div><div class='searchRDiv'><span class='searchActor'>"
+					+ actor + "</span></div><br><div class='searchSpanDiv'><span class='searchSpan'>감독</span></div><div class='searchRDiv'>"
 					+ director + "</div><br><div class='searchSpanDiv'><span class='searchSpan'>평점</span></div><div class='searchRDiv'>"
 					+ i.userRating + "</div></div></div></div></form>"
 			});

@@ -11,6 +11,7 @@ img {
 	display: flex;
 	margin-bottom: 50px;
 	margin-left:20px;
+	
 }
 
 .searchTitle {
@@ -53,8 +54,20 @@ img {
 .searchRDiv{
 	display:inline-block;
 	font-size:11pt;
+	
 }
 .searchSpanDiv{
 	display:inline-block;
 	margin-bottom:10px;
+}
+
+.searchActor{
+display:inline-block;	
+	width:250px;
+	margin-top:5px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	
+	
 }
