@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/LoginC")
@@ -27,7 +28,10 @@ public class LoginC extends HttpServlet {
 		Model.login(request);
 		Model.loginCheck(request);
 		
-		request.setAttribute("contentPage", "home.jsp");
+		HttpSession hs = request.getSession();
+		String a = (String) hs.getAttribute("redirectURI");
+		System.out.println(a);
+		request.setAttribute("contentPage", a);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 

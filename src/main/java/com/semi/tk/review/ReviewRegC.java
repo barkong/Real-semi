@@ -17,6 +17,9 @@ public class ReviewRegC extends HttpServlet {
 		if (Model.loginCheck(request)) {
 			request.setAttribute("contentPage", "jsp/tk/review/review_reg.jsp");
 		} else {
+//			String referer = request.getHeader("Referer");
+//			System.out.println(referer);
+			request.getSession().setAttribute("redirectURI", "jsp/tk/review/review_reg.jsp");
 			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}
 		request.getRequestDispatcher("index.jsp").forward(request, response);
