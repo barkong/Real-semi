@@ -49,25 +49,23 @@ pageContext.setAttribute("cn", "\n");
 
 
 
-	<h1 class="bssh1">자유글수정하기</h1>
-	<div class="bbsdiv">
 		<div class="bbsdiv">
+	<h1 class="bssh1">자유글수정하기</h1>
 			<form action="FreeUpdateC" method="post" name="bbsForm"
 				enctype="multipart/form-data" onsubmit="return bbsCall()">
-				<table class="bbsTable"
-					style="text-align: center; border: 1px solid #dddddd">
+				<table class="bbsTable" style="text-align: center; border: 1px solid #dddddd" align="center">
 					<thead class="bbsthead">
 						<tr class="bbstr">
-							<th class="bbstd" style="background-color: #73685d">글제목</th>
-							<th class="bbsth" colspan="2"
-								style="text-align: left; padding-left: 400px"><input
+							<th  class="bbstd" style="background-color: gray;">글제목</th>
+							<th class="bbsth" colspan="2" style="text-align: left; padding-left: 300px"><input
+
 								type="text" value="${free.f_title }" name="title"></th>
 						</tr>
 					</thead>
 					<tbody class="bbstbody">
 						<tr class="bbstr">
 							<td class="bbstd">NO. : ${free.f_no }</td>
-							<td class="bbstd">등록시간 : <fmt:formatDate
+							<td class="bbstd" style="text-align: left; padding-left: 300px">등록시간 : <fmt:formatDate
 									value="${free.f_date }" type="both" dateStyle="short"
 									timeStyle="short" /></td>
 							<td class="bbstd">조회수 : ${free.f_count }</td>
@@ -111,6 +109,6 @@ pageContext.setAttribute("cn", "\n");
 				</table>
 			</form>
 		</div>
-	</div>
+		<br><br><br>
 </body>
 </html>

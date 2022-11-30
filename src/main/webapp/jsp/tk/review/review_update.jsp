@@ -16,6 +16,7 @@ pageContext.setAttribute("cn", "\n");
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/jw/info.css">
 <link rel="stylesheet" href="css/jw/login.css">
+<link rel="stylesheet" href="css/jw/bbs.css">
 <script type="text/javascript" src="js/tk/bbs.js"></script>
 <script type="text/javascript" src="js/validCheck.js"></script>
 </head>
@@ -47,26 +48,27 @@ pageContext.setAttribute("cn", "\n");
 	</nav>
 
 
-
-	<h1 class="bbsh1">리뷰수정하기</h1>
 	<div class="bbsdiv">
-		<div class="bbsdiv">
+	<h1 class="bbsh1">리뷰수정하기</h1>
 			<form action="ReviewUpdateC" method="post" name="bbsForm"
 				enctype="multipart/form-data" onsubmit="return bbsCall()">
 				<table class="bbsTable"
-					style="text-align: center; border: 1px solid #dddddd">
+					style="text-align: center; border: 1px solid #dddddd" align="center">
+
 					<thead class="bbsthead">
 						<tr class="bbstr">
-							<th class="bbsth">글제목</th>
-							<th class="bbsth" colspan="2" style="text-align: center;"><input
+							<th class="bbstd" style="background-color: gray;">글제목</th>
+							<th class="bbsth" colspan="2"
+								style="text-align: left; padding-left: 300px;"><input
 								type="text" value="${review.r_title }" name="title"></th>
 						</tr>
 					</thead>
 					<tbody class="bbstbody">
 						<tr class="bbstr">
 							<td class="bbstd">영화제목</td>
-							<td class="bbstd" colspan="2"><input type="text"
-								value="${review.r_movie }" name="movie"></td>
+							<td class="bbstd" colspan="2"
+								style="text-align: left; padding-left: 300px;"><input
+								type="text" value="${review.r_movie }" name="movie"></td>
 						</tr>
 						<tr class="bbstr">
 							<td class="bbstd">NO. : ${review.r_no }</td>
@@ -81,6 +83,7 @@ pageContext.setAttribute("cn", "\n");
 
 						</tr>
 						<tr class="bbstr">
+
 							<c:if test="${review.r_img ne null }">
 								<td class="bbstd" colspan="3"><img
 									src="files/reviewImg/${review.r_img }" width="500px"></td>
@@ -113,7 +116,7 @@ pageContext.setAttribute("cn", "\n");
 					</tbody>
 				</table>
 			</form>
-		</div>
 	</div>
+	<br><br><br>
 </body>
 </html>

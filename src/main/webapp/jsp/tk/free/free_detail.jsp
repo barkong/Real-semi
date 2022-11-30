@@ -43,6 +43,7 @@
 
 <!-- 상세내용 -->
 	<div class="bbsdiv">
+	<h1 class="bbsh1">Free Talk</h1>
 		<div style="align-items: center; text-align: center;">
 			<table class="bbsTable" style="text-align: center; border: 1px solid #dddddd" align="center">
 				<thead class="bbsthead">
@@ -53,13 +54,13 @@
 				</thead>
 				<tbody class="bbstbody">
 					<tr class="bbstr">
-						<td class="bbstd">NO. : ${free.f_no }</td>
-						<td class="bbstd">등록시간 : <fmt:formatDate value="${free.f_date }"
+						<td class="bbstd2">NO. : ${free.f_no }</td>
+						<td class="bbstd2">등록시간 : <fmt:formatDate value="${free.f_date }"
 								type="both" dateStyle="short" timeStyle="short" /></td>
-						<td class="bbstd">조회수 : ${free.f_count }</td>
+						<td class="bbstd2">조회수 : ${free.f_count }</td>
 					</tr>
 					<tr class="bbstr">
-						<td class="bbstd" colspan="3">${free.f_detail}</td>
+						<td class="bbstd3" colspan="3">${free.f_detail}</td>
 					</tr>
 					<tr class="bbstr"><c:if test="${free.f_img ne null }">
 						<td class="bbstd" colspan="3"><img src="files/freeImg/${free.f_img }"
@@ -98,34 +99,32 @@
 			</table>
 		</div>
 	</div>
-<br><br><br><br><br><hr><hr><br><br><br><br><br>
+<br><br><br><br><br>
 
 	<!-- 게시글 보여주기 -->
  <div>
 		<div class="bbsdiv">
 			<table class="bbsTable"
 				style="text-align: center; border: 1px solid #dddddd" align="center">
-				<tr class="bbstr" style="text-align: left; margin-bottom: 10px">
 					<h1>Free BBS</h1>
-					</tr>
 				<thead class="bbsthead">
 					<tr class="bbstr">
-						<th class="bbsth" style="background-color: gray; text-align: center;">글번호</th>
-						<th class="bbsth" style="background-color: gray; text-align: center;">글제목</th>
-						<th class="bbsth" style="background-color: gray; text-align: center;">작성자</th>
-						<th class="bbsth" style="background-color: gray; text-align: center;">작성시간</th>
-						<th class="bbsth" style="background-color: gray; text-align: center;">조회수</th>
+						<th class="bbsnumber" style="background-color: gray; text-align: center;">글번호</th>
+						<th class="bbstitle" style="background-color: gray; text-align: center;">글제목</th>
+						<th class="bbsid" style="background-color: gray; text-align: center;">작성자</th>
+						<th class="bbsdate" style="background-color: gray; text-align: center;">작성시간</th>
+						<th class="bbscount" style="background-color: gray; text-align: center;">조회수</th>
 					</tr>
 				</thead>
 				<tbody class="bbstbody">
 					<c:forEach var="f" items="${frees }">
 						<tr class="bbstr">
-							<td class="bbstd">${f.f_no }</td>
-							<td class="bbstd"><a class="bbsa" href="FreeDetailC?no=${f.f_no }">${f.f_title }</a></td>
-							<td class="bbstd">${f.f_id }</td>
-							<td class="bbstd"><fmt:formatDate value="${f.f_date }" type="both"
+							<td class="bbsnumber">${f.f_no }</td>
+							<td class="bbstitle"><a class="bbsa" href="FreeDetailC?no=${f.f_no }">${f.f_title }</a></td>
+							<td class="bbsid">${f.f_id }</td>
+							<td class="bbsdate"><fmt:formatDate value="${f.f_date }" type="both"
 									dateStyle="short" timeStyle="short" /></td>
-							<td class="bbstd">${f.f_count }</td>
+							<td class="bbscount">${f.f_count }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -153,5 +152,6 @@
 				</c:choose></span>
 		</div>
 	</div>
+	<br><br><br>
 </body>
 </html>

@@ -41,7 +41,6 @@
 	</nav>
 
 	<h1 align="center">회원정보</h1>
-	<hr>
 	<div class="container2">
 	<div class="input-container">
 		<b class="name">ID</b> <b class="text">${sessionScope.accountInfo.a_id }</b><br>

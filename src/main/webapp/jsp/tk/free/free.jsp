@@ -42,14 +42,14 @@
 
 
 
-	<h1 class="bbsh1">Free BBS</h1>
 <div class="bbsdiv">
+	<h1 class="bbsh1">Free BBS</h1>
 	<c:choose>
 		<c:when test="${sessionScope.accountInfo eq null}">
-			<a class="bbsa" href="FreeRegC" onclick="alert('로그인하세요')">새글쓰기</a>
+			<a class="bbsnewa" href="FreeRegC" onclick="alert('로그인하세요')">새글쓰기</a>
 		</c:when>
 		<c:otherwise>
-			<a class="bbsa" href="FreeRegC"> 새글쓰기</a>
+			<a class="bbsnewa" href="FreeRegC"> 새글쓰기</a>
 		</c:otherwise>
 	</c:choose>
 </div>
@@ -59,22 +59,22 @@
 				style="text-align: center; border: 1px solid #dddddd" align="center">
 				<thead class="bbsthead">
 					<tr class="bbstr">
-						<th class="bbsth" style="background-color: gray; text-align: center;">글번호</th>
-						<th class="bbsth" style="background-color: gray; text-align: center;">글제목</th>
-						<th class="bbsth" style="background-color: gray; text-align: center;">작성자</th>
-						<th class="bbsth" style="background-color: gray; text-align: center;">작성시간</th>
-						<th class="bbsth" style="background-color: gray; text-align: center;">조회수</th>
+						<th class="bbsnumber" style="background-color: gray; text-align: center;">글번호</th>
+						<th class="bbstitle" style="background-color: gray; text-align: center;">글제목</th>
+						<th class="bbsid" style="background-color: gray; text-align: center;">작성자</th>
+						<th class="bbsdate" style="background-color: gray; text-align: center;">작성시간</th>
+						<th class="bbscount" style="background-color: gray; text-align: center;">조회수</th>
 					</tr>
 				</thead>
 				<tbody class="bbstbody">
 					<c:forEach var="f" items="${frees }">
 						<tr class="bbstr">
-							<td class="bbstd">${f.f_no }</td>
-							<td class="bbstd"><a class="bbsa" href="FreeDetailC?no=${f.f_no }">${f.f_title }</a></td>
-							<td class="bbstd">${f.f_id }</td>
-							<td class="bbstd"><fmt:formatDate value="${f.f_date }" type="both"
+							<td class="bbsnumber">${f.f_no }</td>
+							<td class="bbstitle"><a class="bbsa" href="FreeDetailC?no=${f.f_no }">${f.f_title }</a></td>
+							<td class="bbsid">${f.f_id }</td>
+							<td class="bbsdate"><fmt:formatDate value="${f.f_date }" type="both"
 									dateStyle="short" timeStyle="short" /></td>
-							<td class="bbstd">${f.f_count }</td>
+							<td class="bbscount">${f.f_count }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -102,5 +102,6 @@
 				</c:choose></span>
 		</div>
 	</div>
+	<br><br><br>
 </body>
 </html>

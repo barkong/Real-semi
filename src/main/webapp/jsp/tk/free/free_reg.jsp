@@ -42,15 +42,14 @@
 
 
 
-	<h1 class="bbsh1">자유글등록하기</h1>
-	<div class="bbsdiv">
 		<div class="bbsdiv">
+	<h1 class="bbsh1">자유글등록하기</h1>
 			<form action="FreeRegC" method="post" name="bbsForm"
 				enctype="multipart/form-data" onsubmit="return bbsCall()">
-				<table class="bbsTable" style="text-align: center; border: 1px solid #dddddd">
+				<table class="bbsTable" style="text-align: center; border: 1px solid #dddddd" align="center">
 					<thead class="bbsthead">
 						<tr class="bbstr">
-							<th class="bbstd" style="background-color: #73685d">글제목</th>
+							<th class="bbstd" style="background-color: gray;">글제목</th>
 							<th class="bbsth" colspan="2" style="text-align: left; padding-left: 240px"><input
 								type="text" name="title" placeholder="글제목" maxlength="50" /></th>
 						</tr>
@@ -85,6 +84,6 @@
 				</table>
 			</form>
 		</div>
-	</div>
+		<br><br><br>
 </body>
 </html>
