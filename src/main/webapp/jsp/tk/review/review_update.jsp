@@ -2,6 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%
+pageContext.setAttribute("br", "<br>");
+%>
+<%
+pageContext.setAttribute("cn", "\n");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,8 +74,9 @@
 							<td class="bbstd">조회수 : ${review.r_count }</td>
 						</tr>
 						<tr class="bbstr">
-							<td class="bbstd" colspan="3"><textarea maxlength="2084" name="detail"
-									rows="20" cols="60" style="resize: none">${review.r_detail}</textarea></td>
+							<td colspan="3"><textarea maxlength="2084" name="detail"
+									rows="20" cols="60" style="resize: none">${fn:replace(review.r_detail, br, "cn")}</textarea></td>
+
 						</tr>
 						<tr class="bbstr">
 							<td class="bbstd" colspan="3"><img src="files/reviewImg/${review.r_img }"

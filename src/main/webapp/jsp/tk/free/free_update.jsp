@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<% pageContext.setAttribute("br", "<br>"); %>
+<% pageContext.setAttribute("cn", "\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,8 +66,11 @@
 							<td class="bbstd">조회수 : ${free.f_count }</td>
 						</tr>
 						<tr class="bbstr">
-							<td class="bbstd" colspan="3"><textarea maxlength="2084" name="detail"
-									rows="20" cols="60" style="resize: none">${free.f_detail}</textarea></td>
+							<td class="bbstd" colspan="3">
+														
+							<textarea maxlength="2084" name="detail"
+									rows="20" cols="60" style="resize: none">
+									${fn:replace(free.f_detail, br, cn)}</textarea></td>
 						</tr>
 						<tr class="bbstr">
 							<td class="bbstd" colspan="3"><img src="files/freeImg/${free.f_img }"
