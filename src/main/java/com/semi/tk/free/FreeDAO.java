@@ -253,9 +253,13 @@ public class FreeDAO {
 		// 전체 페이지수 계산
 		int cnt = 10;
 		int total = frees.size();
-
+		int pageCount;
 		// 총 페이지 수
-		int pageCount = (int) Math.ceil(((double) total / cnt));
+		if (total==0) {
+			pageCount = 1;
+		} else {
+			pageCount = (int) Math.ceil(((double) total / cnt));
+		}
 		req.setAttribute("pageCount", pageCount); // 페이지넘기기 화살표를 위해 넘겨주는 것
 
 		int start = total - (cnt * (page - 1));
