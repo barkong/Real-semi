@@ -49,74 +49,77 @@ pageContext.setAttribute("cn", "\n");
 
 
 	<div class="bbsdiv">
-	<h1 class="bbsh1">리뷰수정하기</h1>
-			<form action="ReviewUpdateC" method="post" name="bbsForm"
-				enctype="multipart/form-data" onsubmit="return bbsCall()">
-				<table class="bbsTable"
-					style="text-align: center; border: 1px solid #dddddd" align="center">
+		<h1 class="bbsh1">리뷰수정하기</h1>
+		<form action="ReviewUpdateC?no=${review.r_no }" method="post" name="bbsForm"
+			enctype="multipart/form-data" onsubmit="return bbsCall()">
+			<table class="bbsTable"
+				style="text-align: center; border: 1px solid #dddddd" align="center">
 
-					<thead class="bbsthead">
-						<tr class="bbstr">
-							<th class="bbstd" style="background-color: gray;">글제목</th>
-							<th class="bbsth" colspan="2"
-								style="text-align: left; padding-left: 300px;"><input
-								type="text" value="${review.r_title }" name="title"></th>
-						</tr>
-					</thead>
-					<tbody class="bbstbody">
-						<tr class="bbstr">
-							<td class="bbstd">영화제목</td>
-							<td class="bbstd" colspan="2"
-								style="text-align: left; padding-left: 300px;"><input
-								type="text" value="${review.r_movie }" name="movie"></td>
-						</tr>
-						<tr class="bbstr">
-							<td class="bbstd">NO. : ${review.r_no }</td>
-							<td class="bbstd">등록시간 : <fmt:formatDate
-									value="${review.r_date }" type="both" dateStyle="short"
-									timeStyle="short" /></td>
-							<td class="bbstd">조회수 : ${review.r_count }</td>
-						</tr>
-						<tr class="bbstr">
-							<td colspan="3"><textarea maxlength="2084" name="detail"
-									rows="20" cols="60" style="resize: none">${fn:replace(review.r_detail, br, "cn")}</textarea></td>
+				<thead class="bbsthead">
+					<tr class="bbstr">
+						<th class="bbstd" style="background-color: gray;">글제목</th>
+						<th class="bbsth" colspan="2"
+							style="text-align: left; padding-left: 300px;"><input
+							type="text" value="${review.r_title }" name="title"></th>
+					</tr>
+				</thead>
+				<tbody class="bbstbody">
+					<tr class="bbstr">
+						<td class="bbstd">영화제목</td>
+						<td class="bbstd" colspan="2"
+							style="text-align: left; padding-left: 300px;"><input
+							type="text" value="${review.r_movie }" name="movie"></td>
+					</tr>
+					<tr class="bbstr">
+						<td class="bbstd">NO. : ${review.r_no }<input name="no"
+							value="${review.r_no }" type="hidden"></td>
+						<td class="bbstd">등록시간 : <fmt:formatDate
+								value="${review.r_date }" type="both" dateStyle="short"
+								timeStyle="short" /></td>
+						<td class="bbstd">조회수 : ${review.r_count }</td>
+					</tr>
+					<tr class="bbstr">
+						<td colspan="3"><textarea maxlength="2084" name="detail"
+								rows="20" cols="60" style="resize: none">${fn:replace(review.r_detail, br, "cn")}</textarea></td>
 
-						</tr>
-						<tr class="bbstr">
+					</tr>
+					<tr class="bbstr">
 
-							<c:if test="${review.r_img ne null }">
-								<td class="bbstd" colspan="3"><img
-									src="files/reviewImg/${review.r_img }" width="500px"></td>
-							</c:if>
-						</tr>
-						<tr class="bbstr">
-							<td class="bbstd" colspan="3"><input type="file" name="img2" /><input
-								name="img" value="${review.r_img }" type="hidden"></td>
-						</tr>
-						<tr class="bbstr">
-							<td class="bbstd" colspan="3">
-								<button class="bbsbt">등록(수정완료)</button>
-								<button class="bbsbt" type="button"
-									onclick="reviewDel(${review.r_no})">삭제하기</button>
-							</td>
-						</tr>
+						<c:if test="${review.r_img ne null }">
+							<td class="bbstd" colspan="3"><img
+								src="files/reviewImg/${review.r_img }" width="500px"></td>
+						</c:if>
+					</tr>
+					<tr class="bbstr">
+						<td class="bbstd" colspan="3"><input type="file" name="img2" /><input
+							name="img" value="${review.r_img }" type="hidden"></td>
+					</tr>
+					<tr class="bbstr">
+						<td class="bbstd" colspan="3">
+							<button class="bbsbt">등록(수정완료)</button>
+							<button class="bbsbt" type="button"
+								onclick="reviewDel(${review.r_no})">삭제하기</button>
+						</td>
+					</tr>
 
 
-						<tr class="bbstr">
-							<td class="bbstd" colspan="3"><a href="ReviewC">게시판 목록으로</a>
-								<c:choose>
-									<c:when test="${sessionScope.accountInfo eq null}">
-										<a class="bbsa" href="ReviewRegC" onclick="alert('로그인하세요')">새글쓰기</a>
-									</c:when>
-									<c:otherwise>
-										<a class="bbsa" href="ReviewRegC">새글쓰기</a>
-									</c:otherwise>
-								</c:choose>
-						</tr>
-					</tbody>
-				</table>
-			</form>
+					<tr class="bbstr">
+						<td class="bbstd" colspan="3"><a href="ReviewC">게시판 목록으로</a>
+							<c:choose>
+								<c:when test="${sessionScope.accountInfo eq null}">
+									<a class="bbsa" href="ReviewRegC" onclick="alert('로그인하세요')">새글쓰기</a>
+								</c:when>
+								<c:otherwise>
+									<a class="bbsa" href="ReviewRegC">새글쓰기</a>
+								</c:otherwise>
+							</c:choose>
+					</tr>
+				</tbody>
+			</table>
+		</form>
 	</div>
-	<br><br><br>
+	<br>
+	<br>
+	<br>
 </body>
 </html>
