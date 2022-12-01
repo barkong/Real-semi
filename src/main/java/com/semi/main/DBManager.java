@@ -23,6 +23,7 @@ public class DBManager {
 	//	String url = "jdbc:oracle:thin:@DB202204301707_high?TNS_ADMIN=C:/sjw/Wallet_DB202204301707";
 
 
+
 		return DriverManager.getConnection(url, "SHMAC", "SHsoldesk802");
 
 	}
