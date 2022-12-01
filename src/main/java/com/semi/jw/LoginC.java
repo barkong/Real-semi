@@ -19,6 +19,9 @@ public class LoginC extends HttpServlet {
 		Model.loginCheck(request);
 		
 		String watchingPage = request.getRequestURL().toString();
+		System.out.println();
+		System.out.println(watchingPage);
+		System.out.println();
 		String param = request.getQueryString();
 		if (request.getQueryString() != null) {
 			watchingPage = watchingPage + "?" + param;
@@ -37,12 +40,12 @@ public class LoginC extends HttpServlet {
 		Model.login(request);
 
 		if (Model.loginCheck(request)) {
-
+			String watchingPage1 = request.getRequestURL().toString();
 			HttpSession hs = request.getSession();
 			String watchingPage = (String) hs.getAttribute("watchingPage");
 			System.out.println("LoginC watchingPage = " + watchingPage);
 
-			if (watchingPage == null || watchingPage.equals("http://localhost/SemiProject/LoginC")) {
+			if (watchingPage == null || watchingPage.equals(watchingPage1)) {
 				request.setAttribute("contentPage", "home.jsp");
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			} else {

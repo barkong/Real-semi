@@ -120,13 +120,14 @@
     </div>
 	<div class="boxofficeContainer">	
 		<div class="boxofficBefore">
-
+<div class="boxComment">※ 보고싶은 박스오피스 순위의 날짜를 선택해 주세요</div>
 			<!-- <input type="date" value="" id="date" />
 		<button id="mybtn">확인</button> -->
 			<div id="boxoffice">
 			
    		 </div>
 		</div>
+		
 	</div>
 
 

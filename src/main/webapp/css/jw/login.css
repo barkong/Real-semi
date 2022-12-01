@@ -73,7 +73,7 @@
 	margin-right: 70px;
 }
 
-.sign_in{
+/* .sign_in{
 	width: 100px;
     height: 30px;
     background: gray;
@@ -81,16 +81,16 @@
     border-radius: 10px;
     transition: 0.25s;
     cursor: pointer;
-}
+} */
 
-.sign_in:active{
+/* .sign_in:active{
     background: aliceblue;
 }
 .sign_in:hover{
 	color:black;
     background: white;
 }
-
+ */
 
 .idChkbt{
 	width: 50px;
@@ -104,4 +104,25 @@
 .idChkbt:hover{
 	background-color: #bbb70f;
 	border-radius: 10px;
+}
+
+.loginBtn1{
+	color:white;
+}
+
+.loginOkT{
+	font-size:11pt;
+}
+
+.sign_in{
+	background-color:#101111;
+	border:none;
+	color:white;
+	/* margin:5px; */
+	margin:0 5px;
+}
+
+.sign_in:hover{
+	border-bottom:1px solid white;
+	padding:3px;
 }
