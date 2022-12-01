@@ -18,6 +18,14 @@ public class InfoAccountC extends HttpServlet {
 		if (Model.loginCheck(request)) {
 			request.setAttribute("contentPage", "jsp/jw/info.jsp");
 		} else {
+			String watchingPage = request.getRequestURL().toString();
+			String param = request.getQueryString();
+			if (request.getQueryString() != null) {
+				watchingPage = watchingPage + "?" + param;
+			}
+			System.out.println("watchingPage : " + watchingPage);
+			System.out.println("param : " + param);
+			request.getSession().setAttribute("watchingPage", watchingPage);
 			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}
 

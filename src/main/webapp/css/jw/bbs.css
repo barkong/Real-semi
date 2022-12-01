@@ -7,9 +7,9 @@
 
 .bbsTable {
   border: 1px rgb(128, 128, 128) solid;
-  font-size: large;
+  font-size: 15px;
   box-shadow: 0 2px 5px rgb(192, 192, 192);
-  width: 80%;
+  width: 75%;
   border-collapse: collapse;
   border-radius: 5px;
   overflow: hidden;
@@ -48,10 +48,10 @@
     vertical-align: middle;
 }
 
-.bbsa {
+.bbsa { /* 글제목, 페이징 */
   color: rgb(192, 192, 192);
   text-align: center;
-  font-size: x-large;
+  font-size: 17px;
 }
 .bbsa:hover{
 	color: rgb(128, 128, 128);
@@ -62,11 +62,11 @@
   	text-align: center;
   	padding-left: 130px;
 }
-.bbsnewa {
+.bbsnewa { /* 새글쓰기 */
   color: gray;
   text-align: right;
-  font-size: x-large;
-  margin-left: 900px;
+  font-size: 20px;
+  margin-left: 1200px;
 }
 .bbsnewa:hover{
 	color: white;
@@ -110,14 +110,6 @@
 }
 
 .bbsnumber{
-	width: 8%;
-	background-color: black;
-	padding: 1em .5em;
-    vertical-align: middle;
-    border-bottom: 1px solid #101111;
-    background: rgb(0, 0, 0);
-}
-.bbsmovie{
 	width: 7%;
 	background-color: black;
 	padding: 1em .5em;
@@ -125,8 +117,16 @@
     border-bottom: 1px solid #101111;
     background: rgb(0, 0, 0);
 }
+.bbsmovie{
+	width: 20%;
+	background-color: black;
+	padding: 1em .5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #101111;
+    background: rgb(0, 0, 0);
+}
 .bbstitle{
-	width: 60%;
+	width: 50%;
 	background-color: black;
 	padding: 1em .5em;
     vertical-align: middle;
@@ -134,7 +134,7 @@
     background: rgb(0, 0, 0);
 }
 .bbsid{
-	width: 8%;
+	width: 7%;
 	background-color: black;
 	padding: 1em .5em;
     vertical-align: middle;
@@ -142,7 +142,7 @@
     background: rgb(0, 0, 0);
 }
 .bbsdate{
-	width: 10%;
+	width: 9%;
 	background-color: black;
 	padding: 1em .5em;
     vertical-align: middle;
@@ -150,7 +150,7 @@
     background: rgb(0, 0, 0);
 }
 .bbscount{
-	width: 8%;
+	width: 7%;
 	background-color: black;
 	padding: 1em .5em;
     vertical-align: middle;

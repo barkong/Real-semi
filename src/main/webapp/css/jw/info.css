@@ -29,7 +29,7 @@
 	list-style: none;
 	color: var(--icons-color);
 	margin: 0;
-	padding-left: 0;
+	padding-left: 10;
 }
 
 .navbar__menu li {
@@ -40,7 +40,7 @@
 	list-style: none;
 	color: var(--icons-color);
 	margin: 0;
-	padding-left: 0;
+	padding-left: 10;
 }
 
 .navbar__icons li {
@@ -88,5 +88,5 @@
 	}
 }
 ul {
-    font-size: 15px; line-height: 3em;
+    font-size: 20px; line-height: 3em;
 }

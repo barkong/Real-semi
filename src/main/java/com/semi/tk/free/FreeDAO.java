@@ -59,6 +59,8 @@ public class FreeDAO {
 
 		String afterUpdateNo = (String) request.getAttribute("afterUpdateNo");
 
+		System.out.println("GetafterUpdateNo : " + afterUpdateNo);
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -202,8 +204,10 @@ public class FreeDAO {
 				File f = new File(delFile);
 				f.delete();
 			}
+			
 			pstmt.setString(4, no);
 			request.setAttribute("afterUpdateNo", no);
+			System.out.println("UPafterUpdateNo : " + no);
 
 			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "수정완료");
