@@ -12,14 +12,15 @@
 <body>
 	<form name="myForm" action="AccountC" method="post"
 		onsubmit="return call()">
-		<h2>회원가입</h2>
+		<h2 class="loginT">회원가입</h2>
 		<div class="container">
+		<div align="center">${t }</div>
 			<div class="input-container">
 				<b class="name"> ID : </b><input class="text" name="id"
 					maxlength="12" placeholder="영문 및 숫자만 4-12자리까지 입력해주세요" value=${y }>
 				<button class="idChkbt" type="button" onclick="idChk()">중복검사</button>
 			</div>
-			<div align="center">${t }</div>
+			
 			<div class="input-container">
 				<b class="name">PW : </b><input class="text" name="pw"
 					type="password" maxlength="16"

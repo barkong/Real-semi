@@ -16,7 +16,8 @@ function freeDel(n) {
 
 function bbsLoginCheck() {
 
-	alert('삭제합니까?');
+	alert('로그인하세요');
+	location.href = ""
 
 }
 

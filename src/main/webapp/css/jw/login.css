@@ -8,6 +8,7 @@
     padding: 10px;
     color: black;
     font-size: 120%;
+    text-align: center;
 }
 .name{
     font-size: 150%;
@@ -16,6 +17,7 @@
     width:200px;
     color:white;
     height:50px;
+    text-align: center;
 }
 .sign_up{
 	color:white;
@@ -38,7 +40,7 @@
 .container {
     padding-bottom: 2%;
     padding-top: 32px;
-    width: 90%;
+    width: 85%;
     margin-left: 300px;
     margin-right: auto;
 }
@@ -46,14 +48,14 @@
 .container2 {
     padding-bottom: 2%;
     padding-top: 32px;
-    width: 50%;
-    margin-left: auto;
+    width: 70%;
+    margin-left: 300px;
     margin-right: auto;
 }
 
-h2{
+.loginT{
 	font-size: 24px;
-    color: rgb(234, 234, 234);
+    color: aliceblue;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -63,25 +65,32 @@ h2{
     display: flex;
     align-self: center;
     margin-bottom: 14px;
+    margin-left: 110px;
 }
 
 .button-container{
 	text-align:center;
+	margin-right: 70px;
 }
 
 .sign_in{
 	width: 100px;
     height: 30px;
-    background: skyblue;
-    color: white;
+    background: gray;
+    color: aliceblue;
     border-radius: 10px;
+    transition: 0.25s;
     cursor: pointer;
 }
 
-.sign_in:hover{
-	background-color: #3c44ea;
-	border-radius: 10px;
+.sign_in:active{
+    background: aliceblue;
 }
+.sign_in:hover{
+	color:black;
+    background: white;
+}
+
 
 .idChkbt{
 	width: 50px;

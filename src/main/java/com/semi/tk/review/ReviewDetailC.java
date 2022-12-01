@@ -1,6 +1,7 @@
 package com.semi.tk.review;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +17,6 @@ public class ReviewDetailC extends HttpServlet {
 
 		if (Model.loginCheck(request)) {
 
-			// 클릭한 게시글 1개 가져오기
 			if (ReviewDAO.ipCheck(request)) {
 				ReviewDAO.count(request);
 			}
@@ -25,7 +25,16 @@ public class ReviewDetailC extends HttpServlet {
 			ReviewDAO.getAllReview(request);
 			ReviewDAO.paging(1, request);
 			request.setAttribute("contentPage", "jsp/tk/review/review_detail.jsp");
-		} else {
+		} else {	
+			// href로 넘어와서 request.getHeader("Referer") 못씀
+			String watchingPage = request.getRequestURL().toString();
+			String param = request.getQueryString();
+			if (request.getQueryString() != null) {
+				watchingPage = watchingPage + "?" + param; // 수정할 글의 번호도 있으니까
+			}
+			System.out.println("watchingPage : " + watchingPage);
+			System.out.println("param : " + param);
+			request.getSession().setAttribute("watchingPage", watchingPage);
 			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}
 		request.getRequestDispatcher("index.jsp").forward(request, response);

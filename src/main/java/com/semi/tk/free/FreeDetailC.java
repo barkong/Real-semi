@@ -14,15 +14,16 @@ import com.semi.jw.Model;
 public class FreeDetailC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		Model.loginCheck(request);
-		// 클릭한 게시글 1개 가져오기
+		
 		if (FreeDAO.ipCheck(request)) {
 			FreeDAO.count(request);
 		}
 		FreeDAO.getFree(request);
 		FreeDAO.getAllFree(request);
 		FreeDAO.paging(1, request);
+		request.getRequestURL();
 		request.setAttribute("contentPage", "jsp/tk/free/free_detail.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

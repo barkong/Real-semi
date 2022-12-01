@@ -7,9 +7,9 @@
 
 .bbsTable {
   border: 1px rgb(128, 128, 128) solid;
-  font-size: .9em;
+  font-size: 15px;
   box-shadow: 0 2px 5px rgb(192, 192, 192);
-  width: 80%;
+  width: 75%;
   border-collapse: collapse;
   border-radius: 5px;
   overflow: hidden;
@@ -18,7 +18,8 @@
 
 .bbsth {
   text-align: left;
-  background-color: gray;
+  background-color: black;
+  border: 1px rgb(128, 128, 128) solid;
 }
   
 .bbsthead {
@@ -33,13 +34,24 @@
 }
   
 .bbstd {
-  border-bottom: 1px solid #101111;
   background: rgb(0, 0, 0);
 }
+.bbstd2{
+	padding: 1em .5em;
+    vertical-align: middle;
+	background: rgb(0, 0, 0);
+	border-bottom: 1px solid rgb(192, 192, 192);
+}
+.bbstd3{
+	padding: 7em .5em;
+	background: rgb(0, 0, 0);
+    vertical-align: middle;
+}
 
-.bbsa {
+.bbsa { /* 글제목, 페이징 */
   color: rgb(192, 192, 192);
   text-align: center;
+  font-size: 17px;
 }
 .bbsa:hover{
 	color: rgb(128, 128, 128);
@@ -50,7 +62,101 @@
   	text-align: center;
   	padding-left: 130px;
 }
+.bbsnewa { /* 새글쓰기 */
+  color: gray;
+  text-align: right;
+  font-size: 20px;
+  margin-left: 1200px;
+}
+.bbsnewa:hover{
+	color: white;
+}
 
+.bbsbt{
+	width: 150px;
+    height: 30px;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.bbsbt:hover{
+	background-color: gray;
+	border-radius: 10px;
+}
+.bbsbt1{
+	width: 150px;
+    height: 30px;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.bbsbt1:hover{
+	background-color: gray;
+	border-radius: 10px;
+}
+.bbsbt2{
+	width: 150px;
+    height: 30px;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.bbsbt2:hover{
+	background-color: gray;
+	border-radius: 10px;
+}
+
+.bbsnumber{
+	width: 7%;
+	background-color: black;
+	padding: 1em .5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #101111;
+    background: rgb(0, 0, 0);
+}
+.bbsmovie{
+	width: 20%;
+	background-color: black;
+	padding: 1em .5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #101111;
+    background: rgb(0, 0, 0);
+}
+.bbstitle{
+	width: 50%;
+	background-color: black;
+	padding: 1em .5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #101111;
+    background: rgb(0, 0, 0);
+}
+.bbsid{
+	width: 7%;
+	background-color: black;
+	padding: 1em .5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #101111;
+    background: rgb(0, 0, 0);
+}
+.bbsdate{
+	width: 9%;
+	background-color: black;
+	padding: 1em .5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #101111;
+    background: rgb(0, 0, 0);
+}
+.bbscount{
+	width: 7%;
+	background-color: black;
+	padding: 1em .5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #101111;
+    background: rgb(0, 0, 0);
+}
 
 
   
