@@ -8,9 +8,10 @@
 <link rel="stylesheet" href="css/jw/login.css" />
 </head>
 <body>
-${r }			
-				${sessionScope.accountInfo.a_id }(${sessionScope.accountInfo.a_name })<br> 
-				<button class="sign_in" onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">마이페이지</button><button class="sign_in" onclick="location.href='LoginC'">로그아웃</button>
+		
+				<span class="loginOkT">${sessionScope.accountInfo.a_id }(${sessionScope.accountInfo.a_name })</span>
+			
+				<button class="sign_in" onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">My Page</button><span>  </span><button class="sign_in" onclick="location.href='LoginC'">Logout</button>
 				
 				
 </body>

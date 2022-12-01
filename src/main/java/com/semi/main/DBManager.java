@@ -10,12 +10,12 @@ public class DBManager {
 
 	public static Connection connect() throws SQLException {
 		// 수현
-	String url = "jdbc:oracle:thin:@DB202204301707_high?TNS_ADMIN=C:/ldw/Wallet_DB202204301707";
+	//tring url = "jdbc:oracle:thin:@DB202204301707_high?TNS_ADMIN=C:/ldw/Wallet_DB202204301707";
 		// 동우
 	//	String url = "jdbc:oracle:thin:@DB202204301707_high?TNS_ADMIN=C:/ldw/Wallet_DB202204301707";
 
 
-	//	String url = "jdbc:oracle:thin:@DB202204301707_high?TNS_ADMIN=/Users/breakki/Wallet_DB202204301707";
+		String url = "jdbc:oracle:thin:@DB202204301707_high?TNS_ADMIN=/Users/breakki/Wallet_DB202204301707";
 
 		// 태형
 //		String url = "jdbc:oracle:thin:@DB202204301707_high?TNS_ADMIN=C:/ldw/Wallet_DB202204301707";
