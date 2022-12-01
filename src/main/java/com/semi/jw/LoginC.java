@@ -17,7 +17,7 @@ public class LoginC extends HttpServlet {
 
 		Model.logout(request);
 		Model.loginCheck(request);
-		
+
 		String watchingPage = request.getRequestURL().toString();
 		String param = request.getQueryString();
 		if (request.getQueryString() != null) {
@@ -35,24 +35,24 @@ public class LoginC extends HttpServlet {
 			throws ServletException, IOException {
 
 		Model.login(request);
-		Model.loginCheck(request);
 
-		HttpSession hs = request.getSession();
-		String watchingPage = (String) hs.getAttribute("watchingPage");
-		System.out.println("LoginC watchingPage = " + watchingPage);
+		if (Model.loginCheck(request)) {
 
-//		if (watchingPage.contains(".j")) {
-//			request.setAttribute("contentPage", watchingPage);
-//			request.getRequestDispatcher("index.jsp").forward(request, response);
-//		} else {
-//			response.sendRedirect(watchingPage);
-//		}
-		
-		if (watchingPage == null || watchingPage.equals("http://localhost/SemiProject/LoginC")) {
-			request.setAttribute("contentPage", "home.jsp");
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			HttpSession hs = request.getSession();
+			String watchingPage = (String) hs.getAttribute("watchingPage");
+			System.out.println("LoginC watchingPage = " + watchingPage);
+
+			if (watchingPage == null || watchingPage.equals("http://localhost/SemiProject/LoginC")) {
+				request.setAttribute("contentPage", "home.jsp");
+				request.getRequestDispatcher("index.jsp").forward(request, response);
+			} else {
+				response.sendRedirect(watchingPage);
+			}
 		} else {
-			response.sendRedirect(watchingPage);
+			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+
 		}
+
 	}
 }
