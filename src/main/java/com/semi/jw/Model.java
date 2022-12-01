@@ -37,8 +37,8 @@ public class Model {
 
 			if (rs.next()) {
 				if (userPw.equals(rs.getString("a_password"))) {
-					request.setAttribute("r", "로그인 성공!");
-
+					request.setAttribute("r", "로그인성공");
+					
 					Bean bean = new Bean();
 					bean.setA_id(rs.getString("a_id"));
 					bean.setA_password(rs.getString("a_password"));
@@ -56,7 +56,7 @@ public class Model {
 
 					HttpSession hs = request.getSession();
 					hs.setAttribute("accountInfo", bean);
-					hs.setMaxInactiveInterval(10);
+					hs.setMaxInactiveInterval(5000000);
 
 				} else {
 					request.setAttribute("r", "비밀번호 오류!");
@@ -77,15 +77,16 @@ public class Model {
 	public static void account(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		
 
 		try {
 			// post 방식 한글처리.  *한글*
 //			request.setCharacterEncoding("utf-8");
-			String sql = "insert into semi_account values(?,?,?,?,?,?,?,?)";
+			String sql = "insert into semi_account values(?,?,?,to_date(?,'YYYY-MM-DD'),?,?,?,?)";
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 
-
+				
 			pstmt.setString(1, request.getParameter("id"));
 			pstmt.setString(2, request.getParameter("pw"));
 			String name = request.getParameter("name");
@@ -95,9 +96,14 @@ public class Model {
 			System.out.println(request.getParameter("birth"));
 			String gender = request.getParameter("gender");
 			gender = new String(gender.getBytes("ISO-8859-1"), "UTF-8");
+			System.out.println(gender);
 			pstmt.setString(5, gender);
 			pstmt.setString(6, request.getParameter("email"));
 			pstmt.setString(7, request.getParameter("phone"));
+			
+			System.out.println(request.getParameter("email"));
+			System.out.println(request.getParameter("phone"));
+			
 
 			String[] chk = request.getParameterValues("chk");
 			String chk2 = "";
@@ -111,7 +117,7 @@ public class Model {
 			}
 
 			pstmt.setString(8, chk2);
-
+			System.out.println(chk2);
 			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "회원가입성공");
 			}
@@ -127,7 +133,7 @@ public class Model {
 	public static boolean loginCheck(HttpServletRequest request) {
 		HttpSession hs = request.getSession();
 		Bean a = (Bean) hs.getAttribute("accountInfo");
-
+System.out.println(a + "??????????????????!!!!!!");
 		if (a == null) {
 			request.setAttribute("loginPage", "jsp/jw/login.jsp");
 			return false;
@@ -141,6 +147,7 @@ public class Model {
 
 		HttpSession hs = request.getSession();
 		hs.setAttribute("accountInfo", null);
+		hs.setAttribute("watchingPage", null);
 
 	}
 
