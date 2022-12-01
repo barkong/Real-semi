@@ -119,6 +119,7 @@ function idChk() {
 function UpdateCheck(){
 	
 	let pw = document.myForm.pw;
+	let name = document.myForm.name;
 	let phone = document.myForm.phone;
 	let email = document.myForm.email;
 	
@@ -131,6 +132,11 @@ function UpdateCheck(){
 	if(lessThan(pw, 6) || notContains(pw, "1234567890") || notContains(pw, "QWERTYUIOPASDFGHJKLZXCVBNM")){
 		alert('PW를 양식에 맞게 변경해주세요');
 		pw.focus();
+		return false;
+	}
+	if(isEmpty(name)){
+		alert('이름을 입력해주세요');
+		name.focus();
 		return false;
 	}
 	if(isEmpty(phone)){
