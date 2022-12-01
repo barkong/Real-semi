@@ -13,6 +13,15 @@ import com.semi.jw.Model;
 public class ReviewC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		String watchingPage = request.getRequestURL().toString();
+		String param = request.getQueryString();
+		if (request.getQueryString() != null) {
+			watchingPage = watchingPage + "?" + param;
+		}
+		System.out.println("watchingPage : " + watchingPage);
+		System.out.println("param : " + param);
+		request.getSession().setAttribute("watchingPage", watchingPage);
 
 		Model.loginCheck(request);
 		ReviewDAO.getAllReview(request);

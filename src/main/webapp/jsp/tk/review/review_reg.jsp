@@ -21,7 +21,6 @@
 		<ul class="navbar__menu">
 			<li onclick="location.href='HC'">홈으로</li>
 			<li onclick="location.href='WeeklyBoxofficeC'">박스오피스</li>
-			<li onclick="location.href='MovieDetailC'">영화정보</li>
 			<li onclick="location.href='MovieNewsC'">영화뉴스</li>
 			<li onclick="location.href='ReviewC'">영화리뷰</li>
 			<li onclick="location.href='FreeC'">자유게시판</li>
@@ -33,7 +32,6 @@
 					onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">마이페이지</li>
 				<li onclick="location.href='MyBbsC'">내가쓴글목록</li>
 				<li onclick="location.href='UpdateAccountC'">회원정보수정</li>
-				<li onclick="deleteID()">회원탈퇴</li>
 			</ul>
 		</c:if>
 		<a href="#" class="navbar__toggleBtn"> <i class=""></i>
@@ -42,17 +40,16 @@
 
 
 
-	<h1 class="bbsh1">리뷰등록하기</h1>
-	<div class="bbsdiv">
 		<div class="bbsdiv">
+	<h1 class="bbsh1">리뷰등록하기</h1>
 			<form action="ReviewRegC" method="post" name="bbsForm"
 				enctype="multipart/form-data" onsubmit="return bbsCall()">
 				<table class="bbsTable"
-					style="text-align: center; border: 1px solid #dddddd">
+					style="text-align: center; border: 1px solid #dddddd" align="center">
 					<thead class="bbsthead">
 						<tr class="bbstr">
-							<th class="bbsth">글제목</th>
-							<th class="bbsth" colspan="2" style="text-align: center;"><input
+							<th class="bbstd" style="background-color: gray;">글제목</th>
+							<th class="bbsth" colspan="2" style="text-align: left; padding-left: 300px"><input
 								type="text" name="title" placeholder="글제목"
 								maxlength="50" /></th>
 						</tr>
@@ -60,8 +57,8 @@
 					<tbody class="bbstbody">
 						<tr class="bbstr">
 							<td class="bbstd">영화제목</td>
-							<td class="bbstd"><input type="text" name="movie"
-								placeholder="영화제목" maxlength="50" /></td>
+							<td class="bbstd" style="text-align: left; padding-left: 300px"><input type="text" name="movie"
+								placeholder="영화제목" maxlength="50"/></td>
 						</tr>
 						<tr class="bbstr">
 							<td class="bbstd" colspan="3"><textarea 
@@ -80,7 +77,7 @@
 
 
 						<tr class="bbstr">
-							<td class="bbstd" colspan="3"><a href="ReviewC">게시판 목록으로</a> <c:choose>
+							<td class="bbstd" colspan="3"><a class="bbsa" href="ReviewC">게시판 목록으로</a> <c:choose>
 									<c:when test="${sessionScope.accountInfo eq null}">
 										<a class="bbsa" href="ReviewRegC" onclick="alert('로그인하세요')">새글쓰기</a>
 									</c:when>
@@ -93,6 +90,6 @@
 				</table>
 			</form>
 		</div>
-	</div>
+		<br><br><br>
 </body>
 </html>

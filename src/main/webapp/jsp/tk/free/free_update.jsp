@@ -28,7 +28,6 @@ pageContext.setAttribute("cn", "\n");
 		<ul class="navbar__menu">
 			<li onclick="location.href='HC'">홈으로</li>
 			<li onclick="location.href='WeeklyBoxofficeC'">박스오피스</li>
-			<li onclick="location.href='MovieDetailC'">영화정보</li>
 			<li onclick="location.href='MovieNewsC'">영화뉴스</li>
 			<li onclick="location.href='ReviewC'">영화리뷰</li>
 			<li onclick="location.href='FreeC'">자유게시판</li>
@@ -40,7 +39,6 @@ pageContext.setAttribute("cn", "\n");
 					onclick="location.href='InfoAccountC?id=${sessionScope.accountInfo.a_id}'">마이페이지</li>
 				<li onclick="location.href='MyBbsC'">내가쓴글목록</li>
 				<li onclick="location.href='UpdateAccountC'">회원정보수정</li>
-				<li onclick="deleteID()">회원탈퇴</li>
 			</ul>
 		</c:if>
 		<a href="#" class="navbar__toggleBtn"> <i class=""></i>
@@ -49,68 +47,72 @@ pageContext.setAttribute("cn", "\n");
 
 
 
-	<h1 class="bssh1">자유글수정하기</h1>
 	<div class="bbsdiv">
-		<div class="bbsdiv">
-			<form action="FreeUpdateC" method="post" name="bbsForm"
-				enctype="multipart/form-data" onsubmit="return bbsCall()">
-				<table class="bbsTable"
-					style="text-align: center; border: 1px solid #dddddd">
-					<thead class="bbsthead">
-						<tr class="bbstr">
-							<th class="bbstd" style="background-color: #73685d">글제목</th>
-							<th class="bbsth" colspan="2"
-								style="text-align: left; padding-left: 400px"><input
-								type="text" value="${free.f_title }" name="title"></th>
-						</tr>
-					</thead>
-					<tbody class="bbstbody">
-						<tr class="bbstr">
-							<td class="bbstd">NO. : ${free.f_no }</td>
-							<td class="bbstd">등록시간 : <fmt:formatDate
-									value="${free.f_date }" type="both" dateStyle="short"
-									timeStyle="short" /></td>
-							<td class="bbstd">조회수 : ${free.f_count }</td>
-						</tr>
-						<tr class="bbstr">
-							<td class="bbstd" colspan="3"><textarea maxlength="2084"
-									name="detail" rows="20" cols="60" style="resize: none">
+		<h1 class="bssh1">자유글수정하기</h1>
+		<form action="FreeUpdateC?no=${free.f_no }" method="post" name="bbsForm"
+			enctype="multipart/form-data" onsubmit="return bbsCall()">
+			<table class="bbsTable"
+				style="text-align: center; border: 1px solid #dddddd" align="center">
+				<thead class="bbsthead">
+					<tr class="bbstr">
+						<th class="bbstd" style="background-color: gray;">글제목</th>
+						<th class="bbsth" colspan="2"
+							style="text-align: left; padding-left: 300px"><input
+							type="text" value="${free.f_title }" name="title"></th>
+					</tr>
+				</thead>
+				<tbody class="bbstbody">
+					<tr class="bbstr">
+						<td class="bbstd">NO. : ${free.f_no }<input name="no"
+							value="${free.f_no }" type="hidden"></td>
+
+						<td class="bbstd" style="text-align: left; padding-left: 300px">등록시간
+							: <fmt:formatDate value="${free.f_date }" type="both"
+								dateStyle="short" timeStyle="short" />
+						</td>
+						<td class="bbstd">조회수 : ${free.f_count }</td>
+					</tr>
+					<tr class="bbstr">
+						<td class="bbstd" colspan="3"><textarea maxlength="2084"
+								name="detail" rows="20" cols="60" style="resize: none">
 									${fn:replace(free.f_detail, br, cn)}</textarea></td>
-						</tr>
-						<tr class="bbstr">
-							<c:if test="${free.f_img ne null }">
-								<td class="bbstd" colspan="3"><img
-									src="files/freeImg/${free.f_img }" width="500px"></td>
-							</c:if>
-						</tr>
-						<tr class="bbstr">
-							<td class="bbstd" colspan="3"><input type="file" name="img2" /><input
-								name="img" value="${free.f_img }" type="hidden"></td>
-						</tr>
-						<tr class="bbstr">
-							<td class="bbstd" colspan="3">
-								<button class="bbsbt">등록(수정완료)</button>
-								<button class="bbsbt" type="button"
-									onclick="freeDel(${free.f_no})">삭제하기</button>
-							</td>
-						</tr>
+					</tr>
+					<tr class="bbstr">
+						<c:if test="${free.f_img ne null }">
+							<td class="bbstd" colspan="3"><img
+								src="files/freeImg/${free.f_img }" width="500px"></td>
+						</c:if>
+					</tr>
+					<tr class="bbstr">
+						<td class="bbstd" colspan="3"><input type="file" name="img2" /><input
+							name="img" value="${free.f_img }" type="hidden"></td>
+					</tr>
+					<tr class="bbstr">
+						<td class="bbstd" colspan="3">
+							<button class="bbsbt">등록(수정완료)</button>
+							<button class="bbsbt" type="button"
+								onclick="freeDel(${free.f_no})">삭제하기</button>
+						</td>
+					</tr>
 
 
-						<tr class="bbstr">
-							<td class="bbstd" colspan="3"><a class="bbsa" href="FreeC">게시판
-									목록으로</a> <c:choose>
-									<c:when test="${sessionScope.accountInfo eq null}">
-										<a class="bbsa" href="FreeRegC" onclick="alert('로그인하세요')">새글쓰기</a>
-									</c:when>
-									<c:otherwise>
-										<a class="bbsa" href="FreeRegC">새글쓰기</a>
-									</c:otherwise>
-								</c:choose>
-						</tr>
-					</tbody>
-				</table>
-			</form>
-		</div>
+					<tr class="bbstr">
+						<td class="bbstd" colspan="3"><a class="bbsa" href="FreeC">게시판
+								목록으로</a> <c:choose>
+								<c:when test="${sessionScope.accountInfo eq null}">
+									<a class="bbsa" href="FreeRegC" onclick="alert('로그인하세요')">새글쓰기</a>
+								</c:when>
+								<c:otherwise>
+									<a class="bbsa" href="FreeRegC">새글쓰기</a>
+								</c:otherwise>
+							</c:choose>
+					</tr>
+				</tbody>
+			</table>
+		</form>
 	</div>
+	<br>
+	<br>
+	<br>
 </body>
 </html>
