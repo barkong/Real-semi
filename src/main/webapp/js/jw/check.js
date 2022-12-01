@@ -62,6 +62,25 @@ function call(){
 	
 }
 
+function call2(){
+	
+	let id = document.myForm.id;
+	let pw = document.myForm.pw;
+	
+	if(isEmpty(id)){
+		alert('ID를 입력해주세요');
+		id.focus();
+		return false;
+	}
+	
+	if(isEmpty(pw)){
+		alert('PW를 입력해주세요');
+		pw.focus();
+		return false;
+	}
+	
+}
+
 function chkPW(){
 	let pw = document.myForm.pw;
 	let pw2 = document.myForm.pw2;
