@@ -324,5 +324,6 @@ F_IP|VARCHAR2(25 BYTE)|YES|N|
 송준우|`thdwnsdn98@gmail.com`|로그인•회원가입•마이페이지•회원관리DB•css(게시판포함)•ppt|
 
 ### *참조파일*
-* info(Real-semi).txt : [Click](텍스트 txt파일)<br>
-* PPT(Real-semi) [Click](피피티 pdf파일)
+* info(Real-semi).txt : [Click](https://github.com/barkong/Real-semi/files/10139628/infoReal-semi.txt)<br>
+* PPT(Real-semi) [Click](https://github.com/barkong/Real-semi/files/10139644/Real-semi.pdf)
+
