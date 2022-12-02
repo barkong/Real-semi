@@ -319,8 +319,8 @@ F_IP|VARCHAR2(25 BYTE)|YES|N|
 팀원|이메일|Task|
 ---|---|---|
 김태형|`trainst37@gmail.com`|팀관리•문서•PageTrans•게시판•내가쓴글•글DB|
-이동우|`leedongwoo564@gmail.com`|주변 영화관 찾기, 박스오피스 정보, 영화 뉴스 정보, 검색, 전체 css|
-김수현|`kimsouhyne@gmail.com`|박스오피스 정보, 영화 뉴스 정보, 검색, 주변 영화관 찾기, 전체 css|
+이동우|`leedongwoo564@gmail.com`|주변 영화관 찾기, 박스오피스 정보, 영화 뉴스 정보, 영화 검색, 전체 css|
+김수현|`kimsouhyne@gmail.com`|주변 영화관 찾기, 박스오피스 정보, 영화 뉴스 정보, 영화 검색, , 전체 css|
 송준우|`thdwnsdn98@gmail.com`|로그인•회원가입•마이페이지•회원관리DB•css(게시판포함)•ppt|
 
 ### *참조파일*
