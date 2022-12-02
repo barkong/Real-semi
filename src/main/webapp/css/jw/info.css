@@ -2,8 +2,8 @@
 
 :root {
   --text-color: rgb(152, 187, 201);
-  --background-color: #101111;
-  --accent-color:white;
+/*   --background-color: #101111;
+ */  --accent-color:white;
   --icons-color: rgb(152, 187, 201);
   --bodybackground-color: lightgray;
 }
@@ -14,7 +14,6 @@
 .navbar {
 	float: left;
 	background-color: var(--background-color);
-	padding: 8px 12px;
 	font-family: 'STIX Two Math';
 	position: absolute;
 	top:0px;
