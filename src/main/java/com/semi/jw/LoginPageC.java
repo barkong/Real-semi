@@ -16,16 +16,6 @@ public class LoginPageC extends HttpServlet {
 
 		Model.loginCheck(request);
 
-//		String watchingPage = request.getHeader("Referer");
-//		System.out.println("LoginPageC watchingPage = " + watchingPage);
-//
-//		if (watchingPage.equals("http://localhost/SemiProject/LoginPageC")
-//				|| watchingPage.equals("http://localhost/SemiProject/LoginC")) {
-//			watchingPage = null;
-//		} else {
-//			request.getSession().setAttribute("watchingPage", watchingPage);
-//		}
-
 		request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

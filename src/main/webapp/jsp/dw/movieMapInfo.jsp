@@ -5,7 +5,9 @@
 <head>
 <meta charset="utf-8">
 <title>주변 영화관 찾기</title>
-<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.js"
+	integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+	crossorigin="anonymous"></script>
  	
 <script>
 	let lat;
@@ -49,8 +51,6 @@
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a60dcad0b9c1aeab94d6bd6ceb0d6bc4&libraries=services"></script>
 	<script>
-	setTimeout(() => {
-	
 		// 마커를 담을 배열입니다
 		var markers = [];
 
@@ -76,12 +76,9 @@
 			zIndex : 1
 		});
 
-	
 		// 키워드로 장소를 검색합니다
 		searchPlaces();
-		
-	
-		
+
 		// 키워드 검색을 요청하는 함수입니다
 		function searchPlaces() {
 
@@ -279,7 +276,7 @@
 				el.removeChild(el.lastChild);
 			}
 		}
-	},100);
+		
 	</script>
 </body>
 </html>

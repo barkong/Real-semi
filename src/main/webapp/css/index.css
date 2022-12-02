@@ -19,6 +19,7 @@ body {
 	display: flex;
 	text-align: center;
 	height: 55px;
+	margin-right:10px;
 }
 
 #menus {
