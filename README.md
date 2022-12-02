@@ -325,4 +325,5 @@ F_IP|VARCHAR2(25 BYTE)|YES|N|
 
 ### *참조파일*
 * info(Real-semi).txt : [Click](https://github.com/barkong/Real-semi/files/10139628/infoReal-semi.txt)<br>
-* PPT(Real-semi) [Click](피피티 pdf파일)
+* PPT(Real-semi) [Click](https://github.com/barkong/Real-semi/files/10139644/Real-semi.pdf)
+)
