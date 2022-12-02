@@ -23,17 +23,13 @@
 
 							let yyyy = $("#cal_top_year").text();
 							let mm = $("#cal_top_month").text();
-							console.log(yyyy);
-							console.log(mm);
 
 							let dd = $(this).text();
 							dd = dd.trim();
 
 							dd = (dd.length == 1) ? '0' + dd : dd;
-							console.log(dd);
 
 							let datee = yyyy + mm + dd;
-							console.log(datee);
 							let url = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt="
 									+ datee;
 
@@ -44,7 +40,6 @@
 												let movieList = data.boxOfficeResult.dailyBoxOfficeList;
 
 												$("#boxoffice").empty();
-												console.log(movieList);
 												let img = "";
 
 												for ( let i in movieList) {
@@ -64,13 +59,6 @@
 															.done(
 																	function(
 																			json) {
-
-																		img = console
-																				.log(json.img);
-																		director = console
-																				.log(json.director);
-																		actor = console
-																				.log(json.actor);
 
 																		$(
 																				"#boxoffice")
@@ -146,12 +134,12 @@
 	<div id="cal_tab" class="cal"></div>
 	<div class="boxofficeContainer">
 		<div class="boxofficBefore">
-<div class="boxComment">※ 보고싶은 박스오피스 순위의 날짜를 선택해 주세요</div>
+			<div class="boxComment">※ 보고싶은 박스오피스 순위의 날짜를 선택해 주세요</div>
 			<!-- <input type="date" value="" id="date" />
 		<button id="mybtn">확인</button> -->
 			<div id="boxoffice"></div>
 		</div>
-		
+
 	</div>
 
 

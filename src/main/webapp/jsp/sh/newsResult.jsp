@@ -34,7 +34,6 @@
 								.each(
 										data,
 										function(index, i) {
-											console.log(content);
 											content += "<div class='news'><span class='time'>"
 													+ (i.pubDate).substring(0,
 															16)
