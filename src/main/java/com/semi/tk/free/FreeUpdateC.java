@@ -25,8 +25,6 @@ public class FreeUpdateC extends HttpServlet {
 			if (request.getQueryString() != null) {
 				watchingPage = watchingPage + "?" + param;
 			}
-			System.out.println(watchingPage);
-			System.out.println(param);
 			request.getSession().setAttribute("watchingPage", watchingPage);
 			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}
@@ -54,9 +52,7 @@ public class FreeUpdateC extends HttpServlet {
 //			다만, 수정완료를 눌렀을때 param도 같이 넘겨줘야 로그인후 그 수정하던 페이지로 돌아간다.
 //			그런데 잘보면, 수정완료버튼을 누른다는 것은 form-action에 해당한다. 그러므로 아래처럼 써버려도 된다.
 			String watchingPage = request.getHeader("Referer");
-			System.out.println("LoginPageC watchingPage = " + watchingPage);
 			request.getSession().setAttribute("watchingPage", watchingPage);
-			System.out.println(watchingPage);
 			request.getSession().setAttribute("watchingPage", watchingPage);
 			
 			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");

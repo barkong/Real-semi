@@ -33,17 +33,17 @@ public class NaverMovie {
 			// 네이버 검색 api
 			request.setCharacterEncoding("UTF-8");
 			String str = request.getParameter("movie");
-			System.out.println(str);
+			
 
 			str = URLEncoder.encode(str, "utf-8");
-			System.out.println(str);
+			
 
 			String url = "https://openapi.naver.com/v1/search/movie.json";
 			url += "?query=" + str;
 			url += "&display=100";
 			url += "&start=1";
 
-			System.out.println(url);
+			
 
 			URL u = new URL(url);
 			huc = (HttpsURLConnection) u.openConnection();
