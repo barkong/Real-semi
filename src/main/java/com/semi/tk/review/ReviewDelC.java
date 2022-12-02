@@ -30,8 +30,6 @@ public class ReviewDelC extends HttpServlet {
 			if (request.getQueryString() != null) {
 				watchingPage = watchingPage + "?" + param;
 			}
-			System.out.println(watchingPage);
-			System.out.println(param);
 			request.getSession().setAttribute("watchingPage", watchingPage);
 			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}

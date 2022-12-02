@@ -22,8 +22,6 @@ public class UpdateAccountC extends HttpServlet {
 			if (request.getQueryString() != null) {
 				watchingPage = watchingPage + "?" + param;
 			}
-			System.out.println("watchingPage : " + watchingPage);
-			System.out.println("param : " + param);
 			request.getSession().setAttribute("watchingPage", watchingPage);
 			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}
@@ -43,8 +41,6 @@ public class UpdateAccountC extends HttpServlet {
 			if (request.getQueryString() != null) {
 				watchingPage = watchingPage + "?" + param;
 			}
-			System.out.println("watchingPage : " + watchingPage);
-			System.out.println("param : " + param);
 			request.getSession().setAttribute("watchingPage", watchingPage);
 			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}

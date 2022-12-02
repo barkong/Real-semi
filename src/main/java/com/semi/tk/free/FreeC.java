@@ -20,8 +20,6 @@ public class FreeC extends HttpServlet {
 		if (request.getQueryString() != null) {
 			watchingPage = watchingPage + "?" + param;
 		}
-		System.out.println("watchingPage : " + watchingPage);
-		System.out.println("param : " + param);
 		request.getSession().setAttribute("watchingPage", watchingPage);
 
 		Model.loginCheck(request);

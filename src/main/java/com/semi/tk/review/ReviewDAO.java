@@ -70,7 +70,6 @@ public class ReviewDAO {
 
 		try {
 			String no = request.getParameter("no");
-			System.out.println("param no : " + no);
 
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
@@ -128,21 +127,11 @@ public class ReviewDAO {
 
 			String detail = mr.getParameter("detail");
 			detail = detail.replace("\r\n", "<br>");
-			System.out.println(detail);
 
 			String img = mr.getFilesystemName("img");
 			int count = 0;
 
 			String regIp = request.getRemoteAddr();
-
-			System.out.println("session id : " + a.getA_id());
-			System.out.println("param movie : " + movie);
-			System.out.println("param title : " + title);
-			System.out.println("param detail : " + detail);
-			System.out.println("param img : " + img);
-			System.out.println("초기화고정count : " + count);
-			System.out.println("regIp : " + regIp);
-
 			pstmt.setString(1, a.getA_id());
 			pstmt.setString(2, movie);
 			pstmt.setString(3, title);
@@ -176,7 +165,6 @@ public class ReviewDAO {
 		PreparedStatement pstmt = null;
 		String sql = "update semi_review set r_movie=?,r_title=?,r_detail=?,r_img=? where r_no=?";
 		String path = request.getServletContext().getRealPath("files/reviewImg");
-		System.out.println(path);
 
 		try {
 
@@ -191,18 +179,10 @@ public class ReviewDAO {
 
 			String detail = mr.getParameter("detail");
 			detail = detail.replace("\r\n", "<br>");
-			System.out.println(detail);
 
 			String oldImg = mr.getParameter("img"); // 기존사진 (조심하기)
 			String newImg = mr.getFilesystemName("newImg"); // 사진을 새로 추가함
 			String no = mr.getParameter("no");
-
-			System.out.println("param movie : " + movie);
-			System.out.println("param title : " + title);
-			System.out.println("param detail : " + detail);
-			System.out.println("param oldImg : " + oldImg);
-			System.out.println("param newImg : " + newImg);
-			System.out.println("param no : " + no);
 
 			pstmt.setString(1, movie);
 			pstmt.setString(2, title);
@@ -303,7 +283,6 @@ public class ReviewDAO {
 
 			// 콘솔창에서 확인하기 위해 이 방식을 체택
 			String no = request.getParameter("no");
-			System.out.println("param no : " + no);
 
 			pstmt.setString(1, no);
 
@@ -327,11 +306,9 @@ public class ReviewDAO {
 		String sql = "select r_ip from semi_review where r_no=?";
 		String regIp = null;
 		String urIp = request.getRemoteAddr();
-		System.out.println("urIp : " + urIp);
 
 		try {
 			String no = request.getParameter("no");
-			System.out.println("param no : " + no);
 
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);

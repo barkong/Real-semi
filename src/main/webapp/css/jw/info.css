@@ -2,8 +2,13 @@
 
 :root {
   --text-color: rgb(152, 187, 201);
+<<<<<<< HEAD
 /*   --background-color: #101111;
  */  --accent-color:white;
+=======
+  /* --background-color: #101111; */
+  --accent-color:white;
+>>>>>>> 0d7d7f3d9f21d43039723dd2c1b7e2e262734e28
   --icons-color: rgb(152, 187, 201);
   --bodybackground-color: lightgray;
 }
@@ -32,7 +37,9 @@
 }
 
 .navbar__menu li {
-	padding: 8px 30px;
+	 /* padding: 0 30px; */
+	 padding: 8px 12px; 
+	 margin-right:8px;
 }
 
 .navbar__icons {
@@ -44,7 +51,8 @@
 
 .navbar__icons li {
 	padding: 8px 12px;
-	margin: 0;
+	margin-right:8px;
+	
 }
 
 .navbar__menu li:hover {

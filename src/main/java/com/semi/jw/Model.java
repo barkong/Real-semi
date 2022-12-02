@@ -93,18 +93,12 @@ public class Model {
 			name = new String(name.getBytes("ISO-8859-1"), "UTF-8");
 			pstmt.setString(3, name);
 			pstmt.setString(4, request.getParameter("birth"));
-			System.out.println(request.getParameter("birth"));
 			String gender = request.getParameter("gender");
 			gender = new String(gender.getBytes("ISO-8859-1"), "UTF-8");
-			System.out.println(gender);
 			pstmt.setString(5, gender);
 			pstmt.setString(6, request.getParameter("email"));
 			pstmt.setString(7, request.getParameter("phone"));
 			
-			System.out.println(request.getParameter("email"));
-			System.out.println(request.getParameter("phone"));
-			
-
 			String[] chk = request.getParameterValues("chk");
 			String chk2 = "";
 			if (chk != null) {
@@ -117,7 +111,7 @@ public class Model {
 			}
 
 			pstmt.setString(8, chk2);
-			System.out.println(chk2);
+
 			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "회원가입성공");
 			}
@@ -133,7 +127,7 @@ public class Model {
 	public static boolean loginCheck(HttpServletRequest request) {
 		HttpSession hs = request.getSession();
 		Bean a = (Bean) hs.getAttribute("accountInfo");
-System.out.println(a + "??????????????????!!!!!!");
+
 		if (a == null) {
 			request.setAttribute("loginPage", "jsp/jw/login.jsp");
 			return false;
@@ -207,8 +201,6 @@ System.out.println(a + "??????????????????!!!!!!");
 			Bean a = (Bean) request.getSession().getAttribute("accountInfo");
 
 			String id = a.getA_id();
-			System.out.println(id);
-
 			pstmt.setString(1, id);
 
 			if (pstmt.executeUpdate() == 1) {
@@ -235,7 +227,6 @@ System.out.println(a + "??????????????????!!!!!!");
 			String sql = "select a_id from semi_account where a_id=?";
 			pstmt = con.prepareStatement(sql);
 			String id = request.getParameter("id");
-			System.out.println(id);
 			pstmt.setString(1, request.getParameter("id"));
 			rs = pstmt.executeQuery();
 			if (rs.next()) {

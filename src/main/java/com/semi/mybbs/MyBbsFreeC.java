@@ -24,8 +24,6 @@ public class MyBbsFreeC extends HttpServlet {
 			if (request.getQueryString() != null) {
 				watchingPage = watchingPage + "?" + param; // 수정할 글의 번호도 있으니까
 			}
-			System.out.println("watchingPage : " + watchingPage);
-			System.out.println("param : " + param);
 			request.getSession().setAttribute("watchingPage", watchingPage);
 			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}
