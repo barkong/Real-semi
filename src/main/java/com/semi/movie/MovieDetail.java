@@ -29,12 +29,12 @@ public class MovieDetail {
 
 			InputStream is = huc.getInputStream();
 			InputStreamReader isr = new InputStreamReader(is, "utf-8");
-			System.out.println(is);
+			
 
 			JSONParser jp = new JSONParser();
 
 			JSONObject movieData = (JSONObject) jp.parse(isr);
-			System.out.println(movieData);
+			
 
 			JSONArray items = (JSONArray) movieData.get("movieinfo");
 
@@ -48,12 +48,7 @@ public class MovieDetail {
 				String genreAlt = (String) movieInfo.get("genreAlt");
 				String company = (String) movieInfo.get("company");
 
-				System.out.println("�쁺�솕�젣紐� : " + movieNm);
-				System.out.println("諛곗슦 : " + openDt);
-				System.out.println("媛먮룆 : " + directors);
-				System.out.println("留곹겕 : " + genreAlt);
-				System.out.println("留곹겕 : " + company);
-
+				
 				MovieInfo m1 = new MovieInfo(movieNm, openDt, genreAlt, directors, company);
 				movies.add(m1);
 

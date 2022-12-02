@@ -34,15 +34,12 @@ public class NaverNews {
 
 			String str = "영화";
 			str = URLEncoder.encode(str, "utf-8");
-			System.out.println(str);
 
 			String url = "https://openapi.naver.com/v1/search/news.json";
 
 			url += "?query=" + str;
 			url += "&display=100";
 			url += "&sort=sim";
-
-			System.out.println(url);
 
 			URL u = new URL(url);
 			huc = (HttpsURLConnection) u.openConnection();
@@ -52,12 +49,10 @@ public class NaverNews {
 
 			InputStream is = huc.getInputStream();
 			InputStreamReader isr = new InputStreamReader(is, "utf-8");
-			System.out.println(is);
 
 			JSONParser jp = new JSONParser();
 
 			JSONObject newsData = (JSONObject) jp.parse(isr);
-			System.out.println(newsData);
 
 			JSONArray items = (JSONArray) newsData.get("items");
 

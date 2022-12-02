@@ -2,7 +2,7 @@
 
 :root {
   --text-color: rgb(152, 187, 201);
-  --background-color: #101111;
+  /* --background-color: #101111; */
   --accent-color:white;
   --icons-color: rgb(152, 187, 201);
   --bodybackground-color: lightgray;
@@ -33,7 +33,9 @@
 }
 
 .navbar__menu li {
-	padding: 8px 30px;
+	 /* padding: 0 30px; */
+	 padding: 8px 12px; 
+	 margin-right:8px;
 }
 
 .navbar__icons {
@@ -45,7 +47,8 @@
 
 .navbar__icons li {
 	padding: 8px 12px;
-	margin: 0;
+	margin-right:8px;
+	
 }
 
 .navbar__menu li:hover {
