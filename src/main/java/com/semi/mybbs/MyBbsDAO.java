@@ -29,7 +29,6 @@ public class MyBbsDAO {
 		try {
 
 			Bean a = (Bean) request.getSession().getAttribute("accountInfo");
-			System.out.println("param no : " + a.getA_id());
 
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);

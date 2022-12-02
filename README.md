@@ -6,8 +6,8 @@
 
 ## 💪Skills
 
-##### 💾Databases ![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Sever-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white)
-##### 📚Frameworks, Platforms and Libraries ![jQuery](https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white)
+##### 💾Database ![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Sever-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white)
+##### 📚Libraries ![jQuery](https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white)
 ##### ☁️Hosting/SaaS ![Oracle](https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white)
 ##### 💻IDEs/Editors ![Eclipse IDE](https://img.shields.io/badge/Eclipse%20IDE-2C2255.svg?&style=for-the-badge&logo=Eclipse%20IDE&logoColor=white) ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC.svg?&style=for-the-badge&logo=Visual%20Studio%20Code&logoColor=white) <img src="https://img.shields.io/badge/Sourcetree-0052CC?style=for-the-badge&logo=Sourcetree&logoColor=white">
 ##### 📋 Languages ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![Css](https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
@@ -29,8 +29,8 @@
 - ~~장르별 영화정보~~ <br>
 
 ## 기능별 소개
-* 회원(회원가입•탈퇴, 로그인, 마이페이지 조회•수정)
-* 게시판 (영화 리뷰, 자유)
+* 회원(회원가입•탈퇴, 로그인, 회원정보 조회•수정)
+* 게시판 (영화 리뷰, 자유, 내가쓴글)
 * 영화 api (박스오피스, 검색, 뉴스)
 * 카카오맵 api 
 
@@ -38,30 +38,134 @@
 
 ### 1.1 회원가입
 *유효성검사*
-- 내용이 하나라도 비어있으면 안됨
-- 정해진 조건에 맞게 입력해야됨
-- 영화 흥미 카테고리 체크박스, 전체체크중 체크안하면 관심사없음
+- 항목마다 다른 조건을 걸어 다양한 function을 활용
+- 좋아하는 장르 카테고리 체크박스 기능
 
 ### 1.2 로그인
-- 로그인 세션이 남아있을때와 없을때 다르게 보이게 설정
-- 세션이 없으면 로그인버튼이 나오게 -> 로그인 페이지로 이동
-- 세션이 있으면 회원아이디 이름 마이페이지 버튼 로그아웃 버튼 보이게 설정
+- 로그인 세션의 유무에 따라 다른 페이지
 
-### 1.3 마이페이지
-- 회원정보 전부 나옴
+### 1.3 로그인에 따른 페이지 컨트롤
+로그인시 보고있던페이지로 가도록 구현
+```java
+// 보고 있는 페이지 컨트롤러 코드
+@WebServlet("/HC")
+public class HC extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		String watchingPage = request.getRequestURL().toString();
+		String param = request.getQueryString();
+		if (request.getQueryString() != null) {
+			watchingPage = watchingPage + "?" + param;
+		}
+		request.getSession().setAttribute("watchingPage", watchingPage);
+
+		Model.loginCheck(request);
+		request.setAttribute("contentPage", "home.jsp");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+		}
+	}
+		
+// 로그인 컨트롤러 코드
+@WebServlet("/LoginC")
+public class LoginC extends HttpServlet {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Model.login(request);
+		
+		if (Model.loginCheck(request)) {
+			String watchingPage1 = request.getRequestURL().toString();
+			HttpSession hs = request.getSession();
+			String watchingPage = (String) hs.getAttribute("watchingPage");
+			System.out.println("LoginC watchingPage = " + watchingPage);
+
+			if (watchingPage == null || watchingPage.equals(watchingPage1)) {
+				request.setAttribute("contentPage", "home.jsp");
+				request.getRequestDispatcher("index.jsp").forward(request, response);
+			} else {
+				response.sendRedirect(watchingPage);
+			}
+			
+		} else {
+			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		}
+	}
+}	
+```
+
+### 1.4 마이페이지
 - 패스워드,이름,이메일,전화번호,좋아하는 장르 수정가능
+- 내가쓴글목록 : 마이페이지에서 두가지 게시판 불러와 조회
 
 ## 2. 게시판 
-- 글쓰기, 수정, 삭제, 페이징 기능 구현
+- 글쓰기, 수정, 삭제, 페이징, 조회 기능 구현
+- DB저장시 모델에서 <br>값으로 replace해서 저장
+- DB에서 가져올땐 모델에서 처리하는 것보다 JSTL에서 처리하는 것이 좋다
+
+```jsp
+	<!-- JSP상단 --> 
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+	<% pageContext.setAttribute("br", "<br>"); %>
+	<% pageContext.setAttribute("cn", "\n"); %>
+	
+	<!-- JSP본문 -->
+	${fn:replace(paramVO.content, br, "cn")}
+```
 
 
 ### 2.1 영화 리뷰 게시판 (로그인 해야 사용 가능)
 - 회원가입 해야 사용 가능하다.
 - 영화에 관련된 리뷰 작성 및 수정 삭제 가능
 
+
+
 ### 2.2 자유 게시판
 - 모두 다 사용 가능(글 쓰기, 수정, 삭제)
 
+### 2.3 조회수 기능
+- ip값을 활용하여 본인글 클릭하면 조회수 안올라 가도록 설계
+
+```java
+public static boolean ipCheck(HttpServletRequest request) {
+
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	String sql = "select f_ip from semi_review where f_no=?";
+	String regIp = null; // 글에 등록되어 있는  ip
+	String urIp = request.getRemoteAddr(); //현재 사용자 ip
+	System.out.println("urIp : " + urIp);
+
+	try {
+		String no = request.getParameter("no");
+		System.out.println("param no : " + no);
+
+		con = DBManager.connect();
+		pstmt = con.prepareStatement(sql);
+
+		pstmt.setString(1, no);
+
+		rs = pstmt.executeQuery();
+		if (rs.next()) {
+			regIp = rs.getString("f_ip");
+		}
+
+	} catch (Exception e) {
+		e.printStackTrace();
+		request.setAttribute("r", "서버 오류..");
+	} finally {
+		DBManager.close(con, pstmt, rs);
+	}
+	System.out.println("regIp : " + regIp);
+
+	if (urIp.equals(regIp)) {
+		return false;
+	} else {
+		return true;
+	}
+}
+```
 
 ## 3. 영화 API
 - 네이버 검색 api와 영화진흥위원회 api 등록후 사용
@@ -163,7 +267,7 @@ var markers = [];
 ```
 
 
-자세한 내용은 Click[PPT](피피티 pdf파일)<br>
+추가설명은 하단의 info.txt 참고<br>
 * * *
 
 
@@ -214,7 +318,11 @@ F_IP|VARCHAR2(25 BYTE)|YES|N|
 * * *
 팀원|이메일|Task|
 ---|---|---|
-김태형|`trainst37@gmail.com`|로그인•내가 쓴글•마이페이지•게시판, 회원가입, css|
-이동우|`leedongwoo564@gmail.com`|주변 영화관 찾기, 박스오피스 정보, 영화 뉴스 정보, 검색, 전체 css|
-김수현|`kimsouhyne@gmail.com`|박스오피스 정보, 영화 뉴스 정보, 검색, 주변 영화관 찾기, 전체 css|
-송준우|`thdwnsdn98@gmail.com`|로그인•내가 쓴글•마이페이지•게시판, 회원가입, css|
+김태형|`trainst37@gmail.com`|팀관리•문서•PageTrans•게시판•내가쓴글•글DB|
+이동우|`leedongwoo564@gmail.com`|주변 영화관 찾기, 박스오피스 정보, 영화 뉴스 정보, 영화 검색, 전체 css|
+김수현|`kimsouhyne@gmail.com`|주변 영화관 찾기, 박스오피스 정보, 영화 뉴스 정보, 영화 검색, , 전체 css|
+송준우|`thdwnsdn98@gmail.com`|로그인•회원가입•마이페이지•회원관리DB•css(게시판포함)•ppt|
+
+### *참조파일*
+* info(Real-semi).txt : [Click](텍스트 txt파일)<br>
+* PPT(Real-semi) [Click](피피티 pdf파일)

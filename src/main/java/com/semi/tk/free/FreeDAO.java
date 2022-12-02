@@ -59,8 +59,6 @@ public class FreeDAO {
 
 		String afterUpdateNo = (String) request.getAttribute("afterUpdateNo");
 
-		System.out.println("GetafterUpdateNo : " + afterUpdateNo);
-
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -68,7 +66,6 @@ public class FreeDAO {
 
 		try {
 			String no = request.getParameter("no");
-			System.out.println("param no : " + no);
 
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
@@ -121,19 +118,11 @@ public class FreeDAO {
 
 			String detail = mr.getParameter("detail");
 			detail = detail.replace("\r\n", "<br>");
-			System.out.println(detail);
 
 			String img = mr.getFilesystemName("img");
 			int count = 0;
 
 			String regIp = request.getRemoteAddr();
-
-			System.out.println("session id : " + a.getA_id());
-			System.out.println("param title : " + title);
-			System.out.println("param detail : " + detail);
-			System.out.println("param img : " + img);
-			System.out.println("초기화고정count : " + count);
-			System.out.println("regIp : " + regIp);
 
 			pstmt.setString(1, a.getA_id());
 			pstmt.setString(2, title);
@@ -167,7 +156,6 @@ public class FreeDAO {
 		PreparedStatement pstmt = null;
 		String sql = "update semi_free set f_title=?,f_detail=?,f_img=? where f_no=?";
 		String path = request.getServletContext().getRealPath("files/freeImg");
-		System.out.println(path);
 
 		try {
 
@@ -181,17 +169,10 @@ public class FreeDAO {
 
 			String detail = mr.getParameter("detail");
 			detail = detail.replace("\r\n", "<br>");
-			System.out.println(detail);
 
 			String oldImg = mr.getParameter("img"); // 기존사진 (조심하기)
 			String newImg = mr.getFilesystemName("img2"); // 사진을 새로 추가함
 			String no = mr.getParameter("no");
-
-			System.out.println("param title : " + title);
-			System.out.println("param detail : " + detail);
-			System.out.println("param oldImg : " + oldImg);
-			System.out.println("param newImg : " + newImg);
-			System.out.println("param no : " + no);
 
 			pstmt.setString(1, title);
 			pstmt.setString(2, detail);
@@ -207,7 +188,6 @@ public class FreeDAO {
 			
 			pstmt.setString(4, no);
 			request.setAttribute("afterUpdateNo", no);
-			System.out.println("UPafterUpdateNo : " + no);
 
 			if (pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "수정완료");
@@ -234,7 +214,6 @@ public class FreeDAO {
 			pstmt = con.prepareStatement(sql);
 
 			String no = request.getParameter("no");
-			System.out.println("param no : " + no);
 
 			pstmt.setString(1, no);
 
@@ -292,7 +271,6 @@ public class FreeDAO {
 
 			// 콘솔창에서 확인하기 위해 이 방식을 체택
 			String no = request.getParameter("no");
-			System.out.println("param no : " + no);
 
 			pstmt.setString(1, no);
 
@@ -316,11 +294,9 @@ public class FreeDAO {
 		String sql = "select f_ip from semi_review where f_no=?";
 		String regIp = null;
 		String urIp = request.getRemoteAddr();
-		System.out.println("urIp : " + urIp);
 
 		try {
 			String no = request.getParameter("no");
-			System.out.println("param no : " + no);
 
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
@@ -338,8 +314,6 @@ public class FreeDAO {
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
-
-		System.out.println("regIp : " + regIp);
 
 		if (urIp.equals(regIp)) {
 			return false;

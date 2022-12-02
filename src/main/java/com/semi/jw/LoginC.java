@@ -19,15 +19,11 @@ public class LoginC extends HttpServlet {
 		Model.loginCheck(request);
 		
 		String watchingPage = request.getRequestURL().toString();
-		System.out.println();
-		System.out.println(watchingPage);
-		System.out.println();
 		String param = request.getQueryString();
 		if (request.getQueryString() != null) {
 			watchingPage = watchingPage + "?" + param;
 		}
-		System.out.println("watchingPage : " + watchingPage);
-		System.out.println("param : " + param);
+	
 		request.getSession().setAttribute("watchingPage", watchingPage);
 
 		request.setAttribute("contentPage", "home.jsp");
@@ -43,7 +39,6 @@ public class LoginC extends HttpServlet {
 			String watchingPage1 = request.getRequestURL().toString();
 			HttpSession hs = request.getSession();
 			String watchingPage = (String) hs.getAttribute("watchingPage");
-			System.out.println("LoginC watchingPage = " + watchingPage);
 
 			if (watchingPage == null || watchingPage.equals(watchingPage1)) {
 				request.setAttribute("contentPage", "home.jsp");
