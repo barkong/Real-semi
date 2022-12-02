@@ -23,7 +23,7 @@ public class HC extends HttpServlet {
 		request.getSession().setAttribute("watchingPage", watchingPage);
 
 		Model.loginCheck(request);
-
+		
 		request.setAttribute("contentPage", "home.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 
