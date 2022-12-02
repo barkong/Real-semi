@@ -15,11 +15,19 @@ public class FreeDetailC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		String watchingPage = request.getRequestURL().toString();
+		String param = request.getQueryString();
+		if (request.getQueryString() != null) {
+			watchingPage = watchingPage + "?" + param; // 수정할 글의 번호도 있으니까
+		}
+		request.getSession().setAttribute("watchingPage", watchingPage);
+		
 		Model.loginCheck(request);
 		
 		if (FreeDAO.ipCheck(request)) {
 			FreeDAO.count(request);
 		}
+		
 		FreeDAO.getFree(request);
 		FreeDAO.getAllFree(request);
 		FreeDAO.paging(1, request);
@@ -31,5 +39,4 @@ public class FreeDetailC extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	}
-
 }

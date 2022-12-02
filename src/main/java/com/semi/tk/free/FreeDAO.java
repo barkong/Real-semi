@@ -269,7 +269,6 @@ public class FreeDAO {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 
-			// 콘솔창에서 확인하기 위해 이 방식을 체택
 			String no = request.getParameter("no");
 
 			pstmt.setString(1, no);
@@ -291,9 +290,10 @@ public class FreeDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select f_ip from semi_review where f_no=?";
+		String sql = "select f_ip from semi_free where F_NO=?";
 		String regIp = null;
 		String urIp = request.getRemoteAddr();
+		System.out.println(urIp);
 
 		try {
 			String no = request.getParameter("no");
@@ -314,7 +314,9 @@ public class FreeDAO {
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
-
+		
+		System.out.println("regIp : " + regIp);
+		
 		if (urIp.equals(regIp)) {
 			return false;
 		} else {

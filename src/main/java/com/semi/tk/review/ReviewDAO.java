@@ -281,7 +281,6 @@ public class ReviewDAO {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 
-			// 콘솔창에서 확인하기 위해 이 방식을 체택
 			String no = request.getParameter("no");
 
 			pstmt.setString(1, no);
@@ -303,9 +302,10 @@ public class ReviewDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select r_ip from semi_review where r_no=?";
+		String sql = "select r_ip from semi_review where R_NO=?";
 		String regIp = null;
 		String urIp = request.getRemoteAddr();
+		System.out.println(urIp);
 
 		try {
 			String no = request.getParameter("no");

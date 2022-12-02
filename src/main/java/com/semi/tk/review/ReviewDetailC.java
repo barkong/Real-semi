@@ -26,7 +26,7 @@ public class ReviewDetailC extends HttpServlet {
 			ReviewDAO.paging(1, request);
 			request.setAttribute("contentPage", "jsp/tk/review/review_detail.jsp");
 		} else {	
-			// href로 넘어와서 request.getHeader("Referer") 못씀
+			
 			String watchingPage = request.getRequestURL().toString();
 			String param = request.getQueryString();
 			if (request.getQueryString() != null) {
@@ -41,7 +41,5 @@ public class ReviewDetailC extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 	}
-
 }
