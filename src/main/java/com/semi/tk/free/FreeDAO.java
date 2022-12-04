@@ -12,10 +12,13 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.semi.jw.Bean;
 import com.semi.main.DBManager;
+import com.semi.mybbs.MyBbs;
 
 public class FreeDAO {
 
 	private static ArrayList<Free> frees;
+	private static ArrayList<Free> freesB;
+	private static ArrayList<Free> freesC;
 
 	// 전체조회
 	public static void getAllFree(HttpServletRequest request) {
@@ -28,16 +31,16 @@ public class FreeDAO {
 		try {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
-
 			rs = pstmt.executeQuery();
 
 			Free free = null;
 			frees = new ArrayList<Free>();
 			while (rs.next()) {
 				free = new Free();
-				free.setF_id(rs.getString("f_id"));
 				free.setF_no(rs.getInt("f_no"));
+				free.setF_id(rs.getString("f_id"));
 				free.setF_title(rs.getString("f_title"));
+				free.setF_detail(rs.getString("f_detail"));
 				free.setF_img(rs.getString("f_img"));
 				free.setF_date(rs.getDate("f_date"));
 				free.setF_count(rs.getInt("f_count"));
@@ -46,6 +49,81 @@ public class FreeDAO {
 				frees.add(free);
 			}
 			request.setAttribute("frees", frees);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+	}
+	
+
+// 조회많은 몇개만
+	public static void getFreesB(HttpServletRequest request) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from(select * from semi_free order by f_count desc) where rownum <=5 order by f_count desc";
+
+		try {
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			Free free = null;
+			freesB = new ArrayList<Free>();
+			while (rs.next()) {
+				free = new Free();
+				free.setF_Bid(rs.getString("f_id"));
+				free.setF_Bno(rs.getInt("f_no"));
+				free.setF_Btitle(rs.getString("f_title"));
+				free.setF_Bdetail(rs.getString("f_detail"));
+				free.setF_Bimg(rs.getString("f_img"));
+				free.setF_Bdate(rs.getDate("f_date"));
+				free.setF_Bcount(rs.getInt("f_count"));
+				free.setF_Bip(rs.getString("f_ip"));
+
+				freesB.add(free);
+			}
+			request.setAttribute("freesB", freesB);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+	}
+
+// 최신 몇개만
+	public static void getFreesC(HttpServletRequest request) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from(select * from semi_free order by f_date desc) where rownum <=5 order by f_date desc";
+
+		try {
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			Free free = null;
+			freesC = new ArrayList<Free>();
+			while (rs.next()) {
+				free = new Free();
+				free.setF_Cid(rs.getString("f_id"));
+				free.setF_Cno(rs.getInt("f_no"));
+				free.setF_Ctitle(rs.getString("f_title"));
+				free.setF_Cdetail(rs.getString("f_detail"));
+				free.setF_Cimg(rs.getString("f_img"));
+				free.setF_Cdate(rs.getDate("f_date"));
+				free.setF_Ccount(rs.getInt("f_count"));
+				free.setF_Cip(rs.getString("f_ip"));
+
+				freesC.add(free);
+			}
+			request.setAttribute("freesC", freesC);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -234,7 +312,7 @@ public class FreeDAO {
 		req.setAttribute("curPageNo", page);
 
 		// 전체 페이지수 계산
-		int cnt = 10;
+		int cnt = 20;
 		int total = frees.size();
 		int pageCount;
 		// 총 페이지 수
@@ -269,7 +347,6 @@ public class FreeDAO {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 
-			// 콘솔창에서 확인하기 위해 이 방식을 체택
 			String no = request.getParameter("no");
 
 			pstmt.setString(1, no);
@@ -291,9 +368,10 @@ public class FreeDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select f_ip from semi_review where f_no=?";
+		String sql = "select f_ip from semi_free where F_NO=?";
 		String regIp = null;
 		String urIp = request.getRemoteAddr();
+		System.out.println(urIp);
 
 		try {
 			String no = request.getParameter("no");
@@ -314,7 +392,9 @@ public class FreeDAO {
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
-
+		
+		System.out.println("regIp : " + regIp);
+		
 		if (urIp.equals(regIp)) {
 			return false;
 		} else {

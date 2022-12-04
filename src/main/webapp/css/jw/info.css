@@ -3,51 +3,58 @@
 :root {
   --text-color: rgb(152, 187, 201);
 
+<<<<<<< HEAD
+  --background-color: #101111;
+=======
   /* --background-color: #101111; */
+>>>>>>> 3cba02e009d3c6697d5ef406bff66abb0bec69b7
   --accent-color:white;
   --icons-color: rgb(152, 187, 201);
   --bodybackground-color: lightgray;
 }
 
+#sidebar {
+		width: 12.5%;
+}
 
-
+#sidebar ul {
+    font-size: 17px; line-height: 3em;
+}
 
 .navbar {
-	float: left;
 	background-color: var(--background-color);
 	font-family: 'STIX Two Math';
-	position: absolute;
-	top:0px;
+/* 	top:0px; */
 }
 
 .navbar__logo i {
 	color: var(--accent-color);
-	padding-left: 0;
+/* 	padding-left: 0; */
 }
 
 .navbar__menu {
 	list-style: none;
 	color: var(--icons-color);
-	margin: 0;
-	padding-left: 10;
+/* 	margin: 0;
+	padding-left: 10; */
 }
 
 .navbar__menu li {
 	 /* padding: 0 30px; */
-	 padding: 8px 12px; 
-	 margin-right:8px;
+/* 	 padding: 8px 12px; 
+	 margin-right:8px; */
 }
 
 .navbar__icons {
 	list-style: none;
 	color: var(--icons-color);
-	margin: 0;
-	padding-left: 10;
+/* 	margin: 0;
+	padding-left: 10; */
 }
 
 .navbar__icons li {
-	padding: 8px 12px;
-	margin-right:8px;
+/* 	padding: 8px 12px;
+	margin-right:8px; */
 	
 }
 
@@ -61,7 +68,7 @@
 	border-radius: 3px;
 }
 
-@media screen and (max-width: 700px) {
+/* @media screen and (max-width: 700px) {
 	.navbar {
 		flex-direction: column;
 		align-items: flex-start;
@@ -89,7 +96,4 @@
 		font-size: 20px;
 		display: none;
 	}
-}
-ul {
-    font-size: 20px; line-height: 3em;
-}
+} */

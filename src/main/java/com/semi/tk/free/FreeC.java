@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.jw.Model;
+import com.semi.tk.review.ReviewDAO;
 
 @WebServlet("/FreeC")
 public class FreeC extends HttpServlet {
@@ -23,8 +24,15 @@ public class FreeC extends HttpServlet {
 		request.getSession().setAttribute("watchingPage", watchingPage);
 
 		Model.loginCheck(request);
+
 		FreeDAO.getAllFree(request);
 		FreeDAO.paging(1, request);
+		
+		FreeDAO.getFreesB(request);
+		FreeDAO.getFreesC(request);
+		ReviewDAO.getReviewsB(request);
+		ReviewDAO.getReviewsC(request);
+		
 		request.setAttribute("contentPage", "jsp/tk/free/free.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

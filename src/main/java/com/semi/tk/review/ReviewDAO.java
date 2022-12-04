@@ -14,10 +14,13 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.semi.jw.Bean;
 import com.semi.main.DBManager;
+import com.semi.tk.free.Free;
 
 public class ReviewDAO {
 
 	private static ArrayList<Review> reviews;
+	private static ArrayList<Review> reviewsB;
+	private static ArrayList<Review> reviewsC;
 
 	// 전체조회
 	public static void getAllReview(HttpServletRequest request) {
@@ -30,7 +33,6 @@ public class ReviewDAO {
 		try {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
-
 			rs = pstmt.executeQuery();
 
 			Review review = null;
@@ -58,6 +60,79 @@ public class ReviewDAO {
 		}
 	}
 
+	
+// 조회많은 몇개만
+	public static void getReviewsB(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from(select * from semi_review order by r_count desc) where rownum <=5 order by r_count desc";
+
+		try {
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			Review review = null;
+			reviewsB = new ArrayList<Review>();
+			while (rs.next()) {
+				review = new Review();
+				review.setR_Bid(rs.getString("r_id"));
+				review.setR_Bno(rs.getInt("r_no"));
+				review.setR_Bmovie(rs.getString("r_movie"));
+				review.setR_Btitle(rs.getString("r_title"));
+				review.setR_Bimg(rs.getString("r_img"));
+				review.setR_Bdate(rs.getDate("r_date"));
+				review.setR_Bcount(rs.getInt("r_count"));
+				review.setR_Bip(rs.getString("r_ip"));
+
+				reviewsB.add(review);
+			}
+			request.setAttribute("reviewsB", reviewsB);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+	}
+
+// 최신 리뷰 몇개만
+	public static void getReviewsC(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from(select * from semi_review order by r_date desc) where rownum <=5 order by r_date desc";
+
+		try {
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			Review review = null;
+			reviewsC = new ArrayList<Review>();
+			while (rs.next()) {
+				review = new Review();
+				review.setR_Cid(rs.getString("r_id"));
+				review.setR_Cno(rs.getInt("r_no"));
+				review.setR_Cmovie(rs.getString("r_movie"));
+				review.setR_Ctitle(rs.getString("r_title"));
+				review.setR_Cimg(rs.getString("r_img"));
+				review.setR_Cdate(rs.getDate("r_date"));
+				review.setR_Ccount(rs.getInt("r_count"));
+				review.setR_Cip(rs.getString("r_ip"));
+
+				reviewsC.add(review);
+			}
+			request.setAttribute("reviewsC", reviewsC);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+	}
+	
 	// 선택한 게시글 1개
 	public static void getReview(HttpServletRequest request) {
 
@@ -240,18 +315,16 @@ public class ReviewDAO {
 		}
 	}
 
-	// 페이징 : 한페이지당 10개
 	public static void paging(int page, HttpServletRequest req) {
 
 		req.setAttribute("curPageNo", page);
 
 		// 전체 페이지수 계산
-		int cnt = 10; // 한페이지당 보여줄 개수
+		int cnt = 20; // 한페이지당 보여줄 개수
 		int total = reviews.size(); // 총 (데이터 게시글) 수
 		int pageCount;
-		
 		// 총 페이지 수
-		if (total==0) {
+		if (total == 0) {
 			pageCount = 1;
 		} else {
 			pageCount = (int) Math.ceil(((double) total / cnt));
@@ -281,7 +354,6 @@ public class ReviewDAO {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 
-			// 콘솔창에서 확인하기 위해 이 방식을 체택
 			String no = request.getParameter("no");
 
 			pstmt.setString(1, no);
@@ -303,9 +375,10 @@ public class ReviewDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select r_ip from semi_review where r_no=?";
+		String sql = "select r_ip from semi_review where R_NO=?";
 		String regIp = null;
 		String urIp = request.getRemoteAddr();
+		System.out.println(urIp);
 
 		try {
 			String no = request.getParameter("no");
