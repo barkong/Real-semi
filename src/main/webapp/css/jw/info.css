@@ -2,13 +2,9 @@
 
 :root {
   --text-color: rgb(152, 187, 201);
-<<<<<<< HEAD
-/*   --background-color: #101111;
- */  --accent-color:white;
-=======
+
   /* --background-color: #101111; */
   --accent-color:white;
->>>>>>> 0d7d7f3d9f21d43039723dd2c1b7e2e262734e28
   --icons-color: rgb(152, 187, 201);
   --bodybackground-color: lightgray;
 }

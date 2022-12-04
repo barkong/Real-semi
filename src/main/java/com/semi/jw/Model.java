@@ -56,6 +56,7 @@ public class Model {
 
 					HttpSession hs = request.getSession();
 					hs.setAttribute("accountInfo", bean);
+
 					hs.setMaxInactiveInterval(5000000);
 
 				} else {
