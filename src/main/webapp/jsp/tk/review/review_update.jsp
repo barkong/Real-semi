@@ -22,6 +22,7 @@ pageContext.setAttribute("cn", "\n");
 </head>
 <body>
 	<div id="contentWp">
+		<!-- 사이드바 -->
 		<div id="sidebar">
 			<nav class="navbar">
 				<div class="navbar__logo">
@@ -53,11 +54,11 @@ pageContext.setAttribute("cn", "\n");
 				<div>
 					<a>인기 리뷰</a>
 					<c:forEach var="r" items="${reviewsB }" begin="0" end="4">
-						<c:if test="${r.r_Bid ne null }">
+						<c:if test="${r.r_id ne null }">
 							<ul>
-								<li><a href="ReviewDetailC?no=${r.r_Bno }">${r.r_Btitle }</a>
-									&nbsp; ${r.r_Bcount  }명&nbsp;<fmt:formatDate
-										value="${r.r_Bdate }" type="date" /></li>
+								<li><a href="ReviewDetailC?no=${r.r_no }">${r.r_title }</a>
+									&nbsp; ${r.r_count  }명&nbsp;<fmt:formatDate
+										value="${r.r_date }" type="date" /></li>
 							</ul>
 						</c:if>
 					</c:forEach>
@@ -65,11 +66,11 @@ pageContext.setAttribute("cn", "\n");
 				<div>
 					<a>최신 리뷰</a>
 					<c:forEach var="r" items="${reviewsC }" begin="0" end="4">
-						<c:if test="${r.r_Cid ne null }">
+						<c:if test="${r.r_id ne null }">
 							<ul>
-								<li><a href="ReviewDetailC?no=${r.r_Cno }">${r.r_Ctitle }</a>
-									&nbsp; ${r.r_Ccount  }명&nbsp;<fmt:formatDate
-										value="${r.r_Cdate }" type="date" /></li>
+								<li><a href="ReviewDetailC?no=${r.r_no }">${r.r_title }</a>
+									&nbsp; ${r.r_count  }명&nbsp;<fmt:formatDate
+										value="${r.r_date }" type="date" /></li>
 							</ul>
 						</c:if>
 					</c:forEach>
@@ -77,11 +78,11 @@ pageContext.setAttribute("cn", "\n");
 				<div class="content_widget_freeBest">
 					<a>인기 자유글</a>
 					<c:forEach var="f" items="${freesB }" begin="0" end="4">
-						<c:if test="${f.f_Bid ne null }">
+						<c:if test="${f.f_id ne null }">
 							<ul>
-								<li><a href="FreeDetailC?no=${f.f_Bno }">${f.f_Btitle }</a>
-									&nbsp; ${f.f_Bcount  }명&nbsp;<fmt:formatDate
-										value="${f.f_Bdate }" type="date" /></li>
+								<li><a href="FreeDetailC?no=${f.f_no }">${f.f_title }</a>
+									&nbsp; ${f.f_count  }명&nbsp;<fmt:formatDate
+										value="${f.f_date }" type="date" /></li>
 							</ul>
 						</c:if>
 					</c:forEach>
@@ -89,10 +90,10 @@ pageContext.setAttribute("cn", "\n");
 				<div>
 					<a>최신 자유글</a>
 					<c:forEach var="f" items="${freesC }" begin="0" end="4">
-						<c:if test="${f.f_Cid ne null }">
+						<c:if test="${f.f_id ne null }">
 							<ul>
-								<li><a href="FreeDetailC?no=${f.f_Cno }">${f.f_Ctitle }</a>&nbsp;${f.f_Ccount }명&nbsp;<fmt:formatDate
-										value="${f.f_Cdate }" type="date" /></li>
+								<li><a href="FreeDetailC?no=${f.f_no }">${f.f_title }</a>&nbsp;${f.f_count }명&nbsp;<fmt:formatDate
+										value="${f.f_date }" type="date" /></li>
 							</ul>
 						</c:if>
 					</c:forEach>
@@ -149,7 +150,7 @@ pageContext.setAttribute("cn", "\n");
 
 						<div class="bbsDetail_img">
 							<c:if test="${review.r_img ne null }">
-								<img src="files/reviewImg/${review.r_img }" width="500px">
+								<img src="files/reviewImg/${review.r_img }">
 							</c:if>
 						</div>
 						<div class="bbsDetail_img">

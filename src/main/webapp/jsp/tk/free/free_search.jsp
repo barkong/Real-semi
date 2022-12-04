@@ -2,13 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%
-pageContext.setAttribute("br", "<br>");
-%>
-<%
-pageContext.setAttribute("cn", "\n");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -102,7 +95,6 @@ pageContext.setAttribute("cn", "\n");
 
 			<br> <br>
 
-			<!-- 메인컨텐츠 -->
 			<div class="bbs_1st_wrp">
 				<div class="bbsTop">
 					<div class="bbsTop_fl">
@@ -120,50 +112,88 @@ pageContext.setAttribute("cn", "\n");
 					</div>
 				</div>
 
-				<!-- 상세창 -->
-				<div class="bbsWrite">
-					<form action="FreeUpdateC?no=${free.f_no }" method="post"
-						name="bbsForm" enctype="multipart/form-data"
-						onsubmit="return bbsCall()">
 
-						<div class="bbsWrite_title">
-							<input type="text" value="${free.f_title }" name="title">
-						</div>
-
-						<div class="bbsDetail_2nd_line">
-							<div class="bbsDetail_element">작성자 : ${free.f_id }</div>
-							<div class="bbsDetail_element">
-								<fmt:formatDate value="${free.f_date }" type="both"
-									dateStyle="short" timeStyle="short" />
-							</div>
-							<input name="no" value="${free.f_no }" type="hidden">
-							<div class="bbsDetail_element">NO.:${free.f_no }&nbsp;&nbsp;&nbsp;조회수:${free.f_count }</div>
-						</div>
-
-						<div class="bbsWrite_detail">
-							<textarea maxlength="2084" name="detail" style="resize: none">${fn:replace(free.f_detail, br, cn)}</textarea>
-						</div>
-
-						<div class="bbsDetail_img">
-							<c:if test="${free.f_img ne null }">
-								<img src="files/freeImg/${free.f_img }">
+				<table class="bbsTable">
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>제목</th>
+							<th>글쓴이</th>
+							<th>시간</th>
+							<th>조회</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="f" items="${freesS }">
+							<c:if test="${f.f_id ne null }">
+								<tr>
+									<td>${f.f_no }</td>
+									<td class="bbsTable_title"><a
+										href="FreeDetailC?no=${f.f_no }">${f.f_title }</a></td>
+									<td>${f.f_id }</td>
+									<td><fmt:formatDate value="${f.f_date }" type="date"
+											dateStyle="short" /> <br> <fmt:formatDate
+											value="${f.f_date }" type="time" timeStyle="short" /></td>
+									<td>${f.f_count }</td>
+								</tr>
 							</c:if>
-						</div>
-						<div class="bbsDetail_img">
-							<input type="file" name="img2" /> <input name="img"
-								value="${free.f_img }" type="hidden">
-						</div>
+						</c:forEach>
+					</tbody>
+				</table>
 
-						<div class="bbsDetail_bot">
-							<button class="bbsbt" type="button" onclick="history.back()">이전으로</button>
-							<button class="bbsbt">수정완료</button>
-							<button class="bbsbt" type="button"
-								onclick="freeDel(${free.f_no})">삭제하기</button>
-						</div>
-					</form>
+
+				<div class="bbsBot">
+					<div class="bbsBot_fl">
+						<form method="post" name="searchForm" action="FreeSC"
+							onsubmit="return search()">
+							<select name="searchField">
+								<option value="f_title">제목</option>
+								<option value="f_id">작성자</option>
+							</select> <input type="text" placeholder="검색어 입력" name="searchText"
+								maxlength="100">
+							<button>검색</button>
+						</form>
+
+
+					</div>
+
+					<div class="bbsBot_fr">
+						<c:choose>
+							<c:when test="${sessionScope.accountInfo eq null}">
+								<a href="FreeRegC" onclick="alert('로그인하세요')">새글쓰기</a>
+							</c:when>
+							<c:otherwise>
+								<a href="FreeRegC"> 새글쓰기</a>
+							</c:otherwise>
+						</c:choose>
+					</div>
+				</div>
+
+
+				<div class="bbsPaging">
+					<span><c:choose>
+							<c:when test="${curPageNo == 1}">
+							</c:when>
+							<c:otherwise>
+								<a href="FreeSpageC?p=${curPageNo - 1 }&sf=${sf}&st=${st}"> ◀이전 </a>
+							</c:otherwise>
+						</c:choose></span> <a href="FreeSpageC?p=1&sf=${sf}&st=${st}">[맨처음]</a>
+					<c:forEach var="i" begin="1" end="${pageCount }">
+						<a href="FreeSpageC?p=${i }&sf=${sf}&st=${st}"> [${i }] </a>
+					</c:forEach>
+					<span><a href="FreeSpageC?p=${pageCount }&sf=${sf}&st=${st}">[맨끝]</a></span> <span><c:choose>
+							<c:when test="${curPageNo == pageCount}">
+							</c:when>
+							<c:otherwise>
+								<a href="FreeSpageC?p=${curPageNo + 1 }&sf=${sf}&st=${st}"> 다음▶ </a>
+							</c:otherwise>
+						</c:choose></span>
 				</div>
 			</div>
 		</div>
 	</div>
+	<br>
+	<br>
+	<br>
 </body>
 </html>
