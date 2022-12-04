@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>영화리뷰</title>
 <link rel="stylesheet" href="css/jw/info.css">
 <link rel="stylesheet" href="css/jw/login.css">
 <link rel="stylesheet" href="css/jw/bbs.css">

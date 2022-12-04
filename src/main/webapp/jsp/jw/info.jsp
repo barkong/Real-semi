@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마이페이지</title>
 <link rel="stylesheet" href="css/jw/info.css">
 <link rel="stylesheet" href="css/jw/login.css">
 <script type="text/javascript" src="js/jw/check.js"></script>
