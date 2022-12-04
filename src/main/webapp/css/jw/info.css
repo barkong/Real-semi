@@ -3,7 +3,11 @@
 :root {
   --text-color: rgb(152, 187, 201);
 
+<<<<<<< HEAD
   --background-color: #101111;
+=======
+  /* --background-color: #101111; */
+>>>>>>> 3cba02e009d3c6697d5ef406bff66abb0bec69b7
   --accent-color:white;
   --icons-color: rgb(152, 187, 201);
   --bodybackground-color: lightgray;
