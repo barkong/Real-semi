@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.jw.Model;
+import com.semi.tk.review.ReviewDAO;
 
 @WebServlet("/FreeUpdateC")
 public class FreeUpdateC extends HttpServlet {
@@ -17,6 +18,12 @@ public class FreeUpdateC extends HttpServlet {
 
 		if (Model.loginCheck(request)) {
 			FreeDAO.getFree(request);
+			
+			FreeDAO.getFreesB(request);
+			FreeDAO.getFreesC(request);
+			ReviewDAO.getReviewsB(request);
+			ReviewDAO.getReviewsC(request);
+			
 			request.setAttribute("contentPage", "jsp/tk/free/free_update.jsp");
 		} else {
 			// href로 넘어와서 request.getHeader("Referer") 못씀
@@ -37,8 +44,12 @@ public class FreeUpdateC extends HttpServlet {
 		if (Model.loginCheck(request)) {
 			FreeDAO.updateFree(request);
 			FreeDAO.getFree(request);
-			FreeDAO.getAllFree(request);
-			FreeDAO.paging(1, request);
+			
+			FreeDAO.getFreesB(request);
+			FreeDAO.getFreesC(request);
+			ReviewDAO.getReviewsB(request);
+			ReviewDAO.getReviewsC(request);
+			
 			request.setAttribute("contentPage", "jsp/tk/free/free_detail.jsp");
 		} else {
 //			String watchingPage = request.getRequestURL().toString();

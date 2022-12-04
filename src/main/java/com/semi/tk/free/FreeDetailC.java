@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.jw.Model;
+import com.semi.tk.review.ReviewDAO;
 
 @WebServlet("/FreeDetailC")
 public class FreeDetailC extends HttpServlet {
@@ -31,6 +32,12 @@ public class FreeDetailC extends HttpServlet {
 		FreeDAO.getFree(request);
 		FreeDAO.getAllFree(request);
 		FreeDAO.paging(1, request);
+		
+		FreeDAO.getFreesB(request);
+		FreeDAO.getFreesC(request);
+		ReviewDAO.getReviewsB(request);
+		ReviewDAO.getReviewsC(request);
+		
 		request.getRequestURL();
 		request.setAttribute("contentPage", "jsp/tk/free/free_detail.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);

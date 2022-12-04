@@ -1,6 +1,7 @@
 package com.semi.mybbs;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,25 +10,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.semi.jw.Model;
 
-@WebServlet("/MyBbsC")
-public class MyBbsC extends HttpServlet {
+@WebServlet("/MyBbsPageFC")
+public class MyBbsPageFC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Model.loginCheck(request);
 
-		if (Model.loginCheck(request)) {
-			MyBbsDAO.getAllBbsFree(request);
-			MyBbsDAO.paging(1, request);
-			request.setAttribute("contentPage", "jsp/tk/mybbs/myBbs.jsp");
-		} else {
-			String watchingPage = request.getRequestURL().toString();
-			String param = request.getQueryString();
-			if (request.getQueryString() != null) {
-				watchingPage = watchingPage + "?" + param; // 수정할 글의 번호도 있으니까
-			}
-			request.getSession().setAttribute("watchingPage", watchingPage);
-			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
-		}
+		int p = Integer.parseInt(request.getParameter("p"));
+		MyBbsDAO.getAllBbsF(request);
+		MyBbsDAO.pagingF(p, request);
 
+		request.setAttribute("contentPage", "jsp/tk/mybbs/myBbs.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 

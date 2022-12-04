@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.jw.Model;
+import com.semi.tk.free.FreeDAO;
 
 @WebServlet("/ReviewDelC")
 public class ReviewDelC extends HttpServlet {
@@ -19,6 +20,12 @@ public class ReviewDelC extends HttpServlet {
 			ReviewDAO.deleteReview(request);
 			ReviewDAO.getAllReview(request);
 			ReviewDAO.paging(1, request);
+			
+			FreeDAO.getFreesB(request);
+			FreeDAO.getFreesC(request);
+			ReviewDAO.getReviewsB(request);
+			ReviewDAO.getReviewsC(request);
+			
 			request.setAttribute("contentPage", "jsp/tk/review/review.jsp");
 		} else {
 			// href로 넘어와서 request.getHeader("Referer") 못씀

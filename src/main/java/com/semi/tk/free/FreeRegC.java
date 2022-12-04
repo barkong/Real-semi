@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.jw.Model;
+import com.semi.tk.review.ReviewDAO;
 
 @WebServlet("/FreeRegC")
 public class FreeRegC extends HttpServlet {
@@ -16,6 +17,12 @@ public class FreeRegC extends HttpServlet {
 			throws ServletException, IOException {
 
 		if (Model.loginCheck(request)) {
+			
+			FreeDAO.getFreesB(request);
+			FreeDAO.getFreesC(request);
+			ReviewDAO.getReviewsB(request);
+			ReviewDAO.getReviewsC(request);
+			
 			request.setAttribute("contentPage", "jsp/tk/free/free_reg.jsp");
 		} else {
 			// href로 넘어와서 request.getHeader("Referer") 못씀
@@ -38,6 +45,12 @@ public class FreeRegC extends HttpServlet {
 			FreeDAO.regFree(request);
 			FreeDAO.getAllFree(request);
 			FreeDAO.paging(1, request);
+			
+			FreeDAO.getFreesB(request);
+			FreeDAO.getFreesC(request);
+			ReviewDAO.getReviewsB(request);
+			ReviewDAO.getReviewsC(request);
+			
 			request.setAttribute("contentPage", "jsp/tk/free/free.jsp");
 		} else {
 			// form-action으로 넘어왔기 때문에, LoginPageC의 request.getHeader("Referer")에 맡기면됨

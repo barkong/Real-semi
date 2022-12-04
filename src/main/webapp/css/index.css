@@ -4,24 +4,83 @@ a {
 	text-decoration: none;
 }
 
+/* ----------------------------------------- */
+
 body {
 	background-color: #101111;
 	color: white;
 }
 
-#Container {
+/* 헤더 영역 : 메뉴까지 */
+#header {
 	margin-top: 25px;
 	width: 100%;
 }
 
+/* ----------------------------------------- */
+/* 로고 검색창 로그인 배치위치 */
 #top {
 	position: relative;
 	display: flex;
 	text-align: center;
 	height: 55px;
-	margin-right:10px;
+	margin-right: 10px;
 }
 
+#mainIconImg {
+	width: 3vw;
+}
+
+#mainIconDiv {
+	position: absolute;
+	left: 30px;
+}
+
+#searchDiv {
+	border: 1px solid white;
+	position: absolute;
+	margin-left: 35vw;
+}
+
+#searchInput {
+	background: url("../icon/icon.png") no-repeat right;
+	background-size: 30px;
+	color: white;
+	background-color: #101111;
+	width: 35vw;
+	height: 4.5vh;
+	font-size: 12pt;
+	border: none;
+	border-bottom: 1px solid #ececec;
+}
+
+.topLogin {
+	margin-right: 0%;
+	margin-left: auto;
+}
+
+/* ----------------------------------------- */
+/* 상단 우측 로그인 디자인 */
+.loginDiv {
+	position: absolute;
+	top: 10px;
+	right: 50px;
+	font-size: 12pt;
+	color: white;
+}
+
+.loginDiv>a {
+	color: white;
+	text-decoration: none;
+}
+
+.loginDiv>a:active {
+	color: white;
+	text-decoration: none;
+}
+
+/* ----------------------------------------- */
+/* 메뉴 영역 */
 #menus {
 	height: 50px;
 	display: flex;
@@ -29,11 +88,8 @@ body {
 	text-align: center;
 	position: sticky;
 	top: 0;
-	background-color:#101111;
-
+	background-color: #101111;
 }
-
-
 
 .mainMenu {
 	font-size: 14pt;
@@ -45,14 +101,14 @@ body {
 	text-decoration: none;
 }
 
-
-.mainMenu > a:hover {
-  color:white;
-
+.mainMenu>a:hover {
+	color: white;
 }
-.btn1 {
-	margin-right: 0%;
-	margin-left: auto;
+
+/* ----------------------------------------- */
+/* 컨텐츠 영역 */
+#container {
+	width: 100%;
 }
 
 #content {
@@ -64,73 +120,34 @@ body {
 	margin-bottom: 100px;
 }
 
-#searchInput{
-	 background:url("../icon/icon.png") no-repeat right ; 
-	 background-size: 30px;
-	color:white;
-	background-color:#101111;
-	width:35vw;
-	height:4.5vh;
-	font-size:12pt;
-	border:none;
-	border-bottom:1px solid #ececec;
-}
 
-
-#mainIcon{
-	
-	width:3vw;
-
-}
-
-#mainIconDiv {
-	position: absolute;
-	left: 30px;
-}
-
-#searchDiv{
-	border: 1px solid white;
-	position:absolute;
-	 margin-left:35vw; 
-
-}
 .page {
 	margin-left: 600px;
-
 }
 
+/* ----------------------------------------- */
+/* 푸터 영역 */
 
-.loginDiv {
-	position:absolute;
-	top:10px;
-	right:50px;
-	font-size:12pt;
-	color:white;
-	
-}
-.loginDiv> a{
-	color:white;
-	text-decoration:none;
-}
-.loginDiv> a:active{
-	color:white;
-	text-decoration:none;
-}
-.footer{
-	border-top:1px solid #808080;
+#footer {
+	border-top: 1px solid #808080;
 	height: 250px;
 	display: flex;
 }
-.footerContent > a {
+
+.footerContent>a {
 	color: #a2a2a2;
 }
-.footerContent{
-	
+
+.footerContent {
 	color: #a2a2a2;
 	margin-top: 60px;
 	margin-left: 150px;
 }
+
 .footerInfo {
 	color: white;
 }
-.footerLine{}
+
+.footerLine {
+	
+}

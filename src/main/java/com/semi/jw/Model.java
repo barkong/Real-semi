@@ -56,7 +56,7 @@ public class Model {
 
 					HttpSession hs = request.getSession();
 					hs.setAttribute("accountInfo", bean);
-					hs.setMaxInactiveInterval(10);
+					hs.setMaxInactiveInterval(100000);
 
 				} else {
 					request.setAttribute("r", "비밀번호 오류!");

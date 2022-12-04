@@ -15,7 +15,6 @@
 </head>
 <body>
 	<div id="contentWp">
-		<!-- 사이드바 -->
 		<div id="sidebar">
 			<nav class="navbar">
 				<div class="navbar__logo">
@@ -95,11 +94,10 @@
 
 			<br> <br>
 
-			<!-- 메인컨텐츠 -->
 			<div class="bbs_1st_wrp">
 				<div class="bbsTop">
 					<div class="bbsTop_fl">
-						<a href="ReviewC"> 리뷰게시판 </a>
+						<a href="ReviewRegC"> 영화 리뷰 </a>
 					</div>
 					<div class="bbsTop_fr">
 						<c:choose>
@@ -113,55 +111,6 @@
 					</div>
 				</div>
 
-				<!-- 상세창 -->
-				<div class="bbsDetail">
-					<div class="bbsDetail_1st_line">
-						<div class="bbsDetail_title">[${review.r_movie }]&nbsp;
-							${review.r_title }</div>
-						<div class="bbsDetail_element">
-							<fmt:formatDate value="${review.r_date }" type="both"
-								dateStyle="short" timeStyle="short" />
-						</div>
-					</div>
-
-					<div class="bbsDetail_2nd_line">
-						<div class="bbsDetail_element">작성자 : ${review.r_id }</div>
-						<div class="bbsDetail_element">NO.:${review.r_no }&nbsp;&nbsp;&nbsp;조회수:${review.r_count }</div>
-					</div>
-
-					<div class="bbsDetail_detail">${review.r_detail}</div>
-					<div class="bbsDetail_img">
-						<c:if test="${review.r_img ne null }">
-							<td colspan="3"><img src="files/reviewImg/${review.r_img }"
-								width="500px">
-						</c:if>
-					</div>
-
-					<div class="bbsDetail_bot">
-						<button class="bbsbt" onclick="history.back()">이전으로</button>
-						<c:choose>
-							<c:when test="${sessionScope.accountInfo.a_id eq review.r_id}">
-								<c:choose>
-									<c:when test="${sessionScope.accountInfo eq null}">
-										<button onclick="alert('로그인하세요')">수정</button>
-										<button onclick="alert('로그인하세요')">삭제</button>
-									</c:when>
-									<c:otherwise>
-										<button class="bbsbt"
-											onclick="location.href='ReviewUpdateC?no=${param.no}'">수정</button>
-										<button class="bbsbt" onclick="reviewDel(${review.r_no})">삭제</button>
-									</c:otherwise>
-								</c:choose>
-							</c:when>
-						</c:choose>
-					</div>
-				</div>
-			</div>
-
-			<br> <br> <br> <br> <br>
-
-			<!-- 게시글 보여주기 -->
-			<div class="getAllreviews">
 				<table class="bbsTable">
 					<thead>
 						<tr>
@@ -215,6 +164,7 @@
 					</tbody>
 				</table>
 
+
 				<div class="bbsBot">
 					<div class="bbsBot_fl">
 						<form action="https://www.fmkorea.com/" method="get"
@@ -251,6 +201,7 @@
 					</div>
 				</div>
 
+
 				<div class="bbsPaging">
 					<span><c:choose>
 							<c:when test="${curPageNo == 1}">
@@ -273,5 +224,8 @@
 			</div>
 		</div>
 	</div>
+	<br>
+	<br>
+	<br>
 </body>
 </html>
