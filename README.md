@@ -98,8 +98,10 @@ public class LoginC extends HttpServlet {
 - 패스워드,이름,이메일,전화번호,좋아하는 장르 수정가능
 - 내가쓴글목록 : 마이페이지에서 두가지 게시판 불러와 조회
 
-## 2. 게시판 
-- 글쓰기, 수정, 삭제, 페이징, 조회 기능 구현
+## 2. 게시판 (리뷰, 자유)
+- 글쓰기, 수정, 삭제, 페이징, 조회, 검색기능 구현
+- 두 게시판에 게시판별 최신/최다조회글 배치
+- 게시판 목록 상단에 최다조회글 3개 상시배치
 - DB저장시 모델에서 <br>값으로 replace해서 저장
 - DB에서 가져올땐 모델에서 처리하는 것보다 JSTL에서 처리하는 것이 좋다
 
@@ -119,9 +121,9 @@ public class LoginC extends HttpServlet {
 - 영화에 관련된 리뷰 작성 및 수정 삭제 가능
 
 
-
 ### 2.2 자유 게시판
 - 모두 다 사용 가능(글 쓰기, 수정, 삭제)
+
 
 ### 2.3 조회수 기능
 - ip값을 활용하여 본인글 클릭하면 조회수 안올라 가도록 설계
@@ -165,6 +167,11 @@ public static boolean ipCheck(HttpServletRequest request) {
 		return true;
 	}
 }
+
+
+### 2.4 다양한 경우의 수에 대비
+- 세션이 만료된 경우
+- 검색후 재검색 및 페이징
 ```
 
 ## 3. 영화 API
@@ -265,16 +272,21 @@ var markers = [];
 			level : 1
 		};
 ```
+(추가설명은 하단의 info.txt 참고)<br>
 
 
-추가설명은 하단의 info.txt 참고<br>
+## 5. 박스오피스
+- 캘린더 구현해서 날짜 선택시 값 넘어가도록 설정
+- 이로인해 날짜 클릭시 편리한 박스오피스 순위 조회가능
+
+
 * * *
 
 
 ## DB 구조
 
 ### *semi_account*
-* * *
+
 COLUM_NAME|DATA_TYPE|NULLABLE|PKEY|
 ---|---|---|---|
 A_ID|VARCHAR2(30 BYTE)|NO|Y|
@@ -287,7 +299,7 @@ A_PHONE|VARCHAR2(20 BYTE)|NO|N|
 A_INTEREST|VARCHAR2(200 BYTE)|NO|N|
 
 ### *semi_review*
-* * *
+
 COLUM_NAME|DATA_TYPE|NULLABLE|PKEY|
 ---|---|---|---|
 R_NO|NUMBER(3,0)|NO|Y|
@@ -301,7 +313,7 @@ R_COUNT|NUMBER(5,0)|YES|N|
 R_IP|VARCHAR2(25 BYTE)|YES|N|
 
 ### *semi_free*
-* * *
+
 COLUM_NAME|DATA_TYPE|NULLABLE|PKEY|
 ---|---|---|---|
 F_NO|NUMBER(8,0)|NO|Y|
@@ -313,12 +325,17 @@ F_DATE|DATE|NO|N|
 F_COUNT|NUMBER(5,0)|YES|N|
 F_IP|VARCHAR2(25 BYTE)|YES|N|
 
+- DATE의 저장방식과 불러오기에 주의요함
+- 게시판 ID칼럼은 ACCOUNT 테이블과 관계형을 위한 매개
+- 게시판 IP칼럼은 중복조회를 체크하기 위함
+
+* * *
 
 ## TEAM 
-* * *
+
 팀원|이메일|Task|
 ---|---|---|
-김태형|`trainst37@gmail.com`|팀관리•문서•PageTrans•게시판•내가쓴글•글DB|
+김태형|`trainst37@gmail.com`|팀관리•문서•PageTrans•게시판•내가쓴글•글DB•css정리|
 이동우|`leedongwoo564@gmail.com`|주변영화관 찾기•박스오피스 정보•영화뉴스정보•영화검색•전체css•readme|
 김수현|`kimsouhyne@gmail.com`|주변영화관 찾기•박스오피스 정보•영화뉴스 정보•영화검색•전체css•git|
 송준우|`thdwnsdn98@gmail.com`|로그인•회원가입•마이페이지•회원관리DB•css(게시판포함)•ppt|
