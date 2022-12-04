@@ -44,12 +44,12 @@
 		<div id="bbs_content">
 			<div class="mybbsHead">
 				<div>
-					<button class="mybbsBt2" onclick="location.href='MyBbsRC'">[나의
+					<button class="mybbsBt1" onclick="location.href='MyBbsRC'">[나의
 						리뷰글 목록]</button>
 				</div>
 				<div>&nbsp; &nbsp;&nbsp;&nbsp;</div>
 				<div>
-					<button class="mybbsBt1" onclick="location.href='MyBbsFC'">[나의
+					<button class="mybbsBt2" onclick="location.href='MyBbsFC'">[나의
 						자유글 목록]</button>
 				</div>
 			</div>

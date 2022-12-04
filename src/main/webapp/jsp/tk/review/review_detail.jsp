@@ -132,8 +132,7 @@
 					<div class="bbsDetail_detail">${review.r_detail}</div>
 					<div class="bbsDetail_img">
 						<c:if test="${review.r_img ne null }">
-							<td colspan="3"><img src="files/reviewImg/${review.r_img }"
-								width="500px">
+							<td colspan="3"><img src="files/reviewImg/${review.r_img }">
 						</c:if>
 					</div>
 
@@ -217,28 +216,18 @@
 
 				<div class="bbsBot">
 					<div class="bbsBot_fl">
-						<form action="https://www.fmkorea.com/" method="get"
-							class="bd_srch_btm on" no-error-return-url="true"
-							onsubmit="if(this.search_target.value=='comment'){ jQuery('[name=sort_index]', this).remove(); }">
-							<input type="hidden" name="mid" value="starcraft"> <input
-								type="hidden" name="category" value=""> <span
-								class="btn_img itx_wrp">
-								<button type="submit"
-									onclick="jQuery(this).parents('form.bd_srch_btm').submit();return false;"
-									class="ico_16px search">Search</button> <label
-								for="bd_srch_btm_itx_6042994">검색</label> <input type="text"
-								name="search_keyword" id="bd_srch_btm_itx_6042994"
-								class="bd_srch_btm_itx srch_itx" value="">
-							</span> <span class="btn_img select"> <select
-								name="search_target">
-									<option value="title_content">제목+내용</option>
-									<option value="title">제목</option>
-									<option value="content">내용</option>
-									<option value="nick_name">작성자</option>
-							</select>
-							</span>
-						</form>
+						<span>
+							<button type="button">Search</button> <label>검색</label> <input
+							type="text" name="search_keyword" value="">
+						</span> <span> <select name="search_target">
+								<option value="title_content">제목+내용</option>
+								<option value="title">제목</option>
+								<option value="content">내용</option>
+								<option value="nick_name">작성자</option>
+						</select>
+						</span>
 					</div>
+
 					<div class="bbsBot_fr">
 						<c:choose>
 							<c:when test="${sessionScope.accountInfo eq null}">

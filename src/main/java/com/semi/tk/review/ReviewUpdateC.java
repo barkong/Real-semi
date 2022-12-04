@@ -45,6 +45,8 @@ public class ReviewUpdateC extends HttpServlet {
 		if (Model.loginCheck(request)) {
 			ReviewDAO.updateReview(request);
 			ReviewDAO.getReview(request);
+			ReviewDAO.getAllReview(request);
+			ReviewDAO.paging(1, request);
 
 			FreeDAO.getFreesB(request);
 			FreeDAO.getFreesC(request);

@@ -44,6 +44,8 @@ public class FreeUpdateC extends HttpServlet {
 		if (Model.loginCheck(request)) {
 			FreeDAO.updateFree(request);
 			FreeDAO.getFree(request);
+			FreeDAO.getAllFree(request);
+			FreeDAO.paging(1, request);
 			
 			FreeDAO.getFreesB(request);
 			FreeDAO.getFreesC(request);

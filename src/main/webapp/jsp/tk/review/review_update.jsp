@@ -149,7 +149,7 @@ pageContext.setAttribute("cn", "\n");
 
 						<div class="bbsDetail_img">
 							<c:if test="${review.r_img ne null }">
-								<img src="files/reviewImg/${review.r_img }" width="500px">
+								<img src="files/reviewImg/${review.r_img }">
 							</c:if>
 						</div>
 						<div class="bbsDetail_img">

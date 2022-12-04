@@ -145,7 +145,7 @@ pageContext.setAttribute("cn", "\n");
 
 						<div class="bbsDetail_img">
 							<c:if test="${free.f_img ne null }">
-								<img src="files/freeImg/${free.f_img }" width="500px">
+								<img src="files/freeImg/${free.f_img }">
 							</c:if>
 						</div>
 						<div class="bbsDetail_img">
