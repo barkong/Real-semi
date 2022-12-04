@@ -15,10 +15,64 @@ import com.semi.main.DBManager;
 import com.semi.mybbs.MyBbs;
 
 public class FreeDAO {
-
 	private static ArrayList<Free> frees;
 	private static ArrayList<Free> freesB;
 	private static ArrayList<Free> freesC;
+	private static ArrayList<Free> freesS;
+
+	public static void getSearch(String sf, String st, HttpServletRequest request) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String searchField = null;
+		String searchText = null;
+		
+		if (sf == null) {
+			searchField = request.getParameter("searchField");
+			searchText = request.getParameter("searchText");
+		} else {
+			searchField = sf;
+			searchText =  st;
+		}
+
+		String sql = "select * from semi_free WHERE " + searchField.trim();
+
+		try {
+
+			if (searchText != null && !searchText.equals("")) {// 이거 빼면 안 나온다ㅜ 왜지?
+				sql += " LIKE '%" + searchText.trim() + "%' order by f_date";
+			}
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			Free free = null;
+			freesS = new ArrayList<Free>();
+			while (rs.next()) {
+				free = new Free();
+				free.setF_no(rs.getInt("f_no"));
+				free.setF_id(rs.getString("f_id"));
+				free.setF_title(rs.getString("f_title"));
+				free.setF_detail(rs.getString("f_detail"));
+				free.setF_img(rs.getString("f_img"));
+				free.setF_date(rs.getDate("f_date"));
+				free.setF_count(rs.getInt("f_count"));
+				free.setF_ip(rs.getString("f_ip"));
+
+				freesS.add(free);
+			}
+			request.setAttribute("sf", searchField.trim());
+			request.setAttribute("st", searchText.trim());
+			request.setAttribute("freesS", freesS);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+	}
 
 	// 전체조회
 	public static void getAllFree(HttpServletRequest request) {
@@ -49,18 +103,17 @@ public class FreeDAO {
 				frees.add(free);
 			}
 			request.setAttribute("frees", frees);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
 	}
-	
 
 // 조회많은 몇개만
 	public static void getFreesB(HttpServletRequest request) {
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -75,14 +128,14 @@ public class FreeDAO {
 			freesB = new ArrayList<Free>();
 			while (rs.next()) {
 				free = new Free();
-				free.setF_Bid(rs.getString("f_id"));
-				free.setF_Bno(rs.getInt("f_no"));
-				free.setF_Btitle(rs.getString("f_title"));
-				free.setF_Bdetail(rs.getString("f_detail"));
-				free.setF_Bimg(rs.getString("f_img"));
-				free.setF_Bdate(rs.getDate("f_date"));
-				free.setF_Bcount(rs.getInt("f_count"));
-				free.setF_Bip(rs.getString("f_ip"));
+				free.setF_id(rs.getString("f_id"));
+				free.setF_no(rs.getInt("f_no"));
+				free.setF_title(rs.getString("f_title"));
+				free.setF_detail(rs.getString("f_detail"));
+				free.setF_img(rs.getString("f_img"));
+				free.setF_date(rs.getDate("f_date"));
+				free.setF_count(rs.getInt("f_count"));
+				free.setF_ip(rs.getString("f_ip"));
 
 				freesB.add(free);
 			}
@@ -97,7 +150,7 @@ public class FreeDAO {
 
 // 최신 몇개만
 	public static void getFreesC(HttpServletRequest request) {
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -112,14 +165,14 @@ public class FreeDAO {
 			freesC = new ArrayList<Free>();
 			while (rs.next()) {
 				free = new Free();
-				free.setF_Cid(rs.getString("f_id"));
-				free.setF_Cno(rs.getInt("f_no"));
-				free.setF_Ctitle(rs.getString("f_title"));
-				free.setF_Cdetail(rs.getString("f_detail"));
-				free.setF_Cimg(rs.getString("f_img"));
-				free.setF_Cdate(rs.getDate("f_date"));
-				free.setF_Ccount(rs.getInt("f_count"));
-				free.setF_Cip(rs.getString("f_ip"));
+				free.setF_id(rs.getString("f_id"));
+				free.setF_no(rs.getInt("f_no"));
+				free.setF_title(rs.getString("f_title"));
+				free.setF_detail(rs.getString("f_detail"));
+				free.setF_img(rs.getString("f_img"));
+				free.setF_date(rs.getDate("f_date"));
+				free.setF_count(rs.getInt("f_count"));
+				free.setF_ip(rs.getString("f_ip"));
 
 				freesC.add(free);
 			}
@@ -263,7 +316,7 @@ public class FreeDAO {
 				File f = new File(delFile);
 				f.delete();
 			}
-			
+
 			pstmt.setString(4, no);
 			request.setAttribute("afterUpdateNo", no);
 
@@ -316,7 +369,7 @@ public class FreeDAO {
 		int total = frees.size();
 		int pageCount;
 		// 총 페이지 수
-		if (total==0) {
+		if (total == 0) {
 			pageCount = 1;
 		} else {
 			pageCount = (int) Math.ceil(((double) total / cnt));
@@ -336,6 +389,35 @@ public class FreeDAO {
 		req.setAttribute("frees", items);
 	}
 
+	public static void pagingS(int page, HttpServletRequest req) {
+
+		req.setAttribute("curPageNo", page);
+
+		// 전체 페이지수 계산
+		int cnt = 20;
+		int total = freesS.size();
+		int pageCount;
+		// 총 페이지 수
+		if (total == 0) {
+			pageCount = 1;
+		} else {
+			pageCount = (int) Math.ceil(((double) total / cnt));
+		}
+		req.setAttribute("pageCount", pageCount); // 페이지넘기기 화살표를 위해 넘겨주는 것
+
+		int start = total - (cnt * (page - 1));
+
+		int end = (page == pageCount) ? -1 : start - (cnt + 1);
+
+		ArrayList<Free> items = new ArrayList<Free>();
+		for (int i = start - 1; i > end; i--) {
+
+			items.add(freesS.get(i));
+		}
+
+		req.setAttribute("freesS", items);
+	}
+	
 	public static void count(HttpServletRequest request) {
 
 		Connection con = null;
@@ -392,9 +474,9 @@ public class FreeDAO {
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
-		
+
 		System.out.println("regIp : " + regIp);
-		
+
 		if (urIp.equals(regIp)) {
 			return false;
 		} else {

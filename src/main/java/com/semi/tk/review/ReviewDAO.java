@@ -21,6 +21,62 @@ public class ReviewDAO {
 	private static ArrayList<Review> reviews;
 	private static ArrayList<Review> reviewsB;
 	private static ArrayList<Review> reviewsC;
+	private static ArrayList<Review> reviewsS;
+
+	public static void getSearch(String sf, String st, HttpServletRequest request) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String searchField = null;
+		String searchText = null;
+		
+		if (sf == null) {
+			searchField = request.getParameter("searchField");
+			searchText = request.getParameter("searchText");
+		} else {
+			searchField = sf;
+			searchText =  st;
+		}
+
+		String sql = "select * from semi_review WHERE " + searchField.trim();
+
+		try {
+
+			if (searchText != null && !searchText.equals("")) {// 이거 빼면 안 나온다ㅜ 왜지?
+				sql += " LIKE '%" + searchText.trim() + "%' order by r_date";
+			}
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			Review review = null;
+			reviewsS = new ArrayList<Review>();
+			while (rs.next()) {
+				review = new Review();
+				review.setR_no(rs.getInt("r_no"));
+				review.setR_id(rs.getString("r_id"));
+				review.setR_movie(rs.getString("r_movie"));
+				review.setR_title(rs.getString("r_title"));
+				review.setR_detail(rs.getString("r_detail"));
+				review.setR_img(rs.getString("r_img"));
+				review.setR_date(rs.getDate("r_date"));
+				review.setR_count(rs.getInt("r_count"));
+				review.setR_ip(rs.getString("r_ip"));
+				
+				reviewsS.add(review);
+			}
+			request.setAttribute("sf", searchField.trim());
+			request.setAttribute("st", searchText.trim());
+			request.setAttribute("reviewsS", reviewsS);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+	}
 
 	// 전체조회
 	public static void getAllReview(HttpServletRequest request) {
@@ -77,14 +133,14 @@ public class ReviewDAO {
 			reviewsB = new ArrayList<Review>();
 			while (rs.next()) {
 				review = new Review();
-				review.setR_Bid(rs.getString("r_id"));
-				review.setR_Bno(rs.getInt("r_no"));
-				review.setR_Bmovie(rs.getString("r_movie"));
-				review.setR_Btitle(rs.getString("r_title"));
-				review.setR_Bimg(rs.getString("r_img"));
-				review.setR_Bdate(rs.getDate("r_date"));
-				review.setR_Bcount(rs.getInt("r_count"));
-				review.setR_Bip(rs.getString("r_ip"));
+				review.setR_id(rs.getString("r_id"));
+				review.setR_no(rs.getInt("r_no"));
+				review.setR_movie(rs.getString("r_movie"));
+				review.setR_title(rs.getString("r_title"));
+				review.setR_img(rs.getString("r_img"));
+				review.setR_date(rs.getDate("r_date"));
+				review.setR_count(rs.getInt("r_count"));
+				review.setR_ip(rs.getString("r_ip"));
 
 				reviewsB.add(review);
 			}
@@ -113,14 +169,14 @@ public class ReviewDAO {
 			reviewsC = new ArrayList<Review>();
 			while (rs.next()) {
 				review = new Review();
-				review.setR_Cid(rs.getString("r_id"));
-				review.setR_Cno(rs.getInt("r_no"));
-				review.setR_Cmovie(rs.getString("r_movie"));
-				review.setR_Ctitle(rs.getString("r_title"));
-				review.setR_Cimg(rs.getString("r_img"));
-				review.setR_Cdate(rs.getDate("r_date"));
-				review.setR_Ccount(rs.getInt("r_count"));
-				review.setR_Cip(rs.getString("r_ip"));
+				review.setR_id(rs.getString("r_id"));
+				review.setR_no(rs.getInt("r_no"));
+				review.setR_movie(rs.getString("r_movie"));
+				review.setR_title(rs.getString("r_title"));
+				review.setR_img(rs.getString("r_img"));
+				review.setR_date(rs.getDate("r_date"));
+				review.setR_count(rs.getInt("r_count"));
+				review.setR_ip(rs.getString("r_ip"));
 
 				reviewsC.add(review);
 			}
@@ -341,6 +397,35 @@ public class ReviewDAO {
 		}
 
 		req.setAttribute("reviews", items);
+	}
+	
+	public static void pagingS(int page, HttpServletRequest req) {
+
+		req.setAttribute("curPageNo", page);
+
+		// 전체 페이지수 계산
+		int cnt = 20; // 한페이지당 보여줄 개수
+		
+		int total = reviewsS.size(); // 총 (데이터 게시글) 수
+		int pageCount;
+		// 총 페이지 수
+		if (total == 0) {
+			pageCount = 1;
+		} else {
+			pageCount = (int) Math.ceil(((double) total / cnt));
+		}
+		req.setAttribute("pageCount", pageCount); // 페이지넘기기 화살표를 위해 넘겨주는 것
+
+		int start = total - (cnt * (page - 1)); // 시작데이터번호
+		int end = (page == pageCount) ? -1 : start - (cnt + 1); // 끝데이터번호
+
+		ArrayList<Review> items = new ArrayList<Review>();
+		for (int i = start - 1; i > end; i--) {
+
+			items.add(reviewsS.get(i));
+		}
+
+		req.setAttribute("reviewsS", items);
 	}
 
 	public static void count(HttpServletRequest request) {
