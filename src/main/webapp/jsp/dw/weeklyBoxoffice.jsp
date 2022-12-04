@@ -18,6 +18,7 @@
 		$("#date").attr("max", str);
 
 		$("td")
+
 				.click(
 						function() {
 
@@ -54,7 +55,6 @@
 																		method : "GET", // HTTP 요청 메소드(GET, POST 등)
 																		dataType : "json", // 서버에서 보내줄 데이터의 타입
 																	})
-
 															// HTTP 요청이 성공하면 요청한 데이터가 done() 메소드로 전달됨.
 															.done(
 																	function(

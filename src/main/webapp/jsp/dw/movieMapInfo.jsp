@@ -1,4 +1,5 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -6,8 +7,8 @@
 <meta charset="utf-8">
 <title>주변 영화관 찾기</title>
 
-	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
- 	
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+
 <script>
 	let lat;
 	let lon;
@@ -17,17 +18,17 @@
 			lon = position.coords.longitude;
 		}, function(error) {
 			// 위치를 가져오는데 실패한 경우
-			consol.log(error.message);
+			console.log(error.message);
 		});
 	} else {
-		consol.log("Geolocation을 지원하지 않는 브라우저 입니다.");
+		console.log("Geolocation을 지원하지 않는 브라우저 입니다.");
 	}
-	
+	 
 		
 </script>
 </head>
 <body>
-<h1>내 주변 영화관</h1>
+	<h1>내 주변 영화관</h1>
 	<div class="map_wrap">
 		<div id="map"
 			style="width: 98%; height: 100%; position: relative; overflow: hidden;"></div>
@@ -36,12 +37,12 @@
 			<div class="option">
 				<div>
 					<form onsubmit="searchPlaces(); return false;">
-						키워드 : <input type="text" value="영화관" id="keyword" size="17" >
+						키워드 : <input type="text" value="영화관" id="keyword" size="17">
 						<button type="submit">검색하기</button>
 					</form>
 				</div>
 			</div>
-			<hr>	
+			<hr>
 			<ul id="placesList"></ul>
 			<div id="pagination"></div>
 		</div>
