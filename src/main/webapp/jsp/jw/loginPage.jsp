@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인 페이지</title>
 <link rel="stylesheet" href="css/jw/login.css" />
 <link rel="stylesheet" href="css/jw/loginPage.css" />
 <script type="text/javascript" src="js/jw/check.js"></script>

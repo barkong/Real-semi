@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>Insert title here</title>
+<title>박스오피스</title>
 <link rel="stylesheet" href="css/boxoffice.css" />
 <link rel="stylesheet" href="css/calendar.css" />
 <script src="js/calendar.js"></script>
