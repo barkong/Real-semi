@@ -15,6 +15,7 @@ import com.semi.jw.Model;
 public class MovieSearchC2 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		Model.loginCheck(request);
 
 		response.setCharacterEncoding("utf-8");

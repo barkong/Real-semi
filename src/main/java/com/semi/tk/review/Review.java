@@ -12,7 +12,7 @@ public class Review {
 	private Date r_date; // 작성날짜
 	private int r_count; // 조회수
 	private String r_ip; // ip주소
-	
+
 	public Review() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -104,5 +104,4 @@ public class Review {
 		this.r_ip = r_ip;
 	}
 
-	
 }

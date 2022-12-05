@@ -17,7 +17,7 @@ public class LoginC extends HttpServlet {
 
 		Model.logout(request);
 		Model.loginCheck(request);
-
+		
 		String watchingPage = request.getRequestURL().toString();
 		String param = request.getQueryString();
 		if (request.getQueryString() != null) {

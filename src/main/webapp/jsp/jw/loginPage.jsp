@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인 페이지</title>
 <link rel="stylesheet" href="css/jw/login.css" />
 <link rel="stylesheet" href="css/jw/loginPage.css" />
 <script type="text/javascript" src="js/jw/check.js"></script>
@@ -13,7 +13,8 @@
 <body>
 	<div class="login-wrapper">
 		<h2 class="loginT">Login</h2>
-		<form name="myForm" action="LoginC" method="post" onsubmit="return call()" id="login-form">
+		<form name="myForm" action="LoginC" method="post" onsubmit="return call2()" id="login-form">
+			<div align="center">${r }</div>
 			<input name="id" type="text" placeholder="ID"><br>
 			<input name="pw" type="password" placeholder="PW"><br><br>
 			<button class="sign_up">로그인</button>

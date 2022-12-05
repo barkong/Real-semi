@@ -1,4 +1,4 @@
-package com.semi.main;
+package com.semi.tk.review;
 
 import java.io.IOException;
 
@@ -9,10 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.jw.Model;
+import com.semi.tk.free.FreeDAO;
 
-@WebServlet("/HC")
-public class HC extends HttpServlet {
+@WebServlet("/ReviewSC")
+public class ReviewSC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		String watchingPage = request.getRequestURL().toString();
@@ -24,14 +29,19 @@ public class HC extends HttpServlet {
 
 		Model.loginCheck(request);
 		
-		request.setAttribute("contentPage", "home.jsp");
+		String sf = null;
+		String st = null;
+		ReviewDAO.getSearch(sf, st, request);
+		ReviewDAO.pagingS(1, request);
+
+		FreeDAO.getFreesB(request);
+		FreeDAO.getFreesC(request);
+		ReviewDAO.getReviewsB(request);
+		ReviewDAO.getReviewsC(request);
+
+		request.setAttribute("contentPage", "jsp/tk/review/review_search.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
-
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+		
 	}
 
 }

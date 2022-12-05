@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.semi.jw.Model;
 
-@WebServlet("/MyBbsFreeC")
-public class MyBbsFreeC extends HttpServlet {
+@WebServlet("/MyBbsFC")
+public class MyBbsFC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		if (Model.loginCheck(request)) {
-			MyBbsDAO.getAllBbsFree(request);
-			MyBbsDAO.paging(1, request);
-			request.setAttribute("contentPage", "jsp/tk/mybbs/myBbsFree.jsp");
+			MyBbsDAO.getAllBbsF(request);
+			MyBbsDAO.pagingF(1, request);
+			request.setAttribute("contentPage", "jsp/tk/mybbs/myBbsF.jsp");
 		} else {
 			String watchingPage = request.getRequestURL().toString();
 			String param = request.getQueryString();

@@ -1,206 +1,378 @@
 @charset "UTF-8";
 
-.bbsh1{
-	align-items: center;
-  	text-align: center;
+#contentWp { /* 사이드바와 게시판 배치 */
+	display: flex;
+	/* 	justify-content: center; */
+	margin-top: 40px;
+	/* 	margin-right: 40px; */
+	font-family: 'STIX Two Math';
+	padding-left: 5%;
+	padding-right: 5%;
+
+	/* 	height: 100%;
+	width: 100%; */
+	/* 	font-family: sans-serif; */
 }
 
-.bbsTable {
-  border: 1px rgb(128, 128, 128) solid;
-  font-size: 15px;
-  box-shadow: 0 2px 5px rgb(192, 192, 192);
-  width: 75%;
-  border-collapse: collapse;
-  border-radius: 5px;
-  overflow: hidden;
-  color: white;
+/* ---------------------------------------------- */
+/* 최상단 aside */
+.content_widget {
+	display: flex;
+	line-height: 1;
+	color: #e8e8e8;
+	font-size: 0.9em;
 }
 
-.bbsth {
-  text-align: left;
-  background-color: black;
-  border: 1px rgb(128, 128, 128) solid;
-}
-  
-.bbsthead {
-  font-weight: bold;
-  color: #fff;
-  background: #101111;
-}
-  
-.bbstd, .bbsth {
-  padding: 1em .5em;
-  vertical-align: middle;
-}
-  
-.bbstd {
-  background: rgb(0, 0, 0);
-}
-.bbstd2{
-	padding: 1em .5em;
-    vertical-align: middle;
-	background: rgb(0, 0, 0);
-	border-bottom: 1px solid rgb(192, 192, 192);
-}
-.bbstd3{
-	padding: 7em .5em;
-	background: rgb(0, 0, 0);
-    vertical-align: middle;
+.content_widget div {
+	width: 25%;
+	white-space: normal;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
-.bbsa { /* 글제목, 페이징 */
-  color: rgb(192, 192, 192);
-  text-align: center;
-  font-size: 17px;
-}
-.bbsa:hover{
-	color: rgb(128, 128, 128);
+.content_widget li {
+	color: #a2a2a2;
+	word-break: break-all;
 }
 
-.bbsdiv{
-	align-items: center;
-  	text-align: center;
-  	padding-left: 130px;
+.content_widget a {
+	color: #e8e8e8; /* 텍스트 */
 }
-.bbsnewa { /* 새글쓰기 */
-  color: gray;
-  text-align: right;
-  font-size: 20px;
-  margin-left: 1200px;
+
+.content_widget a:visited {
+	color: #a2a2a2; /* 텍스트 */
 }
-.bbsnewa:hover{
+
+/* ---------------------------------------------- */
+/* 게시판부분 조절 */
+#bbs_content {
+	padding-left: 13%;
+	padding-right: 13%;
+	/* 	padding-right: 20%;  */
+	/* 	height: 100%; */
+	width: 87.5%;
+	/* 	padding-left: 20%;
+	padding-right: 10%; */
+	/* 	display: block;
+	position: relative; */
+	/* width : 100%; */
+}
+
+/* ---------------------------------------------- */
+/* 맨윗줄 */
+.bbsTop {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+.bbsTop_fl a /* 게시판이름 */ {
+	color: #e8e8e8;
+	text-align: center;
+	font-size: 18px;
+}
+
+.bbsTop_fl a:hover {
 	color: white;
 }
 
-.bbsbt{
-	width: 150px;
-    height: 30px;
-    background: black;
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
-}
-.bbsbt:hover{
-	background-color: gray;
-	border-radius: 10px;
-}
-.bbsbt1{
-	width: 150px;
-    height: 30px;
-    background: black;
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
-}
-.bbsbt1:hover{
-	background-color: gray;
-	border-radius: 10px;
-}
-.bbsbt2{
-	width: 150px;
-    height: 30px;
-    background: white;
-    color: black;
-    border-radius: 10px;
-    cursor: pointer;
-}
-.bbsbt2:hover{
-	background-color: gray;
-	border-radius: 10px;
+.bbsTop_fr a { /* 새글쓰기 */
+	color: gray;
 }
 
-.bbsnumber{
-	width: 7%;
-	background-color: black;
-	padding: 1em .5em;
-    vertical-align: middle;
-    border-bottom: 1px solid #101111;
-    background: rgb(0, 0, 0);
+.bbsTop_fr a:hover {
+	color: white;
 }
-.bbsmovie{
-	width: 20%;
-	background-color: black;
-	padding: 1em .5em;
-    vertical-align: middle;
-    border-bottom: 1px solid #101111;
-    background: rgb(0, 0, 0);
+
+/* ---------------------------------------------- */
+/* 검색, 새글쓰기 줄 */
+.bbsBot {
+	margin-top: 10px;
+	display: flex;
+	justify-content: space-between;
+	display: flex;
 }
-.bbstitle{
-	width: 50%;
-	background-color: black;
-	padding: 1em .5em;
-    vertical-align: middle;
-    border-bottom: 1px solid #101111;
-    background: rgb(0, 0, 0);
+
+.bbsBot_fl { /* 검색 */
+	color: gray;
 }
-.bbsid{
-	width: 7%;
-	background-color: black;
-	padding: 1em .5em;
-    vertical-align: middle;
-    border-bottom: 1px solid #101111;
-    background: rgb(0, 0, 0);
+
+.bbsBot_fr a { /* 새글쓰기 */
+	color: gray;
 }
-.bbsdate{
+
+.bbsBot_fr a:hover {
+	color: white;
+}
+
+/* ---------------------------------------------- */
+/* 맨밑에 페이징 */
+.bbsPaging {
+	margin-top: 10px;
+	text-align: center;
+}
+
+.bbsPaging a { /* 글제목, 페이징 */
+	color: gray;
+}
+
+.bbsPaging a:hover {
+	color: white;
+}
+
+/* ---------------------------------------------- */
+/* 테이블 */
+.bbsTable {
+	width: 100%;
+	/* 	border: 1px rgb(128, 128, 128) solid; */
+	/* 	box-shadow: 0 2px 5px rgb(192, 192, 192); */
+	border-collapse: collapse;
+	/* 	border-radius: 5px; */ /* 테두리 둥글게 */
+	overflow: hidden; /* 내용이 넘치면 자름 */
+	margin: auto; /* 테이블 중앙배치, float중앙이 없어서 */
+	text-align: center;
+	line-height: 1.5;
+	color: #e8e8e8; /* 텍스트 */
+}
+
+.bbsTable a {
+	color: #e8e8e8; /* 텍스트 */
+}
+
+.bbsTable a:visited {
+	color: #a2a2a2; /* 텍스트 */
+}
+
+.bbsTable a:hover {
+	color: white;
+}
+
+.bbsTable th {
+	font-size: 15px;
+	background-color: black;
+	vertical-align: middle;
+	height: 45px;
+	font-weight: bold;
 	width: 9%;
-	background-color: black;
-	padding: 1em .5em;
-    vertical-align: middle;
-    border-bottom: 1px solid #101111;
-    background: rgb(0, 0, 0);
-}
-.bbscount{
-	width: 7%;
-	background-color: black;
-	padding: 1em .5em;
-    vertical-align: middle;
-    border-bottom: 1px solid #101111;
-    background: rgb(0, 0, 0);
 }
 
+.bbsTable tr {
+	font-size: 14px;
+	border-bottom: #CCCCCC solid 0.1px;
+	height: 45px;
+}
 
-  
- @media all and (max-width: 768px) {
-    
-  .bbstable, .bbsthead, .bbstbody, .bbsth, .bbstd, .bbstr {
-    display: block;
-  }
-  
-  .bbsth {
-    text-align: right;
-  }
-  
-  .bbstable {
-    position: relative; 
-    padding-bottom: 0;
-    border: none;
-    box-shadow: 0 0 10px rgb(128, 128, 128);
-  }
-  
-  .bbsthead {
-    float: left;
-    white-space: nowrap;
-  }
-  
-  .bbstbody {
-    overflow-x: auto;
-    overflow-y: hidden;
-    position: relative;
-    white-space: nowrap;
-  }
-  
-  .bbstr {
-    display: inline-block;
-    vertical-align: top;
-  }
-  
-  .bbsth {
-    border-bottom: 1px solid rgb(192, 192, 192);
-  }
-  
-  .bbstd {
-    border-bottom: 1px solid rgb(192, 192, 192);
-  }
-  
-  
-  }
+.bbsTable_best {
+	background-color: rgba(38, 117, 227, 0.15);
+}
+
+.bbsTable tr:hover {
+	background-color: rgba(152, 187, 201, 0.2);
+}
+
+.bbsTable_title {
+	width: 50%;
+}
+
+.bbsTable_movie {
+	width: 15%;
+}
+
+/* ---------------------------------------------- */
+/* 상세보기 */
+.bbsDetail {
+	width: 100%;
+	overflow: hidden; /* 내용이 넘치면 자름 */
+	margin: auto; /* 테이블 중앙배치, float중앙이 없어서 */
+	color: #e8e8e8; /* 텍스트 */
+	vertical-align: middle;
+	border-top: #c0c0c0 solid 0.1px;
+	border-bottom: #c0c0c0;
+}
+
+.bbsDetail {
+	color: #a2a2a2;
+	border-bottom: #c0c0c0 solid 0.1px;
+}
+
+.bbsDetail_1st_line {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: #c0c0c0 solid 0.1px;
+	min-height: 35px;
+	overflow: auto;
+}
+
+.bbsDetail_2nd_line {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	min-height: 35px;
+	overflow: auto;
+}
+
+.bbsDetail_title {
+	font-weight: bold;
+	font-size: medium;
+}
+
+.bbsDetail_element {
+	color: #a2a2a2;
+	font-size: smaller;
+}
+
+.bbsDetail_detail {
+	border-top: #c0c0c0 solid 0.1px;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	overflow: auto;
+	min-height: 250px;
+	color: #a2a2a2;
+}
+
+.bbsDetail_img {
+	padding: 2%;
+	text-align: center;
+	/* 	border-bottom: #c0c0c0 solid 0.1px; */
+}
+
+.bbsDetail_img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.bbsDetail_bot {
+	padding: 2%;
+	text-align: center;
+}
+
+.bbsbt { /* 디테일 쓰기 수정 - 등록 수정 버튼*/
+	/* 	width: 150px; */
+	border: #c0c0c0 solid 0.1px;
+	height: 30px;
+	background: #101111;
+	color: white;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.bbsbt:hover { /* 디테일 쓰기 수정 - 등록 수정 버튼*/
+	background-color: gray;
+	border-radius: 10px;
+}
+
+/* ---------------------------------------------- */
+/* 글쓰기 수정 */
+.bbsWrite {
+	width: 100%;
+	overflow: hidden; /* 내용이 넘치면 자름 */
+	margin: auto; /* 테이블 중앙배치, float중앙이 없어서 */
+	color: #e8e8e8; /* 텍스트 */
+	vertical-align: middle;
+	border: #c0c0c0 solid 0.1px;
+	border-radius: 10px;
+}
+
+.bbsWrite div {
+	padding-left: 2%;
+	padding-right: 2%;
+	/* 	border: #c0c0c0 solid 0.1px; */
+}
+
+.bbsWrite_title {
+	padding-top: 2%;
+}
+
+.bbsWrite_detail {
+	padding-top: 2%;
+}
+
+.bbsWrite_title input {
+	border-radius: 10px;
+	height: 30px;
+	width: 100%;
+	font-weight: bold;
+	font-size: medium;
+	color: #a2a2a2;
+	background-color: #101111;
+}
+
+.bbsWrite_detail textarea {
+	font-size: 15px;
+	width: 100%;
+	height: 350px;
+	color: #a2a2a2;
+	background-color: #101111;
+	width: 100%;
+}
+
+/* ---------------------------------------------- */
+/* 마이페이지 - 탭변경버튼*/
+.mybbsHead {
+	display: flex;
+	justify-content: center;
+}
+
+.mybbsBt1 {
+	height: 30px;
+	background: #101111;
+	color: white;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.mybbsBt1:hover { /* 마이페이지 - 탭변경버튼*/
+	background-color: gray;
+	border-radius: 10px;
+}
+
+.mybbsBt2 { /* 마이페이지 - 탭변경버튼*/
+	/* 	width: 150px; */
+	height: 30px;
+	background: white;
+	color: #101111;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.mybbsBt2:hover { /* 마이페이지 - 탭변경버튼*/
+	background-color: gray;
+	border-radius: 10px;
+}
+
+/* @media all and (max-width: 768px) {
+	.bbsDetail, .bbsDetail_title, .bbsDetail_body, .bbsth, .bbstd, .bbstr {
+		display: block;
+	}
+	.bbsth {
+		text-align: right;
+	}
+	.bbsDetail {
+		position: relative;
+		padding-bottom: 0;
+		border: none;
+		box-shadow: 0 0 10px rgb(128, 128, 128);
+	}
+	.bbsDetail_title {
+		float: left;
+		white-space: nowrap;
+	}
+	.bbsDetail_body {
+		overflow-x: auto;
+		overflow-y: hidden;
+		position: relative;
+		white-space: nowrap;
+	}
+	.bbstr {
+		display: inline-block;
+		vertical-align: top;
+	}
+	.bbsth {
+		border-bottom: 1px solid rgb(192, 192, 192);
+	}
+	.bbstd {
+		border-bottom: 1px solid rgb(192, 192, 192);
+	}
+} */

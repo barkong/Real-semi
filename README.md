@@ -29,8 +29,8 @@
 - ~~장르별 영화정보~~ <br>
 
 ## 기능별 소개
-* 회원(회원가입•탈퇴, 로그인, 마이페이지 조회•수정)
-* 게시판 (영화 리뷰, 자유)
+* 회원(회원가입•탈퇴, 로그인, 회원정보 조회•수정)
+* 게시판 (영화 리뷰, 자유, 내가쓴글)
 * 영화 api (박스오피스, 검색, 뉴스)
 * 카카오맵 api 
 
@@ -38,30 +38,141 @@
 
 ### 1.1 회원가입
 *유효성검사*
-- 내용이 하나라도 비어있으면 안됨
-- 정해진 조건에 맞게 입력해야됨
-- 영화 흥미 카테고리 체크박스, 전체체크중 체크안하면 관심사없음
+- 항목마다 다른 조건을 걸어 다양한 function을 활용
+- 좋아하는 장르 카테고리 체크박스 기능
 
 ### 1.2 로그인
-- 로그인 세션이 남아있을때와 없을때 다르게 보이게 설정
-- 세션이 없으면 로그인버튼이 나오게 -> 로그인 페이지로 이동
-- 세션이 있으면 회원아이디 이름 마이페이지 버튼 로그아웃 버튼 보이게 설정
+- 로그인 세션의 유무에 따라 다른 페이지
 
-### 1.3 마이페이지
-- 회원정보 전부 나옴
+### 1.3 로그인에 따른 페이지 컨트롤
+로그인시 보고있던페이지로 가도록 구현
+```java
+// 보고 있는 페이지 컨트롤러 코드
+@WebServlet("/HC")
+public class HC extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		String watchingPage = request.getRequestURL().toString();
+		String param = request.getQueryString();
+		if (request.getQueryString() != null) {
+			watchingPage = watchingPage + "?" + param;
+		}
+		request.getSession().setAttribute("watchingPage", watchingPage);
+
+		Model.loginCheck(request);
+		request.setAttribute("contentPage", "home.jsp");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+		}
+	}
+		
+// 로그인 컨트롤러 코드
+@WebServlet("/LoginC")
+public class LoginC extends HttpServlet {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Model.login(request);
+		
+		if (Model.loginCheck(request)) {
+			String watchingPage1 = request.getRequestURL().toString();
+			HttpSession hs = request.getSession();
+			String watchingPage = (String) hs.getAttribute("watchingPage");
+			System.out.println("LoginC watchingPage = " + watchingPage);
+
+			if (watchingPage == null || watchingPage.equals(watchingPage1)) {
+				request.setAttribute("contentPage", "home.jsp");
+				request.getRequestDispatcher("index.jsp").forward(request, response);
+			} else {
+				response.sendRedirect(watchingPage);
+			}
+			
+		} else {
+			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		}
+	}
+}	
+```
+
+### 1.4 마이페이지
 - 패스워드,이름,이메일,전화번호,좋아하는 장르 수정가능
+- 내가쓴글목록 : 마이페이지에서 두가지 게시판 불러와 조회
 
-## 2. 게시판 
-- 글쓰기, 수정, 삭제, 페이징 기능 구현
+## 2. 게시판 (리뷰, 자유)
+- 글쓰기, 수정, 삭제, 페이징, 조회, 검색기능 구현
+- 두 게시판에 게시판별 최신/최다조회글 배치
+- 게시판 목록 상단에 최다조회글 3개 상시배치
+- DB저장시 모델에서 <br>값으로 replace해서 저장
+- DB에서 가져올땐 모델에서 처리하는 것보다 JSTL에서 처리하는 것이 좋다
+
+```jsp
+	<!-- JSP상단 --> 
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+	<% pageContext.setAttribute("br", "<br>"); %>
+	<% pageContext.setAttribute("cn", "\n"); %>
+	
+	<!-- JSP본문 -->
+	${fn:replace(paramVO.content, br, "cn")}
+```
 
 
 ### 2.1 영화 리뷰 게시판 (로그인 해야 사용 가능)
 - 회원가입 해야 사용 가능하다.
 - 영화에 관련된 리뷰 작성 및 수정 삭제 가능
 
+
 ### 2.2 자유 게시판
 - 모두 다 사용 가능(글 쓰기, 수정, 삭제)
 
+
+### 2.3 조회수 기능
+- ip값을 활용하여 본인글 클릭하면 조회수 안올라 가도록 설계
+
+```java
+public static boolean ipCheck(HttpServletRequest request) {
+
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	String sql = "select f_ip from semi_review where f_no=?";
+	String regIp = null; // 글에 등록되어 있는  ip
+	String urIp = request.getRemoteAddr(); //현재 사용자 ip
+	System.out.println("urIp : " + urIp);
+
+	try {
+		String no = request.getParameter("no");
+		System.out.println("param no : " + no);
+
+		con = DBManager.connect();
+		pstmt = con.prepareStatement(sql);
+
+		pstmt.setString(1, no);
+
+		rs = pstmt.executeQuery();
+		if (rs.next()) {
+			regIp = rs.getString("f_ip");
+		}
+
+	} catch (Exception e) {
+		e.printStackTrace();
+		request.setAttribute("r", "서버 오류..");
+	} finally {
+		DBManager.close(con, pstmt, rs);
+	}
+	System.out.println("regIp : " + regIp);
+
+	if (urIp.equals(regIp)) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+
+### 2.4 다양한 경우의 수에 대비
+- 세션이 만료된 경우
+- 검색후 재검색 및 페이징
+```
 
 ## 3. 영화 API
 - 네이버 검색 api와 영화진흥위원회 api 등록후 사용
@@ -138,6 +249,10 @@ out.print(joo.toJSONString());
               })
 ```
 
+### 3-3. 박스오피스
+캘린더 구현해서 날짜 선택시 값 넘어가도록 설정
+이로인해 날짜 클릭시 편리한 박스오피스 순위 조회가능
+
 ## 4. 카카오맵 api
 
 - 키워드로 장소검색하고 목록으로 표출하기 (키워드에 영화 넣고 현위치에서 지도가 생성되게 하였다)
@@ -161,16 +276,16 @@ var markers = [];
 			level : 1
 		};
 ```
+(추가설명은 하단의 info.txt 참고)<br>
 
 
-자세한 내용은 Click[PPT](피피티 pdf파일)<br>
 * * *
 
 
 ## DB 구조
 
 ### *semi_account*
-* * *
+
 COLUM_NAME|DATA_TYPE|NULLABLE|PKEY|
 ---|---|---|---|
 A_ID|VARCHAR2(30 BYTE)|NO|Y|
@@ -183,7 +298,7 @@ A_PHONE|VARCHAR2(20 BYTE)|NO|N|
 A_INTEREST|VARCHAR2(200 BYTE)|NO|N|
 
 ### *semi_review*
-* * *
+
 COLUM_NAME|DATA_TYPE|NULLABLE|PKEY|
 ---|---|---|---|
 R_NO|NUMBER(3,0)|NO|Y|
@@ -197,7 +312,7 @@ R_COUNT|NUMBER(5,0)|YES|N|
 R_IP|VARCHAR2(25 BYTE)|YES|N|
 
 ### *semi_free*
-* * *
+
 COLUM_NAME|DATA_TYPE|NULLABLE|PKEY|
 ---|---|---|---|
 F_NO|NUMBER(8,0)|NO|Y|
@@ -209,12 +324,22 @@ F_DATE|DATE|NO|N|
 F_COUNT|NUMBER(5,0)|YES|N|
 F_IP|VARCHAR2(25 BYTE)|YES|N|
 
+- DATE의 저장방식과 불러오기에 주의요함
+- 게시판 ID칼럼은 ACCOUNT 테이블과 관계형을 위한 매개
+- 게시판 IP칼럼은 중복조회를 체크하기 위함
+
+* * *
 
 ## TEAM 
-* * *
+
 팀원|이메일|Task|
 ---|---|---|
-김태형|`trainst37@gmail.com`|로그인•내가 쓴글•마이페이지•게시판, 회원가입, css|
-이동우|`leedongwoo564@gmail.com`|주변 영화관 찾기, 박스오피스 정보, 영화 뉴스 정보, 검색, 전체 css|
-김수현|`kimsouhyne@gmail.com`|박스오피스 정보, 영화 뉴스 정보, 검색, 주변 영화관 찾기, 전체 css|
-송준우|`thdwnsdn98@gmail.com`|로그인•내가 쓴글•마이페이지•게시판, 회원가입, css|
+김태형|`trainst37@gmail.com`|팀관리•문서•PageTrans•게시판•내가쓴글•글DB•css정리|
+이동우|`leedongwoo564@gmail.com`|주변영화관 찾기•박스오피스 정보•영화뉴스정보•영화검색•전체css•readme|
+김수현|`kimsouhyne@gmail.com`|주변영화관 찾기•박스오피스 정보•영화뉴스 정보•영화검색•전체css•git|
+송준우|`thdwnsdn98@gmail.com`|로그인•회원가입•마이페이지•회원관리DB•css(게시판포함)•ppt|
+
+### *참조파일*
+* info(Real-semi).txt : [Click](https://github.com/barkong/Real-semi/files/10151036/infoReal-semi.2.txt)<br>
+* PPT(Real-semi) [Click](https://github.com/barkong/Real-semi/files/10139644/Real-semi.pdf)
+

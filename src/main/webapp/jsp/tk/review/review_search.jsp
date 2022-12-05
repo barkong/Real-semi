@@ -2,13 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%
-pageContext.setAttribute("br", "<br>");
-%>
-<%
-pageContext.setAttribute("cn", "\n");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -102,12 +95,10 @@ pageContext.setAttribute("cn", "\n");
 
 			<br> <br>
 
-
-			<!-- 메인컨텐츠 -->
 			<div class="bbs_1st_wrp">
 				<div class="bbsTop">
 					<div class="bbsTop_fl">
-						<a href="ReviewC"> 리뷰게시판 </a>
+						<a href="ReviewRegC"> 영화 리뷰 </a>
 					</div>
 					<div class="bbsTop_fr">
 						<c:choose>
@@ -121,53 +112,98 @@ pageContext.setAttribute("cn", "\n");
 					</div>
 				</div>
 
-				<!-- 상세창 -->
-				<div class="bbsWrite">
-					<form action="ReviewUpdateC?no=${review.r_no }" method="post"
-						name="bbsForm" enctype="multipart/form-data"
-						onsubmit="return bbsCall()">
-
-						<div class="bbsWrite_title">
-							<input type="text" value="${review.r_title }" name="title">
-						</div>
-						<div class="bbsWrite_title">
-							<input type="text" value="${review.r_movie }" name="movie">
-						</div>
-
-						<div class="bbsDetail_2nd_line">
-							<div class="bbsDetail_element">작성자 : ${review.r_id }</div>
-							<div class="bbsDetail_element">
-								<fmt:formatDate value="${review.r_date }" type="both"
-									dateStyle="short" timeStyle="short" />
-							</div>
-							<input name="no" value="${review.r_no }" type="hidden">
-							<div class="bbsDetail_element">NO.:${review.r_no }&nbsp;&nbsp;&nbsp;조회수:${review.r_count }</div>
-						</div>
-
-						<div class="bbsWrite_detail">
-							<textarea maxlength="2084" name="detail" style="resize: none">${fn:replace(review.r_detail, br, cn)}</textarea>
-						</div>
-
-						<div class="bbsDetail_img">
-							<c:if test="${review.r_img ne null }">
-								<img src="files/reviewImg/${review.r_img }">
+				<table class="bbsTable">
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>영화</th>
+							<th>제목</th>
+							<th>글쓴이</th>
+							<th>시간</th>
+							<th>조회</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="r" items="${reviewsS }">
+							<c:if test="${r.r_id ne null }">
+								<tr>
+									<td>${r.r_no }</td>
+									<td class="bbsTable_movie">${r.r_movie }</td>
+									<c:choose>
+										<c:when test="${sessionScope.accountInfo eq null}">
+											<td class="bbsTable_title"><a
+												href="ReviewDetailC?no=${r.r_no }"
+												onclick="alert('로그인하세요');">${r.r_title }</a></td>
+										</c:when>
+										<c:otherwise>
+											<td class="bbsTable_title"><a
+												href="ReviewDetailC?no=${r.r_no }">${r.r_title }</a></td>
+										</c:otherwise>
+									</c:choose>
+									<td>${r.r_id }</td>
+									<td><fmt:formatDate value="${r.r_date }" type="date"
+											dateStyle="short" /> <br> <fmt:formatDate
+											value="${r.r_date }" type="time" timeStyle="short" /></td>
+									<td>${r.r_count }</td>
+								</tr>
 							</c:if>
-						</div>
-						<div class="bbsDetail_img">
-							<input type="file" name="img2" /> <input name="img"
-								value="${review.r_img }" type="hidden">
-						</div>
+						</c:forEach>
+					</tbody>
+				</table>
 
-						<div class="bbsDetail_bot">
-							<button class="bbsbt" type="button" onclick="history.back()">이전으로</button>
-							<button class="bbsbt">수정완료</button>
-							<button class="bbsbt" type="button"
-								onclick="reviewDel(${review.r_no})">삭제하기</button>
+				<div class="bbsBot">
+					<div class="bbsBot_fl">
+						<form method="post" name="searchForm" action="ReviewSC"
+							onsubmit="return search()">
+							<select name="searchField">
+								<option value="r_title">제목</option>
+								<option value="r_id">작성자</option>
+							</select> <input type="text" placeholder="검색어 입력" name="searchText"
+								maxlength="100">
+							<button>검색</button>
+						</form>
+
+						<div class="bbsBot_fr">
+							<c:choose>
+								<c:when test="${sessionScope.accountInfo eq null}">
+									<a href="ReviewRegC" onclick="alert('로그인하세요')">새글쓰기</a>
+								</c:when>
+								<c:otherwise>
+									<a href="ReviewRegC"> 새글쓰기</a>
+								</c:otherwise>
+							</c:choose>
 						</div>
-					</form>
+					</div>
+
+
+					<div class="bbsPaging">
+						<span><c:choose>
+								<c:when test="${curPageNo == 1}">
+								</c:when>
+								<c:otherwise>
+									<a href="ReviewSpageC?p=${curPageNo - 1 }&sf=${sf}&st=${st}">
+										◀이전 </a>
+								</c:otherwise>
+							</c:choose></span> <a href="ReviewSpageC?p=1&sf=${sf}&st=${st}">[맨처음]</a>
+						<c:forEach var="i" begin="1" end="${pageCount }">
+							<a href="ReviewSpageC?p=${i }&sf=${sf}&st=${st}"> [${i }] </a>
+						</c:forEach>
+						<span><a
+							href="ReviewSpageC?p=${pageCount }&sf=${sf}&st=${st}">[맨끝]</a></span> <span><c:choose>
+								<c:when test="${curPageNo == pageCount}">
+								</c:when>
+								<c:otherwise>
+									<a href="ReviewSpageC?p=${curPageNo + 1 }&sf=${sf}&st=${st}">
+										다음▶ </a>
+								</c:otherwise>
+							</c:choose></span>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<br>
+	<br>
+	<br>
 </body>
 </html>

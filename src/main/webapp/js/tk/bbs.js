@@ -60,3 +60,16 @@ function bbsCall() {
 
 	return true;
 }
+
+function search() {
+
+	let searchText = document.searchForm.searchText;
+
+	if (isEmpty(searchText)) {
+		alert('검색어정돈 입력해라');
+		searchText.focus();
+		return false;
+	}
+
+	document.searchForm.submit();
+}

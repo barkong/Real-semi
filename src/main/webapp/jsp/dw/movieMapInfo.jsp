@@ -1,14 +1,14 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>주변 영화관 찾기</title>
-<script src="https://code.jquery.com/jquery-3.6.1.js"
-	integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
-	crossorigin="anonymous"></script>
- 	
+
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+
 <script>
 	let lat;
 	let lon;
@@ -18,17 +18,17 @@
 			lon = position.coords.longitude;
 		}, function(error) {
 			// 위치를 가져오는데 실패한 경우
-			consol.log(error.message);
+			console.log(error.message);
 		});
 	} else {
-		consol.log("Geolocation을 지원하지 않는 브라우저 입니다.");
+		console.log("Geolocation을 지원하지 않는 브라우저 입니다.");
 	}
-	
+	 
 		
 </script>
 </head>
 <body>
-<h1>내 주변 영화관</h1>
+	<h1>내 주변 영화관</h1>
 	<div class="map_wrap">
 		<div id="map"
 			style="width: 98%; height: 100%; position: relative; overflow: hidden;"></div>
@@ -37,12 +37,12 @@
 			<div class="option">
 				<div>
 					<form onsubmit="searchPlaces(); return false;">
-						키워드 : <input type="text" value="영화관" id="keyword" size="17" >
+						키워드 : <input type="text" value="영화관" id="keyword" size="17">
 						<button type="submit">검색하기</button>
 					</form>
 				</div>
 			</div>
-			<hr>	
+			<hr>
 			<ul id="placesList"></ul>
 			<div id="pagination"></div>
 		</div>
@@ -51,6 +51,8 @@
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a60dcad0b9c1aeab94d6bd6ceb0d6bc4&libraries=services"></script>
 	<script>
+	setTimeout(() => {
+		
 		// 마커를 담을 배열입니다
 		var markers = [];
 
@@ -259,7 +261,7 @@
 			}
 			paginationEl.appendChild(fragment);
 		}
-
+	
 		// 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
 		// 인포윈도우에 장소명을 표시합니다
 		function displayInfowindow(marker, title) {
@@ -276,7 +278,8 @@
 				el.removeChild(el.lastChild);
 			}
 		}
-		
+		},150);
+
 	</script>
 </body>
 </html>
