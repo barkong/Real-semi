@@ -89,7 +89,8 @@ body {
 	position: sticky;
 	top: 0;
 	background-color:#101111;
-	z-index: 1;
+    z-index: 1;
+
 }
 
 .mainMenu {

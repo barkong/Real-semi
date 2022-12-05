@@ -24,7 +24,7 @@
 				</a>
 			</div>
 			<div id="searchDiv">
-
+<% request.getAttribute("items"); System.out.println("items");%>
 				<input id="searchInput" name="movie" type="text"
 					placeholder="  영화 제목을 입력해 주세요." />
 			</div>
