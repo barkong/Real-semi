@@ -132,8 +132,7 @@
 					<div class="bbsDetail_detail">${review.r_detail}</div>
 					<div class="bbsDetail_img">
 						<c:if test="${review.r_img ne null }">
-							<td colspan="3"><img src="files/reviewImg/${review.r_img }"
-								width="500px">
+							<td colspan="3"><img src="files/reviewImg/${review.r_img }">
 						</c:if>
 					</div>
 
