@@ -13,10 +13,10 @@
 	<form name="myForm" action="AccountC" method="post"
 		onsubmit="return call()">
 		<h2 class="loginT">회원가입</h2>
-		<div class="container">
+		<div class="container3">
 		<div align="center">${t }</div>
 			<div class="input-container">
-				<b class="name"> ID : </b><input class="text" name="id"
+				<b class="name"> ID : </b><input class="text2" name="id"
 					maxlength="12" placeholder="영문 및 숫자만 4-12자리까지 입력해주세요" value=${y }>
 				<button class="idChkbt" type="button" onclick="idChk()">중복검사</button>
 			</div>
@@ -34,12 +34,12 @@
 			<div class="input-container">
 				<b class="name">이름 : </b><input class="text" name="name">
 			</div>
-			<div class="input-container">
-				<b class="name">생일 : </b><input type="date" name="birth" required
+			<div class="input-container2">
+				<b class="name2">생일 : </b><input type="date" name="birth" required
 					pattern="\d{4}-\d{2}-\d{2}">
 			</div>
-			<div class="input-container">
-				<b class="name">성별 : </b> 남<input type="radio" name="gender"
+			<div class="input-container2">
+				<b class="name2">성별 : </b> 남<input type="radio" name="gender"
 					value="남" checked="checked"> 여<input type="radio"
 					name="gender" value="여">
 			</div>
@@ -51,8 +51,8 @@
 				<b class="name">전화번호 : </b><input class="text" type="tel"
 					name="phone">
 			</div>
-			<div class="input-container">
-				<b class="name">좋아하는 장르 : </b>
+			<div class="input-container2">
+				<b class="name2">좋아하는 장르 : </b>
 				<div style="font-size: 130%">
 					All<input type="checkbox" name="chk" value=""
 						onclick='selectAll(this)'><br> 액션<input
