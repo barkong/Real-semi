@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>Insert title here</title>
+<title>Movie For You</title>
 <link rel="stylesheet" href="css/movieMapInfo.css" />
 <link rel="stylesheet" href="css/index.css" />
 <link rel="stylesheet" href="css/movieSearchResult.css" />
@@ -24,7 +24,7 @@
 				</a>
 			</div>
 			<div id="searchDiv">
-
+<% request.getAttribute("items"); System.out.println("items");%>
 				<input id="searchInput" name="movie" type="text"
 					placeholder="  영화 제목을 입력해 주세요." />
 			</div>

@@ -58,6 +58,7 @@ public class NaverMovie {
 			JSONObject naverData = (JSONObject) jp.parse(isr);
 
 			JSONArray items = (JSONArray) naverData.get("items");
+			
 
 			/*
 			 * ArrayList<Movie> movies = new ArrayList<>();

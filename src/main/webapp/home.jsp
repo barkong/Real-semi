@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Movie For You</title>
 <link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
