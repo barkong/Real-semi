@@ -15,14 +15,8 @@ import com.semi.tk.review.ReviewDAO;
 public class FreeDetailC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		String watchingPage = request.getRequestURL().toString();
-		String param = request.getQueryString();
-		if (request.getQueryString() != null) {
-			watchingPage = watchingPage + "?" + param; // 수정할 글의 번호도 있으니까
-		}
-		request.getSession().setAttribute("watchingPage", watchingPage);
-		
+
+		Model.wathingPage(request);		
 		Model.loginCheck(request);
 		
 		if (FreeDAO.ipCheck(request)) {

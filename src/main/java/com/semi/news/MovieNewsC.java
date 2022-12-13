@@ -17,16 +17,9 @@ public class MovieNewsC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		Model.wathingPage(request);
 		Model.loginCheck(request);
 
-		
-		String watchingPage = request.getRequestURL().toString();
-		String param = request.getQueryString();
-		if (request.getQueryString() != null) {
-			watchingPage = watchingPage + "?" + param;
-		}
-		request.getSession().setAttribute("watchingPage", watchingPage);
-		
 		request.setAttribute("contentPage", "jsp/sh/newsResult.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

@@ -15,6 +15,8 @@ import com.semi.tk.free.FreeDAO;
 public class ReviewDetailC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		Model.wathingPage(request);
 
 		if (Model.loginCheck(request)) {
 
@@ -33,14 +35,6 @@ public class ReviewDetailC extends HttpServlet {
 			
 			request.setAttribute("contentPage", "jsp/tk/review/review_detail.jsp");
 		} else {	
-			
-			String watchingPage = request.getRequestURL().toString();
-			String param = request.getQueryString();
-			if (request.getQueryString() != null) {
-				watchingPage = watchingPage + "?" + param; // 수정할 글의 번호도 있으니까
-			}
-			
-			request.getSession().setAttribute("watchingPage", watchingPage);
 			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}
 		request.getRequestDispatcher("index.jsp").forward(request, response);
