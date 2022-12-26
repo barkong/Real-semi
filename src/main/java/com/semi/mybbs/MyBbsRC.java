@@ -13,18 +13,14 @@ import com.semi.jw.Model;
 public class MyBbsRC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		Model.wathingPage(request);
 
 		if (Model.loginCheck(request)) {
 			MyBbsDAO.getAllBbsR(request);
 			MyBbsDAO.pagingR(1, request);
 			request.setAttribute("contentPage", "jsp/tk/mybbs/myBbsR.jsp");
 		} else {
-			String watchingPage = request.getRequestURL().toString();
-			String param = request.getQueryString();
-			if (request.getQueryString() != null) {
-				watchingPage = watchingPage + "?" + param; // 수정할 글의 번호도 있으니까
-			}
-			request.getSession().setAttribute("watchingPage", watchingPage);
 			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}
 

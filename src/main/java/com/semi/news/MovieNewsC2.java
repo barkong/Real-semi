@@ -16,6 +16,7 @@ public class MovieNewsC2 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		Model.wathingPage(request);
 		Model.loginCheck(request);
 
 		response.setCharacterEncoding("utf-8");

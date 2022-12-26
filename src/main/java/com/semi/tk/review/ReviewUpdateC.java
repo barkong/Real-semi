@@ -15,6 +15,8 @@ import com.semi.tk.free.FreeDAO;
 public class ReviewUpdateC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		Model.wathingPage(request);
 
 		if (Model.loginCheck(request)) {
 			ReviewDAO.getReview(request);
@@ -26,14 +28,6 @@ public class ReviewUpdateC extends HttpServlet {
 			
 			request.setAttribute("contentPage", "jsp/tk/review/review_update.jsp");
 		} else {
-			// href로 넘어와서 request.getHeader("Referer") 못씀
-			String watchingPage = request.getRequestURL().toString();
-			String param = request.getQueryString();
-			if (request.getQueryString() != null) {
-				watchingPage = watchingPage + "?" + param;
-			}
-		
-			request.getSession().setAttribute("watchingPage", watchingPage);
 			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}
 		request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -41,6 +35,8 @@ public class ReviewUpdateC extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		Model.wathingPage(request);
 
 		if (Model.loginCheck(request)) {
 			ReviewDAO.updateReview(request);
@@ -55,20 +51,6 @@ public class ReviewUpdateC extends HttpServlet {
 			
 			request.setAttribute("contentPage", "jsp/tk/review/review_detail.jsp");
 		} else {
-//			String watchingPage = request.getRequestURL().toString();
-//			String param = request.getQueryString();
-//			if (request.getQueryString() != null) {
-//				watchingPage = watchingPage + "?" + param; // 수정할 글의 번호도 있으니까
-//			}
-//			System.out.println("watchingPage : " + watchingPage);
-//			System.out.println("param : " + param);
-//			onclick="location.href='FreeUpdateC?no=${param.no} 로 넘어왔기 때문에, 위처럼 써도 좋다.
-//			다만, 수정완료를 눌렀을때 param도 같이 넘겨줘야 로그인후 그 수정하던 페이지로 돌아간다.
-//			그런데 잘보면, 수정완료버튼을 누른다는 것은 form-action에 해당한다. 그러므로 아래처럼 써버려도 된다.
-			String watchingPage = request.getHeader("Referer");
-			request.getSession().setAttribute("watchingPage", watchingPage);
-			request.getSession().setAttribute("watchingPage", watchingPage);
-			
 			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 		}
 		request.getRequestDispatcher("index.jsp").forward(request, response);

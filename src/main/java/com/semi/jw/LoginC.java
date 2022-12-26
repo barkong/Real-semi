@@ -17,14 +17,7 @@ public class LoginC extends HttpServlet {
 
 		Model.logout(request);
 		Model.loginCheck(request);
-		
-		String watchingPage = request.getRequestURL().toString();
-		String param = request.getQueryString();
-		if (request.getQueryString() != null) {
-			watchingPage = watchingPage + "?" + param;
-		}
-	
-		request.getSession().setAttribute("watchingPage", watchingPage);
+		Model.wathingPage(request);
 
 		request.setAttribute("contentPage", "home.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -34,23 +27,32 @@ public class LoginC extends HttpServlet {
 			throws ServletException, IOException {
 
 		Model.login(request);
-
 		if (Model.loginCheck(request)) {
-			String watchingPage1 = request.getRequestURL().toString();
-			HttpSession hs = request.getSession();
-			String watchingPage = (String) hs.getAttribute("watchingPage");
-
-			if (watchingPage == null || watchingPage.equals(watchingPage1)) {
-				request.setAttribute("contentPage", "home.jsp");
-				request.getRequestDispatcher("index.jsp").forward(request, response);
-			} else {
-				response.sendRedirect(watchingPage);
-			}
+			String watchingPage = (String) request.getSession().getAttribute("watchingPage");
+			System.out.println(watchingPage);
+			response.sendRedirect(watchingPage);
 		} else {
 			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
 			request.getRequestDispatcher("index.jsp").forward(request, response);
-
 		}
+//		request.getRequestDispatcher("index.jsp").forward(request, response);
+
+//		if (Model.loginCheck(request)) {
+//			String watchingPage1 = request.getRequestURL().toString();
+//			String watchingPage = (String) request.getSession().getAttribute("watchingPage");
+//			
+//			System.out.println(watchingPage);
+//
+//			if (watchingPage == null || watchingPage.equals(watchingPage1)) {
+//				request.setAttribute("contentPage", "home.jsp");
+//				request.getRequestDispatcher("index.jsp").forward(request, response);
+//			} else {
+//				response.sendRedirect(watchingPage);
+//			}
+//		} else {
+//			request.setAttribute("contentPage", "jsp/jw/loginPage.jsp");
+//			request.getRequestDispatcher("index.jsp").forward(request, response);
+//		}
 
 	}
 }

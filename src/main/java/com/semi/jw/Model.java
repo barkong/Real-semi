@@ -128,6 +128,8 @@ public class Model {
 	public static boolean loginCheck(HttpServletRequest request) {
 		HttpSession hs = request.getSession();
 		Bean a = (Bean) hs.getAttribute("accountInfo");
+		
+		
 
 		if (a == null) {
 			request.setAttribute("loginPage", "jsp/jw/login.jsp");
@@ -136,6 +138,17 @@ public class Model {
 			request.setAttribute("loginPage", "jsp/jw/loginOk.jsp");
 			return true;
 		}
+	}
+	
+	public static void wathingPage(HttpServletRequest request) {
+
+		String watchingPage = request.getRequestURL().toString();
+		String param = request.getQueryString();
+		if (request.getQueryString() != null) {
+			watchingPage = watchingPage + "?" + param; // 수정할 글의 번호도 있으니까
+		}
+		request.getSession().setAttribute("watchingPage", watchingPage);
+
 	}
 
 	public static void logout(HttpServletRequest request) {
